@@ -2,60 +2,69 @@
 
 Date: 2026-07-18
 
-Status: `LOCAL CONTRACT CHECKS PASS / GITHUB ACTIONS PENDING`
+Status: `PASS`
 
-## Commands executed during the original P07 baseline
+## Authoritative verification
+
+- Repository: `lwmraymond/SOC_network`
+- Pull request: `#1`
+- Verified head: `6f8427da2204d07f72aae664b0d28a5807748062`
+- GitHub Actions workflow run: `29630430056`
+- `quality`: PASS
+- `p07-browser-gate`: PASS
+
+## Commands executed
 
 ```text
-npm install
+npm install --no-audit --no-fund
 npm run lint
 npm run typecheck
 npm run test
 npm run build
+npx playwright install --with-deps chromium
 npm run e2e
 ```
 
-## Original failures
+## Failures found during re-verification
 
-1. React 19 type peers conflicted with EUI 106, and the declared Elastic Charts version did not exist.
-2. No lint script/config existed; initial ESLint and P07 hook/expression errors required correction.
-3. EUI API typings, recursive filter typing, Vite test config typing, ImportMeta types and table interaction failed the first build.
-4. Local Chromium navigation is blocked by managed sandbox policy with `ERR_BLOCKED_BY_ADMINISTRATOR`.
-
-## Re-verification findings
-
-The baseline was not complete. Two additional dependency/runtime defects were confirmed:
-
-1. EUI 106 extensionless dynamic icon requests do not match Vite's pre-bundled `.js` map keys, producing `Module not found in bundle` and a black/unusable application surface.
-2. `@vitejs/plugin-react@^4.5.0` does not declare Vite 7 peer compatibility, while `vite@^7.0.0` could resolve to Vite 7.3.6. Node 20.16.0 is also below Vite 7.3.6's supported minimum.
+1. EUI 106 requested extensionless icon paths while Vite dependency pre-bundling generated `.js` map keys, causing `Module not found in bundle` and an empty/unusable React root.
+2. Vite could drift to 7.3.6 while `@vitejs/plugin-react` remained on a Vite-6 peer range; Node 20.16.0 was below Vite 7.3.6's supported minimum.
+3. `@testing-library/jest-dom@6.6.0` failed under Node 22 ESM collection through an extensionless `lodash/isEqualWith` import.
+4. Vitest's default discovery collected Playwright files under `tests/e2e`.
+5. The application shell and EUI PageTemplate produced duplicate `main` landmarks; the top bar lacked a banner landmark.
+6. Axe could sample EUI modal fade-in state and report transient contrast failures unless the reduced-motion path was selected.
+7. The visual suite used exact viewports but `fullPage: true`, so screenshot file dimensions did not match D1080/D2K/D4K names.
+8. The prior D4K max-width claim was false because a selector targeted a non-stable EUI class; content still expanded across the full viewport.
 
 ## Corrective changes
 
-- Explicitly pre-register `logoElastic`, `search`, `arrowDown`, `cross` and `lock` through the EUI icon component cache before React renders.
-- Add a plain accessible root error boundary as defense in depth.
-- Pin Vite 7.3.6 and `@vitejs/plugin-react` 5.0.4.
-- Pin the project runtime to Node 22.16.0 through `.nvmrc`; package engines permit `^20.19.0 || >=22.12.0`.
-- Remove npm cache setup that depended on a missing lockfile.
-- Add unit tests for icon bootstrap and root fallback.
-- Make P07 Playwright fail on empty `#root`, page errors or console errors.
-- Correct PowerShell and Command Prompt fixture startup instructions.
+- Pre-register `logoElastic`, `search`, `arrowDown`, `cross` and `lock` through the same EUI icon cache used by the runtime bundle.
+- Add a plain, accessible root Error Boundary so a synchronous render failure cannot leave a blank root.
+- Pin Node 22.16.0, Vite 7.3.6 and `@vitejs/plugin-react` 5.0.4; declare the supported Node engine range.
+- Upgrade `@testing-library/jest-dom` to 6.9.1.
+- Limit Vitest discovery to `src/**/*.{test,spec}.{ts,tsx}` and run the six unit suites deterministically.
+- Use one `main` landmark and a named application `header` landmark.
+- Run browser tests with `contextOptions.reducedMotion = "reduce"`.
+- Capture viewport screenshots rather than full-page screenshots.
+- Use EUI's supported `restrictWidth={1800}` contract for P07.
+- Correct macOS/Linux, PowerShell and Command Prompt fixture startup instructions.
 
-## Verification completed in the agent environment
+## Final results
 
-- Exact dependency resolution: PASS.
-- Vite/plugin peer compatibility: PASS.
-- EUI icon pre-bundle key mismatch: reproduced and documented.
-- Explicit icon registry TypeScript check: PASS.
-- Minimal Vite production build with the registry: PASS.
-- Inline Chromium runtime smoke with the registry: PASS, five SVG icons rendered, zero runtime errors.
-- Direct HTTP/file browser navigation: `[BLOCKED]` by environment administrator policy.
-
-## GitHub Actions
-
-The pull-request quality and P07 browser jobs are the authoritative repository-level verification. Results remain pending until the branch PR runs.
+- Dependency installation: PASS
+- ESLint: PASS
+- TypeScript project build: PASS
+- Vitest: PASS — 6 files, 21 tests
+- Vite production build: PASS
+- Playwright functional and visual tests: PASS — 9 cases
+- Axe checks: PASS for Ready, Filter Builder and Export Modal
+- Runtime regression guard: PASS — non-empty `#root`, zero captured `pageerror` and console-error events
+- Visual evidence: PASS — 12 screenshots with exact D1080, D2K and D4K dimensions
 
 ## Remaining risks
 
-- No package lockfile existed in the repository. Direct toolchain versions are now exact, but transitive dependency locking remains a follow-up hardening item.
-- The EUI icon registry is intentionally explicit; future pages must register newly introduced icon types and test their overlay paths.
-- Route-level code splitting remains required before the production performance gate.
+- `[DISCOVER]` The EUI registry is intentionally explicit. Every newly introduced EUI icon must be registered and exercised by a browser path.
+- `[DISCOVER]` The repository still has no committed package lockfile; direct dependencies are exact, but transitive resolution is not frozen.
+- `[BLOCKED]` Production event API, policy engine, Saved View backend, export worker, audit store and authoritative rehydration service remain unavailable.
+- `[USER-CHOICE]` P07 reviewer acceptance is still required before starting P05.
+- Route-level code splitting remains a production performance follow-up.

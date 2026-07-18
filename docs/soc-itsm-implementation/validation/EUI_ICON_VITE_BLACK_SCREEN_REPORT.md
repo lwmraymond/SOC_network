@@ -2,16 +2,11 @@
 
 Date: 2026-07-18
 
-Status: `ROOT CAUSE VERIFIED / FIX IMPLEMENTED / CI VERIFICATION PENDING`
+Status: `ROOT CAUSE VERIFIED / FIX IMPLEMENTED / CI PASS`
 
 ## Symptom
 
-- Vite development server starts normally and returns HTTP 200.
-- CSS and EUI styles load.
-- React starts, but required EUI icons reject during dynamic loading.
-- The affected browser session can end with an empty or unusable `#root`, observed as a black screen.
-
-Observed errors:
+The Vite development server returned HTTP 200 and styles loaded, but React became empty or unusable after these runtime failures:
 
 ```text
 Module not found in bundle: ./assets/logo_elastic
@@ -19,17 +14,21 @@ Module not found in bundle: ./assets/search
 Module not found in bundle: ./assets/arrow_down
 ```
 
+The initial paths were requested indirectly by:
+
+- `EuiHeaderLogo` → `logoElastic`
+- `EuiFieldSearch` → `search`
+- `EuiSelect` → `arrowDown`
+
 ## Verified root cause
 
-EUI 106 loads named icons from `EuiIconClass` with an extensionless expression equivalent to:
+EUI 106 resolves named icons with an extensionless expression equivalent to:
 
 ```text
 ./assets/ + typeToPathMap[iconType]
 ```
 
-For example, the runtime requests `./assets/logo_elastic`.
-
-Vite dependency pre-bundling transforms the EUI icon directory into a dynamic-import map whose keys include the JavaScript extension, for example:
+Vite 7.3.6 dependency pre-bundling creates a dynamic-import map with keys containing `.js`:
 
 ```text
 ./assets/logo_elastic.js
@@ -37,35 +36,13 @@ Vite dependency pre-bundling transforms the EUI icon directory into a dynamic-im
 ./assets/arrow_down.js
 ```
 
-The extensionless runtime lookup therefore does not match the generated map key, and Vite's generated helper throws `Module not found in bundle`.
+The extensionless EUI lookup does not match those generated keys. Vite's generated helper therefore throws `Module not found in bundle` before the required icon can render.
 
-The three initial failures originate indirectly from:
-
-- `EuiHeaderLogo` → `logoElastic`
-- `EuiFieldSearch` → `search`
-- `EuiSelect` → `arrowDown`
-
-P07 overlays additionally require `cross` and `lock`, so registering only the first three icons would leave later flyout/modal paths exposed to the same defect.
-
-## Reproduction evidence
-
-A minimal EUI 106 + Vite 7.3.6 application was built with the same shell controls.
-
-Without explicit icon registration, runtime evaluation produced failures for:
-
-```text
-./assets/logo_elastic
-./assets/search
-./assets/arrow_down
-```
-
-With the explicit cache bootstrap, the same application rendered five required SVG icons synchronously and produced no runtime errors in the available inline-browser check.
-
-Managed browser policy blocks direct HTTP and file navigation in the agent sandbox (`ERR_BLOCKED_BY_ADMINISTRATOR`), so repository-level navigation, Playwright and visual evidence remain delegated to GitHub Actions.
+A minimal EUI/Vite reproduction produced the same three errors. After explicit cache registration, the same runtime rendered all required SVG components without a page error.
 
 ## Implemented fix
 
-`src/euiIcons.ts` imports the actual EUI ES icon modules and calls `appendIconComponentCache` before React renders. The initial registry contains:
+`src/euiIcons.ts` imports the EUI ES icon modules and invokes `appendIconComponentCache` before React renders. The initial registry contains:
 
 ```text
 logoElastic
@@ -75,35 +52,42 @@ cross
 lock
 ```
 
-The cache function is imported from the exact EUI ES icon module used by the root EUI bundle. Importing it from `@elastic/eui` is not valid at runtime in EUI 106 because the root ES index does not export `appendIconComponentCache`, even though the aggregate declaration file exposes the symbol.
+`cross` and `lock` are included because P07 flyouts/modals use them after initial shell render. Registering only the three startup icons would have moved the same failure into overlay interaction.
 
-`src/types/eui-icon-assets.d.ts` supplies narrow declarations for these deep EUI module imports.
+The cache function is imported from `@elastic/eui/es/components/icon/icon.js`, the module used by the runtime EUI bundle. The aggregate root declaration advertises the function, but the EUI 106 root ES runtime does not export it. Narrow declarations for the deep imports live in `src/types/eui-icon-assets.d.ts`.
 
-## Defensive fallback
+## Defensive recovery
 
-`AppErrorBoundary` now prevents synchronous render failures from leaving an empty root and displays a plain, non-EUI, accessible recovery surface. It is defense in depth; it does not replace the icon-cache fix.
+`AppErrorBoundary` now wraps the application root and renders a non-EUI, accessible recovery surface on synchronous render failure. This is defense in depth; the icon-cache bootstrap is the actual root-cause fix.
 
-## Toolchain correction
-
-The previous ranges could resolve Vite 7 while retaining `@vitejs/plugin-react` 4.5, whose peer range ends at Vite 6. The corrected direct versions are:
+## Toolchain corrections
 
 ```text
-vite 7.3.6
-@vitejs/plugin-react 5.0.4
-Node ^20.19.0 or >=22.12.0
+Node: 22.16.0 via .nvmrc
+Supported engine: ^20.19.0 || >=22.12.0
+Vite: 7.3.6
+@vitejs/plugin-react: 5.0.4
 ```
 
-`.nvmrc` pins Node 22.16.0 for development and CI. Direct package versions are exact to prevent the prior `^7.0.0` drift.
+Direct versions are exact, eliminating the previous Vite/plugin peer mismatch and Vite range drift. Windows fixture commands are documented separately for PowerShell and Command Prompt.
 
 ## Regression controls
 
-- Unit test verifies the exact P07 icon registry and synchronous SVG rendering.
-- Root error-boundary test verifies that a render failure does not leave an empty application.
-- P07 Playwright now records `pageerror` and browser console errors, asserts `#root` is non-empty, and exercises filter, flyout and export overlays.
-- CI uses the pinned Node runtime for quality and browser-gate jobs.
+- Unit test verifies the exact icon registry and synchronous SVG rendering.
+- Root Error Boundary test verifies that a render exception does not leave an empty root.
+- Playwright asserts a non-empty `#root`, records `pageerror` and browser console errors, and exercises query, filter, flyout, export and receipt paths.
+- Axe passes after correcting landmarks and stabilizing the reduced-motion path.
+- Production build, browser gate and exact-dimension visual evidence pass in GitHub Actions.
 
-## Remaining items
+## Verification evidence
 
-- `[BLOCKED]` GitHub Actions must complete successfully before this fix is marked CI-verified.
-- `[BLOCKED]` D1080/D2K/D4K screenshot artifacts remain dependent on the browser-gate run.
-- `[DISCOVER]` Every future EUI icon introduced by P05 or later pages must be explicitly added to the registry or replaced by an application-level icon loading strategy verified against Vite.
+- Head: `6f8427da2204d07f72aae664b0d28a5807748062`
+- Workflow run: `29630430056`
+- `quality`: PASS
+- `p07-browser-gate`: PASS
+- Visual artifact: `8425293385`
+- Artifact digest: `sha256:af2cf9d93fc2afb9dc62e583c7aeeb29635faa649433a204c0608c2e8286faba`
+
+## Future rule
+
+`[DISCOVER]` Every EUI icon introduced by P05 or later work must either be added to the explicit registry and exercised in Playwright, or the application must adopt a different icon-loading strategy proven compatible with the active Vite build.

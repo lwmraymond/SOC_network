@@ -1,18 +1,64 @@
 # P07 Test Report
 
-## Automated coverage implemented
+Date: 2026-07-18
 
-- Unit: query parser/validation/serialization, filters, saved views, cursor adapter, permissions, export/receipt/audit and reducer.
-- Browser integration: route, query-to-URL, filters, cursor paging, detail flyout, export modal, queued receipt and browser history.
-- State coverage: ready, empty/filtered-empty behavior, network error, denied, stale and partial.
-- Accessibility: axe on ready, filter flyout and export modal; keyboard Escape/focus-return paths; non-color status text; chart exact-data table fallback; reduced-motion CSS.
-- Visual: D1080, D2K and D4K screenshot specifications plus overlay/state evidence.
+Status: `PASS FOR PROTOTYPE GATE`
+
+## Automated coverage
+
+### Unit
+
+Six Vitest files and 21 tests cover:
+
+- normalized query parsing, validation and URL serialization;
+- nested filters, permission masking and dependencies;
+- Saved View conflicts/defaults/URL overrides;
+- opaque cursor pagination and classified errors;
+- unified permission decisions and hidden-count protection;
+- export job, receipt, audit, idempotency and revision conflict;
+- P07 reducer behavior;
+- explicit EUI icon registration;
+- root Error Boundary behavior.
+
+### Browser integration
+
+Playwright covers:
+
+- P07 route load and non-empty application root;
+- query input to URL state;
+- filter builder interaction;
+- event detail flyout;
+- async export modal and queued receipt;
+- browser history;
+- error, denied, stale and partial states;
+- zero page errors and zero browser console errors;
+- exact D1080, D2K and D4K screenshots;
+- no uncontrolled root horizontal overflow.
+
+### Accessibility
+
+Axe passes for:
+
+- Ready state;
+- Advanced Filter Builder;
+- Export Modal.
+
+The browser context uses reduced motion, and the tests cover keyboard Escape/overlay closure, named landmarks, accessible dialog labels, non-color status text and a table fallback for the histogram.
 
 ## Results
 
-- Vitest: PASS — 4 files, 18 tests.
-- Lint/typecheck/build: PASS.
-- Playwright/axe/visual local run: `[BLOCKED]` by sandbox Chromium administrator policy before page navigation.
-- GitHub Actions browser result: pending after commit.
+- ESLint: PASS
+- TypeScript project build: PASS
+- Vitest: PASS — 6 files, 21 tests
+- Vite production build: PASS
+- Playwright: PASS — 9 cases
+- Axe: PASS
+- Visual evidence generation: PASS — 12 PNGs
+- GitHub Actions run: `29630430056`
+- Verified head: `6f8427da2204d07f72aae664b0d28a5807748062`
 
 No tests were deleted, skipped, weakened or converted to no-op assertions.
+
+## Scope note
+
+`[BLOCKED]` These tests validate the isolated prototype adapters and contracts. They do not validate a production event API, policy service, Saved View service, export worker or authoritative receipt store because those services were not supplied.
