@@ -2,13 +2,25 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { EuiProvider } from '@elastic/eui';
+import './euiIcons';
 import './styles.css';
 import { App } from './App';
+import { AppErrorBoundary } from './AppErrorBoundary';
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+const rootElement = document.getElementById('root');
+
+if (!rootElement) {
+  throw new Error('Application root element #root was not found.');
+}
+
+ReactDOM.createRoot(rootElement).render(
   <React.StrictMode>
-    <EuiProvider colorMode="light">
-      <BrowserRouter><App /></BrowserRouter>
-    </EuiProvider>
+    <AppErrorBoundary>
+      <EuiProvider colorMode="light">
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </EuiProvider>
+    </AppErrorBoundary>
   </React.StrictMode>,
 );
