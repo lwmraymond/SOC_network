@@ -1,0 +1,1 @@
+import {describe,it,expect} from 'vitest';import {initialP07State,p07Reducer} from './store';describe('p07 reducer',()=>it('resets cursor on query and manages overlays',()=>{expect(p07Reducer({...initialP07State,cursor:'x'},{type:'query',value:'abc'}).cursor).toBeUndefined();expect(p07Reducer(initialP07State,{type:'toggleFilter'}).filterOpen).toBe(true)}));
