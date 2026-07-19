@@ -1,0 +1,17 @@
+export const PAGE_DIFFERENTIATION_CONFIG = {
+  expectedPageCount: 42,
+  expectedWorkflowCount: 19,
+  expectedSurfaceCount: 61,
+  maxDomDepth: 12,
+  ignoreWrapperComponents: ['EuiPageTemplate','EuiPageTemplate.Section','EuiFlexGroup','EuiFlexItem','Fragment','Suspense','ErrorBoundary','PageFrame','WorkflowFrame'],
+  ignoreAttributes: ['className','style','data-testid','aria-describedby','id'],
+  normalizeDynamicValues: true,
+  normalizePageTitles: true,
+  normalizeFixtureValues: true,
+  weights: {componentTree:0.22,sectionSequence:0.18,landmarkLayout:0.10,kpiComposition:0.08,chartComposition:0.08,dataSurfaceSchema:0.12,interactionPattern:0.08,overlayWorkflow:0.06,primaryAction:0.04,fixtureSchema:0.04},
+  thresholds: {exactClone:0.92,probableTemplateClone:0.82,overShared:0.72,reviewRequired:0.62,crossArchetypeMaxSimilarity:0.58,sameArchetypeMaxSimilarity:0.74,workflowMaxSimilarity:0.76,sectionHeadingDuplicateRate:0.35,kpiLabelDuplicateRate:0.30,tableColumnSetDuplicateRate:0.40,primaryActionDuplicateRate:0.35,emptyStateCopyDuplicateRate:0.35,fixtureSchemaDuplicateRate:0.45},
+  clustering: {minClusterSize:3,templateCloneClusterAverageSimilarity:0.80,maxAllowedLargestClusterRatio:0.20,maxAllowedUniversalSkeletonUsageRatio:0.15},
+  minimumDistinctiveness: {uniqueSectionSequence:true,uniquePrimaryTask:true,uniqueHeroRegion:true,uniquePrimaryDataSurface:true,uniqueWorkflowOrOverlay:true,minimumPageSpecificComponents:2,minimumPageSpecificSectionRatio:0.40},
+  gate: {failOnExactClone:true,failOnProbableTemplateCloneCluster:true,failOnWrongArchetype:true,failOnEmptyShell:true,failOnMissingArchitectureBrief:true,failOnMissingVisualEvidence:true},
+  topK: 5,
+} as const;
