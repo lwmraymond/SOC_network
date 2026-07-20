@@ -6,7 +6,8 @@ Protocol: `FAIL_CLOSED_ONE_PAGE_ONE_GIT`
 |---|---|---|---|---|---|---|---|
 | P01 | PASS | PASS | PASS | `094f560` | GITHUB_SAVED | PASS | PENDING |
 | P02 | PASS | PASS | PASS | `0454ed5` | GITHUB_SAVED | PASS | PENDING |
-| P03 | PASS | PASS | PASS | — | LOCAL_PASS | PASS | PENDING |
+| P03 | PASS | PASS | PASS | `c94a8ab` | GITHUB_SAVED | PASS | PENDING |
+| P04 | PENDING | PENDING | PENDING | — | NOT_STARTED | REVIEW | PENDING |
 
-Current item: `P03`  
-Next item after GitHub readback: `P04`
+Current item: `P04`  
+Next item after GitHub readback: `P05`
