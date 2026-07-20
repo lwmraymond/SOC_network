@@ -10,15 +10,16 @@ Protocol: `FAIL_CLOSED_ONE_PAGE_ONE_GIT`
 | P04 | PASS | PASS | PASS | `677b96f` | GITHUB_SAVED | PASS | PENDING |
 | P05 | PASS | PASS | PASS | `3966da9` | GITHUB_SAVED | PASS | PENDING |
 | P06 | PASS | PASS | PASS | `1049248` | GITHUB_SAVED | PASS | PENDING |
-| P07 | PASS | PASS | PASS | `7068e2a` | LOCAL_PASS | PASS | ACCEPTED |
+| P07 | PASS | PASS | PASS | `e335974` | GITHUB_SAVED | PASS | ACCEPTED |
+| P08 | PENDING | PENDING | PENDING | — | NOT_STARTED | REVIEW | PENDING |
 
 Five-page validation: `P01-P05 · GITHUB_RECORDED_WITH_BASELINE_ERROR`  
 Unit: `BASELINE_ERROR · 31/32 PASS; stale P01 component-name assertion`  
 Build: `PASS · 2933 modules · fixture boundary PASS`
 
-P06 GitHub source readback: `src/pages/P06ResponseActions.tsx` · blob `b8d9a99a4f09c5c026b5f5ee9bd3022d990f0af4`
+P07 GitHub source readback: `src/pages/P07EventSearchHunt.tsx` · blob `f444e40dfebd97fa95688b66dc6475d9b52590c3`
 
-P07 uses the reviewer-accepted dedicated query workbench in `src/p07/EventSearchPage.tsx`; it is not converted to a generic PageFrame composition. Scoped exact-source lint and strict TypeScript validation pass.
+P07 retains the reviewer-accepted dedicated query workbench in `src/p07/EventSearchPage.tsx`; scoped exact-source lint and strict TypeScript validation pass.
 
-Current item: `P07 — Event Search & Hunt` (`LOCAL_PASS`)  
-Next item remains blocked until P07 entry, brief and progress are committed, pushed and read back from GitHub: `P08`
+Current item: `P08 — Asset Inventory` (`NOT_STARTED`)  
+Next item remains blocked until P08 source and progress are committed, pushed and read back from GitHub: `P09`
