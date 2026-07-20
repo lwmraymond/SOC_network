@@ -1,14 +1,21 @@
 import { pageSpecById } from '../catalog/pageSpecs';
 import { PageFrame } from '../components/PageFrame';
+import { P12Asset360Workspace } from '../components/page-specific/P12Asset360Workspace';
 import { usePrototypePage } from '../components/usePrototypePage';
-import { H01AssetDetailSurface } from '../workflows/H01AssetDetail';
 
 const spec = pageSpecById.P12;
 
 export default function P12Asset360() {
   const page = usePrototypePage(spec.id);
-  const fixture = page.fixture;
-  return <PageFrame spec={spec} fixture={fixture} adapterError={page.adapterError} viewState={page.viewState} setViewState={page.setViewState}>
-    {fixture && <H01AssetDetailSurface fixture={fixture} />}
-  </PageFrame>;
+  return (
+    <PageFrame
+      spec={spec}
+      fixture={page.fixture}
+      adapterError={page.adapterError}
+      viewState={page.viewState}
+      setViewState={page.setViewState}
+    >
+      {page.fixture && <P12Asset360Workspace fixture={page.fixture} />}
+    </PageFrame>
+  );
 }
