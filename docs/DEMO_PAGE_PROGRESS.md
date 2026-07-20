@@ -14,18 +14,19 @@ Protocol: `FAIL_CLOSED_ONE_PAGE_ONE_GIT`
 | P08 | PASS | PASS | PASS | `4adc25c` | GITHUB_SAVED | REVIEW | PENDING |
 | P09 | PASS* | PASS* | PASS | `ea113af` | GITHUB_SAVED | REVIEW | PENDING |
 | P10 | PASS* | PASS* | PASS | `7b4c880` | GITHUB_SAVED | REVIEW | PENDING |
-| P11 | PENDING | PENDING | PENDING | — | NOT_STARTED | REVIEW | PENDING |
+| P11 | PASS* | PASS* | PASS | `0f3e95d` | GITHUB_SAVED | REVIEW | PENDING |
+| P12 | PENDING | PENDING | PENDING | — | NOT_STARTED | REVIEW | PENDING |
 
-`*` P09–P10 validation is scoped: strict TypeScript with unused checks and a template-risk lint. Full repository ESLint could not run because the execution environment could not resolve GitHub/npm hosts; this is not reported as full-repository lint PASS.
+`*` P09–P11 validation is scoped: strict TypeScript with unused checks and a template-risk lint. Full repository lint/build is deferred to the P10–P15 checkpoint.
 
 Five-page validation: `P01-P05 · GITHUB_RECORDED_WITH_BASELINE_ERROR`  
 Unit: `BASELINE_ERROR · 31/32 PASS; stale P01 component-name assertion`  
 Build: `PASS · 2933 modules · fixture boundary PASS`
 
-P10 GitHub page readback: `src/pages/P10VulnerabilityMatches.tsx` · blob `3702de51a4920aee7d2f4c6258fd67a98660f17c`.  
-P10 workspace readback: `src/components/page-specific/P10VulnerabilityMatchesWorkspace.tsx` · blob `0efae9e2b160e24429447c8861fe76bfafadda7b`.
+P11 GitHub page readback: `src/pages/P11RemediationQueue.tsx` · blob `1a097f9ce7d482e6399391263c6a9d5794e1f60b`.  
+P11 workspace readback: `src/components/page-specific/P11RemediationQueueWorkspace.tsx` · blob `da6a57273b13568f101c5f3418cb72fe8b809dce`.
 
-P10 is a match-evidence adjudication workspace with confidence/state/method filters, evidence comparison, conflict ledger, confirm/reject/source-correction decisions, and a detail Flyout. It is distinct from P09 exposure prioritization and P07 event hunt. Visual differentiation remains `REVIEW`; user review remains `PENDING`.
+P11 is a remediation portfolio and execution-planning surface with strategy, scope, Change linkage, blockers, validation and residual risk. It is distinct from P09 exposure prioritization and P10 match adjudication. Visual differentiation remains `REVIEW`; user review remains `PENDING`.
 
-Current item: `P11 — Remediation Queue` (`NOT_STARTED`)  
-Next item remains blocked until P11 source and progress are committed, pushed and read back from GitHub: `P12`.
+Current item: `P12 — Asset 360` (`NOT_STARTED`)  
+Next item remains blocked until P12 source and progress are committed, pushed and read back from GitHub: `P13`.
