@@ -1,0 +1,7 @@
+import { useState } from 'react';
+import { EuiBadge, EuiButton, EuiButtonEmpty, EuiFieldText, EuiPanel, EuiSwitch, EuiTitle } from '@elastic/eui';
+import type { PrototypeRow } from '../types/prototype';
+export function SettingsBoard({ title, rows, secretMask = false }: { title: string; rows: PrototypeRow[]; secretMask?: boolean }) {
+  const [dirty,setDirty]=useState(false);
+  return <div className="settingsWorkspace" data-visual-region="settings-form"><aside><EuiTitle size="xs"><h2>{title}</h2></EuiTitle>{rows.slice(0,7).map((row)=><button key={row.id} type="button">{String(row.name??row.id)}</button>)}</aside><EuiPanel paddingSize="m"><div className="settingsHeader"><EuiTitle size="s"><h2>{String(rows[0]?.name??rows[0]?.id??title)}</h2></EuiTitle><EuiBadge color={dirty?'warning':'success'}>{dirty?'Unsaved changes':'Published revision'}</EuiBadge></div><label>Display name<EuiFieldText defaultValue={String(rows[0]?.name??rows[0]?.id??title)} onChange={()=>setDirty(true)} /></label><label>Endpoint or scope<EuiFieldText defaultValue="https://service.example.test" onChange={()=>setDirty(true)} /></label>{secretMask&&<label>Secret reference<EuiFieldText type="password" defaultValue="prototype-secret" onChange={()=>setDirty(true)} /></label>}<EuiSwitch label="Enabled in prototype" checked onChange={()=>setDirty(true)} /><div className="settingsActions"><EuiButtonEmpty>Validate / simulate</EuiButtonEmpty><EuiButton fill isDisabled={!dirty}>Publish prototype draft</EuiButton></div></EuiPanel></div>;
+}
