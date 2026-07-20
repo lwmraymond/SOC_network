@@ -1,0 +1,182 @@
+{
+  "schemaVersion": 1,
+  "repository": "lwmraymond/SOC_network",
+  "branch": "agent/page-differentiation-audit",
+  "pullRequest": 4,
+  "currentNode": "N00",
+  "overall": "IN_PROGRESS",
+  "updatedAt": "2026-07-20T09:53:45.018018Z",
+  "nodes": [
+    {
+      "id": "N00",
+      "name": "GitHub Direct Write Baseline",
+      "status": "IN_PROGRESS",
+      "commit": null,
+      "remoteVerifiedAt": null,
+      "sampleFetchedFile": null,
+      "validation": {}
+    },
+    {
+      "id": "N01",
+      "name": "Project Root and Build Configuration",
+      "status": "NOT_STARTED",
+      "commit": null,
+      "remoteVerifiedAt": null,
+      "sampleFetchedFile": null,
+      "validation": {}
+    },
+    {
+      "id": "N02",
+      "name": "Application Shell and Navigation",
+      "status": "NOT_STARTED",
+      "commit": null,
+      "remoteVerifiedAt": null,
+      "sampleFetchedFile": null,
+      "validation": {}
+    },
+    {
+      "id": "N03",
+      "name": "Shared EUI Components",
+      "status": "NOT_STARTED",
+      "commit": null,
+      "remoteVerifiedAt": null,
+      "sampleFetchedFile": null,
+      "validation": {}
+    },
+    {
+      "id": "N04",
+      "name": "Foundation Contracts",
+      "status": "NOT_STARTED",
+      "commit": null,
+      "remoteVerifiedAt": null,
+      "sampleFetchedFile": null,
+      "validation": {}
+    },
+    {
+      "id": "N05",
+      "name": "Fixtures and Prototype Adapters",
+      "status": "NOT_STARTED",
+      "commit": null,
+      "remoteVerifiedAt": null,
+      "sampleFetchedFile": null,
+      "validation": {}
+    },
+    {
+      "id": "N06",
+      "name": "Core SOC Benchmark Pages",
+      "status": "NOT_STARTED",
+      "commit": null,
+      "remoteVerifiedAt": null,
+      "sampleFetchedFile": null,
+      "validation": {}
+    },
+    {
+      "id": "N07",
+      "name": "SOC Operations Pages",
+      "status": "NOT_STARTED",
+      "commit": null,
+      "remoteVerifiedAt": null,
+      "sampleFetchedFile": null,
+      "validation": {}
+    },
+    {
+      "id": "N08",
+      "name": "ITSM Overview and Queue Pages",
+      "status": "NOT_STARTED",
+      "commit": null,
+      "remoteVerifiedAt": null,
+      "sampleFetchedFile": null,
+      "validation": {}
+    },
+    {
+      "id": "N09",
+      "name": "Agent and Runtime Pages",
+      "status": "NOT_STARTED",
+      "commit": null,
+      "remoteVerifiedAt": null,
+      "sampleFetchedFile": null,
+      "validation": {}
+    },
+    {
+      "id": "N10",
+      "name": "Knowledge and Project Pages",
+      "status": "NOT_STARTED",
+      "commit": null,
+      "remoteVerifiedAt": null,
+      "sampleFetchedFile": null,
+      "validation": {}
+    },
+    {
+      "id": "N11",
+      "name": "Administration and Settings Pages",
+      "status": "NOT_STARTED",
+      "commit": null,
+      "remoteVerifiedAt": null,
+      "sampleFetchedFile": null,
+      "validation": {}
+    },
+    {
+      "id": "N12",
+      "name": "Entity and ITSM Detail Workflows",
+      "status": "NOT_STARTED",
+      "commit": null,
+      "remoteVerifiedAt": null,
+      "sampleFetchedFile": null,
+      "validation": {}
+    },
+    {
+      "id": "N13",
+      "name": "Platform User and Device Workflows",
+      "status": "NOT_STARTED",
+      "commit": null,
+      "remoteVerifiedAt": null,
+      "sampleFetchedFile": null,
+      "validation": {}
+    },
+    {
+      "id": "N14",
+      "name": "Copilot Runtime and Project Workflows",
+      "status": "NOT_STARTED",
+      "commit": null,
+      "remoteVerifiedAt": null,
+      "sampleFetchedFile": null,
+      "validation": {}
+    },
+    {
+      "id": "N15",
+      "name": "Full Route Registry",
+      "status": "NOT_STARTED",
+      "commit": null,
+      "remoteVerifiedAt": null,
+      "sampleFetchedFile": null,
+      "validation": {}
+    },
+    {
+      "id": "N16",
+      "name": "Full Test Suite",
+      "status": "NOT_STARTED",
+      "commit": null,
+      "remoteVerifiedAt": null,
+      "sampleFetchedFile": null,
+      "validation": {}
+    },
+    {
+      "id": "N17",
+      "name": "Simple Architecture Audit",
+      "status": "NOT_STARTED",
+      "commit": null,
+      "remoteVerifiedAt": null,
+      "sampleFetchedFile": null,
+      "validation": {}
+    },
+    {
+      "id": "N18",
+      "name": "Local Demo Review Package",
+      "status": "NOT_STARTED",
+      "commit": null,
+      "remoteVerifiedAt": null,
+      "sampleFetchedFile": null,
+      "validation": {}
+    }
+  ]
+}
