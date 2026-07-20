@@ -17,18 +17,22 @@ Protocol: `FAIL_CLOSED_ONE_PAGE_ONE_GIT`
 | P11 | PASS* | PASS* | PASS | `0f3e95d` | GITHUB_SAVED | REVIEW | PENDING |
 | P12 | PASS* | PASS* | PASS | `64c84af` | GITHUB_SAVED | REVIEW | PENDING |
 | P13 | PASS* | PASS* | PASS | `bf80f1b` | GITHUB_SAVED | REVIEW | PENDING |
-| P14 | PENDING | PENDING | PENDING | — | NOT_STARTED | REVIEW | PENDING |
+| P14 | PASS* | PASS* | PASS | `d1ff4f7` | GITHUB_SAVED | REVIEW | PENDING |
+| P15 | PENDING | PENDING | PENDING | — | NOT_STARTED | REVIEW | PENDING |
 
-`*` P09–P13 validation is scoped: strict TypeScript with unused checks and a template-risk lint. Full repository lint/build is deferred to the P10–P15 checkpoint.
+`*` P09–P14 validation is scoped: strict TypeScript with unused checks and a template-risk lint.
 
-Five-page validation: `P01-P05 · GITHUB_RECORDED_WITH_BASELINE_ERROR`  
-Unit: `BASELINE_ERROR · 31/32 PASS; stale P01 component-name assertion`  
-Build: `PASS · 2933 modules · fixture boundary PASS`
+Five-page validation P10–P14: `BLOCKED_EXTERNAL_DEPENDENCY`  
+Scoped TypeScript/template lint: `PASS`  
+Full lint/unit/build: `BLOCKED` — offline `npm ci` lacked `zwitch-1.0.5`; no GitHub Actions run existed.  
+Report: `docs/FIVE_PAGE_VALIDATION_P10_P14.md`
 
-P13 GitHub page readback: `src/pages/P13ItsmOverview.tsx` · blob `cb1b9b26ff8dbfb7cc840896d1254eca1b26d17d`.  
-P13 workspace readback: `src/components/page-specific/P13ItsmOverviewWorkspace.tsx` · blob `13702adad4f6a7c85cd2cf40d3f587be23e0db80`.
+Previous P01–P05 validation: Unit `BASELINE_ERROR · 31/32 PASS`; Build `PASS · 2933 modules · fixture boundary PASS`.
 
-P13 is a service-operations command surface with service health, SLA pressure, typed work objects, an attention queue, Change collisions and SOC/ITSM sync conflicts. It is distinct from P01 security threat command. Visual differentiation remains `REVIEW`; user review remains `PENDING`.
+P14 GitHub page readback: `src/pages/P14WorkQueues.tsx` · blob `2bbe0c21caf5deb3607b21fed0cb9ad4dd02aa25`.  
+P14 workspace readback: `src/components/page-specific/P14WorkQueuesWorkspace.tsx` · blob `495ce98ab5befd6778aab6354a4d32b6f50ffa94`.
 
-Current item: `P14 — Work Queues` (`NOT_STARTED`)  
-Next item remains blocked until P14 source and progress are committed, pushed and read back from GitHub: `P15`.
+P14 is a KPI-free saved-view queue workbench with typed conditions, dense work-item table, preview context and per-target bulk eligibility. Visual differentiation remains `REVIEW`; user review remains `PENDING`.
+
+Current item: `P15 — Requests & Service Catalog` (`NOT_STARTED`)  
+Next item remains blocked until P15 source and progress are committed, pushed and read back from GitHub: `P16`.
