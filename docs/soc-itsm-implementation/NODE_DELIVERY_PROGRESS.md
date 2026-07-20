@@ -1,7 +1,7 @@
 # Node Delivery Progress
 
-Updated: 2026-07-20T10:53:00Z
+Updated: 2026-07-20T11:00:00Z
 
-N00–N06 are `GITHUB_VERIFIED`. N06 published P01, P02, P05, P07, P12 and P23 in commit `7068e2a414d3f5e57c9277143875c507cfcec39f`; `src/pages/P01SecurityOperationsOverview.tsx` was fetched from GitHub. P07 reuses the reviewer-accepted implementation, and P05 remains queue-first rather than a copy of the Hunt workbench.
+N00–N07 are `GITHUB_VERIFIED`. N07 commit `e311a901dce17b951a6bd441952d74e1bba8ea03` publishes P03, P04, P06, P08, P09, P10 and P11. `src/pages/P11RemediationQueue.tsx` was fetched from GitHub as blob `723f936b86f847759209ab2ee003e7215a0bafeb`.
 
-Current node: `N07 — SOC Operations Pages` (`IN_PROGRESS`).
+Current node: `N08 — ITSM Overview and Queue Pages` (`IN_PROGRESS`).
