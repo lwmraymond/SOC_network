@@ -21,11 +21,10 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          test -f .transport/part-000
-          test -f .transport/part-007
-          cat .transport/part-000 .transport/part-001 .transport/part-002 .transport/part-003 \
-              .transport/part-004 .transport/part-005 .transport/part-006 .transport/part-007 \
-              > .transport/source.b64
+          parts=(.transport/part-{000..020})
+          test "${#parts[@]}" -eq 21
+          for part in "${parts[@]}"; do test -f "$part"; done
+          cat "${parts[@]}" > .transport/source.b64
           echo 'd8e6b2b1575a56888f0020b23d9ba300183efa5504a81c21c0d69d353376c04d  .transport/source.b64' | sha256sum -c -
           base64 --decode .transport/source.b64 > .transport/source.tar.xz
           echo 'f916580069dca97ec34256c3e95d8517831482308f44793669382700384ad24e  .transport/source.tar.xz' | sha256sum -c -
