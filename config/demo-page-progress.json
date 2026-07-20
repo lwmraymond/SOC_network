@@ -8,13 +8,17 @@
   "nextItem": "P06",
   "pagesSaved": 5,
   "workflowsSaved": 0,
-  "lastCommit": "3966da9c4587c93982935ba5e0bc494c903d40f2",
+  "lastCommit": "82142d0de610ae64eecdd4f19067111451d1155c",
   "lastGitHubReadback": true,
   "fivePageValidation": {
     "range": "P01-P05",
-    "status": "IN_PROGRESS",
-    "unit": "PENDING",
-    "build": "PENDING",
+    "status": "LOCAL_RECORDED",
+    "unit": "BASELINE_ERROR",
+    "unitPassed": 31,
+    "unitFailed": 1,
+    "build": "PASS",
+    "productionFixtureBoundary": "PASS",
+    "reportPath": "docs/FIVE_PAGE_VALIDATION_P01_P05.md",
     "reportCommit": null
   },
   "items": {
@@ -24,5 +28,5 @@
     "P04": {"status":"GITHUB_SAVED","commit":"677b96fd19d9f6aa3fb72f5cf1806010c1b63989","blobSha":"523fdd975009f453e537e3d93baeec6302ebe944","specRead":true,"sourceComplete":true,"lint":"PASS","typecheck":"PASS","specAligned":"REVIEW","distinct":"PASS","userReview":"PENDING"},
     "P05": {"status":"GITHUB_SAVED","commit":"3966da9c4587c93982935ba5e0bc494c903d40f2","blobSha":"8456f8902ff826c5dbea62627a4a06366f31a524","specRead":true,"sourceComplete":true,"lint":"PASS","typecheck":"PASS","specAligned":"REVIEW","distinct":"PASS","userReview":"PENDING"}
   },
-  "updatedAt": "2026-07-20T22:58:00+08:00"
+  "updatedAt": "2026-07-20T23:06:00+08:00"
 }
