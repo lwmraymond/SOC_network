@@ -4,25 +4,37 @@
   "pullRequest": 4,
   "mode": "EXISTING_FRAMEWORK_FRONTEND_DEMO_ONLY",
   "protocol": "FAIL_CLOSED_ONE_PAGE_ONE_GIT",
-  "currentItem": "P01",
-  "nextItem": "P02",
-  "pagesSaved": 0,
+  "currentItem": "P02",
+  "nextItem": "P03",
+  "pagesSaved": 1,
   "workflowsSaved": 0,
-  "lastCommit": "bc8bae3619e6d675f466b472e9e8eb59bec9f861",
-  "lastGitHubReadback": false,
+  "lastCommit": "094f560e23e3021a311f4843225171a27b707206",
+  "lastGitHubReadback": true,
   "items": {
     "P01": {
-      "status": "LOCAL_PASS",
-      "commit": null,
-      "blobSha": null,
+      "status": "GITHUB_SAVED",
+      "commit": "094f560e23e3021a311f4843225171a27b707206",
+      "blobSha": "97a261b0795307485cc1b043398ee38b447c66db",
       "specRead": true,
       "sourceComplete": true,
       "lint": "PASS",
       "typecheck": "PASS",
       "specAligned": "REVIEW",
+      "distinct": "PASS",
+      "userReview": "PENDING"
+    },
+    "P02": {
+      "status": "NOT_STARTED",
+      "commit": null,
+      "blobSha": null,
+      "specRead": false,
+      "sourceComplete": false,
+      "lint": "PENDING",
+      "typecheck": "PENDING",
+      "specAligned": "REVIEW",
       "distinct": "REVIEW",
       "userReview": "PENDING"
     }
   },
-  "updatedAt": "2026-07-20T19:59:58+08:00"
+  "updatedAt": "2026-07-20T20:01:25+08:00"
 }
