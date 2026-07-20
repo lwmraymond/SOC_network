@@ -15,18 +15,19 @@ Protocol: `FAIL_CLOSED_ONE_PAGE_ONE_GIT`
 | P09 | PASS* | PASS* | PASS | `ea113af` | GITHUB_SAVED | REVIEW | PENDING |
 | P10 | PASS* | PASS* | PASS | `7b4c880` | GITHUB_SAVED | REVIEW | PENDING |
 | P11 | PASS* | PASS* | PASS | `0f3e95d` | GITHUB_SAVED | REVIEW | PENDING |
-| P12 | PENDING | PENDING | PENDING | — | NOT_STARTED | REVIEW | PENDING |
+| P12 | PASS* | PASS* | PASS | `64c84af` | GITHUB_SAVED | REVIEW | PENDING |
+| P13 | PENDING | PENDING | PENDING | — | NOT_STARTED | REVIEW | PENDING |
 
-`*` P09–P11 validation is scoped: strict TypeScript with unused checks and a template-risk lint. Full repository lint/build is deferred to the P10–P15 checkpoint.
+`*` P09–P12 validation is scoped: strict TypeScript with unused checks and a template-risk lint. Full repository lint/build is deferred to the P10–P15 checkpoint.
 
 Five-page validation: `P01-P05 · GITHUB_RECORDED_WITH_BASELINE_ERROR`  
 Unit: `BASELINE_ERROR · 31/32 PASS; stale P01 component-name assertion`  
 Build: `PASS · 2933 modules · fixture boundary PASS`
 
-P11 GitHub page readback: `src/pages/P11RemediationQueue.tsx` · blob `1a097f9ce7d482e6399391263c6a9d5794e1f60b`.  
-P11 workspace readback: `src/components/page-specific/P11RemediationQueueWorkspace.tsx` · blob `da6a57273b13568f101c5f3418cb72fe8b809dce`.
+P12 GitHub page readback: `src/pages/P12Asset360.tsx` · blob `bd4e1b3e20fb5cd9a708b03a3c7a005f343b09a1`.  
+P12 workspace readback: `src/components/page-specific/P12Asset360Workspace.tsx` · blob `76701bbdd864087ce0173a5653a13fe563a2dd03`.
 
-P11 is a remediation portfolio and execution-planning surface with strategy, scope, Change linkage, blockers, validation and residual risk. It is distinct from P09 exposure prioritization and P10 match adjudication. Visual differentiation remains `REVIEW`; user review remains `PENDING`.
+P12 is a one-asset contextual investigation surface with canonical identity, source confidence, seven detail tabs, unified timeline, relationships and contextual actions. It is distinct from P08 inventory/reconciliation. Visual differentiation remains `REVIEW`; user review remains `PENDING`.
 
-Current item: `P12 — Asset 360` (`NOT_STARTED`)  
-Next item remains blocked until P12 source and progress are committed, pushed and read back from GitHub: `P13`.
+Current item: `P13 — ITSM Overview` (`NOT_STARTED`)  
+Next item remains blocked until P13 source and progress are committed, pushed and read back from GitHub: `P14`.
