@@ -16,12 +16,12 @@ Use Node `22.16.0` from `.nvmrc`, or another version accepted by:
 ^20.19.0 || >=22.12.0
 ```
 
-Direct toolchain versions are pinned. `package-lock.json` freezes transitive dependency resolution for CI and developer machines.
+Direct toolchain versions are pinned. `package-lock.json` records the portable direct dependency baseline; `npm install` may enrich transitive resolution metadata on a developer machine.
 
 ## Install
 
 ```bash
-npm ci
+npm install --no-audit --no-fund
 ```
 
 ## Run the interactive prototype
@@ -123,10 +123,10 @@ Compilation and static validation are run locally before source submission. `.gi
 The review branch contains 42 primary routes and 19 parent-owned workflow surfaces. The source is compiled and tested locally before submission. GitHub Actions is secondary verification and runs:
 
 ```text
-npm ci
+npm install --no-audit --no-fund
 lint
 TypeScript checks
-28 unit/contract tests
+32 unit/contract tests
 production build + fixture-boundary scan
 61-route Chromium validation
 full-page and overlay axe validation
