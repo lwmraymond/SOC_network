@@ -1,13 +1,13 @@
 # Node Delivery Progress
 
-Updated: 2026-07-20T09:53:45.018018Z
+Updated: 2026-07-20T09:56:15.457188Z
 
 Only `GITHUB_VERIFIED` permits entry into the next node. Local validation and GitHub publication are tracked separately.
 
 | Node | Name | Status | Commit | Validation |
 |---|---|---|---|---|
-| N00 | GitHub Direct Write Baseline | IN_PROGRESS | — | — |
-| N01 | Project Root and Build Configuration | NOT_STARTED | — | — |
+| N00 | GitHub Direct Write Baseline | GITHUB_VERIFIED | e034b55dcea13edb07c7ed5236b4198296b06ad3 | directTreeWrite=PASS, branchRefUpdate=PASS, contentsFetch=PASS, transportRemoved=PASS |
+| N01 | Project Root and Build Configuration | IN_PROGRESS | — | — |
 | N02 | Application Shell and Navigation | NOT_STARTED | — | — |
 | N03 | Shared EUI Components | NOT_STARTED | — | — |
 | N04 | Foundation Contracts | NOT_STARTED | — | — |

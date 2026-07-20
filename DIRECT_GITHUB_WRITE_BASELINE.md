@@ -1,6 +1,6 @@
 # Direct GitHub Write Baseline
 
-Status: `LOCAL_PASS / GITHUB VERIFICATION PENDING`
+Status: `GITHUB_VERIFIED`
 
 Repository: `lwmraymond/SOC_network`  
 Branch: `agent/page-differentiation-audit`  
@@ -18,3 +18,9 @@ Local preconditions verified:
 - A committed file will be fetched through the GitHub contents API before N00 is marked `GITHUB_VERIFIED`.
 
 The temporary direct-write probe branch is not part of the product delivery.
+
+GitHub verification:
+
+- Commit: `e034b55dcea13edb07c7ed5236b4198296b06ad3`
+- Fetched blob: `09fdd3d88a323987caeab4463fda110f11ed51fb`
+- Verified at: `2026-07-20T09:56:15.457188Z`
