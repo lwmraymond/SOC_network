@@ -13,18 +13,19 @@ Protocol: `FAIL_CLOSED_ONE_PAGE_ONE_GIT`
 | P07 | PASS | PASS | PASS | `e335974` | GITHUB_SAVED | PASS | ACCEPTED |
 | P08 | PASS | PASS | PASS | `4adc25c` | GITHUB_SAVED | REVIEW | PENDING |
 | P09 | PASS* | PASS* | PASS | `ea113af` | GITHUB_SAVED | REVIEW | PENDING |
-| P10 | PENDING | PENDING | PENDING | — | NOT_STARTED | REVIEW | PENDING |
+| P10 | PASS* | PASS* | PASS | `7b4c880` | GITHUB_SAVED | REVIEW | PENDING |
+| P11 | PENDING | PENDING | PENDING | — | NOT_STARTED | REVIEW | PENDING |
 
-`*` P09 validation is scoped: strict TypeScript with unused checks and a template-risk lint. Full repository ESLint could not run because the current execution environment could not resolve GitHub/npm hosts; this is not reported as full-repository lint PASS.
+`*` P09–P10 validation is scoped: strict TypeScript with unused checks and a template-risk lint. Full repository ESLint could not run because the execution environment could not resolve GitHub/npm hosts; this is not reported as full-repository lint PASS.
 
 Five-page validation: `P01-P05 · GITHUB_RECORDED_WITH_BASELINE_ERROR`  
 Unit: `BASELINE_ERROR · 31/32 PASS; stale P01 component-name assertion`  
 Build: `PASS · 2933 modules · fixture boundary PASS`
 
-P09 GitHub page readback: `src/pages/P09VulnerabilityExposure.tsx` · blob `e345d897c680079dbdb5c1995af441b675ee4ac5`.  
-P09 workspace readback: `src/components/page-specific/P09VulnerabilityExposureWorkspace.tsx` · blob `bd0732e271604fee6214dd869e9f114f5c1cd0f4`.
+P10 GitHub page readback: `src/pages/P10VulnerabilityMatches.tsx` · blob `3702de51a4920aee7d2f4c6258fd67a98660f17c`.  
+P10 workspace readback: `src/components/page-specific/P10VulnerabilityMatchesWorkspace.tsx` · blob `0efae9e2b160e24429447c8861fe76bfafadda7b`.
 
-P09 implements exposure risk filters, five decision KPIs, 90-day risk trend with exact-data fallback, driver and service/due analysis, a dense remediation queue, Exposure Detail Flyout and Risk Acceptance Modal. It is distinct from P08 canonical asset reconciliation and reserved P10 match adjudication. Visual differentiation remains `REVIEW`; user review remains `PENDING`.
+P10 is a match-evidence adjudication workspace with confidence/state/method filters, evidence comparison, conflict ledger, confirm/reject/source-correction decisions, and a detail Flyout. It is distinct from P09 exposure prioritization and P07 event hunt. Visual differentiation remains `REVIEW`; user review remains `PENDING`.
 
-Current item: `P10 — Vulnerability Matches` (`NOT_STARTED`)  
-Next item remains blocked until P10 source and progress are committed, pushed and read back from GitHub: `P11`.
+Current item: `P11 — Remediation Queue` (`NOT_STARTED`)  
+Next item remains blocked until P11 source and progress are committed, pushed and read back from GitHub: `P12`.
