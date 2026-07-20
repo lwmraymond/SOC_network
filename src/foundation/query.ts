@@ -8,7 +8,6 @@ export type QueryNode=
 export type QueryError={code:'SYNTAX'|'INVALID_FIELD'|'INVALID_OPERATOR'|'PERMISSION_DENIED'|'INVALID_TIME';token:string;field?:string;operator?:string;message:string;recoverHint:string;span:Span};
 export type FieldDefinition={name:string;operators:readonly CompareOp[];visible:boolean;type:'string'|'keyword'|'date'|'number'};
 export type QueryEnvelope={schemaVersion:1;raw:string;ast:QueryNode|null;timeRange:{field:'event_time'|'ingested_at';from:string;to:string;timezone:string};sort:{field:string;direction:'asc'|'desc'}[];cursor?:string;limit:number;projection:string[];aggregations:{id:string;type:'date_histogram'|'terms';field:string}[]};
-
 type Token={value:string;span:Span;quoted:boolean};
 export function tokenize(raw:string):Token[]{const out:Token[]=[]; let i=0; while(i<raw.length){if(/\s/.test(raw[i])){i++;continue;} const start=i; if(raw[i]==='"'){i++;let v='';while(i<raw.length&&raw[i]!=='"')v+=raw[i++];if(raw[i]==='"')i++;out.push({value:v,span:{start,end:i},quoted:true});continue;} if('()'.includes(raw[i])){out.push({value:raw[i],span:{start,end:++i},quoted:false});continue;} let v='';while(i<raw.length&&!/\s|\(|\)/.test(raw[i]))v+=raw[i++];out.push({value:v,span:{start,end:i},quoted:false});} return out;}
 function conditionFrom(token:Token):QueryNode{const m=token.value.match(/^([\w.]+)(:|>=|<=|!=|=|>|<)(.+)$/); if(m)return{kind:'condition',field:m[1],operator:m[2] as CompareOp,value:m[3],span:token.span}; return{kind:'term',value:token.value,quoted:token.quoted,span:token.span};}
