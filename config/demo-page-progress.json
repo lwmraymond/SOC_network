@@ -8,7 +8,7 @@
   "nextItem": "P09",
   "pagesSaved": 7,
   "workflowsSaved": 0,
-  "lastCommit": "e3359744e961ad28c2fd0a6992c73ff83a92f13b",
+  "lastCommit": "1f8e79d28c41a3c155d63280a648fdd970b9c51b",
   "lastGitHubReadback": true,
   "fivePageValidation": {
     "range": "P01-P05",
@@ -30,7 +30,7 @@
     "P05": {"status":"GITHUB_SAVED","commit":"3966da9c4587c93982935ba5e0bc494c903d40f2","blobSha":"8456f8902ff826c5dbea62627a4a06366f31a524","specRead":true,"sourceComplete":true,"lint":"PASS","typecheck":"PASS","specAligned":"REVIEW","distinct":"PASS","userReview":"PENDING"},
     "P06": {"status":"GITHUB_SAVED","commit":"104924800ac069690eb70a6702ec998d6cf76e69","blobSha":"b8d9a99a4f09c5c026b5f5ee9bd3022d990f0af4","specRead":true,"sourceComplete":true,"lint":"PASS","typecheck":"PASS","specAligned":"REVIEW","distinct":"PASS","userReview":"PENDING"},
     "P07": {"status":"GITHUB_SAVED","commit":"e3359744e961ad28c2fd0a6992c73ff83a92f13b","blobSha":"f444e40dfebd97fa95688b66dc6475d9b52590c3","specRead":true,"sourceComplete":true,"lint":"PASS","typecheck":"PASS","specAligned":"REVIEW","distinct":"PASS","userReview":"ACCEPTED"},
-    "P08": {"status":"NOT_STARTED","commit":null,"blobSha":null,"specRead":false,"sourceComplete":false,"lint":"PENDING","typecheck":"PENDING","specAligned":"REVIEW","distinct":"REVIEW","userReview":"PENDING"}
+    "P08": {"status":"LOCAL_PASS","commit":null,"blobSha":null,"specRead":true,"sourceComplete":true,"lint":"PASS","typecheck":"PASS","specAligned":"REVIEW","distinct":"REVIEW","userReview":"PENDING"}
   },
-  "updatedAt": "2026-07-20T22:51:06+08:00"
+  "updatedAt": "2026-07-20T23:58:00+08:00"
 }
