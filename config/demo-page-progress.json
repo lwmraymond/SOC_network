@@ -1,0 +1,28 @@
+{
+  "repository": "lwmraymond/SOC_network",
+  "branch": "agent/page-differentiation-audit",
+  "pullRequest": 4,
+  "mode": "EXISTING_FRAMEWORK_FRONTEND_DEMO_ONLY",
+  "protocol": "FAIL_CLOSED_ONE_PAGE_ONE_GIT",
+  "currentItem": "P01",
+  "nextItem": "P02",
+  "pagesSaved": 0,
+  "workflowsSaved": 0,
+  "lastCommit": "6d5d08851ce6d3dcfdd2fac678b7b854affdd61e",
+  "lastGitHubReadback": false,
+  "items": {
+    "P01": {
+      "status": "NOT_STARTED",
+      "commit": null,
+      "blobSha": null,
+      "specRead": false,
+      "sourceComplete": false,
+      "lint": "PENDING",
+      "typecheck": "PENDING",
+      "specAligned": "REVIEW",
+      "distinct": "REVIEW",
+      "userReview": "PENDING"
+    }
+  },
+  "updatedAt": "2026-07-20T19:48:34+08:00"
+}
