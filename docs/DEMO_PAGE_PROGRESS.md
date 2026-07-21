@@ -22,9 +22,10 @@ Protocol: `FAIL_CLOSED_ONE_PAGE_ONE_GIT`
 | P16 | PASS | PASS* | PASS* | `6d7fe18` | GITHUB_SAVED | REVIEW | PENDING |
 | P17 | PASS | PASS* | PASS* | `c49d434` | GITHUB_SAVED | REVIEW | PENDING |
 | P18 | PASS | PASS* | PASS* | `d543d98` | GITHUB_SAVED | REVIEW | PENDING |
-| P19 | PENDING | PENDING | PENDING | — | NOT_STARTED | REVIEW | PENDING |
+| P19 | PASS | PASS* | PASS* | `985f3b3` | GITHUB_SAVED | REVIEW | PENDING |
+| P20 | PENDING | PENDING | PENDING | — | NOT_STARTED | REVIEW | PENDING |
 
-`*` P09–P18 validation is scoped: strict TypeScript with unused checks and a template-risk lint.
+`*` P09–P19 validation is scoped: strict TypeScript with unused checks and a template-risk lint.
 
-Current item: `P19 — Approvals & Tasks` (`NOT_STARTED`)
-Next item remains blocked until P19 is committed, pushed and read back from GitHub: `P20`.
+Current item: `P20 — ITSM Analytics` (`NOT_STARTED`)
+Next item remains blocked until P20 is committed, pushed and read back from GitHub: `P21`.
