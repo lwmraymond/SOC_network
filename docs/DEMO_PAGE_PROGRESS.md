@@ -38,9 +38,15 @@ Protocol: `FAIL_CLOSED_ONE_PAGE_ONE_GIT`
 | P32 | PASS | PASS* | PASS* | `bbd76d4` | GITHUB_SAVED | REVIEW | PENDING |
 | P33 | PASS | PASS* | PASS* | `4f885aa` | GITHUB_SAVED | REVIEW | PENDING |
 | P34 | PASS | PASS* | PASS* | `b830865` | GITHUB_SAVED | REVIEW | PENDING |
-| P35 | PENDING | PENDING | PENDING | — | NOT_STARTED | REVIEW | PENDING |
+| P35 | PASS | PASS* | PASS* | `7221058` | GITHUB_SAVED | REVIEW | PENDING |
+| P36 | PENDING | PENDING | PENDING | — | NOT_STARTED | REVIEW | PENDING |
 
-`*` P09–P34 validation is scoped: strict TypeScript with unused checks and a template-risk lint.
+`*` P09–P35 validation is scoped: strict TypeScript with unused checks and a template-risk lint.
+
+Five-page validation P31–P35: `BLOCKED_EXTERNAL_DEPENDENCY`  
+Scoped TypeScript/template lint: `PASS`  
+Full lint/unit/build: `BLOCKED` — offline `npm ci` lacked `zwitch-1.0.5`; no GitHub Actions run existed.  
+Report: `docs/FIVE_PAGE_VALIDATION_P31_P35.md`
 
 Five-page validation P26–P30: `BLOCKED_EXTERNAL_DEPENDENCY`  
 Scoped TypeScript/template lint: `PASS`  
@@ -54,8 +60,8 @@ Report: `docs/FIVE_PAGE_VALIDATION_P21_P25.md`
 
 P23 corrective record: placeholder source was replaced before page/progress advancement.
 
-P34 GitHub page readback: `src/pages/P34PlaybooksAutomationTemplates.tsx` · blob `4c0b28d375e90df2cfc68d6a6c3ae43f903f4029`.  
-P34 workspace readback: `src/components/page-specific/P34PlaybooksAutomationTemplatesWorkspace.tsx` · blob `45a81ee52ae6a6b7033b497cab48fd7fbd5b5674`.
+P35 GitHub page readback: `src/pages/P35DetectionNotes.tsx` · blob `800d298f9f047b372782bf8ae655960cbeef6171`.  
+P35 workspace readback: `src/components/page-specific/P35DetectionNotesWorkspace.tsx` · blob `b413d6f735cd7dd1d153e28aa0dcefba2b09612d`.
 
-Current item: `P35 — Detection Notes` (`NOT_STARTED`)  
-Next item remains blocked until P35 is committed, pushed and read back from GitHub: `P36`.
+Current item: `P36` (`NOT_STARTED`)  
+Next item remains blocked until P36 is committed, pushed and read back from GitHub: `P37`.
