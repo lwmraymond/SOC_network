@@ -1,0 +1,50 @@
+import { useMemo, useState } from 'react';
+import {
+  EuiBadge, EuiButton, EuiButtonEmpty, EuiCallOut, EuiFieldSearch, EuiFlexGroup, EuiFlexItem,
+  EuiFormRow, EuiModal, EuiModalBody, EuiModalFooter, EuiModalHeader, EuiModalHeaderTitle,
+  EuiPanel, EuiSelect, EuiSpacer, EuiSwitch, EuiTextArea, EuiTitle,
+} from '@elastic/eui';
+import type { PrototypePageFixture } from '../../types/prototype';
+
+type Section='Queues'|'Fields & layouts'|'Workflows'|'SLA & calendars'|'Assignment'|'Automation'|'Forms & templates'|'Notifications'|'Permissions'|'Audit';
+type Resource={id:string;section:Section;name:string;scope:string;current:string;draft:string;applyMode:string;risk:string;owner:string;dependencies:string[]};
+type ChangeEvent={target:{value:string}};
+const resources:Resource[]=[
+  {id:'Q-01',section:'Queues',name:'Major incident queue',scope:'Global',current:'r14',draft:'r15 pending',applyMode:'Immediate',risk:'Medium',owner:'ITSM operations',dependencies:['Incident workflow','SLA calendar']},
+  {id:'WF-03',section:'Workflows',name:'Incident lifecycle',scope:'Global',current:'r22',draft:'No draft',applyMode:'New records',risk:'High',owner:'Process owner',dependencies:['Priority matrix','Major incident policy']},
+  {id:'SLA-07',section:'SLA & calendars',name:'P1 response target',scope:'Global 24×7',current:'r9',draft:'r10 pending',applyMode:'Future clocks',risk:'High',owner:'Service management',dependencies:['Business calendar','Priority matrix']},
+  {id:'ASG-04',section:'Assignment',name:'Identity incident routing',scope:'Identity service',current:'r11',draft:'No draft',applyMode:'Immediate',risk:'Medium',owner:'Identity ops',dependencies:['Queue map','Service CI']},
+  {id:'AUT-12',section:'Automation',name:'Major incident notification',scope:'P1/P2',current:'r6',draft:'r7 pending',applyMode:'After publish',risk:'High',owner:'ITSM automation',dependencies:['Notification template','On-call roster']},
+  {id:'FORM-08',section:'Forms & templates',name:'Incident intake form',scope:'Service desk',current:'r18',draft:'r19 pending',applyMode:'New sessions',risk:'Low',owner:'Service desk',dependencies:['Field catalog','Incident workflow']},
+  {id:'PERM-05',section:'Permissions',name:'Change approval policy',scope:'CAB',current:'r13',draft:'No draft',applyMode:'Immediate',risk:'High',owner:'ITSM security',dependencies:['Roles','SoD policy']},
+];
+
+export function P22ItsmSettingsWorkspace({fixture}:{fixture:PrototypePageFixture}){
+  const[section,setSection]=useState<Section>('Queues');
+  const[query,setQuery]=useState('');
+  const[selectedId,setSelectedId]=useState(resources[0].id);
+  const[draftOpen,setDraftOpen]=useState(false);
+  const[publishOpen,setPublishOpen]=useState(false);
+  const[draftName,setDraftName]=useState(resources[0].name);
+  const[draftDescription,setDraftDescription]=useState('Operational configuration draft with validation and rollback requirements.');
+  const[enabled,setEnabled]=useState(true);
+  const[receipt,setReceipt]=useState<string|undefined>(undefined);
+  const visible=useMemo(()=>resources.filter((item)=>item.section===section&&(!query.trim()||`${item.id} ${item.name} ${item.scope} ${item.owner} ${item.dependencies.join(' ')}`.toLowerCase().includes(query.trim().toLowerCase()))),[query,section]);
+  const selected=resources.find((item)=>item.id===selectedId)??visible[0]??resources[0];
+  const sections:Section[]=['Queues','Fields & layouts','Workflows','SLA & calendars','Assignment','Automation','Forms & templates','Notifications','Permissions','Audit'];
+  const saveDraft=()=>{setReceipt(`Draft saved for ${selected.id} in prototype mode. Effective revision ${selected.current} remains unchanged.`);setDraftOpen(false);};
+  const publish=()=>{setReceipt(`Publish request queued for ${selected.id}. Approval, Change linkage, audit receipt and authoritative rehydration remain pending.`);setPublishOpen(false);};
+  return <div className="pageComposition page-p22 differentiatedPage" data-page-specific-composition="P22-domain-settings-resource-editor">
+    {receipt&&<><EuiCallOut title="Prototype settings receipt" color="warning">{receipt}</EuiCallOut><EuiSpacer size="m"/></>}
+    <EuiFlexGroup gutterSize="m" alignItems="stretch" responsive={false}>
+      <EuiFlexItem grow={2}><EuiPanel paddingSize="m" hasBorder data-visual-region="settings-local-navigation"><EuiTitle size="s"><h2>ITSM configuration</h2></EuiTitle><EuiBadge color="hollow">Freshness {fixture.freshness}</EuiBadge><EuiFieldSearch compressed value={query} onChange={(event:ChangeEvent)=>setQuery(event.target.value)} placeholder="Setting, key, owner or dependency"/><EuiSpacer size="s"/>{sections.map((item)=><button type="button" key={item} className={section===item?'selected':''} onClick={()=>setSection(item)}><strong>{item}</strong><span>{resources.filter((resource)=>resource.section===item).length}</span></button>)}<EuiCallOut title="Domain boundary" size="s">Authentication, theme, users and personal settings are managed outside ITSM Settings.</EuiCallOut></EuiPanel></EuiFlexItem>
+      <EuiFlexItem grow={4}><EuiPanel paddingSize="m" hasBorder data-visual-region="settings-resource-table"><EuiFlexGroup alignItems="center"><EuiFlexItem><EuiTitle size="s"><h2>{section}</h2></EuiTitle></EuiFlexItem><EuiFlexItem grow={false}><EuiButton fill onClick={()=>{setDraftName(`New ${section} resource`);setDraftOpen(true);}}>Create resource</EuiButton></EuiFlexItem></EuiFlexGroup><EuiSpacer size="s"/>{visible.length===0?<EuiCallOut title="No resources match this section or search">Choose another section or clear the search. Existing conditions are preserved.</EuiCallOut>:<table><thead><tr><th>Resource</th><th>Scope</th><th>Current</th><th>Draft</th><th>Apply mode</th><th>Risk</th></tr></thead><tbody>{visible.map((item)=><tr key={item.id}><td><EuiButtonEmpty size="xs" onClick={()=>{setSelectedId(item.id);setDraftName(item.name);}}>{item.id}</EuiButtonEmpty><small>{item.name}</small></td><td>{item.scope}</td><td>{item.current}</td><td><EuiBadge color={item.draft==='No draft'?'hollow':'warning'}>{item.draft}</EuiBadge></td><td>{item.applyMode}</td><td>{item.risk}</td></tr>)}</tbody></table>}</EuiPanel></EuiFlexItem>
+      <EuiFlexItem grow={5}><EuiPanel paddingSize="m" hasBorder data-visual-region="settings-edit-workbench"><EuiFlexGroup alignItems="center"><EuiFlexItem><EuiTitle size="s"><h2>{selected.name}</h2></EuiTitle><p>{selected.id} · {selected.scope} · owner {selected.owner}</p></EuiFlexItem><EuiFlexItem grow={false}><EuiBadge color={selected.risk==='High'?'danger':'warning'}>{selected.risk} risk</EuiBadge></EuiFlexItem></EuiFlexGroup><EuiSpacer size="m"/>
+        <EuiFlexGroup gutterSize="m" responsive={false}><EuiFlexItem><EuiFormRow label="Resource name"><input value={draftName} onChange={(event:ChangeEvent)=>setDraftName(event.target.value)}/></EuiFormRow><EuiFormRow label="Description"><EuiTextArea value={draftDescription} onChange={(event:ChangeEvent)=>setDraftDescription(event.target.value)} rows={5}/></EuiFormRow><EuiFormRow label="Apply mode"><EuiSelect value={selected.applyMode} options={['Immediate','New records','Future clocks','New sessions','After publish'].map((value)=>({value,text:value}))}/></EuiFormRow><EuiSwitch checked={enabled} onChange={()=>setEnabled((value)=>!value)} label="Enabled in draft"/></EuiFlexItem><EuiFlexItem><EuiTitle size="xs"><h3>Revision diff</h3></EuiTitle><div className="settingsDiff"><del>{selected.current}: existing effective configuration</del><ins>{selected.draft==='No draft'?'new draft':selected.draft}: {draftName}</ins><ins>description: {draftDescription}</ins></div><EuiSpacer/><EuiTitle size="xs"><h3>Dependencies & impact</h3></EuiTitle>{selected.dependencies.map((dependency,index)=><div key={dependency}><strong>{dependency}</strong><span>{index===0?'Direct':'Transitive'}</span><EuiBadge color={index===0?'warning':'hollow'}>{index===0?'Retest':'Review'}</EuiBadge></div>)}</EuiFlexItem></EuiFlexGroup>
+        <EuiSpacer size="m"/><EuiCallOut title="Validation result" color={selected.risk==='High'?'warning':'success'}>{selected.risk==='High'?'Simulation passed with approval and Change requirements.':'Schema, dependency and permission validation passed.'}</EuiCallOut><EuiSpacer size="m"/><div className="stickyPublishBar"><span>Effective {selected.current} · {selected.draft} · rollback target {selected.current}</span><EuiButton onClick={()=>setDraftOpen(true)}>Edit draft</EuiButton><EuiButton fill color={selected.risk==='High'?'warning':'primary'} onClick={()=>setPublishOpen(true)}>Review publish</EuiButton></div>
+      </EuiPanel></EuiFlexItem>
+    </EuiFlexGroup>
+    {draftOpen&&<EuiModal onClose={()=>setDraftOpen(false)} aria-labelledby="p22-draft-title"><EuiModalHeader><EuiModalHeaderTitle id="p22-draft-title">Save configuration draft</EuiModalHeaderTitle></EuiModalHeader><EuiModalBody><EuiCallOut title="Draft only">Saving does not change the effective revision. Validation, approval and publish remain separate.</EuiCallOut><p>{draftName}</p><p>{draftDescription}</p></EuiModalBody><EuiModalFooter><EuiButtonEmpty onClick={()=>setDraftOpen(false)}>Cancel</EuiButtonEmpty><EuiButton fill onClick={saveDraft}>Save draft</EuiButton></EuiModalFooter></EuiModal>}
+    {publishOpen&&<EuiModal onClose={()=>setPublishOpen(false)} aria-labelledby="p22-publish-title"><EuiModalHeader><EuiModalHeaderTitle id="p22-publish-title">Publish impact and rollback review</EuiModalHeaderTitle></EuiModalHeader><EuiModalBody><EuiCallOut title="Governed publish" color="warning">The demo creates a queued publish receipt only. Production approval, Change, audit and rollback services are blocked.</EuiCallOut><ul><li>Current revision: {selected.current}</li><li>Pending draft: {selected.draft}</li><li>Apply mode: {selected.applyMode}</li><li>Dependencies: {selected.dependencies.join(', ')}</li><li>Rollback target: {selected.current}</li></ul></EuiModalBody><EuiModalFooter><EuiButtonEmpty onClick={()=>setPublishOpen(false)}>Cancel</EuiButtonEmpty><EuiButton fill onClick={publish}>Queue publish</EuiButton></EuiModalFooter></EuiModal>}
+  </div>;
+}
