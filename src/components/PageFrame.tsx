@@ -30,8 +30,8 @@ const groupIcon = {
   'Runtime Catalog': 'document',
   'Knowledge Base': 'document',
   'Response Projects': 'document',
-  Administration: 'users',
-  'Platform Settings': 'gear',
+  Administration: 'inspect',
+  'Platform Settings': 'document',
 } as const;
 
 const stateCopy: Record<Exclude<PrototypeViewState,'ready'|'loading'|'empty'|'filtered-empty'>,{title:string;body:string;color:'danger'|'warning'|'primary'}> = {
