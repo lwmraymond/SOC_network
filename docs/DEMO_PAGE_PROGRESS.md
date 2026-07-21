@@ -43,9 +43,10 @@ Protocol: `FAIL_CLOSED_ONE_PAGE_ONE_GIT`
 | P37 | PASS | PASS* | PASS* | `7615edb` | GITHUB_SAVED | REVIEW | PENDING |
 | P38 | PASS | PASS* | PASS* | `a1199f7` | GITHUB_SAVED | REVIEW | PENDING |
 | P39 | PASS | PASS* | PASS* | `da099f3` | GITHUB_SAVED | REVIEW | PENDING |
-| P40 | PENDING | PENDING | PENDING | — | NOT_STARTED | REVIEW | PENDING |
+| P40 | PASS | PASS* | PASS* | `03b2245` | GITHUB_SAVED | REVIEW | PENDING |
+| P41 | PENDING | PENDING | PENDING | — | NOT_STARTED | REVIEW | PENDING |
 
-`*` P09–P39 validation is scoped: strict TypeScript with unused checks and a template-risk lint.
+`*` P09–P40 validation is scoped: strict TypeScript with unused checks and a template-risk lint.
 
 Five-page validation P31–P35: `BLOCKED_EXTERNAL_DEPENDENCY`  
 Scoped TypeScript/template lint: `PASS`  
@@ -78,5 +79,8 @@ P38 workspace readback: `src/components/page-specific/P38RolesWorkspace.tsx` · 
 P39 GitHub page readback: `src/pages/P39Permissions.tsx` · blob `f9b187337b17da4796074f1b0f1729f893445db2`.  
 P39 difference contract: principal × capability × resource query → review queue → explainable decision trace → request/grant/revoke receipts. Visual acceptance remains `PENDING`.
 
-Current item: `P40` (`NOT_STARTED`)  
-Next item remains blocked until P40 is committed, pushed and read back from GitHub: `P41`.
+P40 GitHub page readback: `src/pages/P40PlatformSettingsDirectory.tsx` · blob `843a48d52e288702a996292e010d1356e6318097`.  
+P40 difference contract: searchable cross-platform settings directory → effective/default/managed provenance → dependency and apply-mode impact → validated configuration-plan receipt. Elastic official settings guidance and EUI Flyout/Accordion patterns were used; visual acceptance remains `PENDING`.
+
+Current item: `P41` (`NOT_STARTED`)  
+Next item remains blocked until P41 is committed, pushed and read back from GitHub: `P42`.
