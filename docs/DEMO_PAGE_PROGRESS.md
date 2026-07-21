@@ -40,9 +40,10 @@ Protocol: `FAIL_CLOSED_ONE_PAGE_ONE_GIT`
 | P34 | PASS | PASS* | PASS* | `b830865` | GITHUB_SAVED | REVIEW | PENDING |
 | P35 | PASS | PASS* | PASS* | `7221058` | GITHUB_SAVED | REVIEW | PENDING |
 | P36 | PASS | PASS* | PASS* | `4a3c4b5` | GITHUB_SAVED | REVIEW | PENDING |
-| P37 | PENDING | PENDING | PENDING | — | NOT_STARTED | REVIEW | PENDING |
+| P37 | PASS | PASS* | PASS* | `7615edb` | GITHUB_SAVED | REVIEW | PENDING |
+| P38 | PENDING | PENDING | PENDING | — | NOT_STARTED | REVIEW | PENDING |
 
-`*` P09–P36 validation is scoped: strict TypeScript with unused checks and a template-risk lint.
+`*` P09–P37 validation is scoped: strict TypeScript with unused checks and a template-risk lint.
 
 Five-page validation P31–P35: `BLOCKED_EXTERNAL_DEPENDENCY`  
 Scoped TypeScript/template lint: `PASS`  
@@ -66,5 +67,8 @@ P36 workspace readback: `src/components/page-specific/P36ResponseProjectsWorkspa
 P36 spacing/overflow stylesheet: blob `a47d013909c196efb9428dc8269df521bbfd8f0a`.  
 P36 screenshot review: `BLOCKED` — no browser execution was available in the accepted execution mode; no screenshot or visual PASS is claimed.
 
-Current item: `P37` (`NOT_STARTED`)  
-Next item remains blocked until P37 is committed, pushed and read back from GitHub: `P38`.
+P37 GitHub page readback: `src/pages/P37Users.tsx` · blob `c24bdb9d0220e9b150056e0f7553e8785cbb57e0`.  
+P37 workspace readback: `src/components/page-specific/P37UsersWorkspace.tsx` · blob `ef368955f8907b7bee24e80a2a372ca691dc7089`.  
+
+Current item: `P38` (`NOT_STARTED`)  
+Next item remains blocked until P38 is committed, pushed and read back from GitHub: `P39`.
