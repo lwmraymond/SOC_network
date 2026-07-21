@@ -1,6 +1,6 @@
 import { useMemo, useRef, useState, type MouseEvent } from 'react';
 import { EuiBadge, EuiButton, EuiButtonEmpty, EuiCallOut, EuiFlexGroup, EuiFlexItem, EuiPanel, EuiProgress, EuiSpacer, EuiStat, EuiText, EuiTitle } from '@elastic/eui';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import type { PrototypePageFixture } from '../../../types/prototype';
 import { P08AssetOverlays } from './P08AssetOverlays';
 import { P08AssetScopeBar } from './P08AssetScopeBar';
@@ -13,6 +13,7 @@ type Scope = { query: string; type: string; lifecycle: string; health: string; o
 const emptyScope: Scope = { query: '', type: 'All types', lifecycle: 'All lifecycle', health: 'All health', owner: 'All owners', source: 'All sources', risk: 'All exposure' };
 
 export function P08AssetInventoryWorkspace({ fixture, onOpenDeviceStatus }: Props) {
+  const location = useLocation();
   const navigate = useNavigate();
   const [params, setParams] = useSearchParams();
   const [scope, setScope] = useState<Scope>({
@@ -65,6 +66,13 @@ export function P08AssetInventoryWorkspace({ fixture, onOpenDeviceStatus }: Prop
   const closePreview = () => { setPreviewOpen(false); requestAnimationFrame(() => opener.current?.focus()); };
   const closeReconcile = () => { setReconciliationOpen(false); requestAnimationFrame(() => opener.current?.focus()); };
   const queueReconcile = () => { setReceipt(`reconcile-${selected.id}-20260718 queued for simulation; authoritative asset state is unchanged.`); closeReconcile(); };
+  const openAssetDetail = () => {
+    const workflowParams = new URLSearchParams({
+      returnTo: `${location.pathname}${location.search}`,
+      revision: 'asset-r18',
+    });
+    navigate(`/devices/assets/${encodeURIComponent(selected.id)}?${workflowParams.toString()}`);
+  };
 
   return <div className="pageComposition page-p08 differentiatedPage" data-page-specific-composition="P08-canonical-asset-inventory">
     <P08AssetScopeBar query={scope.query} typeFilter={scope.type} lifecycleFilter={scope.lifecycle} healthFilter={scope.health} ownerFilter={scope.owner} sourceFilter={scope.source} riskFilter={scope.risk}
@@ -94,7 +102,7 @@ export function P08AssetInventoryWorkspace({ fixture, onOpenDeviceStatus }: Prop
         <EuiSpacer size="s" /><EuiTitle size="s"><h3>{selected.name}</h3></EuiTitle><EuiText size="xs" color="subdued"><p>{selected.id} · {selected.type} · {selected.site}</p></EuiText>
         <dl style={{ display: 'grid', gridTemplateColumns: '110px 1fr', gap: '8px 12px', marginTop: 16 }}><dt>Criticality</dt><dd><EuiBadge color={badgeForCriticality(selected.criticality)}>{selected.criticality}</EuiBadge></dd><dt>Owner</dt><dd>{selected.owner}</dd><dt>Health</dt><dd>{selected.health}</dd><dt>Last seen</dt><dd>{selected.lastSeen}</dd><dt>Sources</dt><dd>{selected.sources.join(', ')}</dd><dt>Exposure</dt><dd>{selected.exposure} ({selected.risk})</dd></dl>
         <EuiSpacer size="m" /><EuiButton fullWidth onClick={(event: MouseEvent<HTMLButtonElement>) => { opener.current = event.currentTarget; setPreviewOpen(true); }}>Open asset preview</EuiButton><EuiSpacer size="s" />
-        <EuiButtonEmpty style={{ width: '100%' }} onClick={() => navigate(`/devices/assets/${encodeURIComponent(selected.id)}?returnTo=${encodeURIComponent('/devices/inventory')}`)}>Open Asset 360</EuiButtonEmpty>
+        <EuiButtonEmpty style={{ width: '100%' }} onClick={openAssetDetail}>Open Asset Detail</EuiButtonEmpty>
         <EuiButtonEmpty style={{ width: '100%' }} onClick={onOpenDeviceStatus}>Device status view</EuiButtonEmpty>
         <EuiButtonEmpty style={{ width: '100%' }} onClick={() => navigate(`/devices/vulnerabilities?asset=${encodeURIComponent(selected.id)}`)}>View exposure</EuiButtonEmpty>
       </EuiPanel></EuiFlexItem>
