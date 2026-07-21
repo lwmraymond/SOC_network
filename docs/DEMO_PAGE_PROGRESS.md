@@ -23,9 +23,15 @@ Protocol: `FAIL_CLOSED_ONE_PAGE_ONE_GIT`
 | P17 | PASS | PASS* | PASS* | `c49d434` | GITHUB_SAVED | REVIEW | PENDING |
 | P18 | PASS | PASS* | PASS* | `d543d98` | GITHUB_SAVED | REVIEW | PENDING |
 | P19 | PASS | PASS* | PASS* | `985f3b3` | GITHUB_SAVED | REVIEW | PENDING |
-| P20 | PENDING | PENDING | PENDING | — | NOT_STARTED | REVIEW | PENDING |
+| P20 | PASS | PASS* | PASS* | `551ad28` | GITHUB_SAVED | REVIEW | PENDING |
+| P21 | PENDING | PENDING | PENDING | — | NOT_STARTED | REVIEW | PENDING |
 
-`*` P09–P19 validation is scoped: strict TypeScript with unused checks and a template-risk lint.
+`*` P09–P20 validation is scoped: strict TypeScript with unused checks and a template-risk lint.
 
-Current item: `P20 — ITSM Analytics` (`NOT_STARTED`)
-Next item remains blocked until P20 is committed, pushed and read back from GitHub: `P21`.
+Five-page validation P16–P20: `BLOCKED_EXTERNAL_DEPENDENCY`  
+Scoped TypeScript/template lint: `PASS`  
+Full lint/unit/build: `BLOCKED` — offline `npm ci` lacked `zwitch-1.0.5`; no GitHub Actions run existed.  
+Report: `docs/FIVE_PAGE_VALIDATION_P16_P20.md`
+
+Current item: `P21 — Reports & Exports` (`NOT_STARTED`)  
+Next item remains blocked until P21 is committed, pushed and read back from GitHub: `P22`.
