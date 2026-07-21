@@ -27,11 +27,12 @@ Protocol: `FAIL_CLOSED_ONE_PAGE_ONE_GIT`
 | P21 | PASS | PASS* | PASS* | `896b7ed` | GITHUB_SAVED | REVIEW | PENDING |
 | P22 | PASS | PASS* | PASS* | `8621931` | GITHUB_SAVED | REVIEW | PENDING |
 | P23 | PASS | PASS* | PASS* | `8c4f88d` | GITHUB_SAVED | REVIEW | PENDING |
-| P24 | PENDING | PENDING | PENDING | — | NOT_STARTED | REVIEW | PENDING |
+| P24 | PASS | PASS* | PASS* | `a5afbc8` | GITHUB_SAVED | REVIEW | PENDING |
+| P25 | PENDING | PENDING | PENDING | — | NOT_STARTED | REVIEW | PENDING |
 
-`*` P09–P23 validation is scoped: strict TypeScript with unused checks and a template-risk lint.
+`*` P09–P24 validation is scoped: strict TypeScript with unused checks and a template-risk lint.
 
-P23 corrective record: the first workspace write contained a placeholder and was replaced in commit `ca2f2ce465ed20228d34392c49b8bcb2c9e97b70` before the page entry or progress advanced.
+P23 corrective record: the first workspace write was replaced by real source before page/progress advancement.
 
-Current item: `P24 — Agent Fleet` (`NOT_STARTED`)  
-Next item remains blocked until P24 is committed, pushed and read back from GitHub: `P25`.
+Current item: `P25 — Task Dispatch` (`NOT_STARTED`)  
+Next item remains blocked until P25 is committed, pushed and read back from GitHub: `P26`.
