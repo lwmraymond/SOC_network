@@ -1,22 +1,52 @@
 import { appendIconComponentCache } from '@elastic/eui/es/components/icon/icon.js';
 import { icon as arrowDown } from '@elastic/eui/es/components/icon/assets/arrow_down.js';
+import { icon as arrowLeft } from '@elastic/eui/es/components/icon/assets/arrow_left.js';
+import { icon as arrowRight } from '@elastic/eui/es/components/icon/assets/arrow_right.js';
+import { icon as arrowUp } from '@elastic/eui/es/components/icon/assets/arrow_up.js';
+import { icon as check } from '@elastic/eui/es/components/icon/assets/check.js';
+import { icon as checkInCircleFilled } from '@elastic/eui/es/components/icon/assets/checkInCircleFilled.js';
 import { icon as cross } from '@elastic/eui/es/components/icon/assets/cross.js';
+import { icon as document } from '@elastic/eui/es/components/icon/assets/document.js';
+import { icon as dot } from '@elastic/eui/es/components/icon/assets/dot.js';
+import { icon as empty } from '@elastic/eui/es/components/icon/assets/empty.js';
+import { icon as error } from '@elastic/eui/es/components/icon/assets/error.js';
+import { icon as info } from '@elastic/eui/es/components/icon/assets/info.js';
+import { icon as inspect } from '@elastic/eui/es/components/icon/assets/inspect.js';
 import { icon as lock } from '@elastic/eui/es/components/icon/assets/lock.js';
 import { icon as logoElastic } from '@elastic/eui/es/components/icon/assets/logo_elastic.js';
+import { icon as merge } from '@elastic/eui/es/components/icon/assets/merge.js';
 import { icon as search } from '@elastic/eui/es/components/icon/assets/search.js';
+import { icon as sortAscending } from '@elastic/eui/es/components/icon/assets/sortAscending.js';
+import { icon as sortDescending } from '@elastic/eui/es/components/icon/assets/sortDescending.js';
+import { icon as sortDown } from '@elastic/eui/es/components/icon/assets/sort_down.js';
+import { icon as sortUp } from '@elastic/eui/es/components/icon/assets/sort_up.js';
+import { icon as sortable } from '@elastic/eui/es/components/icon/assets/sortable.js';
+import { icon as warning } from '@elastic/eui/es/components/icon/assets/warning.js';
 
-/**
- * EUI 106 dynamically imports icons using extensionless paths. Vite dependency
- * pre-bundling generates a map whose keys include `.js`, so runtime lookups can
- * miss and reject. Pre-register every icon required by the shell and P07 gate
- * before React renders. Add future page icons here as explicit dependencies.
- */
 export const registeredEuiIcons = {
   arrowDown,
+  arrowLeft,
+  arrowRight,
+  arrowUp,
+  check,
+  checkInCircleFilled,
   cross,
+  document,
+  dot,
+  empty,
+  error,
+  info,
+  inspect,
   lock,
   logoElastic,
+  merge,
   search,
+  sortAscending,
+  sortDescending,
+  sortDown,
+  sortUp,
+  sortable,
+  warning,
 } as const;
 
 appendIconComponentCache(registeredEuiIcons);

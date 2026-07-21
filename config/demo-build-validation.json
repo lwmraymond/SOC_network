@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-07-20",
+  "runtime": {"node":"v22.16.0","npm":"10.9.2"},
+  "commands": [
+    {"command":"npm ci --no-audit --no-fund","exitCode":0,"result":"PASS","durationSeconds":12.0},
+    {"command":"npm run lint","exitCode":0,"result":"PASS","durationSeconds":3.5},
+    {"command":"npm run typecheck","exitCode":0,"result":"PASS","durationSeconds":9.56},
+    {"command":"npm run test","exitCode":0,"result":"PASS","durationSeconds":16.49,"testFiles":9,"tests":32},
+    {"command":"NODE_OPTIONS=--max-old-space-size=4096 npm run build","exitCode":0,"result":"PASS","durationSeconds":23.88,"modules":2929}
+  ],
+  "productionFixtureBoundary":"PASS",
+  "browserE2E":"PENDING_N16",
+  "warnings":["P32 Monaco minified chunk approximately 2.56 MB"]
+}
