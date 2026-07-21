@@ -4,12 +4,13 @@ Date: 2026-07-21
 Repository: `lwmraymond/SOC_network`  
 Branch: `agent/page-differentiation-audit`  
 Baseline PR head: `4442475a828973075e0b34d3b9b0be1c14a442ae`  
-Start progress: Pages `42/42 GITHUB_SAVED`; Workflows `0/19`; current item `H01`.
+Audit start: Pages `42/42 GITHUB_SAVED`; Workflows `0/19`; current item `H01`.  
+Current checkpoint: H01 is `GITHUB_SAVED`; Workflows `1/19`; current item `H02`.
 
 ## Rules
 
 - This is a GitHub-source audit. `UI_INTERACTIVE_DEMO` does not imply workflow, local deployment, production integration, or user acceptance.
-- H02–H08 and `src/catalog/workflowSpecs.ts` return 404 although `src/App.tsx` declares their imports/routes.
+- `src/catalog/workflowSpecs.ts` now registers H01. H02–H08 source still returns 404 although `src/App.tsx` declares their imports/routes.
 - Browser and build results remain `BROWSER_BLOCKED / BUILD_UNVALIDATED`.
 
 ## Evidence catalog
@@ -27,6 +28,7 @@ Start progress: Pages `42/42 GITHUB_SAVED`; Workflows `0/19`; current item `H01`
 | P21 | `src/components/page-specific/P21ReportsExportsWorkspace.tsx` · `P21ReportsExportsWorkspace` | `896b7edda1b1` / `206e778004492b3483874fd12c7133e5cf459be4` | `src/prototype/pageFixtures.ts` | template selection; job filter; four-step report Modal; download/retry/clone receipts | No dedicated workflow; artifact actions are simulated |
 | P22 | `src/components/page-specific/P22ItsmSettingsWorkspace.tsx` · `P22ItsmSettingsWorkspace` | `8621931c9416` / `3b88fa33067116fc47813caaddafc71aeadf7abd` | `src/prototype/pageFixtures.ts` | section/search; resource selection; draft editor/diff; save/publish Modals; receipts | Configuration resources only; no object-specific workflow |
 | P34 | `src/components/page-specific/P34PlaybooksAutomationTemplatesWorkspace.tsx` · `P34PlaybooksAutomationTemplatesWorkspace` | `b830865c79f6` / `45a81ee52ae6a6b7033b497cab48fd7fbd5b5674` | `src/prototype/pageFixtures.ts` | search/lifecycle; PB-* selection; visual graph; node inspector; simulation Flyout; run/publish Modal | No AUTO-* template detail/run workflow; generic PB-* fixtures only |
+| H01 | `src/components/page-specific/P12Asset360Workspace.tsx` · `P12Asset360Workspace / H01 shared-route workflow` | `2fc64021a291` / `013db8ef623b05443993d95db43d2de448591c96` | `src/prototype/pageFixtures.ts` | route-bound asset identity; URL tabs/filters/revision; provenance Flyout; governed action Modal; queued receipt; focus return | P08 parent entry commit `308339892a97`; registry commit `484fd6bc119a`; scoped validation `b6e67705a35d`; user review pending |
 | H02 | `src/workflows/H02WorkItemDetail.tsx` | 404 | absent | none | route/import declared only |
 | H03 | `src/workflows/H03CreateRequest.tsx` | 404 | absent | none | route/import declared only |
 | H04 | `src/workflows/H04MajorIncidentCommand.tsx` | 404 | absent | none | route/import declared only |
@@ -67,7 +69,7 @@ Start progress: Pages `42/42 GITHUB_SAVED`; Workflows `0/19`; current item `H01`
 | `WQ-01` | Queues | Work queues | My/team/unassigned/SLA/major/customer/vendor/approvals/today/conflicts/failures/custom/saved/columns/bulk | Save/filter/select/bulk | H02 | P14; see evidence catalog | `UI_INTERACTIVE_DEMO` | saved views、condition、selection、bulk eligibility 存在；缺 vendor/automation failures/column management/pagination | P14 |
 | `ASG-01` | Assignment | Assignment and routing | manual/group/skill/service/round-robin/load/after-hours/VIP/escalation/reason | Preview routing and reassign | H02/admin | P14;P22; see evidence catalog | `PLACEHOLDER` | owner/queue 与 generic assignment config 存在；无 routing rule simulation 或 reassignment reason | P14 + P22 |
 | `SLA-01` | Service level | SLA/OLA/business calendar | response/resolution/fulfilment/approval/OLA/vendor/calendar/holiday/pause/forecast/warning/elapsed/reason/source/audit | Inspect clocks and policy | H02/admin | P13;P14;P16;P20;P22; see evidence catalog | `REWORK_REQUIRED` | 多页展示 SLA 文本/风险；P20 metric contract/P22 SLA resource 存在；无完整 clock、pause、OLA/vendor/holiday/audit | P22 + H02 |
-| `CMDB-01` | Asset/CMDB | Asset, CI and service configuration | distinct objects/owner/lifecycle/env/dependency/impact/links/license/warranty/discovery/quality/reconciliation | Navigate relationships and reconcile | H01 | P08;P12;P28; see evidence catalog | `REWORK_REQUIRED` | P08 canonical asset/reconciliation、P12 ITSM CI label、P28 source mapping 已有；Asset/CI/Service 仍非独立合同，H01 not started | H01 + P08/P12 |
+| `CMDB-01` | Asset/CMDB | Asset, CI and service configuration | distinct objects/owner/lifecycle/env/dependency/impact/links/license/warranty/discovery/quality/reconciliation | Navigate relationships and reconcile | H01 | H01;P08;P12;P28; see evidence catalog | `REWORK_REQUIRED` | H01 now separates Asset、ITSM CI and Business Service, preserves provenance/relationships and queues governed correction; environment、warranty/license、discovery quality and deeper reconciliation remain incomplete | H01 + P08/P12 follow-up |
 | `KM-01` | Knowledge | Knowledge management | search/suggest/template/draft/review/publish/expiry/feedback/owner/version/links/create-from-resolution/KEDB | Search/publish/link article | Knowledge workflow | P17;P23;P33; see evidence catalog | `REWORK_REQUIRED` | P33 管知识源/ACL/citation；P17 workaround publication；P23 citations；缺 article lifecycle/library/feedback/create-from-resolution | P33 + P17 |
 | `NTF-01` | Communications | Notifications and status | requester/assignee/reminder/SLA/escalation/MI/internal/external/status/email/chat/push/digest/subscription/template/localization/delivery/retry/audit | Compose/send/track delivery | H04/admin | P16;P22;P40; see evidence catalog | `PLACEHOLDER` | P16 send communication receipt；P22/P40 有 notification references；无 template/delivery channel/retry/audit UI | P22 + H04 |
 | `ONC-01` | On-call | On-call, alerting and escalation | schedule/primary/secondary/policy/ack/page/timer/override/handoff/swarm/alert→incident/delivery/missed ack | Acknowledge/escalate | H04 | P16;P28;P34; see evidence catalog | `ABSENT` | 未发现 on-call schedule、acknowledgement 或 escalation timer UI | New on-call surface or H04 |
@@ -81,5 +83,6 @@ Start progress: Pages `42/42 GITHUB_SAVED`; Workflows `0/19`; current item `H01`
 - Capabilities audited: **36**.
 - Status: `UI_INTERACTIVE_DEMO` 14; `PLACEHOLDER` 8; `REWORK_REQUIRED` 11; `ABSENT` 3.
 - Audited page source: **11/11 readable**.
+- H01 parent-owned workflow: **1/1 GITHUB_SAVED source**.
 - H02–H08 parent-owned workflows: **0/7 readable**.
-- Current page source is useful Demo coverage, but the branch cannot be classified as `LOCAL_DEPLOYMENT_PASS` or `BUILD_VALIDATED`.
+- H01 adds verified GitHub workflow source coverage, but the branch still cannot be classified as `LOCAL_DEPLOYMENT_PASS` or `BUILD_VALIDATED`.
