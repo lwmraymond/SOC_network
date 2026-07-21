@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useReducer, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import {
+  EuiAccordion,
   EuiBadge,
   EuiBasicTable,
   EuiButton,
@@ -22,7 +23,6 @@ import {
   EuiPanel,
   EuiSelect,
   EuiSpacer,
-  EuiStat,
   EuiText,
   EuiTitle,
 } from '@elastic/eui';
@@ -192,16 +192,15 @@ export function EventSearchPage() {
         <EuiPanel className="pageContextPanel" paddingSize="s" hasBorder>
           <EuiFlexGroup gutterSize="s" alignItems="center" wrap>
             <EuiFlexItem><EuiHealth color="warning">Prototype data</EuiHealth></EuiFlexItem>
-            <EuiFlexItem grow={false}><EuiBadge color="success">Coverage 100%</EuiBadge></EuiFlexItem>
-            <EuiFlexItem grow={false}><EuiBadge color="hollow">Freshness 8s</EuiBadge></EuiFlexItem>
+            <EuiFlexItem grow={false}><EuiBadge color="hollow">Discover-style hunt workspace</EuiBadge></EuiFlexItem>
           </EuiFlexGroup>
         </EuiPanel>
         <EuiSpacer size="l" />
         <div className="pageComposition p07Composition">
-          <EuiPanel hasBorder paddingSize="m" className="p07QueryPanel">
+          <EuiPanel hasBorder paddingSize="m" className="p07QueryPanel" data-visual-region="hunt-query-workbench">
             <EuiFlexGroup gutterSize="s" alignItems="flexEnd" responsive={false} className="queryRow">
               <EuiFlexItem grow={2}><EuiFieldSearch value={draft} onChange={(event) => setDraft(event.target.value)} onSearch={run} aria-label="Event query" placeholder="severity:high AND source:edge-firewall" /></EuiFlexItem>
-              <EuiFlexItem grow={false}><EuiSelect aria-label="Time field" options={[{ value: 'event_time', text: 'Event time' }, { value: 'ingested_at', text: 'Ingested time' }]} /></EuiFlexItem>
+              <EuiFlexItem grow={false}><EuiSelect aria-label="Time field" defaultValue="event_time" options={[{ value: 'event_time', text: 'Event time' }, { value: 'ingested_at', text: 'Ingested time' }]} /></EuiFlexItem>
               <EuiFlexItem grow={false}><EuiButton fill onClick={run}>Run query</EuiButton></EuiFlexItem>
             </EuiFlexGroup>
             {errors.length > 0 && <><EuiSpacer size="s" /><EuiCallOut title="Query parse error" color="danger">{errors.map((error) => <p key={`${error.code}-${error.span.start}`}><strong>{error.token}</strong>: {error.message} {error.recoverHint}</p>)}</EuiCallOut></>}
@@ -214,36 +213,42 @@ export function EventSearchPage() {
             </EuiFlexGroup>
           </EuiPanel>
 
-          <EuiPanel hasBorder paddingSize="m">
-            <EuiFlexGroup gutterSize="l">
-              <EuiFlexItem><EuiStat title={visibleCount} description="Visible results" /></EuiFlexItem>
-              <EuiFlexItem><EuiStat title="100%" description="Coverage" /></EuiFlexItem>
-              <EuiFlexItem><EuiStat title="8s" description="Freshness lag" /></EuiFlexItem>
-              <EuiFlexItem><EuiStat title="Asia/Taipei" description="Timezone" /></EuiFlexItem>
-            </EuiFlexGroup>
-            <div className="histogram" role="img" aria-label="Event histogram. Exact table follows.">{[30, 55, 42, 75, 60, 88, 45, 65, 35, 70, 52, 80].map((height, index) => <span key={index} style={{ height: `${height}%` }} />)}</div>
-            <table className="chartFallback"><caption>Histogram exact-data fallback</caption><tbody><tr><th>Visible events</th><td>{display.length}</td></tr></tbody></table>
-          </EuiPanel>
-
           {statusMessage && <EuiCallOut title={statusMessage.title} color={statusMessage.color}>{statusMessage.body}</EuiCallOut>}
-          <EuiPanel hasBorder paddingSize="m" className="p07ResultsPanel">
+
+          <EuiPanel hasBorder paddingSize="m" className="p07ResultsPanel" data-visual-region="hunt-event-grid">
+            <EuiFlexGroup alignItems="center" justifyContent="spaceBetween">
+              <EuiFlexItem><EuiTitle size="s"><h2>Events</h2></EuiTitle></EuiFlexItem>
+              <EuiFlexItem grow={false}><EuiBadge color="hollow">{visibleCount} visible</EuiBadge></EuiFlexItem>
+            </EuiFlexGroup>
+            <EuiSpacer size="s" />
             {state.status === 'loading'
               ? <EuiCallOut title="Loading query execution">Cancellation is wired through AbortSignal.</EuiCallOut>
               : <EuiBasicTable tableCaption="Event search results" items={display} itemId="id" columns={[
                 { field: 'id', name: 'Event ID', render: (value: string, item: EventRecord) => <EuiButtonEmpty size="xs" onClick={(event) => { inspectorOpener.current = event.currentTarget; setSelected(item); dispatch({ type: 'select', value: item.id }); }}>{value}</EuiButtonEmpty> },
                 { field: 'event_time', name: 'Event time', sortable: true },
                 { field: 'severity', name: 'Severity', render: (value: string) => <EuiBadge>{value}</EuiBadge> },
-                { field: 'source', name: 'Source' }, { field: 'host', name: 'Host' },
+                { field: 'source', name: 'Source' },
+                { field: 'host', name: 'Host' },
                 { field: 'user', name: 'User', render: (value: string, item: EventRecord) => item.restricted ? <span aria-label="masked field">••••••</span> : value },
                 { field: 'action', name: 'Action' },
               ]} noItemsMessage={state.status === 'filtered-empty' ? 'No events match filters.' : state.status === 'denied' ? 'No authorized events are available.' : 'No events available.'} />}
             <EuiSpacer size="s" />
             <EuiFlexGroup justifyContent="spaceBetween"><EuiButtonEmpty isDisabled={!prev} onClick={() => dispatch({ type: 'cursor', value: prev })}>Previous</EuiButtonEmpty><EuiButtonEmpty isDisabled={!next} onClick={() => dispatch({ type: 'cursor', value: next })}>Next</EuiButtonEmpty></EuiFlexGroup>
+            <EuiSpacer size="m" />
+            <EuiAccordion id="p07-coverage-histogram" buttonContent="Coverage, freshness and histogram details" paddingSize="s">
+              <EuiFlexGroup gutterSize="s" wrap>
+                <EuiFlexItem grow={false}><EuiBadge color="success">Coverage 100%</EuiBadge></EuiFlexItem>
+                <EuiFlexItem grow={false}><EuiBadge color="hollow">Freshness 8s</EuiBadge></EuiFlexItem>
+                <EuiFlexItem grow={false}><EuiBadge color="hollow">Asia/Taipei</EuiBadge></EuiFlexItem>
+              </EuiFlexGroup>
+              <div className="histogram" role="img" aria-label="Event histogram. Exact data follows in the table.">{[30, 55, 42, 75, 60, 88, 45, 65, 35, 70, 52, 80].map((height, index) => <span key={index} style={{ height: `${height}%` }} />)}</div>
+              <table className="chartFallback"><caption>Histogram exact-data fallback</caption><tbody><tr><th>Visible events</th><td>{display.length}</td></tr><tr><th>Coverage</th><td>100%</td></tr><tr><th>Freshness lag</th><td>8s</td></tr><tr><th>Timezone</th><td>Asia/Taipei</td></tr></tbody></table>
+            </EuiAccordion>
           </EuiPanel>
         </div>
       </EuiPageTemplate.Section>
 
-      {state.filterOpen && <EuiFlyout onClose={() => { dispatch({ type: 'toggleFilter' }); opener.current?.focus(); }} ownFocus size="s" aria-labelledby="filter-title"><EuiFlyoutHeader><EuiTitle><h2 id="filter-title">Advanced filter builder</h2></EuiTitle></EuiFlyoutHeader><EuiFlyoutBody><EuiText><p>Filter chips and builder share the same nested model. Stale facets never clear input.</p></EuiText><EuiButton onClick={addHigh}>Add severity:high</EuiButton></EuiFlyoutBody></EuiFlyout>}
+      {state.filterOpen && <EuiFlyout onClose={() => { dispatch({ type: 'toggleFilter' }); requestAnimationFrame(() => opener.current?.focus()); }} ownFocus size="s" aria-labelledby="filter-title"><EuiFlyoutHeader><EuiTitle><h2 id="filter-title">Advanced filter builder</h2></EuiTitle></EuiFlyoutHeader><EuiFlyoutBody><EuiText><p>Filter chips and builder share the same nested model. Stale facets never clear input.</p></EuiText><EuiButton onClick={addHigh}>Add severity:high</EuiButton></EuiFlyoutBody></EuiFlyout>}
       {selected && <EuiFlyout onClose={closeInspector} ownFocus size="m" aria-labelledby="inspector-title"><EuiFlyoutHeader><EuiTitle><h2 id="inspector-title">Event inspector</h2></EuiTitle></EuiFlyoutHeader><EuiFlyoutBody><EuiCallOut title={selectedDecision === 'masked' ? 'Field masking applied' : 'Authorized fields'} iconType="lock">Route, row, field, action and export use one policy interface.</EuiCallOut><EuiSpacer /><dl className="detailGrid"><dt>Event ID</dt><dd>{selected.id}</dd><dt>Event time</dt><dd>{selected.event_time}</dd><dt>Ingested</dt><dd>{selected.ingested_at}</dd><dt>Source</dt><dd>{selected.source}</dd><dt>User</dt><dd>{selected.restricted ? '••••••' : selected.user}</dd><dt>Message</dt><dd>{selected.message}</dd></dl></EuiFlyoutBody></EuiFlyout>}
       {state.exportOpen && <EuiModal onClose={() => dispatch({ type: 'toggleExport' })} aria-labelledby="export-title"><EuiModalHeader><EuiModalHeaderTitle id="export-title">Create export job</EuiModalHeaderTitle></EuiModalHeader><EuiModalBody><EuiCallOut title="Prototype simulation" color="warning">No production API is called. Queued does not mean completed.</EuiCallOut><EuiText><p>Classification: Confidential · masked fields: user.email · rows estimated: {rows.length}</p></EuiText></EuiModalBody><EuiModalFooter><EuiButtonEmpty onClick={() => dispatch({ type: 'toggleExport' })}>Cancel</EuiButtonEmpty><EuiButton fill onClick={exportNow}>Queue export</EuiButton></EuiModalFooter></EuiModal>}
       {state.receiptOpen && job && <EuiFlyout onClose={() => dispatch({ type: 'showReceipt' })} ownFocus aria-labelledby="receipt-title"><EuiFlyoutHeader><EuiTitle><h2 id="receipt-title">Action receipt</h2></EuiTitle></EuiFlyoutHeader><EuiFlyoutBody><EuiCallOut title="Prototype simulation · queued" color="warning">Accepted and queued are not completed. Authoritative rehydration is pending.</EuiCallOut><EuiText><p>Receipt: {job.receipt.receiptId}</p><p>Request: {job.receipt.requestId}</p><p>Status: {job.receipt.status}</p></EuiText></EuiFlyoutBody></EuiFlyout>}
