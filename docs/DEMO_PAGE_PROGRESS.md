@@ -25,14 +25,15 @@ Protocol: `FAIL_CLOSED_ONE_PAGE_ONE_GIT`
 | P19 | PASS | PASS* | PASS* | `985f3b3` | GITHUB_SAVED | REVIEW | PENDING |
 | P20 | PASS | PASS* | PASS* | `551ad28` | GITHUB_SAVED | REVIEW | PENDING |
 | P21 | PASS | PASS* | PASS* | `896b7ed` | GITHUB_SAVED | REVIEW | PENDING |
-| P22 | PENDING | PENDING | PENDING | — | NOT_STARTED | REVIEW | PENDING |
+| P22 | PASS | PASS* | PASS* | `8621931` | GITHUB_SAVED | REVIEW | PENDING |
+| P23 | PENDING | PENDING | PENDING | — | NOT_STARTED | REVIEW | PENDING |
 
-`*` P09–P21 validation is scoped: strict TypeScript with unused checks and a template-risk lint.
+`*` P09–P22 validation is scoped: strict TypeScript with unused checks and a template-risk lint.
 
 Five-page validation P16–P20: `BLOCKED_EXTERNAL_DEPENDENCY`  
 Scoped TypeScript/template lint: `PASS`  
 Full lint/unit/build: `BLOCKED` — offline `npm ci` lacked `zwitch-1.0.5`; no GitHub Actions run existed.  
 Report: `docs/FIVE_PAGE_VALIDATION_P16_P20.md`
 
-Current item: `P22 — ITSM Settings` (`NOT_STARTED`)  
-Next item remains blocked until P22 is committed, pushed and read back from GitHub: `P23`.
+Current item: `P23 — Copilot Workspace` (`NOT_STARTED`)  
+Next item remains blocked until P23 is committed, pushed and read back from GitHub: `P24`.
