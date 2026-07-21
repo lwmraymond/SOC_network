@@ -29,11 +29,12 @@ Protocol: `FAIL_CLOSED_ONE_PAGE_ONE_GIT`
 | P23 | PASS | PASS* | PASS* | `8c4f88d` | GITHUB_SAVED | REVIEW | PENDING |
 | P24 | PASS | PASS* | PASS* | `a5afbc8` | GITHUB_SAVED | REVIEW | PENDING |
 | P25 | PASS | PASS* | PASS* | `b44eefe` | GITHUB_SAVED | REVIEW | PENDING |
-| P26 | PENDING | PENDING | PENDING | — | NOT_STARTED | REVIEW | PENDING |
+| P26 | PASS | PASS* | PASS* | `a72ffb4` | GITHUB_SAVED | REVIEW | PENDING |
+| P27 | PENDING | PENDING | PENDING | — | NOT_STARTED | REVIEW | PENDING |
 
-`*` P09–P25 validation is scoped: strict TypeScript with unused checks and a template-risk lint.
+`*` P09–P26 validation is scoped: strict TypeScript with unused checks and a template-risk lint.
 
 P23 corrective record: placeholder source was replaced before page/progress advancement.
 
-Current item: `P26 — Agent Runtime Access` (`NOT_STARTED`)  
-Next item remains blocked until P26 is committed, pushed and read back from GitHub: `P27`.
+Current item: `P27 — Runtime Catalog Overview` (`NOT_STARTED`)  
+Next item remains blocked until P27 is committed, pushed and read back from GitHub: `P28`.
