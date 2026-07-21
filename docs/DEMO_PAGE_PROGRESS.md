@@ -32,9 +32,10 @@ Protocol: `FAIL_CLOSED_ONE_PAGE_ONE_GIT`
 | P26 | PASS | PASS* | PASS* | `a72ffb4` | GITHUB_SAVED | REVIEW | PENDING |
 | P27 | PASS | PASS* | PASS* | `328b3f6` | GITHUB_SAVED | REVIEW | PENDING |
 | P28 | PASS | PASS* | PASS* | `be11baa` | GITHUB_SAVED | REVIEW | PENDING |
-| P29 | PENDING | PENDING | PENDING | — | NOT_STARTED | REVIEW | PENDING |
+| P29 | PASS | PASS* | PASS* | `7ecbcbe` | GITHUB_SAVED | REVIEW | PENDING |
+| P30 | PENDING | PENDING | PENDING | — | NOT_STARTED | REVIEW | PENDING |
 
-`*` P09–P28 validation is scoped: strict TypeScript with unused checks and a template-risk lint.
+`*` P09–P29 validation is scoped: strict TypeScript with unused checks and a template-risk lint.
 
 Five-page validation P21–P25: `BLOCKED_EXTERNAL_DEPENDENCY`  
 Scoped TypeScript/template lint: `PASS`  
@@ -43,5 +44,8 @@ Report: `docs/FIVE_PAGE_VALIDATION_P21_P25.md`
 
 P23 corrective record: placeholder source was replaced before page/progress advancement.
 
-Current item: `P29` (`NOT_STARTED`)  
-Next item remains blocked until P29 is committed, pushed and read back from GitHub: `P30`.
+P29 GitHub page readback: `src/pages/P29DetectionRules.tsx` · blob `072d4df93a53c5e3259d7c40c61f9ae0eca7b22d`.  
+P29 workspace readback: `src/components/page-specific/P29DetectionRulesWorkspace.tsx` · blob `6fd7c04a1fdd4ee3d733c90062cf0761f304e091`.
+
+Current item: `P30 — Event Schemas & Contracts` (`NOT_STARTED`)  
+Next item remains blocked until P30 is committed, pushed and read back from GitHub: `P31`.
