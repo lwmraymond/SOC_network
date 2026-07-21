@@ -74,6 +74,7 @@ export default function P05AlertQueue() {
   const [nextCursor, setNextCursor] = useState<string>();
   const [previousCursor, setPreviousCursor] = useState<string>();
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
+  const [selectedRowId, setSelectedRowId] = useState<string>();
   const [detail, setDetail] = useState<PrototypeRow>();
   const [filterOpen, setFilterOpen] = useState(false);
   const [bulkOpen, setBulkOpen] = useState(false);
@@ -85,6 +86,7 @@ export default function P05AlertQueue() {
   const [savedMessage, setSavedMessage] = useState<string>();
   const [queryErrors, setQueryErrors] = useState<ReturnType<typeof validateQuery>>([]);
   const filterOpener = useRef<HTMLButtonElement | null>(null);
+  const detailOpener = useRef<HTMLButtonElement | null>(null);
   const adapter = useMemo(() => fixture ? new FixtureCursorAdapter(fixture.rows) : undefined, [fixture]);
   const envelope = useMemo(() => createEnvelope(query, {
     cursor,
@@ -99,6 +101,8 @@ export default function P05AlertQueue() {
       if (response.error) {
         page.setViewState(response.error.classification === 'DENIED' ? 'denied' : 'error');
         setRows([]);
+        setSelectedRowId(undefined);
+        setDetail(undefined);
         return;
       }
       const visibleRows: PrototypeRow[] = [];
@@ -112,7 +116,8 @@ export default function P05AlertQueue() {
       setNextCursor(response.nextCursor);
       setPreviousCursor(response.previousCursor);
       setSelectedIds((current) => new Set([...current].filter((id) => visibleRows.some((row) => row.id === id))));
-      setDetail((current) => current && visibleRows.some((row) => row.id === current.id) ? current : visibleRows[0]);
+      setSelectedRowId((current) => current && visibleRows.some((row) => row.id === current) ? current : visibleRows[0]?.id);
+      setDetail((current) => current && visibleRows.some((row) => row.id === current.id) ? current : undefined);
     });
     return () => controller.abort();
   }, [adapter, cursor, envelope, filters, page]);
@@ -187,10 +192,14 @@ export default function P05AlertQueue() {
     setConfirmed(false);
   };
 
+  const closeDetail = () => {
+    setDetail(undefined);
+    requestAnimationFrame(() => detailOpener.current?.focus());
+  };
   const selectedAll = rows.length > 0 && rows.every((row) => selectedIds.has(row.id));
   const highCount = rows.filter(isHigh).length;
   const failureCount = rows.filter(isProjectionFailure).length;
-  const activeDetail = detail ?? rows[0];
+  const activeDetail = rows.find((row) => row.id === selectedRowId) ?? rows[0];
   const selectedDetail = activeDetail ? evidenceItems(activeDetail) : [];
   const selectedCount = activeDetail ? Number(activeDetail.event_count ?? activeDetail.count ?? 6) : 0;
   const selectedRisk = activeDetail ? Number(activeDetail.risk_score ?? 72) : 0;
@@ -209,7 +218,7 @@ export default function P05AlertQueue() {
         return next;
       })} />,
     },
-    { field: 'id', name: 'Alert group', render: (value: PrototypeValue, row: PrototypeRow) => <EuiButtonEmpty size="xs" onClick={() => setDetail(row)}>{asText(value)}</EuiButtonEmpty> },
+    { field: 'id', name: 'Alert group', render: (value: PrototypeValue, row: PrototypeRow) => <EuiButtonEmpty size="xs" onClick={() => setSelectedRowId(row.id)}>{asText(value)}</EuiButtonEmpty> },
     { field: 'severity', name: 'Severity', render: (value: PrototypeValue) => <EuiBadge color={/critical/i.test(asText(value)) ? 'danger' : /high/i.test(asText(value)) ? 'warning' : 'hollow'}>{asText(value)}</EuiBadge> },
     { field: 'risk_score', name: 'Risk' },
     { field: 'source', name: 'Source' },
@@ -266,7 +275,7 @@ export default function P05AlertQueue() {
         <EuiFlexItem grow={4}>
           <EuiPanel paddingSize="m" hasBorder data-visual-region="alert-evidence-preview">
             {activeDetail ? <>
-              <EuiFlexGroup justifyContent="spaceBetween" alignItems="flexStart" responsive={false}><EuiFlexItem><EuiBadge color={isHigh(activeDetail) ? 'danger' : 'warning'}>{asText(activeDetail.severity)} · Risk {selectedRisk}</EuiBadge><EuiSpacer size="s" /><EuiTitle size="s"><h2>{asText(activeDetail.title ?? activeDetail.id)}</h2></EuiTitle><EuiText size="xs" color="subdued"><p>{activeDetail.id} · {asText(activeDetail.status)} · {asText(activeDetail.owner)}</p></EuiText></EuiFlexItem><EuiFlexItem grow={false}><EuiButtonEmpty onClick={() => setDetail(activeDetail)}>Open full detail</EuiButtonEmpty></EuiFlexItem></EuiFlexGroup>
+              <EuiFlexGroup justifyContent="spaceBetween" alignItems="flexStart" responsive={false}><EuiFlexItem><EuiBadge color={isHigh(activeDetail) ? 'danger' : 'warning'}>{asText(activeDetail.severity)} · Risk {selectedRisk}</EuiBadge><EuiSpacer size="s" /><EuiTitle size="s"><h2>{asText(activeDetail.title ?? activeDetail.id)}</h2></EuiTitle><EuiText size="xs" color="subdued"><p>{activeDetail.id} · {asText(activeDetail.status)} · {asText(activeDetail.owner)}</p></EuiText></EuiFlexItem><EuiFlexItem grow={false}><EuiButtonEmpty buttonRef={detailOpener} onClick={() => setDetail(activeDetail)}>Open full detail</EuiButtonEmpty></EuiFlexItem></EuiFlexGroup>
               <EuiSpacer size="m" />
               <EuiCallOut title="Why this rule matched" color="primary">{asText(activeDetail.rule_explanation ?? 'A high-risk network action matched the active rule revision and was grouped with related events from the same entity context.')}</EuiCallOut>
               <EuiSpacer size="m" />
@@ -295,7 +304,7 @@ export default function P05AlertQueue() {
 
       {filterOpen && <EuiFlyout ownFocus size="s" onClose={() => { setFilterOpen(false); filterOpener.current?.focus(); }} aria-labelledby="p05-filter-title"><EuiFlyoutHeader hasBorder><EuiTitle><h2 id="p05-filter-title">Alert Filter Builder</h2></EuiTitle></EuiFlyoutHeader><EuiFlyoutBody><EuiText><p>Event time, dataset/source, severity, alert state, rule revision, entity/network context and projection state use the shared nested FilterGroup model.</p></EuiText><EuiButton onClick={addHighSeverity}>Add severity:high</EuiButton></EuiFlyoutBody><EuiFlyoutFooter><EuiButtonEmpty onClick={() => { setFilterOpen(false); filterOpener.current?.focus(); }}>Close filters</EuiButtonEmpty></EuiFlyoutFooter></EuiFlyout>}
 
-      {detail && <EuiFlyout ownFocus size="m" onClose={() => setDetail(undefined)} aria-labelledby="p05-detail-title"><EuiFlyoutHeader hasBorder><EuiTitle><h2 id="p05-detail-title">Alert group evidence and rule outcome</h2></EuiTitle><EuiText size="s"><p>{detail.id} · selected queue and normalized scope preserved</p></EuiText></EuiFlyoutHeader><EuiFlyoutBody><EuiCallOut title="Unified permission decision">Route, row, field and action decisions use the same permission service boundary.</EuiCallOut><EuiSpacer /><EuiTitle size="xs"><h3>Grouped evidence</h3></EuiTitle><dl className="detailGrid">{spec.fields.slice(0, 12).map((field) => <div key={field}><dt>{field}</dt><dd>{/user/i.test(field) && detail.id.endsWith('0003') ? '••••••' : asText(detail[field])}</dd></div>)}</dl><EuiSpacer /><EuiCallOut title="Rule outcome" color={isProjectionFailure(detail) ? 'warning' : 'success'}>{isProjectionFailure(detail) ? 'Projection requires review before classification or suppression.' : 'Rule projection is available. The analyst still must validate raw evidence and future coverage impact.'}</EuiCallOut></EuiFlyoutBody><EuiFlyoutFooter><EuiButtonEmpty onClick={() => setDetail(undefined)}>Close detail</EuiButtonEmpty><EuiButton fill onClick={() => { setSelectedIds(new Set([detail.id])); setBulkAction('Assign owner'); setBulkOpen(true); }}>Triage this group</EuiButton></EuiFlyoutFooter></EuiFlyout>}
+      {detail && <EuiFlyout ownFocus size="m" onClose={closeDetail} aria-labelledby="p05-detail-title"><EuiFlyoutHeader hasBorder><EuiTitle><h2 id="p05-detail-title">Alert group evidence and rule outcome</h2></EuiTitle><EuiText size="s"><p>{detail.id} · selected queue and normalized scope preserved</p></EuiText></EuiFlyoutHeader><EuiFlyoutBody><EuiCallOut title="Unified permission decision">Route, row, field and action decisions use the same permission service boundary.</EuiCallOut><EuiSpacer /><EuiTitle size="xs"><h3>Grouped evidence</h3></EuiTitle><dl className="detailGrid">{spec.fields.slice(0, 12).map((field) => <div key={field}><dt>{field}</dt><dd>{/user/i.test(field) && detail.id.endsWith('0003') ? '••••••' : asText(detail[field])}</dd></div>)}</dl><EuiSpacer /><EuiCallOut title="Rule outcome" color={isProjectionFailure(detail) ? 'warning' : 'success'}>{isProjectionFailure(detail) ? 'Projection requires review before classification or suppression.' : 'Rule projection is available. The analyst still must validate raw evidence and future coverage impact.'}</EuiCallOut></EuiFlyoutBody><EuiFlyoutFooter><EuiButtonEmpty onClick={closeDetail}>Close detail</EuiButtonEmpty><EuiButton fill onClick={() => { setSelectedIds(new Set([detail.id])); setBulkAction('Assign owner'); setBulkOpen(true); }}>Triage this group</EuiButton></EuiFlyoutFooter></EuiFlyout>}
 
       {bulkOpen && <EuiModal onClose={() => setBulkOpen(false)} aria-labelledby="p05-bulk-title"><EuiModalHeader><EuiModalHeaderTitle id="p05-bulk-title">Alert triage impact preview</EuiModalHeaderTitle></EuiModalHeader><EuiModalBody><EuiSelect aria-label="Bulk alert action" value={bulkAction} onChange={(event) => setBulkAction(event.target.value)} options={['Assign owner', 'Close as expected', 'Suppress future matches'].map((value) => ({ value, text: value }))} /><EuiSpacer /><EuiCallOut title="Prototype simulation · no production mutation" color="warning">Selected groups: {selectedIds.size}. Action: {bulkAction}. Preconditions, expected revisions, approval and idempotency are modeled; queued is not completed.</EuiCallOut><EuiSpacer />{bulkAction === 'Suppress future matches' && <><EuiTitle size="xs"><h3>Future coverage impact</h3></EuiTitle><ul><li>3 related rule revisions are affected</li><li>2 data sources contribute matching events</li><li>Estimated 14 future groups per day may be hidden</li><li>Critical-severity suppression requires approval</li></ul><EuiCallOut title="Coverage decision required" color="danger">Suppression is not equivalent to closing the selected groups. It changes future detection behavior.</EuiCallOut><EuiSpacer /></>}<EuiCheckbox id="p05-bulk-confirm" label="Confirm prototype queue submission" checked={confirmed} onChange={(event) => setConfirmed(event.target.checked)} /></EuiModalBody><EuiModalFooter><EuiButtonEmpty onClick={() => setBulkOpen(false)}>Cancel</EuiButtonEmpty><EuiButton fill isDisabled={!confirmed || selectedIds.size === 0} onClick={createBulkReceipt}>Queue prototype action</EuiButton></EuiModalFooter></EuiModal>}
 
