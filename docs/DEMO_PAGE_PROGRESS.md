@@ -42,9 +42,10 @@ Protocol: `FAIL_CLOSED_ONE_PAGE_ONE_GIT`
 | P36 | PASS | PASS* | PASS* | `4a3c4b5` | GITHUB_SAVED | REVIEW | PENDING |
 | P37 | PASS | PASS* | PASS* | `7615edb` | GITHUB_SAVED | REVIEW | PENDING |
 | P38 | PASS | PASS* | PASS* | `a1199f7` | GITHUB_SAVED | REVIEW | PENDING |
-| P39 | PENDING | PENDING | PENDING | — | NOT_STARTED | REVIEW | PENDING |
+| P39 | PASS | PASS* | PASS* | `da099f3` | GITHUB_SAVED | REVIEW | PENDING |
+| P40 | PENDING | PENDING | PENDING | — | NOT_STARTED | REVIEW | PENDING |
 
-`*` P09–P38 validation is scoped: strict TypeScript with unused checks and a template-risk lint.
+`*` P09–P39 validation is scoped: strict TypeScript with unused checks and a template-risk lint.
 
 Five-page validation P31–P35: `BLOCKED_EXTERNAL_DEPENDENCY`  
 Scoped TypeScript/template lint: `PASS`  
@@ -74,5 +75,8 @@ P37 workspace readback: `src/components/page-specific/P37UsersWorkspace.tsx` · 
 P38 GitHub page readback: `src/pages/P38Roles.tsx` · blob `45d60aaa52b6d4de77a542215b4634a8e28822ef`.  
 P38 workspace readback: `src/components/page-specific/P38RolesWorkspace.tsx` · blob `0cfa9ea58f9cbc02e6e8fb0d98c20967c640bd1a`.  
 
-Current item: `P39` (`NOT_STARTED`)  
-Next item remains blocked until P39 is committed, pushed and read back from GitHub: `P40`.
+P39 GitHub page readback: `src/pages/P39Permissions.tsx` · blob `f9b187337b17da4796074f1b0f1729f893445db2`.  
+P39 difference contract: principal × capability × resource query → review queue → explainable decision trace → request/grant/revoke receipts. Visual acceptance remains `PENDING`.
+
+Current item: `P40` (`NOT_STARTED`)  
+Next item remains blocked until P40 is committed, pushed and read back from GitHub: `P41`.
