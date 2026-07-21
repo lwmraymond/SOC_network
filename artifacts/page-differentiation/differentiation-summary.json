@@ -1,0 +1,44 @@
+{
+  "gate": "FAIL",
+  "failReasons": [
+    "WRONG_ARCHETYPE"
+  ],
+  "coverage": {
+    "expected": 61,
+    "scanned": 61,
+    "missing": [],
+    "architectureBriefs": 61,
+    "missingBrief": []
+  },
+  "global": {
+    "meanSimilarity": 0.2718,
+    "medianSimilarity": 0.2505,
+    "p75": 0.3731,
+    "p90": 0.4608,
+    "p95": 0.51,
+    "maximum": 0.72,
+    "crossArchetypeMean": 0.2652,
+    "sameArchetypeMean": 0.3077,
+    "pagePageMean": 0.3079,
+    "workflowWorkflowMean": 0.4626,
+    "pageWorkflowMean": 0.1919,
+    "exactCloneCount": 0,
+    "probableTemplateCloneCount": 0,
+    "overSharedCount": 1,
+    "largestCloneClusterSize": 1,
+    "largestClusterRatio": 0.0164,
+    "universalRendererUsageRatio": 0.0492
+  },
+  "duplicates": {
+    "sectionTree": 0.1311,
+    "sectionSequence": 0.1311,
+    "kpiLabels": 0.4262,
+    "kpiPatterns": 1,
+    "chartComposition": 0.5082,
+    "tableSchemas": 0,
+    "primaryActions": 0.1475,
+    "overlayStructures": 1,
+    "emptyStateCopy": 0,
+    "fixtureSchemas": 0
+  }
+}

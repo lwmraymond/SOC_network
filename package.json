@@ -1,7 +1,7 @@
 {
   "name": "soc-network-prototype",
   "private": true,
-  "version": "0.2.1",
+  "version": "0.3.0",
   "type": "module",
   "engines": {
     "node": "^20.19.0 || >=22.12.0"
@@ -10,15 +10,35 @@
   "scripts": {
     "dev": "vite",
     "lint": "eslint . --max-warnings=0",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "tsc -b --pretty false && tsc --noEmit -p tsconfig.e2e.json --pretty false",
     "test": "vitest run --pool=forks --maxWorkers=1 --minWorkers=1",
     "test:coverage": "vitest run --coverage --pool=forks --maxWorkers=1 --minWorkers=1",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && node scripts/check-production-boundary.mjs",
     "e2e": "playwright test",
-    "e2e:update": "playwright test --update-snapshots"
+    "e2e:smoke": "playwright test tests/e2e/all-pages.smoke.spec.ts tests/e2e/p05-alert-queue.spec.ts tests/e2e/workflow-context.spec.ts",
+    "e2e:visual": "playwright test tests/e2e/all-pages.visual.spec.ts --workers=1",
+    "visual:manifest": "node scripts/generate-screenshot-manifest.mjs",
+    "generate:reports": "node scripts/generate-design-reports.mjs",
+    "manifest:screenshots": "node scripts/generate-screenshot-manifest.mjs",
+    "ci:quality": "node scripts/run-quality-validation.mjs",
+    "ci:browser": "node scripts/run-browser-validation.mjs",
+    "e2e:routes": "playwright test tests/e2e/full-route-validation.spec.ts --workers=1",
+    "e2e:axe": "playwright test tests/e2e/axe-full-page.spec.ts --workers=1",
+    "e2e:gate": "playwright test tests/e2e/full-route-validation.spec.ts tests/e2e/axe-full-page.spec.ts tests/e2e/all-pages.visual.spec.ts --workers=1",
+    "reports:github-actions": "node scripts/generate-github-actions-report.mjs",
+    "audit:differentiation": "node scripts/run-page-differentiation-audit.mjs",
+    "audit:differentiation:extract": "node scripts/extract-page-architecture.mjs",
+    "audit:differentiation:calculate": "node scripts/audit-page-differentiation.mjs",
+    "visual-audit:bundle": "node scripts/visual-audit/build-bundle.mjs",
+    "visual-audit:capture": "node scripts/visual-audit/capture-runtime-layout.mjs",
+    "visual-audit:compare": "python3 scripts/visual-audit/compare_visuals.py",
+    "visual-audit:latest": "npm run visual-audit:bundle && npm run visual-audit:capture && npm run visual-audit:compare",
+    "visual-audit:d2k-d4k": "VISUAL_AUDIT_VIEWPORTS=D2K,D4K node scripts/visual-audit/capture-runtime-layout.mjs"
   },
   "dependencies": {
     "@elastic/eui": "106.0.0",
+    "@monaco-editor/react": "4.7.0",
+    "monaco-editor": "0.55.1",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-router-dom": "7.6.0"
@@ -26,9 +46,10 @@
   "devDependencies": {
     "@axe-core/playwright": "4.10.0",
     "@eslint/js": "9.31.0",
-    "@playwright/test": "1.54.0",
+    "@playwright/test": "1.61.1",
     "@testing-library/jest-dom": "6.9.1",
     "@testing-library/react": "16.3.0",
+    "@types/node": "22.16.0",
     "@types/react": "18.3.0",
     "@types/react-dom": "18.3.0",
     "@vitejs/plugin-react": "5.0.4",

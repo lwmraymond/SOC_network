@@ -1,0 +1,10 @@
+node_modules/
+dist/
+playwright-report/
+test-results/
+*.tsbuildinfo
+.DS_Store
+
+docs/soc-itsm-implementation/validation/generated/
+docs/soc-itsm-implementation/validation/screenshots/**/*.png
+all-pages-visual-evidence.tar.gz
