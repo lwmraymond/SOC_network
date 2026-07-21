@@ -46,9 +46,11 @@ Protocol: `FAIL_CLOSED_ONE_PAGE_ONE_GIT`
 | P40 | PASS | PASS* | PASS* | `03b2245` | GITHUB_SAVED | REVIEW | PENDING |
 | P41 | PASS | PASS* | PASS* | `0563549` | GITHUB_SAVED | REVIEW | PENDING |
 | P42 | PASS | PASS* | PASS* | `1a65470` | GITHUB_SAVED | REVIEW | PENDING |
-| H01 | PENDING | PENDING | PENDING | — | NOT_STARTED | REVIEW | PENDING |
+| H01 | PASS | PASS† | PASS† | `2fc6402` | GITHUB_SAVED | PASS | PENDING |
+| H02 | PENDING | PENDING | PENDING | — | NOT_STARTED | REVIEW | PENDING |
 
-`*` P09–P42 validation is scoped: strict TypeScript with unused checks and a template-risk lint.
+`*` P09–P42 validation is scoped: strict TypeScript with unused checks and a template-risk lint.  
+`†` H01 validation is scoped source validation: TypeScript/TSX parse/transpile syntax, possible-unused-import scan, CSS structure, workflow contract and template-risk checks. It is not an installed-dependency repository strict typecheck. See `docs/workflow-briefs/H01_VALIDATION.md`.
 
 Five-page validation P31–P35: `BLOCKED_EXTERNAL_DEPENDENCY`  
 Scoped TypeScript/template lint: `PASS`  
@@ -90,5 +92,12 @@ P41 difference contract: realm/provider topology → connection/TLS/login health
 P42 GitHub page readback: `src/pages/P42ThemeAccessibility.tsx` · blob `13ba31e295e9cc0421782186c18c27b51520bcc9`.  
 P42 difference contract: theme registry → semantic token workbench → nested EUI live component preview → contrast/focus/text-scale/motion findings → governed publish/rollback receipt. Elastic official EUI provider, color-mode, high-contrast, color accessibility, focus, and Kibana appearance guidance was used; visual acceptance remains `PENDING`.
 
-Current item: `H01` (`NOT_STARTED`)  
-Next item remains blocked until H01 is committed, pushed and read back from GitHub: `H02`.
+H01 Asset Detail shares the P12 route `/devices/assets/:assetId`; no duplicate workflow page was created.  
+H01 workspace readback: `src/components/page-specific/P12Asset360Workspace.tsx` · blob `013db8ef623b05443993d95db43d2de448591c96`.  
+H01 layout readback: `src/components/page-specific/P12Asset360Workspace.css` · blob `1d1b3206cd3c51f44233280c1c173a1379ae8140`.  
+H01 parent entry readback: `src/components/page-specific/p08/P08AssetInventoryWorkspace.tsx` · blob `b547663d453d7fe1dbe3fc15cd30375e9afee7d4`.  
+H01 workflow registry readback: `src/catalog/workflowSpecs.ts` · blob `5ae73d58d718f2abbce44a67aa3961642abe2e7a`.  
+H01 scoped validation: `SCOPED_SOURCE_VALIDATION_PASS`; actual repository strict typecheck/build/browser remain `BLOCKED`; visual acceptance `PENDING`.
+
+Current item: `H02` (`NOT_STARTED`)  
+Next item remains blocked until H02 is committed, pushed and read back from GitHub: `H03`.
