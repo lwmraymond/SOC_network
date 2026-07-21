@@ -59,7 +59,7 @@ const P40 = lazy(() => import('./pages/P40PlatformSettingsDirectory'));
 const P41 = lazy(() => import('./pages/P41AuthenticationLdapSso'));
 const P42 = lazy(() => import('./pages/P42ThemeAccessibility'));
 
-const groupIcons: Record<PageGroup, 'inspect' | 'search' | 'document' | 'users' | 'gear'> = {
+const groupIcons: Record<PageGroup, 'inspect' | 'search' | 'document'> = {
   Dashboard: 'inspect',
   Analyze: 'search',
   Device: 'inspect',
@@ -69,8 +69,8 @@ const groupIcons: Record<PageGroup, 'inspect' | 'search' | 'document' | 'users' 
   'Runtime Catalog': 'document',
   'Knowledge Base': 'document',
   'Response Projects': 'document',
-  Administration: 'users',
-  'Platform Settings': 'gear',
+  Administration: 'inspect',
+  'Platform Settings': 'document',
 };
 
 function Suspended({ children }: { children: ReactNode }) {
