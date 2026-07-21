@@ -35,9 +35,10 @@ Protocol: `FAIL_CLOSED_ONE_PAGE_ONE_GIT`
 | P29 | PASS | PASS* | PASS* | `7ecbcbe` | GITHUB_SAVED | REVIEW | PENDING |
 | P30 | PASS | PASS* | PASS* | `728bde0` | GITHUB_SAVED | REVIEW | PENDING |
 | P31 | PASS | PASS* | PASS* | `de393ff` | GITHUB_SAVED | REVIEW | PENDING |
-| P32 | PENDING | PENDING | PENDING | — | NOT_STARTED | REVIEW | PENDING |
+| P32 | PASS | PASS* | PASS* | `bbd76d4` | GITHUB_SAVED | REVIEW | PENDING |
+| P33 | PENDING | PENDING | PENDING | — | NOT_STARTED | REVIEW | PENDING |
 
-`*` P09–P31 validation is scoped: strict TypeScript with unused checks and a template-risk lint.
+`*` P09–P32 validation is scoped: strict TypeScript with unused checks and a template-risk lint.
 
 Five-page validation P26–P30: `BLOCKED_EXTERNAL_DEPENDENCY`  
 Scoped TypeScript/template lint: `PASS`  
@@ -51,8 +52,8 @@ Report: `docs/FIVE_PAGE_VALIDATION_P21_P25.md`
 
 P23 corrective record: placeholder source was replaced before page/progress advancement.
 
-P31 GitHub page readback: `src/pages/P31RuntimeObjects.tsx` · blob `9fb147d07dffa217ec14f571819964795b67b6a2`.  
-P31 workspace readback: `src/components/page-specific/P31RuntimeObjectsWorkspace.tsx` · blob `05e9b1dd088a2067a0698e64710e874fea17a5c7`.
+P32 GitHub page readback: `src/pages/P32ScriptWorkbench.tsx` · blob `1159bfd00fc57846b59022953a650382fa9565f4`.  
+P32 workspace readback: `src/components/page-specific/P32ScriptWorkbenchWorkspace.tsx` · blob `7620f543309919f32a3b578c5e8a6cb7ad1569a5`.
 
-Current item: `P32 — Script Workbench` (`NOT_STARTED`)  
-Next item remains blocked until P32 is committed, pushed and read back from GitHub: `P33`.
+Current item: `P33 — Knowledge Sources` (`NOT_STARTED`)  
+Next item remains blocked until P33 is committed, pushed and read back from GitHub: `P34`.
