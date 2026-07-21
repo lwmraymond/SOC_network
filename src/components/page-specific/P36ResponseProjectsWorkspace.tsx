@@ -157,7 +157,7 @@ export function P36ResponseProjectsWorkspace({ fixture }: { fixture: PrototypePa
           <EuiFlexItem grow={false}><EuiBadge color={selected.status === 'At risk' ? 'danger' : 'primary'}>{selected.status}</EuiBadge></EuiFlexItem>
         </EuiFlexGroup>
         <EuiSpacer size="m" />
-        <EuiCallOut title="Objective and independent success criteria" iconType="flag">{selected.objective} Project completion requires outcome evidence; linked Change or Task closure is supporting evidence only.</EuiCallOut>
+        <EuiCallOut title="Objective and independent success criteria">{selected.objective} Project completion requires outcome evidence; linked Change or Task closure is supporting evidence only.</EuiCallOut>
         <EuiSpacer size="l" />
 
         {view === 'Portfolio' && <>
