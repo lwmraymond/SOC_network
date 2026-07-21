@@ -31,11 +31,17 @@ Protocol: `FAIL_CLOSED_ONE_PAGE_ONE_GIT`
 | P25 | PASS | PASS* | PASS* | `b44eefe` | GITHUB_SAVED | REVIEW | PENDING |
 | P26 | PASS | PASS* | PASS* | `a72ffb4` | GITHUB_SAVED | REVIEW | PENDING |
 | P27 | PASS | PASS* | PASS* | `328b3f6` | GITHUB_SAVED | REVIEW | PENDING |
-| P28 | PENDING | PENDING | PENDING | — | NOT_STARTED | REVIEW | PENDING |
+| P28 | PASS | PASS* | PASS* | `be11baa` | GITHUB_SAVED | REVIEW | PENDING |
+| P29 | PENDING | PENDING | PENDING | — | NOT_STARTED | REVIEW | PENDING |
 
-`*` P09–P27 validation is scoped: strict TypeScript with unused checks and a template-risk lint.
+`*` P09–P28 validation is scoped: strict TypeScript with unused checks and a template-risk lint.
+
+Five-page validation P21–P25: `BLOCKED_EXTERNAL_DEPENDENCY`  
+Scoped TypeScript/template lint: `PASS`  
+Full lint/unit/build: `BLOCKED` — offline `npm ci` lacked `zwitch-1.0.5`; no GitHub Actions run existed.  
+Report: `docs/FIVE_PAGE_VALIDATION_P21_P25.md`
 
 P23 corrective record: placeholder source was replaced before page/progress advancement.
 
-Current item: `P28 — Data Sources & Integrations` (`NOT_STARTED`)  
-Next item remains blocked until P28 is committed, pushed and read back from GitHub: `P29`.
+Current item: `P29` (`NOT_STARTED`)  
+Next item remains blocked until P29 is committed, pushed and read back from GitHub: `P30`.
