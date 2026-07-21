@@ -13,7 +13,7 @@ export function P06ResponseActionsWorkspace({ fixture }: { fixture: PrototypePag
   const [approvalFilter, setApprovalFilter] = useState('All approvals');
   const [executionFilter, setExecutionFilter] = useState('Active and failed');
   const [riskFilter, setRiskFilter] = useState('All risk');
-  const [activeTab, setActiveTab] = useSetate('Governance');
+  const [activeTab, setActiveTab] = useState('Governance');
   const [detailOpen, setDetailOpen] = useState(false);
   const [approvalOpen, setApprovalOpen] = useState(false);
   const [prototypeNotice, setPrototypeNotice] = useState<string>();

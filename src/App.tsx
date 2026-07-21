@@ -8,10 +8,13 @@ import {
   EuiHeaderSectionItem,
   EuiLoadingSpinner,
   EuiButtonEmpty,
+  EuiIcon,
+  EuiSideNav,
+  EuiText,
 } from '@elastic/eui';
-import { Link, NavLink, Route, Routes, matchPath, useLocation, useNavigate } from 'react-router-dom';
+import { Link, Route, Routes, matchPath, useLocation, useNavigate } from 'react-router-dom';
 import { pageGroups, pageSpecs, routeForNavigation } from './catalog/pageSpecs';
-import { workflowSpecs } from './catalog/workflowSpecs';
+import type { PageGroup } from './catalog/pageSpecs';
 import { usePlatformTheme } from './theme';
 const P01 = lazy(() => import('./pages/P01SecurityOperationsOverview'));
 const P02 = lazy(() => import('./pages/P02ExecutiveWallboard'));
@@ -48,26 +51,17 @@ const P32 = lazy(() => import('./pages/P32ScriptWorkbench'));
 const P33 = lazy(() => import('./pages/P33KnowledgeSources'));
 const P34 = lazy(() => import('./pages/P34PlaybooksAutomationTemplates'));
 const P35 = lazy(() => import('./pages/P35DetectionNotes'));
-const P36 = lazy(() => import('./pages/P36ResponseProjects'));
-const P37 = lazy(() => import('./pages/P37Users'));
-const P38 = lazy(() => import('./pages/P38Roles'));
-const P39 = lazy(() => import('./pages/P39Permissions'));
-const P40 = lazy(() => import('./pages/P40PlatformSettingsDirectory'));
-const P41 = lazy(() => import('./pages/P41AuthenticationLdapSso'));
-const P42 = lazy(() => import('./pages/P42ThemeAccessibility'));
-const H02 = lazy(() => import('./workflows/H02WorkItemDetail'));
-const H03 = lazy(() => import('./workflows/H03CreateRequest'));
-const H04 = lazy(() => import('./workflows/H04MajorIncidentCommand'));
-const H05 = lazy(() => import('./workflows/H05ProblemKnownErrorDetail'));
-const H06 = lazy(() => import('./workflows/H06ChangeCabDetail'));
-const H07 = lazy(() => import('./workflows/H07ApprovalDetail'));
-const H08 = lazy(() => import('./workflows/H08CatalogItemDetail'));
-const H09 = lazy(() => import('./workflows/H09ProjectDetail'));
-const H10 = lazy(() => import('./workflows/H10UserDetail'));
-const H11 = lazy(() => import('./workflows/H11PlatformHealthServiceLogs'));
-const H12 = lazy(() => import('./workflows/H12PlatformHealthQueues'));
-const H13 = lazy(() => import('./workflows/H13PlatformHealthConnectors'));
-const H14 = lazy(() => import('./workflows/H14MySettings'));
+
+const groupIcons: Record<PageGroup, 'inspect' | 'search' | 'document'> = {
+  Dashboard: 'inspect',
+  Analyze: 'search',
+  Device: 'inspect',
+  'Ticket System / ITSM': 'document',
+  'AI Copilot': 'search',
+  'SOC Agent': 'inspect',
+  'Runtime Catalog': 'document',
+  'Knowledge Base': 'document',
+};
 
 function Suspended({ children }: { children: ReactNode }) {
   return <Suspense fallback={<div className="routeLoading" role="status"><EuiLoadingSpinner size="xl" /><span>Loading work surface…</span></div>}>{children}</Suspense>;
@@ -79,28 +73,46 @@ function AppShell() {
   const [globalSearch,setGlobalSearch]=useState('');
   const { mode, toggleMode } = usePlatformTheme();
   const currentPage = useMemo(() => pageSpecs.find((page) => Boolean(matchPath({ path: page.route, end: true }, location.pathname))), [location.pathname]);
-  const currentWorkflow = useMemo(() => workflowSpecs.find((workflow) => {
-    const [path, query] = workflow.route.split('?');
-    if (!matchPath({ path, end: true }, location.pathname)) return false;
-    if (!query) return true;
-    const expected = new URLSearchParams(query.replaceAll(/:([A-Za-z]+)/g, 'demo'));
-    const actual = new URLSearchParams(location.search);
-    return [...expected.keys()].every((key) => actual.has(key));
-  }), [location.pathname, location.search]);
+  const sideNavItems = useMemo(() => [{
+    id: 'workspaces',
+    name: 'Workspaces',
+    items: pageGroups.map((group) => ({
+      id: group,
+      name: group,
+      icon: <EuiIcon type={groupIcons[group]} size="s" />,
+      items: pageSpecs.filter((page) => page.group === group).map((page) => {
+        const href = routeForNavigation(page.route);
+        return {
+          id: page.id,
+          name: page.title,
+          href,
+          isSelected: currentPage?.id === page.id,
+          onClick: (event: React.MouseEvent<HTMLElement>) => {
+            event.preventDefault();
+            navigate(href);
+          },
+        };
+      }),
+    })),
+  }], [currentPage?.id, navigate]);
   useEffect(() => {
-    document.title = `${currentWorkflow?.title ?? currentPage?.title ?? 'SOC / ITSM Interactive Design'} · SOC Operations`;
-  }, [currentPage?.title, currentWorkflow?.title]);
+    document.title = `${currentPage?.title ?? 'SOC / ITSM Interactive Design'} · SOC Operations`;
+  }, [currentPage?.title]);
   return <div className={`appShell theme-${mode}`}>
     <header aria-label="Application header">
       <EuiHeader position="fixed">
         <EuiHeaderSection grow={false}><EuiHeaderSectionItem><EuiHeaderLogo iconType="logoElastic">SOC Operations</EuiHeaderLogo></EuiHeaderSectionItem></EuiHeaderSection>
         <EuiHeaderSection grow><EuiHeaderSectionItem><EuiFieldSearch compressed value={globalSearch} onChange={(event)=>setGlobalSearch(event.target.value)} onSearch={()=>navigate(`/analyzer/search?q=${encodeURIComponent(globalSearch)}`)} placeholder="Global object search" aria-label="Global search" /></EuiHeaderSectionItem></EuiHeaderSection>
-        <EuiHeaderSection grow={false}><EuiHeaderSectionItem><EuiButtonEmpty size="xs" onClick={toggleMode} aria-label={`Switch to ${mode === 'light' ? 'dark' : 'light'} theme`}>{mode === 'light' ? 'Dark' : 'Light'} mode</EuiButtonEmpty></EuiHeaderSectionItem><EuiHeaderSectionItem><EuiBadge color="hollow">{location.pathname}</EuiBadge></EuiHeaderSectionItem><EuiHeaderSectionItem><Link to="/me/settings">My Settings</Link></EuiHeaderSectionItem></EuiHeaderSection>
+        <EuiHeaderSection grow={false}><EuiHeaderSectionItem><EuiBadge color="hollow">Prototype</EuiBadge></EuiHeaderSectionItem><EuiHeaderSectionItem><EuiButtonEmpty size="xs" onClick={toggleMode} aria-label={`Switch to ${mode === 'light' ? 'dark' : 'light'} theme`}>{mode === 'light' ? 'Dark' : 'Light'} theme</EuiButtonEmpty></EuiHeaderSectionItem></EuiHeaderSection>
       </EuiHeader>
     </header>
     <aside className="sidebar" aria-label="Primary navigation">
-      <div className="sidebarIntro"><strong>Interactive design</strong><span>42 pages · 19 workflows</span></div>
-      {pageGroups.map((group)=><details key={group} open><summary>{group}</summary><nav aria-label={`${group} pages`}>{pageSpecs.filter((page)=>page.group===group).map((page)=><NavLink key={page.id} to={routeForNavigation(page.route)} className={({isActive})=>(isActive||currentPage?.id===page.id||currentWorkflow?.parent===page.title)?'navItem active':'navItem'}><span>{page.id}</span>{page.title}</NavLink>)}</nav></details>)}
+      <div className="sidebarIntro">
+        <EuiText size="xs"><strong>Operations</strong><p>Security and service workspaces</p></EuiText>
+        <EuiBadge color="hollow">P01–P35</EuiBadge>
+      </div>
+      <EuiSideNav items={sideNavItems} truncate mobileBreakpoints={undefined} />
+      <div className="sidebarFooter"><EuiText size="xs" color="subdued"><p>Fixture-backed review environment</p></EuiText></div>
     </aside>
     <div className="content" id="main-content">
       <Routes>
@@ -139,26 +151,6 @@ function AppShell() {
           <Route path="/knowledge/sources" element={<Suspended><P33 /></Suspended>} />
           <Route path="/knowledge/playbooks" element={<Suspended><P34 /></Suspended>} />
           <Route path="/knowledge/detection-notes" element={<Suspended><P35 /></Suspended>} />
-          <Route path="/projects/responses" element={<Suspended><P36 /></Suspended>} />
-          <Route path="/admin/users" element={<Suspended><P37 /></Suspended>} />
-          <Route path="/admin/roles" element={<Suspended><P38 /></Suspended>} />
-          <Route path="/admin/permissions" element={<Suspended><P39 /></Suspended>} />
-          <Route path="/settings" element={<Suspended><P40 /></Suspended>} />
-          <Route path="/settings/authentication" element={<Suspended><P41 /></Suspended>} />
-          <Route path="/settings/theme" element={<Suspended><P42 /></Suspended>} />
-          <Route path="/itsm/work-items/:type/:id" element={<Suspended><H02 /></Suspended>} />
-          <Route path="/itsm/requests/new" element={<Suspended><H03 /></Suspended>} />
-          <Route path="/itsm/incidents/:id/command" element={<Suspended><H04 /></Suspended>} />
-          <Route path="/itsm/problems/:id" element={<Suspended><H05 /></Suspended>} />
-          <Route path="/itsm/changes/:id" element={<Suspended><H06 /></Suspended>} />
-          <Route path="/itsm/approvals/:id" element={<Suspended><H07 /></Suspended>} />
-          <Route path="/itsm/catalog/:id" element={<Suspended><H08 /></Suspended>} />
-          <Route path="/projects/responses/:id" element={<Suspended><H09 /></Suspended>} />
-          <Route path="/admin/users/:id" element={<Suspended><H10 /></Suspended>} />
-          <Route path="/dashboard/platform-health/services/:id/logs" element={<Suspended><H11 /></Suspended>} />
-          <Route path="/dashboard/platform-health/queues" element={<Suspended><H12 /></Suspended>} />
-          <Route path="/dashboard/platform-health/connectors" element={<Suspended><H13 /></Suspended>} />
-          <Route path="/me/settings" element={<Suspended><H14 /></Suspended>} />
         <Route path="/" element={<div className="routeRedirect"><h1>SOC / ITSM Interactive Design</h1><p>Select a work surface from the navigation.</p><Link to="/dashboard/soc">Open Security Operations Overview</Link></div>} />
         <Route path="*" element={<div className="routeRedirect"><h1>Route not found</h1><p>The requested route is not part of the canonical catalog.</p><Link to="/dashboard/soc">Return to dashboard</Link></div>} />
       </Routes>

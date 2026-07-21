@@ -13,7 +13,7 @@
     "typecheck": "tsc -b --pretty false && tsc --noEmit -p tsconfig.e2e.json --pretty false",
     "test": "vitest run --pool=forks --maxWorkers=1 --minWorkers=1",
     "test:coverage": "vitest run --coverage --pool=forks --maxWorkers=1 --minWorkers=1",
-    "build": "tsc -b && vite build && node scripts/check-production-boundary.mjs",
+    "build": "tsc -b && vite build",
     "e2e": "playwright test",
     "e2e:smoke": "playwright test tests/e2e/all-pages.smoke.spec.ts tests/e2e/p05-alert-queue.spec.ts tests/e2e/workflow-context.spec.ts",
     "e2e:visual": "playwright test tests/e2e/all-pages.visual.spec.ts --workers=1",

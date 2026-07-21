@@ -50,7 +50,7 @@ export function P23CopilotWorkspace({ fixture }: { fixture: PrototypePageFixture
       </div></EuiFlexItem>
       <EuiFlexItem grow={3}><EuiPanel paddingSize="m" hasBorder data-visual-region="copilot-evidence-tool-context">
         <EuiTitle size="s"><h2>Evidence & tool context</h2></EuiTitle><EuiSelect value={scope} onChange={(event: ChangeEvent) => setScope(event.target.value)} options={['Explicit incident + case context','Current Asset 360 context','Current ITSM work item','No attached context'].map((value) => ({ value, text: value }))} />
-        <EuiCheckbox checked={includeTelemetry} onChange={() => setIncludeTelemetry((value) => !value)} label="Include authorized telemetry" />
+        <EuiCheckbox id="p23-include-authorized-telemetry" checked={includeTelemetry} onChange={() => setIncludeTelemetry((value) => !value)} label="Include authorized telemetry" />
         <EuiCallOut title="Permission-trimmed scope" size="s">{scope}. Hidden fields and unauthorized datasets are excluded; scope never expands silently.</EuiCallOut><EuiSpacer size="m" />
         <EuiTitle size="xs"><h3>Citations</h3></EuiTitle>{citations.map((item) => <div key={item.id}><strong>{item.source}</strong><span>{item.age} · {item.coverage}</span><EuiBadge color={item.conflict ? 'danger' : 'success'}>{item.conflict ? 'Conflict' : 'Fresh'}</EuiBadge></div>)}
         <EuiSpacer size="m" /><EuiTitle size="xs"><h3>Tool proposal</h3></EuiTitle><EuiCodeBlock language="json" paddingSize="s">{JSON.stringify({ tool: 'event_search.create_query', scope: 'INC-7000', mode: 'draft_only', policy: 'copilot-tools@r12' }, null, 2)}</EuiCodeBlock><EuiSpacer size="s" /><EuiButton fill fullWidth onClick={() => setApprovalOpen(true)}>Review tool request</EuiButton>

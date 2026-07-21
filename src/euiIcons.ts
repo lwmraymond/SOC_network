@@ -6,10 +6,15 @@ import { icon as arrowUp } from '@elastic/eui/es/components/icon/assets/arrow_up
 import { icon as check } from '@elastic/eui/es/components/icon/assets/check.js';
 import { icon as checkInCircleFilled } from '@elastic/eui/es/components/icon/assets/checkInCircleFilled.js';
 import { icon as cross } from '@elastic/eui/es/components/icon/assets/cross.js';
+import { icon as document } from '@elastic/eui/es/components/icon/assets/document.js';
+import { icon as dot } from '@elastic/eui/es/components/icon/assets/dot.js';
+import { icon as empty } from '@elastic/eui/es/components/icon/assets/empty.js';
 import { icon as error } from '@elastic/eui/es/components/icon/assets/error.js';
 import { icon as info } from '@elastic/eui/es/components/icon/assets/info.js';
+import { icon as inspect } from '@elastic/eui/es/components/icon/assets/inspect.js';
 import { icon as lock } from '@elastic/eui/es/components/icon/assets/lock.js';
 import { icon as logoElastic } from '@elastic/eui/es/components/icon/assets/logo_elastic.js';
+import { icon as merge } from '@elastic/eui/es/components/icon/assets/merge.js';
 import { icon as search } from '@elastic/eui/es/components/icon/assets/search.js';
 import { icon as sortAscending } from '@elastic/eui/es/components/icon/assets/sortAscending.js';
 import { icon as sortDescending } from '@elastic/eui/es/components/icon/assets/sortDescending.js';
@@ -26,10 +31,15 @@ export const registeredEuiIcons = {
   check,
   checkInCircleFilled,
   cross,
+  document,
+  dot,
+  empty,
   error,
   info,
+  inspect,
   lock,
   logoElastic,
+  merge,
   search,
   sortAscending,
   sortDescending,

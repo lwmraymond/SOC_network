@@ -2,18 +2,34 @@ import { ReactNode, useState } from 'react';
 import {
   EuiBadge,
   EuiButton,
+  EuiButtonEmpty,
   EuiCallOut,
   EuiFlexGroup,
   EuiFlexItem,
+  EuiHealth,
+  EuiPanel,
   EuiPageTemplate,
+  EuiPopover,
   EuiSelect,
   EuiSpacer,
-  EuiText,
+  EuiTitle,
 } from '@elastic/eui';
 import type { PageSpec } from '../catalog/pageSpecs';
 import type { PrototypePageFixture } from '../types/prototype';
 import type { PrototypeViewState } from './usePrototypePage';
 import { PrototypeActionFlow, type PrototypeReceipt } from './PrototypeActionFlow';
+import { SocText } from './SocTypography';
+
+const groupIcon = {
+  Dashboard: 'inspect',
+  Analyze: 'search',
+  Device: 'inspect',
+  'Ticket System / ITSM': 'document',
+  'AI Copilot': 'search',
+  'SOC Agent': 'inspect',
+  'Runtime Catalog': 'document',
+  'Knowledge Base': 'document',
+} as const;
 
 const stateCopy: Record<Exclude<PrototypeViewState,'ready'|'loading'|'empty'|'filtered-empty'>,{title:string;body:string;color:'danger'|'warning'|'primary'}> = {
   error: { title: 'Unable to load this work surface', body: 'The adapter returned a classified error. Query, filters and navigation context are preserved.', color: 'danger' },
@@ -33,6 +49,7 @@ export function PageFrame({ spec, fixture, adapterError, viewState, setViewState
   children: ReactNode;
 }) {
   const [actionOpen, setActionOpen] = useState(false);
+  const [detailsOpen, setDetailsOpen] = useState(false);
   const [receipt, setReceipt] = useState<PrototypeReceipt>();
   const blocked = adapterError && !fixture;
   const pending = !fixture && !adapterError;
@@ -40,27 +57,45 @@ export function PageFrame({ spec, fixture, adapterError, viewState, setViewState
   const fatal = viewState === 'error' || viewState === 'denied' || viewState === 'offline';
   const stateMessage = !['ready','loading','empty','filtered-empty'].includes(viewState) ? stateCopy[viewState as keyof typeof stateCopy] : undefined;
   return (
-    <EuiPageTemplate panelled restrictWidth={1800} className="prototypePage" data-page-id={spec.id} data-fixture-ready={fixture ? 'true' : 'false'}>
+    <EuiPageTemplate restrictWidth={1800} className="prototypePage" data-page-id={spec.id} data-fixture-ready={fixture ? 'true' : 'false'}>
       <EuiPageTemplate.Header
         data-visual-region="page-header"
+        iconType={groupIcon[spec.group]}
         pageTitle={spec.title}
-        description={`${spec.id} · ${spec.archetype}`}
-        rightSideItems={[<EuiButton key="primary" fill isDisabled={Boolean(blocked)} title={blocked ? 'Production capability and adapter are not connected' : undefined} onClick={() => setActionOpen(true)}>{spec.primaryAction}</EuiButton>]}
+        description={spec.archetype}
+        paddingSize="m"
+        bottomBorder="extended"
+        rightSideItems={[
+          <EuiButton key="primary" fill iconType="arrowRight" iconSide="right" isDisabled={Boolean(blocked)} title={blocked ? 'Production capability and adapter are not connected' : undefined} onClick={() => setActionOpen(true)}>{spec.primaryAction}</EuiButton>,
+        ]}
       />
-      <EuiPageTemplate.Section>
-        <nav aria-label="Breadcrumb" className="breadcrumbs"><a href="/">SOC / ITSM</a><span>/</span><span>{spec.group}</span><span>/</span><strong>{spec.title}</strong></nav>
-        <EuiSpacer size="s" />
-        <EuiCallOut title="Prototype Mode · Fixture Data · No production mutations" color="warning">
-          Visual and interaction design only. Production adapters never fall back to fixtures, and submitted/accepted/queued are never presented as completed.
-        </EuiCallOut>
-        <EuiSpacer size="s" />
-        <EuiFlexGroup gutterSize="s" alignItems="center" wrap>
-          <EuiFlexItem grow={false}><EuiBadge color="hollow">{spec.primaryRole}</EuiBadge></EuiFlexItem>
-          <EuiFlexItem grow={false}><EuiBadge color="hollow">Asia/Taipei</EuiBadge></EuiFlexItem>
-          <EuiFlexItem grow={false}><EuiBadge color={fixture && fixture.coverage < 0.95 ? 'warning' : 'success'}>Coverage {fixture ? `${Math.round(fixture.coverage * 100)}%` : '—'}</EuiBadge></EuiFlexItem>
-          <EuiFlexItem grow={false}><EuiBadge color="hollow">Freshness {fixture?.freshness ?? '—'}</EuiBadge></EuiFlexItem>
-          {import.meta.env.DEV && <EuiFlexItem grow={false}><EuiSelect compressed aria-label="Prototype state switcher" value={viewState} onChange={(event) => setViewState(event.target.value as PrototypeViewState)} options={['ready','loading','empty','filtered-empty','error','denied','offline','stale','degraded','partial'].map((value) => ({ value, text: value }))} /></EuiFlexItem>}
-        </EuiFlexGroup>
+      <EuiPageTemplate.Section paddingSize="m">
+        <EuiPanel className="pageContextPanel" paddingSize="s" hasBorder>
+          <EuiFlexGroup gutterSize="s" alignItems="center" wrap>
+            <EuiFlexItem><EuiHealth color="warning">Prototype data</EuiHealth></EuiFlexItem>
+            <EuiFlexItem grow={false}><EuiBadge color={fixture && fixture.coverage < 0.95 ? 'warning' : 'success'}>Coverage {fixture ? `${Math.round(fixture.coverage * 100)}%` : '—'}</EuiBadge></EuiFlexItem>
+            <EuiFlexItem grow={false}><EuiBadge color="hollow">Freshness {fixture?.freshness ?? '—'}</EuiBadge></EuiFlexItem>
+            <EuiFlexItem grow={false}>
+              <EuiPopover
+                isOpen={detailsOpen}
+                closePopover={() => setDetailsOpen(false)}
+                button={<EuiButtonEmpty size="xs" iconType="info" onClick={() => setDetailsOpen((open) => !open)}>Page details</EuiButtonEmpty>}
+              >
+                <div className="pageDetailsPopover">
+                  <EuiTitle size="xs"><h2>Page details</h2></EuiTitle>
+                  <SocText role="supporting">Fixture data only. Actions do not mutate production.</SocText>
+                  <dl>
+                    <dt>Role</dt><dd>{spec.primaryRole}</dd>
+                    <dt>Timezone</dt><dd>Asia/Taipei</dd>
+                    <dt>Surface</dt><dd>{spec.id} · {spec.group}</dd>
+                  </dl>
+                  {import.meta.env.DEV && <EuiSelect compressed aria-label="Prototype state switcher" value={viewState} onChange={(event) => setViewState(event.target.value as PrototypeViewState)} options={['ready','loading','empty','filtered-empty','error','denied','offline','stale','degraded','partial'].map((value) => ({ value, text: value }))} />}
+                  <SocText role="metadata">API, permission and mutation ownership remain disconnected until production services are supplied.</SocText>
+                </div>
+              </EuiPopover>
+            </EuiFlexItem>
+          </EuiFlexGroup>
+        </EuiPanel>
         <EuiSpacer size="m" />
         {pending && <EuiCallOut title="Loading prototype adapter">Resolving the isolated development adapter and its source watermark.</EuiCallOut>}
         {blocked && <EuiCallOut title="Production adapter unavailable" color="danger">{adapterError}</EuiCallOut>}
@@ -69,8 +104,6 @@ export function PageFrame({ spec, fixture, adapterError, viewState, setViewState
         {stateMessage && <EuiCallOut title={stateMessage.title} color={stateMessage.color}>{stateMessage.body}</EuiCallOut>}
         {!blocked && viewState !== 'loading' && !empty && !fatal && <>{children}</>}
         {fatal && <EuiSpacer />}
-        <EuiSpacer size="l" />
-        <EuiText size="xs" color="subdued"><p><strong>Implementation boundary:</strong> API, schema, permission, SLA, threshold and mutation ownership remain [DISCOVER] or [BLOCKED] until production services are supplied.</p></EuiText>
       </EuiPageTemplate.Section>
       <PrototypeActionFlow spec={spec} open={actionOpen} onClose={() => setActionOpen(false)} onReceipt={setReceipt} />
       {receipt && <div className="receiptDock" role="status" aria-live="polite"><strong>Prototype receipt</strong><span>{receipt.receiptId}</span><span>Status: {receipt.status}</span><span>Not completed</span><button type="button" onClick={() => setReceipt(undefined)}>Close</button></div>}

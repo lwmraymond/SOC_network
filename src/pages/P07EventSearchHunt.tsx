@@ -4,4 +4,6 @@
  */
 import { EventSearchPage } from '../p07/EventSearchPage';
 
-export default EventSearchPage;
+export default function P07EventSearchHunt() {
+  return <div className="prototypePage p07Frame"><EventSearchPage /></div>;
+}

@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import './euiIcons';
 import './styles.css';
 import './styles-differentiated.css';
+import './styles-polish.css';
 import { App } from './App';
 import { AppErrorBoundary } from './AppErrorBoundary';
 import { PlatformThemeProvider } from './theme';
