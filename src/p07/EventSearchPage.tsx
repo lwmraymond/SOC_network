@@ -33,7 +33,7 @@ import { PrototypePermissionService, safeCount } from '../foundation/permissions
 import { PrototypeExportJobService, type ExportJob } from '../foundation/actions';
 import { InMemorySavedViewRepository } from '../foundation/savedViews';
 import { prototypeEvents, type EventRecord, isPrototypeMode } from '../prototype/events';
-import { initialP07State, p07Reducer } from './store';
+import { initialP07State, p07Reducer, type P07State } from './store';
 
 const adapter = new FixtureCursorAdapter(prototypeEvents);
 const policy = new PrototypePermissionService();
@@ -48,12 +48,28 @@ const catalog: FieldDefinition[] = [
   { name: 'user.email', operators: [':', '='], visible: false, type: 'string' },
 ];
 
+const forcedStates: P07State['status'][] = ['empty', 'filtered-empty', 'error', 'denied', 'offline', 'stale', 'degraded', 'partial'];
+const stateCopy: Record<Exclude<P07State['status'], 'ready' | 'loading'>, { title: string; body: string; color: 'danger' | 'warning' | 'primary' }> = {
+  empty: { title: 'No records are available', body: 'This is a valid empty state, not a zero-filled result set.', color: 'primary' },
+  'filtered-empty': { title: 'No results match the current conditions', body: 'Query, filters and time range remain intact so one condition can be widened safely.', color: 'primary' },
+  error: { title: 'Unable to load this work surface', body: 'The adapter returned a classified error. Query, filters and navigation context are preserved.', color: 'danger' },
+  denied: { title: 'Access denied', body: 'The policy decision denied this route or scope without exposing hidden result rows or counts.', color: 'danger' },
+  offline: { title: 'Offline', body: 'No cached operational records are presented as authoritative data.', color: 'warning' },
+  stale: { title: 'Stale authoritative state', body: 'The source watermark is outside the accepted freshness budget. Permitted stale rows remain visible and actions require refresh.', color: 'warning' },
+  degraded: { title: 'Degraded coverage', body: 'One or more source regions are unavailable. Available rows remain visible with an explicit coverage warning.', color: 'warning' },
+  partial: { title: 'Partial data', body: 'The adapter returned partial coverage. Grid and export retain the same warning.', color: 'warning' },
+};
+
 export function EventSearchPage() {
   const [params, setParams] = useSearchParams();
+  const forcedStatus = useMemo(() => {
+    const candidate = params.get('state') as P07State['status'] | null;
+    return candidate && forcedStates.includes(candidate) ? candidate : undefined;
+  }, [params]);
   const [state, dispatch] = useReducer(p07Reducer, {
     ...initialP07State,
     query: params.get('q') ?? '',
-    status: (params.get('state') as typeof initialP07State.status) || 'ready',
+    status: forcedStatus ?? 'ready',
   });
   const [draft, setDraft] = useState(state.query);
   const [rows, setRows] = useState<EventRecord[]>([]);
@@ -64,12 +80,29 @@ export function EventSearchPage() {
   const [selected, setSelected] = useState<EventRecord>();
   const [job, setJob] = useState<ExportJob>();
   const opener = useRef<HTMLButtonElement | null>(null);
+  const inspectorOpener = useRef<HTMLButtonElement | null>(null);
   const envelope = useMemo(() => createEnvelope(state.query, { cursor: state.cursor }), [state.query, state.cursor]);
 
   useEffect(() => {
     if (!isPrototypeMode) return;
+    if (forcedStatus === 'denied' || forcedStatus === 'error' || forcedStatus === 'offline') {
+      setRows([]);
+      setNext(undefined);
+      setPrev(undefined);
+      setSelected(undefined);
+      dispatch({ type: 'status', value: forcedStatus });
+      return;
+    }
+    if (forcedStatus === 'empty' || forcedStatus === 'filtered-empty') {
+      setRows([]);
+      setNext(undefined);
+      setPrev(undefined);
+      setSelected(undefined);
+      dispatch({ type: 'status', value: forcedStatus });
+      return;
+    }
     const controller = new AbortController();
-    dispatch({ type: 'status', value: 'loading' });
+    if (!forcedStatus) dispatch({ type: 'status', value: 'loading' });
     adapter.search({
       query: envelope,
       filters,
@@ -96,11 +129,11 @@ export function EventSearchPage() {
       setPrev(result.previousCursor);
       dispatch({
         type: 'status',
-        value: result.partial ? 'partial' : result.stale ? 'stale' : visible.length ? 'ready' : state.query ? 'filtered-empty' : 'empty',
+        value: forcedStatus ?? (result.partial ? 'partial' : result.stale ? 'stale' : visible.length ? 'ready' : state.query ? 'filtered-empty' : 'empty'),
       });
     });
     return () => controller.abort();
-  }, [envelope, filters, state.cursor, state.query]);
+  }, [envelope, filters, forcedStatus, state.cursor, state.query]);
 
   const run = () => {
     const parsed = parseQuery(draft);
@@ -133,10 +166,12 @@ export function EventSearchPage() {
     dispatch({ type: 'showReceipt' });
   };
 
-  const statusCallout = state.status !== 'ready' && state.status !== 'loading'
-    ? <EuiCallOut title={state.status.replace('-', ' ')} color={state.status === 'error' || state.status === 'denied' ? 'danger' : 'warning'}>Query state is structured and query, filters and URL are preserved.</EuiCallOut>
-    : null;
-  const display = state.status === 'empty' || state.status === 'filtered-empty' ? [] : rows;
+  const closeInspector = () => {
+    setSelected(undefined);
+    requestAnimationFrame(() => inspectorOpener.current?.focus());
+  };
+  const statusMessage = state.status !== 'ready' && state.status !== 'loading' ? stateCopy[state.status] : undefined;
+  const display = ['empty', 'filtered-empty', 'error', 'denied', 'offline'].includes(state.status) ? [] : rows;
   const selectedDecision = selected?.restricted ? 'masked' : 'visible';
   const visibleCount = safeCount(display.length, {
     decisionId: 'local', allowed: true, visible: true, reasonCode: 'ALLOWED', reason: '',
@@ -190,18 +225,18 @@ export function EventSearchPage() {
             <table className="chartFallback"><caption>Histogram exact-data fallback</caption><tbody><tr><th>Visible events</th><td>{display.length}</td></tr></tbody></table>
           </EuiPanel>
 
-          {statusCallout}
+          {statusMessage && <EuiCallOut title={statusMessage.title} color={statusMessage.color}>{statusMessage.body}</EuiCallOut>}
           <EuiPanel hasBorder paddingSize="m" className="p07ResultsPanel">
             {state.status === 'loading'
               ? <EuiCallOut title="Loading query execution">Cancellation is wired through AbortSignal.</EuiCallOut>
               : <EuiBasicTable tableCaption="Event search results" items={display} itemId="id" columns={[
-                { field: 'id', name: 'Event ID', render: (value: string, item: EventRecord) => <EuiButtonEmpty size="xs" onClick={() => { setSelected(item); dispatch({ type: 'select', value: item.id }); }}>{value}</EuiButtonEmpty> },
+                { field: 'id', name: 'Event ID', render: (value: string, item: EventRecord) => <EuiButtonEmpty size="xs" onClick={(event) => { inspectorOpener.current = event.currentTarget; setSelected(item); dispatch({ type: 'select', value: item.id }); }}>{value}</EuiButtonEmpty> },
                 { field: 'event_time', name: 'Event time', sortable: true },
                 { field: 'severity', name: 'Severity', render: (value: string) => <EuiBadge>{value}</EuiBadge> },
                 { field: 'source', name: 'Source' }, { field: 'host', name: 'Host' },
                 { field: 'user', name: 'User', render: (value: string, item: EventRecord) => item.restricted ? <span aria-label="masked field">••••••</span> : value },
                 { field: 'action', name: 'Action' },
-              ]} noItemsMessage={state.status === 'filtered-empty' ? 'No events match filters.' : 'No events available.'} />}
+              ]} noItemsMessage={state.status === 'filtered-empty' ? 'No events match filters.' : state.status === 'denied' ? 'No authorized events are available.' : 'No events available.'} />}
             <EuiSpacer size="s" />
             <EuiFlexGroup justifyContent="spaceBetween"><EuiButtonEmpty isDisabled={!prev} onClick={() => dispatch({ type: 'cursor', value: prev })}>Previous</EuiButtonEmpty><EuiButtonEmpty isDisabled={!next} onClick={() => dispatch({ type: 'cursor', value: next })}>Next</EuiButtonEmpty></EuiFlexGroup>
           </EuiPanel>
@@ -209,7 +244,7 @@ export function EventSearchPage() {
       </EuiPageTemplate.Section>
 
       {state.filterOpen && <EuiFlyout onClose={() => { dispatch({ type: 'toggleFilter' }); opener.current?.focus(); }} ownFocus size="s" aria-labelledby="filter-title"><EuiFlyoutHeader><EuiTitle><h2 id="filter-title">Advanced filter builder</h2></EuiTitle></EuiFlyoutHeader><EuiFlyoutBody><EuiText><p>Filter chips and builder share the same nested model. Stale facets never clear input.</p></EuiText><EuiButton onClick={addHigh}>Add severity:high</EuiButton></EuiFlyoutBody></EuiFlyout>}
-      {selected && <EuiFlyout onClose={() => setSelected(undefined)} ownFocus size="m" aria-labelledby="inspector-title"><EuiFlyoutHeader><EuiTitle><h2 id="inspector-title">Event inspector</h2></EuiTitle></EuiFlyoutHeader><EuiFlyoutBody><EuiCallOut title={selectedDecision === 'masked' ? 'Field masking applied' : 'Authorized fields'} iconType="lock">Route, row, field, action and export use one policy interface.</EuiCallOut><EuiSpacer /><dl className="detailGrid"><dt>Event ID</dt><dd>{selected.id}</dd><dt>Event time</dt><dd>{selected.event_time}</dd><dt>Ingested</dt><dd>{selected.ingested_at}</dd><dt>Source</dt><dd>{selected.source}</dd><dt>User</dt><dd>{selected.restricted ? '••••••' : selected.user}</dd><dt>Message</dt><dd>{selected.message}</dd></dl></EuiFlyoutBody></EuiFlyout>}
+      {selected && <EuiFlyout onClose={closeInspector} ownFocus size="m" aria-labelledby="inspector-title"><EuiFlyoutHeader><EuiTitle><h2 id="inspector-title">Event inspector</h2></EuiTitle></EuiFlyoutHeader><EuiFlyoutBody><EuiCallOut title={selectedDecision === 'masked' ? 'Field masking applied' : 'Authorized fields'} iconType="lock">Route, row, field, action and export use one policy interface.</EuiCallOut><EuiSpacer /><dl className="detailGrid"><dt>Event ID</dt><dd>{selected.id}</dd><dt>Event time</dt><dd>{selected.event_time}</dd><dt>Ingested</dt><dd>{selected.ingested_at}</dd><dt>Source</dt><dd>{selected.source}</dd><dt>User</dt><dd>{selected.restricted ? '••••••' : selected.user}</dd><dt>Message</dt><dd>{selected.message}</dd></dl></EuiFlyoutBody></EuiFlyout>}
       {state.exportOpen && <EuiModal onClose={() => dispatch({ type: 'toggleExport' })} aria-labelledby="export-title"><EuiModalHeader><EuiModalHeaderTitle id="export-title">Create export job</EuiModalHeaderTitle></EuiModalHeader><EuiModalBody><EuiCallOut title="Prototype simulation" color="warning">No production API is called. Queued does not mean completed.</EuiCallOut><EuiText><p>Classification: Confidential · masked fields: user.email · rows estimated: {rows.length}</p></EuiText></EuiModalBody><EuiModalFooter><EuiButtonEmpty onClick={() => dispatch({ type: 'toggleExport' })}>Cancel</EuiButtonEmpty><EuiButton fill onClick={exportNow}>Queue export</EuiButton></EuiModalFooter></EuiModal>}
       {state.receiptOpen && job && <EuiFlyout onClose={() => dispatch({ type: 'showReceipt' })} ownFocus aria-labelledby="receipt-title"><EuiFlyoutHeader><EuiTitle><h2 id="receipt-title">Action receipt</h2></EuiTitle></EuiFlyoutHeader><EuiFlyoutBody><EuiCallOut title="Prototype simulation · queued" color="warning">Accepted and queued are not completed. Authoritative rehydration is pending.</EuiCallOut><EuiText><p>Receipt: {job.receipt.receiptId}</p><p>Request: {job.receipt.requestId}</p><p>Status: {job.receipt.status}</p></EuiText></EuiFlyoutBody></EuiFlyout>}
     </EuiPageTemplate>
