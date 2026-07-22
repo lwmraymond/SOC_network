@@ -24,6 +24,7 @@ jobs:
       - name: Check out isolated measurement branch
         uses: actions/checkout@v4
         with:
+          ref: codex/p01-p42-density-measurement-20260722
           fetch-depth: 0
 
       - name: Materialize density collector
@@ -31,20 +32,19 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p scripts
-          cat .density-audit-temp/chunk-* | base64 --decode | gzip --decompress > scripts/audit-information-density.mjs
+          cat .density-audit-temp/final-* | base64 --decode | gzip --decompress > scripts/audit-information-density.mjs
           python - <<'PY'
           from pathlib import Path
+          import re
           path = Path('scripts/audit-information-density.mjs')
           source = path.read_text()
-          source = source.replace("const mean = (values) => values.length ? values.reduce((sum, value) => sum + value, 0) / values.length : null;\n", "")
-          source = source.replace("const percentile = (values, proportion) => {\n  const sorted = values.filter(Number.isFinite).sort((a, b) => a - b);\n  if (!sorted.length) return null;\n  const index = Math.max(0, Math.min(sorted.length - 1, Math.ceil(proportion * sorted.length) - 1));\n  return sorted[index];\n};\n", "")
-          source = source.replace("        const clamp = (value, minimum = 0, maximum = 1) => Math.min(maximum, Math.max(minimum, value));\n", "")
-          source = source.replace("        const overlaps = (first, second, tolerance = 0) => Math.min(first.right, second.right) - Math.max(first.left, second.left) > tolerance && Math.min(first.bottom, second.bottom) - Math.max(first.top, second.top) > tolerance;\n", "")
+          source = re.sub(r"const percentileNumber = \(values, fraction\) => \{.*?^\};\n", "", source, flags=re.MULTILINE | re.DOTALL)
+          source = source.replace("  const portfolioVectors = scorableEntries.map(densityVector);\n", "")
           path.write_text(source)
           PY
           node --check scripts/audit-information-density.mjs
 
-      - name: Set up declared Node and npm
+      - name: Set up declared Node
         uses: actions/setup-node@v4
         with:
           node-version: 22.16.0
@@ -108,7 +108,8 @@ jobs:
               priority: page.priority,
               failures: page.failures,
               scores: page.scores,
-              primary: page.measurements.primary?.status === 'ok' ? {
+              humanReviewRecommendation: page.humanReviewRecommendation,
+              primary: page.measurements.primary?.status === 'measured' ? {
                 first_work_surface_y_ratio: page.measurements.primary.firstViewport.first_work_surface_y_ratio,
                 meaningful_occupancy_ratio: page.measurements.primary.firstViewport.meaningful_occupancy_ratio,
                 blank_canvas_ratio: page.measurements.primary.firstViewport.blank_canvas_ratio,
@@ -117,14 +118,14 @@ jobs:
                 top_level_group_count: page.measurements.primary.firstViewport.top_level_group_count,
                 local_density_p95: page.measurements.primary.firstViewport.local_density_p95,
                 hierarchy: page.measurements.primary.firstViewport.hierarchy,
-                text: page.measurements.primary.firstViewport.text,
+                typography: page.measurements.primary.firstViewport.typography,
                 interaction: page.measurements.primary.firstViewport.interaction,
                 data_surfaces: page.measurements.primary.firstViewport.data_surfaces,
-                document_horizontal_overflow_px: page.measurements.primary.firstViewport.document_horizontal_overflow_px,
+                resilience: page.measurements.primary.firstViewport.resilience,
                 textSpacing: page.measurements.primary.textSpacing,
               } : null,
-              structuralOverflow: page.measurements.structural?.firstViewport?.document_horizontal_overflow_px ?? null,
-              tableOverflow: page.measurements.table?.firstViewport?.document_horizontal_overflow_px ?? null,
+              structuralOverflow: page.measurements.structural?.firstViewport?.resilience?.document_horizontal_overflow_px ?? null,
+              tableOverflow: page.measurements.table?.firstViewport?.resilience?.document_horizontal_overflow_px ?? null,
             })),
           };
           fs.writeFileSync('docs/design/audit-2026-07-22/compact-summary.json', JSON.stringify(compact, null, 2) + '\n');
@@ -134,9 +135,13 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          rm -rf .density-audit-temp .github/workflows/temp-density-measurement.yml
+          rm -rf .density-audit-temp .github/workflows/temp-density-measurement.yml docs/design/audit-2026-07-22/screenshots
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add -A scripts/audit-information-density.mjs docs/design/audit-2026-07-22 .density-audit-temp .github/workflows/temp-density-measurement.yml
+          git add -A .density-audit-temp .github/workflows/temp-density-measurement.yml
+          git add scripts/audit-information-density.mjs
+          git add docs/design/audit-2026-07-22/p01-p42-information-density.metrics.json
+          git add docs/design/audit-2026-07-22/compact-summary.json
+          git add docs/design/audit-2026-07-22/source-tree-sha.txt
           git commit -m 'chore: capture temporary P01-P42 density evidence [skip ci]'
           git push origin HEAD:codex/p01-p42-density-measurement-20260722
