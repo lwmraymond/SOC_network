@@ -1,4 +1,4 @@
-name: Agent final EUI density validation
+name: Agent EUI assembly diagnostic
 
 on:
   pull_request:
@@ -11,9 +11,9 @@ permissions:
   contents: read
 
 jobs:
-  validate:
+  diagnose:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 10
     steps:
       - name: Check out disposable branch state
         uses: actions/checkout@v4
@@ -21,81 +21,33 @@ jobs:
           ref: codex/kibana-42page-visual
           fetch-depth: 0
 
-      - name: Restore verified source and assemble candidate
-        shell: bash
+      - name: Check staged audit syntax
+        run: node --check scripts/audit-eui-visual-metrics.mjs
+
+      - name: Save staged candidate files
         run: |
-          set -euo pipefail
           cp scripts/audit-eui-visual-metrics.mjs /tmp/audit-eui-visual-metrics.mjs
           cp src/pages/P41AuthenticationLdapSso.tsx /tmp/P41AuthenticationLdapSso.tsx
-          git reset --hard f351391910c627b01f36bbb819f7eb50ce395181
+
+      - name: Reset to verified source
+        run: git reset --hard f351391910c627b01f36bbb819f7eb50ce395181
+
+      - name: Restore candidate source files
+        run: |
           cp /tmp/audit-eui-visual-metrics.mjs scripts/audit-eui-visual-metrics.mjs
           cp /tmp/P41AuthenticationLdapSso.tsx src/pages/P41AuthenticationLdapSso.tsx
+
+      - name: Append candidate styles
+        shell: bash
+        run: |
+          set -euo pipefail
           printf '%s' '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' | base64 --decode | gzip --decompress >> src/styles-kibana-fidelity.css
-          git diff --check
-          node --check scripts/audit-eui-visual-metrics.mjs
-          git diff --exit-code -- package-lock.json
-          git diff --stat | tee /tmp/diff-stat.txt
 
-      - name: Set up declared Node version
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22.16.0
-          cache: npm
+      - name: Check candidate diff
+        run: git diff --check
 
-      - name: Set up declared npm version
-        shell: bash
-        run: npm install --global npm@10.9.2
+      - name: Verify lockfile unchanged
+        run: git diff --exit-code -- package-lock.json
 
-      - name: Install dependencies and Chromium
-        shell: bash
-        run: |
-          set -euo pipefail
-          npm ci --no-audit --no-fund | tee /tmp/npm-ci.log
-          npx playwright install --with-deps chromium > /tmp/playwright-install.log 2>&1
-
-      - name: Run static validation
-        shell: bash
-        run: |
-          set -euo pipefail
-          npm run lint 2>&1 | tee /tmp/lint.log
-          npm run typecheck 2>&1 | tee /tmp/typecheck.log
-          npm test 2>&1 | tee /tmp/test.log
-          npm run build 2>&1 | tee /tmp/build.log
-
-      - name: Run 1231x768 report-only audit
-        shell: bash
-        run: |
-          set -euo pipefail
-          VITE_ENABLE_FIXTURES=true npm run dev -- --host 127.0.0.1 --port 5174 > /tmp/vite.log 2>&1 &
-          server_pid=$!
-          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
-          for attempt in $(seq 1 60); do
-            if curl --fail --silent http://127.0.0.1:5174/dashboard/soc >/dev/null; then break; fi
-            sleep 1
-          done
-          curl --fail --silent http://127.0.0.1:5174/dashboard/soc >/dev/null
-          EUI_AUDIT_WIDTH=1231 EUI_AUDIT_HEIGHT=768 node scripts/audit-eui-visual-metrics.mjs --report-only
-          node - <<'NODE' | tee /tmp/audit-summary.txt
-          const report = require('./artifacts/eui-visual-audit/report.json');
-          console.log(JSON.stringify(report.summary, null, 2));
-          if ((report.summary.counts.P0 ?? 0) !== 0 || (report.summary.counts.P1 ?? 0) !== 0) process.exit(1);
-          NODE
-
-      - name: Upload candidate evidence
-        uses: actions/upload-artifact@v4
-        with:
-          name: eui-density-candidate-final-header
-          path: |
-            artifacts/eui-visual-audit/report.json
-            artifacts/eui-visual-audit/report.md
-            /tmp/diff-stat.txt
-            /tmp/npm-ci.log
-            /tmp/playwright-install.log
-            /tmp/lint.log
-            /tmp/typecheck.log
-            /tmp/test.log
-            /tmp/build.log
-            /tmp/vite.log
-            /tmp/audit-summary.txt
-          if-no-files-found: error
-          retention-days: 1
+      - name: Show candidate diff
+        run: git diff --stat
