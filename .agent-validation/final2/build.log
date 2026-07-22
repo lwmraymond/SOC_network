@@ -1,0 +1,91 @@
+
+> soc-network-prototype@0.3.0 build
+> tsc -b && vite build
+
+[36mvite v7.3.6 [32mbuilding client environment for production...[36m[39m
+transforming...
+[32m✓[39m 2966 modules transformed.
+rendering chunks...
+computing gzip size...
+[2mdist/[22m[32mindex.html                                           [39m[1m[2m    0.47 kB[22m[1m[22m[2m │ gzip:   0.30 kB[22m
+[2mdist/[22m[2massets/[22m[35mP33KnowledgeSources-DJnKVXiD.css              [39m[1m[2m    1.02 kB[22m[1m[22m[2m │ gzip:   0.45 kB[22m
+[2mdist/[22m[2massets/[22m[35mP37Users-Ba4Jne5t.css                         [39m[1m[2m    1.28 kB[22m[1m[22m[2m │ gzip:   0.57 kB[22m
+[2mdist/[22m[2massets/[22m[35mP30EventSchemasContracts-Cu0cqWuZ.css         [39m[1m[2m    1.66 kB[22m[1m[22m[2m │ gzip:   0.69 kB[22m
+[2mdist/[22m[2massets/[22m[35mP35DetectionNotes-BmP29bhn.css                [39m[1m[2m    1.66 kB[22m[1m[22m[2m │ gzip:   0.65 kB[22m
+[2mdist/[22m[2massets/[22m[35mP34PlaybooksAutomationTemplates-DzNrywUo.css  [39m[1m[2m    2.10 kB[22m[1m[22m[2m │ gzip:   0.79 kB[22m
+[2mdist/[22m[2massets/[22m[35mP39Permissions-D8pzEOuu.css                   [39m[1m[2m    2.34 kB[22m[1m[22m[2m │ gzip:   0.88 kB[22m
+[2mdist/[22m[2massets/[22m[35mP26AgentRuntimeAccess-zpA8SZtd.css            [39m[1m[2m    2.49 kB[22m[1m[22m[2m │ gzip:   0.85 kB[22m
+[2mdist/[22m[2massets/[22m[35mP29DetectionRules-DJHSPoKc.css                [39m[1m[2m    2.51 kB[22m[1m[22m[2m │ gzip:   0.89 kB[22m
+[2mdist/[22m[2massets/[22m[35mP38Roles-CXTGAbD9.css                         [39m[1m[2m    3.32 kB[22m[1m[22m[2m │ gzip:   1.01 kB[22m
+[2mdist/[22m[2massets/[22m[35mP31RuntimeObjects-CKVSDKGe.css                [39m[1m[2m    3.71 kB[22m[1m[22m[2m │ gzip:   1.16 kB[22m
+[2mdist/[22m[2massets/[22m[35mP42ThemeAccessibility-hxlmx9ay.css            [39m[1m[2m    5.61 kB[22m[1m[22m[2m │ gzip:   1.49 kB[22m
+[2mdist/[22m[2massets/[22m[35mP36ResponseProjects-yftHRXo0.css              [39m[1m[2m    6.35 kB[22m[1m[22m[2m │ gzip:   1.58 kB[22m
+[2mdist/[22m[2massets/[22m[35mP32ScriptWorkbench-CoG3SYkG.css               [39m[1m[2m   76.53 kB[22m[1m[22m[2m │ gzip:  12.53 kB[22m
+[2mdist/[22m[2massets/[22m[35mindex-T3rv2w_f.css                            [39m[1m[2m  110.83 kB[22m[1m[22m[2m │ gzip:  19.45 kB[22m
+[2mdist/[22m[2massets/[22m[36msupports-C_Gb7Lcm.js                          [39m[1m[2m    0.19 kB[22m[1m[22m[2m │ gzip:   0.17 kB[22m[2m │ map:     1.22 kB[22m
+[2mdist/[22m[2massets/[22m[36mflyout_footer-C0lzBFnw.js                     [39m[1m[2m    1.21 kB[22m[1m[22m[2m │ gzip:   0.67 kB[22m[2m │ map:     5.12 kB[22m
+[2mdist/[22m[2massets/[22m[36mstat-PWhZNpb_.js                              [39m[1m[2m    3.15 kB[22m[1m[22m[2m │ gzip:   1.43 kB[22m[2m │ map:    12.39 kB[22m
+[2mdist/[22m[2massets/[22m[36mselect-UD0D2Jao.js                            [39m[1m[2m    3.57 kB[22m[1m[22m[2m │ gzip:   1.53 kB[22m[2m │ map:    14.48 kB[22m
+[2mdist/[22m[2massets/[22m[36mdelay_render-CPaUH3-0.js                      [39m[1m[2m    4.43 kB[22m[1m[22m[2m │ gzip:   1.88 kB[22m[2m │ map:    15.97 kB[22m
+[2mdist/[22m[2massets/[22m[36mquery-BjiigFRF.js                             [39m[1m[2m    5.44 kB[22m[1m[22m[2m │ gzip:   2.43 kB[22m[2m │ map:    20.21 kB[22m
+[2mdist/[22m[2massets/[22m[36mP01SecurityOperationsOverview-C-vdaZ8I.js     [39m[1m[2m    6.65 kB[22m[1m[22m[2m │ gzip:   2.49 kB[22m[2m │ map:    23.06 kB[22m
+[2mdist/[22m[2massets/[22m[36mP23CopilotWorkspace-spn8Vojk.js               [39m[1m[2m    6.68 kB[22m[1m[22m[2m │ gzip:   2.63 kB[22m[2m │ map:    15.43 kB[22m
+[2mdist/[22m[2massets/[22m[36mP10VulnerabilityMatches-uR27lU8G.js           [39m[1m[2m    7.24 kB[22m[1m[22m[2m │ gzip:   2.59 kB[22m[2m │ map:    18.27 kB[22m
+[2mdist/[22m[2massets/[22m[36mP20ItsmAnalytics-CFdpq0L7.js                  [39m[1m[2m    7.27 kB[22m[1m[22m[2m │ gzip:   2.61 kB[22m[2m │ map:    17.32 kB[22m
+[2mdist/[22m[2massets/[22m[36mP11RemediationQueue-CVZvax1E.js               [39m[1m[2m    7.31 kB[22m[1m[22m[2m │ gzip:   2.59 kB[22m[2m │ map:    17.39 kB[22m
+[2mdist/[22m[2massets/[22m[36mP27RuntimeCatalogOverview-B6lbUguS.js         [39m[1m[2m    7.36 kB[22m[1m[22m[2m │ gzip:   2.56 kB[22m[2m │ map:    18.02 kB[22m
+[2mdist/[22m[2massets/[22m[36mP14WorkQueues-qtU5LskY.js                     [39m[1m[2m    7.48 kB[22m[1m[22m[2m │ gzip:   2.84 kB[22m[2m │ map:    18.68 kB[22m
+[2mdist/[22m[2massets/[22m[36mP19ApprovalsTasks-DoB4WUaf.js                 [39m[1m[2m    7.50 kB[22m[1m[22m[2m │ gzip:   2.82 kB[22m[2m │ map:    18.24 kB[22m
+[2mdist/[22m[2massets/[22m[36mP12Asset360-D3wGnUSr.js                       [39m[1m[2m    7.70 kB[22m[1m[22m[2m │ gzip:   2.62 kB[22m[2m │ map:    17.45 kB[22m
+[2mdist/[22m[2massets/[22m[36mP37Users-Do13Q2b3.js                          [39m[1m[2m    7.76 kB[22m[1m[22m[2m │ gzip:   2.89 kB[22m[2m │ map:    19.29 kB[22m
+[2mdist/[22m[2massets/[22m[36mP24AgentFleet-C6XwQfUr.js                     [39m[1m[2m    7.79 kB[22m[1m[22m[2m │ gzip:   2.81 kB[22m[2m │ map:    19.06 kB[22m
+[2mdist/[22m[2massets/[22m[36mP13ItsmOverview-Cneouc0V.js                   [39m[1m[2m    7.82 kB[22m[1m[22m[2m │ gzip:   2.76 kB[22m[2m │ map:    18.57 kB[22m
+[2mdist/[22m[2massets/[22m[36mP25TaskDispatch-Ds4RZA_6.js                   [39m[1m[2m    8.05 kB[22m[1m[22m[2m │ gzip:   2.84 kB[22m[2m │ map:    19.20 kB[22m
+[2mdist/[22m[2massets/[22m[36mswitch-B_fMx-GS.js                            [39m[1m[2m    8.44 kB[22m[1m[22m[2m │ gzip:   3.03 kB[22m[2m │ map:    29.08 kB[22m
+[2mdist/[22m[2massets/[22m[36mform_row-B99egYtQ.js                          [39m[1m[2m    8.56 kB[22m[1m[22m[2m │ gzip:   2.92 kB[22m[2m │ map:    34.85 kB[22m
+[2mdist/[22m[2massets/[22m[36mP33KnowledgeSources-DKJe6D7i.js               [39m[1m[2m    8.59 kB[22m[1m[22m[2m │ gzip:   3.14 kB[22m[2m │ map:    20.91 kB[22m
+[2mdist/[22m[2massets/[22m[36mP35DetectionNotes-ns5Sy_IQ.js                 [39m[1m[2m    8.78 kB[22m[1m[22m[2m │ gzip:   3.29 kB[22m[2m │ map:    20.52 kB[22m
+[2mdist/[22m[2massets/[22m[36mP21ReportsExports-DtBA94Go.js                 [39m[1m[2m    9.13 kB[22m[1m[22m[2m │ gzip:   3.22 kB[22m[2m │ map:    21.00 kB[22m
+[2mdist/[22m[2massets/[22m[36mP28DataSourcesIntegrations-Bt43MPBu.js        [39m[1m[2m    9.15 kB[22m[1m[22m[2m │ gzip:   3.30 kB[22m[2m │ map:    21.65 kB[22m
+[2mdist/[22m[2massets/[22m[36mP34PlaybooksAutomationTemplates-VuKNJ0Ab.js   [39m[1m[2m    9.16 kB[22m[1m[22m[2m │ gzip:   3.36 kB[22m[2m │ map:    21.82 kB[22m
+[2mdist/[22m[2massets/[22m[36mP38Roles-C81GGMlo.js                          [39m[1m[2m    9.27 kB[22m[1m[22m[2m │ gzip:   3.25 kB[22m[2m │ map:    22.12 kB[22m
+[2mdist/[22m[2massets/[22m[36mP22ItsmSettings-B6QoX0rb.js                   [39m[1m[2m    9.35 kB[22m[1m[22m[2m │ gzip:   3.18 kB[22m[2m │ map:    21.06 kB[22m
+[2mdist/[22m[2massets/[22m[36mP15RequestsServiceCatalog-CUNhSrnt.js         [39m[1m[2m    9.39 kB[22m[1m[22m[2m │ gzip:   3.12 kB[22m[2m │ map:    21.66 kB[22m
+[2mdist/[22m[2massets/[22m[36mP18ChangeManagement-Dpj6NQx6.js               [39m[1m[2m    9.40 kB[22m[1m[22m[2m │ gzip:   3.26 kB[22m[2m │ map:    22.31 kB[22m
+[2mdist/[22m[2massets/[22m[36mP16IncidentManagement-Ch74fu3C.js             [39m[1m[2m    9.57 kB[22m[1m[22m[2m │ gzip:   3.38 kB[22m[2m │ map:    23.01 kB[22m
+[2mdist/[22m[2massets/[22m[36mprogress-DeVEsHtY.js                          [39m[1m[2m    9.66 kB[22m[1m[22m[2m │ gzip:   3.61 kB[22m[2m │ map:    35.65 kB[22m
+[2mdist/[22m[2massets/[22m[36mP17ProblemManagement-BjerjPOO.js              [39m[1m[2m   10.13 kB[22m[1m[22m[2m │ gzip:   3.54 kB[22m[2m │ map:    23.00 kB[22m
+[2mdist/[22m[2massets/[22m[36mP30EventSchemasContracts-DtraIz_G.js          [39m[1m[2m   10.35 kB[22m[1m[22m[2m │ gzip:   3.67 kB[22m[2m │ map:    24.03 kB[22m
+[2mdist/[22m[2massets/[22m[36mP02ExecutiveWallboard-rnfOrS1q.js             [39m[1m[2m   10.50 kB[22m[1m[22m[2m │ gzip:   3.49 kB[22m[2m │ map:    25.07 kB[22m
+[2mdist/[22m[2massets/[22m[36mP29DetectionRules-DN5xj-GJ.js                 [39m[1m[2m   11.00 kB[22m[1m[22m[2m │ gzip:   4.07 kB[22m[2m │ map:    25.53 kB[22m
+[2mdist/[22m[2massets/[22m[36mP04IncidentsCases-DSbCzotg.js                 [39m[1m[2m   11.09 kB[22m[1m[22m[2m │ gzip:   3.64 kB[22m[2m │ map:    26.85 kB[22m
+[2mdist/[22m[2massets/[22m[36mP26AgentRuntimeAccess-Bz4hO8kL.js             [39m[1m[2m   11.17 kB[22m[1m[22m[2m │ gzip:   3.87 kB[22m[2m │ map:    27.14 kB[22m
+[2mdist/[22m[2massets/[22m[36mP39Permissions-DVYiPJo8.js                    [39m[1m[2m   11.43 kB[22m[1m[22m[2m │ gzip:   3.88 kB[22m[2m │ map:    28.89 kB[22m
+[2mdist/[22m[2massets/[22m[36mP40PlatformSettingsDirectory-BaLoBx-K.js      [39m[1m[2m   12.01 kB[22m[1m[22m[2m │ gzip:   4.24 kB[22m[2m │ map:    24.43 kB[22m
+[2mdist/[22m[2massets/[22m[36mP03PlatformHealth-BjVHgoHX.js                 [39m[1m[2m   12.22 kB[22m[1m[22m[2m │ gzip:   3.77 kB[22m[2m │ map:    28.37 kB[22m
+[2mdist/[22m[2massets/[22m[36mP31RuntimeObjects-ox3fTr2v.js                 [39m[1m[2m   12.27 kB[22m[1m[22m[2m │ gzip:   3.88 kB[22m[2m │ map:    29.17 kB[22m
+[2mdist/[22m[2massets/[22m[36mP07EventSearchHunt-CoDSr56f.js                [39m[1m[2m   12.33 kB[22m[1m[22m[2m │ gzip:   4.48 kB[22m[2m │ map:    33.05 kB[22m
+[2mdist/[22m[2massets/[22m[36mP09VulnerabilityExposure-BHPABcMM.js          [39m[1m[2m   12.69 kB[22m[1m[22m[2m │ gzip:   4.35 kB[22m[2m │ map:    30.28 kB[22m
+[2mdist/[22m[2massets/[22m[36mP41AuthenticationLdapSso-DhhsCG8C.js          [39m[1m[2m   12.88 kB[22m[1m[22m[2m │ gzip:   4.25 kB[22m[2m │ map:    27.27 kB[22m
+[2mdist/[22m[2massets/[22m[36mtool_tip-CJU6JUCa.js                          [39m[1m[2m   14.35 kB[22m[1m[22m[2m │ gzip:   4.54 kB[22m[2m │ map:    53.70 kB[22m
+[2mdist/[22m[2massets/[22m[36mP06ResponseActions-ByYtE0ah.js                [39m[1m[2m   14.57 kB[22m[1m[22m[2m │ gzip:   4.49 kB[22m[2m │ map:    38.43 kB[22m
+[2mdist/[22m[2massets/[22m[36maccordion-DKm_gVtk.js                         [39m[1m[2m   15.21 kB[22m[1m[22m[2m │ gzip:   4.91 kB[22m[2m │ map:    60.85 kB[22m
+[2mdist/[22m[2massets/[22m[36mP36ResponseProjects-DpZi87CM.js               [39m[1m[2m   15.50 kB[22m[1m[22m[2m │ gzip:   4.99 kB[22m[2m │ map:    36.80 kB[22m
+[2mdist/[22m[2massets/[22m[36mP42ThemeAccessibility-BILCom6k.js             [39m[1m[2m   17.37 kB[22m[1m[22m[2m │ gzip:   5.51 kB[22m[2m │ map:    39.88 kB[22m
+[2mdist/[22m[2massets/[22m[36mtext_area-Q-x3wcLE.js                         [39m[1m[2m   18.15 kB[22m[1m[22m[2m │ gzip:   4.50 kB[22m[2m │ map:    37.84 kB[22m
+[2mdist/[22m[2massets/[22m[36mP08AssetInventory-Cf3XzR-Z.js                 [39m[1m[2m   21.84 kB[22m[1m[22m[2m │ gzip:   6.40 kB[22m[2m │ map:    55.44 kB[22m
+[2mdist/[22m[2massets/[22m[36mP05AlertQueue-CcpOgwJw.js                     [39m[1m[2m   22.58 kB[22m[1m[22m[2m │ gzip:   7.73 kB[22m[2m │ map:    62.79 kB[22m
+[2mdist/[22m[2massets/[22m[36mflyout_header-D2buz1BN.js                     [39m[1m[2m   26.85 kB[22m[1m[22m[2m │ gzip:   8.19 kB[22m[2m │ map:   103.85 kB[22m
+[2mdist/[22m[2massets/[22m[36musePrototypePage-BdyU190Z.js                  [39m[1m[2m   38.21 kB[22m[1m[22m[2m │ gzip:  10.31 kB[22m[2m │ map:   105.31 kB[22m
+[2mdist/[22m[2massets/[22m[36mfilter_button-DrrTKyAa.js                     [39m[1m[2m   38.36 kB[22m[1m[22m[2m │ gzip:  10.73 kB[22m[2m │ map:   114.02 kB[22m
+[2mdist/[22m[2massets/[22m[36mpage_template-nAaZWLwz.js                     [39m[1m[2m  126.85 kB[22m[1m[22m[2m │ gzip:  23.66 kB[22m[2m │ map:   430.19 kB[22m
+[2mdist/[22m[2massets/[22m[36mbasic_table-BNgjFcZJ.js                       [39m[1m[2m  187.44 kB[22m[1m[22m[2m │ gzip:  42.99 kB[22m[2m │ map:   637.65 kB[22m
+[2mdist/[22m[2massets/[22m[36mcode_block-CfihVIf6.js                        [39m[1m[2m  668.02 kB[22m[1m[22m[2m │ gzip: 240.54 kB[22m[2m │ map: 1,555.00 kB[22m
+[2mdist/[22m[2massets/[22m[36mindex-EvkqJeEJ.js                             [39m[1m[2m  915.64 kB[22m[1m[22m[2m │ gzip: 259.18 kB[22m[2m │ map: 3,965.84 kB[22m
+[2mdist/[22m[2massets/[22m[36mP32ScriptWorkbench-B6YXJjfS.js                [39m[1m[33m2,569.11 kB[39m[22m[2m │ gzip: 666.91 kB[22m[2m │ map: 9,937.18 kB[22m
+[33m
+(!) Some chunks are larger than 2200 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.[39m
+[32m✓ built in 12.22s[39m
