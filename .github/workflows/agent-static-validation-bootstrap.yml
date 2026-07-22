@@ -1,4 +1,4 @@
-name: Agent static validation bootstrap
+name: Agent static correctness validation
 
 on:
   push:
@@ -6,35 +6,219 @@ on:
       - agent/gpt56-pro-elastic-eui-round2-validation-20260722
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
-  bundle:
+  validate:
     runs-on: ubuntu-latest
+    timeout-minutes: 45
     steps:
       - name: Check out repository history
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Verify immutable parent and create bundle
+      - name: Verify immutable source head
         shell: bash
         run: |
           set -euo pipefail
           expected=40fe79035828a870a720d3ca858d8fd1bb9cc2ed
-          actual=$(git rev-parse HEAD^)
-          test "$actual" = "$expected"
-          git bundle create /tmp/soc-network.bundle --all
-          git archive --format=tar.gz --output=/tmp/soc-network-source.tar.gz "$expected"
-          printf '%s\n' "$expected" > /tmp/expected-head.txt
+          git merge-base --is-ancestor "$expected" HEAD
+          test "$(git diff --name-only "$expected" -- . ':!.github/workflows/agent-static-validation-bootstrap.yml')" = ""
 
-      - name: Upload immutable checkout bundle
-        uses: actions/upload-artifact@v4
+      - name: Set up declared Node version
+        uses: actions/setup-node@v4
         with:
-          name: soc-network-bootstrap
-          path: |
-            /tmp/soc-network.bundle
-            /tmp/soc-network-source.tar.gz
-            /tmp/expected-head.txt
-          if-no-files-found: error
-          retention-days: 1
+          node-version: 22.16.0
+          registry-url: https://registry.npmjs.org
+
+      - name: Set up declared npm version
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm install --global npm@10.9.2
+          test "$(node --version)" = "v22.16.0"
+          test "$(npm --version)" = "10.9.2"
+
+      - name: Apply minimal static correctness patch
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+
+          def replace_once(path: str, old: str, new: str) -> None:
+              file_path = Path(path)
+              text = file_path.read_text()
+              count = text.count(old)
+              if count != 1:
+                  raise SystemExit(f"{path}: expected one match, found {count}: {old!r}")
+              file_path.write_text(text.replace(old, new, 1))
+
+          replace_once(
+              "src/pages/P42ThemeAccessibility.tsx",
+              "  EuiProgress,\n",
+              "",
+          )
+
+          replace_once(
+              "src/components/page-specific/P31RuntimeObjectsWorkspace.tsx",
+              "import { useMemo, useRef, useState } from 'react';",
+              "import { useMemo, useRef, useState, type MouseEvent } from 'react';",
+          )
+          replace_once(
+              "src/components/page-specific/P31RuntimeObjectsWorkspace.tsx",
+              "onClick={(event) => openObjectDetail(event.currentTarget)}",
+              "onClick={(event: MouseEvent<HTMLButtonElement>) => openObjectDetail(event.currentTarget)}",
+          )
+          replace_once(
+              "src/components/page-specific/P31RuntimeObjectsWorkspace.tsx",
+              "onClick={(event) => openRelationshipDetail(index, event.currentTarget)}>Inspect edge",
+              "onClick={(event: MouseEvent<HTMLButtonElement>) => openRelationshipDetail(index, event.currentTarget)}>Inspect edge",
+          )
+
+          replace_once(
+              "src/components/page-specific/P36ResponseProjectsWorkspace.tsx",
+              "import { useMemo, useRef, useState } from 'react';",
+              "import { useMemo, useRef, useState, type MouseEvent } from 'react';",
+          )
+          replace_once(
+              "src/components/page-specific/P36ResponseProjectsWorkspace.tsx",
+              "onClick={(event) => openMilestone(item, event.currentTarget)}>{item.id}",
+              "onClick={(event: MouseEvent<HTMLButtonElement>) => openMilestone(item, event.currentTarget)}>{item.id}",
+          )
+
+          replace_once(
+              "src/p07/EventSearchPage.tsx",
+              "import { useEffect, useMemo, useReducer, useRef, useState } from 'react';",
+              "import { useEffect, useMemo, useReducer, useRef, useState, type MouseEvent } from 'react';",
+          )
+          replace_once(
+              "src/p07/EventSearchPage.tsx",
+              "onClick={(event) => { inspectorOpener.current = event.currentTarget; setSelected(item); dispatch({ type: 'select', value: item.id }); }}",
+              "onClick={(event: MouseEvent<HTMLButtonElement>) => { inspectorOpener.current = event.currentTarget; setSelected(item); dispatch({ type: 'select', value: item.id }); }}",
+          )
+
+          replace_once(
+              "src/components/page-specific/P19ApprovalsTasksWorkspace.tsx",
+              "type Decision={id:string;kind:string;source:string;summary:string;risk:string;due:string;requester:string;policy:string;sod:string;impact:string;nextState:string;status:string};",
+              "type Decision={key:string;id:string;kind:string;source:string;summary:string;risk:string;due:string;requester:string;policy:string;sod:string;impact:string;nextState:string;status:string};",
+          )
+          replace_once(
+              "src/components/page-specific/P19ApprovalsTasksWorkspace.tsx",
+              "const buildDecisions=(rows:PrototypeRow[]):Decision[]=>rows.slice(0,14).map((row,index)=>({\n  id:",
+              "const buildDecisions=(rows:PrototypeRow[]):Decision[]=>rows.slice(0,14).map((row,index)=>({\n  key:`${row.id}:${index}`,id:",
+          )
+          replace_once(
+              "src/components/page-specific/P19ApprovalsTasksWorkspace.tsx",
+              "const[selectedId,setSelectedId]=useState<string|undefined>(undefined);",
+              "const[selectedKey,setSelectedKey]=useState<string|undefined>(undefined);",
+          )
+          replace_once(
+              "src/components/page-specific/P19ApprovalsTasksWorkspace.tsx",
+              "const selected=visible.find((item)=>item.id===selectedId)??visible[0]??decisions[0];",
+              "const selected=visible.find((item)=>item.key===selectedKey)??visible[0]??decisions[0];",
+          )
+          replace_once(
+              "src/components/page-specific/P19ApprovalsTasksWorkspace.tsx",
+              "visible.map((item)=><tr key={item.id}",
+              "visible.map((item)=><tr key={item.key}",
+          )
+          replace_once(
+              "src/components/page-specific/P19ApprovalsTasksWorkspace.tsx",
+              "onClick={()=>setSelectedId(item.id)}",
+              "onClick={()=>setSelectedKey(item.key)}",
+          )
+          PY
+
+      - name: Regenerate lockfile and run validation matrix
+        id: validation
+        shell: bash
+        run: |
+          set -u -o pipefail
+          mkdir -p .agent-validation
+          printf 'node=%s\nnpm=%s\nexpected_head=%s\n' "$(node --version)" "$(npm --version)" "40fe79035828a870a720d3ca858d8fd1bb9cc2ed" > .agent-validation/environment.txt
+
+          run_logged() {
+            name="$1"
+            command="$2"
+            printf '%s\n' "$command" > ".agent-validation/${name}.command"
+            set +e
+            bash -o pipefail -c "$command" 2>&1 | tee ".agent-validation/${name}.log"
+            code=${PIPESTATUS[0]}
+            set -e
+            printf '%s\n' "$code" > ".agent-validation/${name}.status"
+          }
+
+          set -e
+          rm -rf node_modules package-lock.json
+          run_logged lockfile_regeneration "npm install --package-lock-only --ignore-scripts --no-audit --no-fund"
+          run_logged npm_ci "npm ci"
+          run_logged dependency_tree "test -x node_modules/.bin/vite && test -x node_modules/.bin/tsc && test -x node_modules/.bin/playwright && node -e \"console.log(require.resolve('rollup/package.json'))\""
+          run_logged lint "npm run lint"
+          run_logged typecheck "npm run typecheck"
+          run_logged unit "npm test"
+          run_logged build "npm run build"
+          run_logged playwright_install "npx playwright install --with-deps chromium"
+          run_logged smoke "npx playwright test tests/e2e/all-pages.smoke.spec.ts --workers=1"
+          run_logged routes "npm run e2e:routes"
+
+          node <<'NODE'
+          const fs = require('node:fs');
+          const path = require('node:path');
+          const dir = '.agent-validation';
+          const names = ['lockfile_regeneration','npm_ci','dependency_tree','lint','typecheck','unit','build','playwright_install','smoke','routes'];
+          const results = Object.fromEntries(names.map((name) => [name, {
+            command: fs.readFileSync(path.join(dir, `${name}.command`), 'utf8').trim(),
+            status: Number(fs.readFileSync(path.join(dir, `${name}.status`), 'utf8').trim()),
+          }]));
+          const lock = JSON.parse(fs.readFileSync('package-lock.json', 'utf8'));
+          const summary = {
+            expectedHead: '40fe79035828a870a720d3ca858d8fd1bb9cc2ed',
+            node: process.version,
+            npm: process.env.npm_config_user_agent ?? 'npm@10.9.2',
+            lockfileVersion: lock.lockfileVersion,
+            lockfilePackageEntries: Object.keys(lock.packages ?? {}).length,
+            results,
+          };
+          fs.writeFileSync(path.join(dir, 'results.json'), `${JSON.stringify(summary, null, 2)}\n`);
+          const lines = [
+            `Expected head: ${summary.expectedHead}`,
+            `Node: ${summary.node}`,
+            `Lockfile version: ${summary.lockfileVersion}`,
+            `Lockfile package entries: ${summary.lockfilePackageEntries}`,
+            '',
+            ...Object.entries(results).map(([name, result]) => `${name}: ${result.status === 0 ? 'PASS' : 'FAIL'} (${result.status}) — ${result.command}`),
+          ];
+          fs.writeFileSync(path.join(dir, 'results.md'), `${lines.join('\n')}\n`);
+          NODE
+
+          git diff -- package.json > .agent-validation/package-json.diff
+          git diff --stat > .agent-validation/candidate.diffstat
+          git diff > .agent-validation/candidate.diff
+
+      - name: Commit candidate and validation evidence to disposable ref
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -A package-lock.json \
+            src/pages/P42ThemeAccessibility.tsx \
+            src/components/page-specific/P31RuntimeObjectsWorkspace.tsx \
+            src/components/page-specific/P36ResponseProjectsWorkspace.tsx \
+            src/p07/EventSearchPage.tsx \
+            src/components/page-specific/P19ApprovalsTasksWorkspace.tsx \
+            .agent-validation
+          git commit -m "test: validate static correctness candidate"
+          git push origin HEAD:agent/gpt56-pro-elastic-eui-round2-validation-20260722
+
+      - name: Fail run when any required validation failed
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          for name in lockfile_regeneration npm_ci dependency_tree lint typecheck unit build playwright_install smoke routes; do
+            test "$(cat ".agent-validation/${name}.status")" = "0"
+          done
