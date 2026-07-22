@@ -1,6 +1,6 @@
 # EUI visual metrics audit
 
-Generated: 2026-07-22T07:45:03.510Z
+Generated: 2026-07-22T07:48:06.695Z
 Base URL: http://127.0.0.1:5174
 Viewport: 1231 × 768
 Counts: P0 273 · P1 186 · P2 1152
