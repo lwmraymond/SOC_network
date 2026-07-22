@@ -23,33 +23,31 @@ jobs:
           ref: agent/gpt56-pro-elastic-eui-round2-validation-20260722
           fetch-depth: 0
 
-      - name: Verify immutable source head
+      - name: Verify validated candidate ancestry and lockfile
         shell: bash
         run: |
           set -euo pipefail
           expected=40fe79035828a870a720d3ca858d8fd1bb9cc2ed
           git merge-base --is-ancestor "$expected" HEAD
-          test "$(git diff --name-only "$expected" -- . ':!.github/workflows/agent-static-validation-bootstrap.yml')" = ""
+          test "$(node -p "Object.keys(require('./package-lock.json').packages).length")" -ge 500
+          test "$(git diff --name-only "$expected" -- package.json)" = ""
+          for path in \
+            package-lock.json \
+            src/pages/P42ThemeAccessibility.tsx \
+            src/components/page-specific/P19ApprovalsTasksWorkspace.tsx \
+            src/components/page-specific/P31RuntimeObjectsWorkspace.tsx \
+            src/components/page-specific/P36ResponseProjectsWorkspace.tsx \
+            src/p07/EventSearchPage.tsx; do
+            test -n "$(git diff --name-only "$expected" -- "$path")"
+          done
 
-      - name: Mark validation started on disposable ref
-        shell: bash
-        run: |
-          set -euo pipefail
-          mkdir -p .agent-validation
-          printf 'started_from=%s\nrun_id=%s\n' "$(git rev-parse HEAD)" "$GITHUB_RUN_ID" > .agent-validation/started.txt
-          git config user.name github-actions[bot]
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add .agent-validation/started.txt
-          git commit -m "chore: mark static validation started"
-          git push origin HEAD:agent/gpt56-pro-elastic-eui-round2-validation-20260722
-
-      - name: Set up declared Node version
+      - name: Set up declared Node and npm versions
         uses: actions/setup-node@v4
         with:
           node-version: 22.16.0
           registry-url: https://registry.npmjs.org
 
-      - name: Set up declared npm version
+      - name: Install declared npm version
         shell: bash
         run: |
           set -euo pipefail
@@ -57,119 +55,40 @@ jobs:
           test "$(node --version)" = "v22.16.0"
           test "$(npm --version)" = "10.9.2"
 
-      - name: Apply minimal static correctness patch
+      - name: Apply P36 focused-height correctness constraint
         shell: bash
         run: |
           set -euo pipefail
           python3 - <<'PY'
           from pathlib import Path
 
-          def replace_once(path: str, old: str, new: str) -> None:
-              file_path = Path(path)
-              text = file_path.read_text()
-              count = text.count(old)
-              if count != 1:
-                  raise SystemExit(f"{path}: expected one match, found {count}: {old!r}")
-              file_path.write_text(text.replace(old, new, 1))
-
-          replace_once(
-              "src/pages/P42ThemeAccessibility.tsx",
-              "  EuiProgress,\n",
-              "",
-          )
-
-          replace_once(
-              "src/components/page-specific/P31RuntimeObjectsWorkspace.tsx",
-              "import { useMemo, useRef, useState } from 'react';",
-              "import { useMemo, useRef, useState, type MouseEvent } from 'react';",
-          )
-          replace_once(
-              "src/components/page-specific/P31RuntimeObjectsWorkspace.tsx",
-              "onClick={(event) => openObjectDetail(event.currentTarget)}",
-              "onClick={(event: MouseEvent<HTMLButtonElement>) => openObjectDetail(event.currentTarget)}",
-          )
-          replace_once(
-              "src/components/page-specific/P31RuntimeObjectsWorkspace.tsx",
-              "onClick={(event) => openRelationshipDetail(index, event.currentTarget)}>Inspect edge",
-              "onClick={(event: MouseEvent<HTMLButtonElement>) => openRelationshipDetail(index, event.currentTarget)}>Inspect edge",
-          )
-
-          replace_once(
-              "src/components/page-specific/P36ResponseProjectsWorkspace.tsx",
-              "import { useMemo, useRef, useState } from 'react';",
-              "import { useMemo, useRef, useState, type MouseEvent } from 'react';",
-          )
-          replace_once(
-              "src/components/page-specific/P36ResponseProjectsWorkspace.tsx",
-              "onClick={(event) => openMilestone(item, event.currentTarget)}>{item.id}",
-              "onClick={(event: MouseEvent<HTMLButtonElement>) => openMilestone(item, event.currentTarget)}>{item.id}",
-          )
-
-          replace_once(
-              "src/p07/EventSearchPage.tsx",
-              "import { useEffect, useMemo, useReducer, useRef, useState } from 'react';",
-              "import { useEffect, useMemo, useReducer, useRef, useState, type MouseEvent } from 'react';",
-          )
-          replace_once(
-              "src/p07/EventSearchPage.tsx",
-              "onClick={(event) => { inspectorOpener.current = event.currentTarget; setSelected(item); dispatch({ type: 'select', value: item.id }); }}",
-              "onClick={(event: MouseEvent<HTMLButtonElement>) => { inspectorOpener.current = event.currentTarget; setSelected(item); dispatch({ type: 'select', value: item.id }); }}",
-          )
-
-          replace_once(
-              "src/components/page-specific/P19ApprovalsTasksWorkspace.tsx",
-              "type Decision={id:string;kind:string;source:string;summary:string;risk:string;due:string;requester:string;policy:string;sod:string;impact:string;nextState:string;status:string};",
-              "type Decision={key:string;id:string;kind:string;source:string;summary:string;risk:string;due:string;requester:string;policy:string;sod:string;impact:string;nextState:string;status:string};",
-          )
-          replace_once(
-              "src/components/page-specific/P19ApprovalsTasksWorkspace.tsx",
-              "const buildDecisions=(rows:PrototypeRow[]):Decision[]=>rows.slice(0,14).map((row,index)=>({\n  id:",
-              "const buildDecisions=(rows:PrototypeRow[]):Decision[]=>rows.slice(0,14).map((row,index)=>({\n  key:`${row.id}:${index}`,id:",
-          )
-          replace_once(
-              "src/components/page-specific/P19ApprovalsTasksWorkspace.tsx",
-              "const[selectedId,setSelectedId]=useState<string|undefined>(undefined);",
-              "const[selectedKey,setSelectedKey]=useState<string|undefined>(undefined);",
-          )
-          replace_once(
-              "src/components/page-specific/P19ApprovalsTasksWorkspace.tsx",
-              "const selected=visible.find((item)=>item.id===selectedId)??visible[0]??decisions[0];",
-              "const selected=visible.find((item)=>item.key===selectedKey)??visible[0]??decisions[0];",
-          )
-          replace_once(
-              "src/components/page-specific/P19ApprovalsTasksWorkspace.tsx",
-              "visible.map((item)=><tr key={item.id}",
-              "visible.map((item)=><tr key={item.key}",
-          )
-          replace_once(
-              "src/components/page-specific/P19ApprovalsTasksWorkspace.tsx",
-              "onClick={()=>setSelectedId(item.id)}",
-              "onClick={()=>setSelectedKey(item.key)}",
-          )
+          path = Path('src/components/page-specific/P36ResponseProjectsWorkspace.css')
+          rule = "@media(max-height:720px) and (min-width:821px){.pageFrameContent[data-page-mode='focused'] .p36ProjectList{max-height:420px}}"
+          text = path.read_text()
+          if rule not in text:
+              path.write_text(f"{text.rstrip()}\n{rule}\n")
           PY
 
-      - name: Regenerate lockfile and run validation matrix
+      - name: Run final validation matrix
         id: validation
         shell: bash
         run: |
           set -u -o pipefail
-          mkdir -p .agent-validation
-          printf 'node=%s\nnpm=%s\nexpected_head=%s\n' "$(node --version)" "$(npm --version)" "40fe79035828a870a720d3ca858d8fd1bb9cc2ed" > .agent-validation/environment.txt
+          mkdir -p .agent-validation/final
 
           run_logged() {
             name="$1"
             command="$2"
-            printf '%s\n' "$command" > ".agent-validation/${name}.command"
+            printf '%s\n' "$command" > ".agent-validation/final/${name}.command"
             set +e
-            bash -o pipefail -c "$command" 2>&1 | tee ".agent-validation/${name}.log"
+            bash -o pipefail -c "$command" 2>&1 | tee ".agent-validation/final/${name}.log"
             code=${PIPESTATUS[0]}
             set -e
-            printf '%s\n' "$code" > ".agent-validation/${name}.status"
+            printf '%s\n' "$code" > ".agent-validation/final/${name}.status"
           }
 
           set -e
-          rm -rf node_modules package-lock.json
-          run_logged lockfile_regeneration "npm install --package-lock-only --ignore-scripts --no-audit --no-fund"
+          rm -rf node_modules
           run_logged npm_ci "npm ci"
           run_logged dependency_tree "test -x node_modules/.bin/vite && test -x node_modules/.bin/tsc && test -x node_modules/.bin/playwright && node -e \"console.log(require.resolve('rollup/package.json'))\""
           run_logged lint "npm run lint"
@@ -183,8 +102,8 @@ jobs:
           node <<'NODE'
           const fs = require('node:fs');
           const path = require('node:path');
-          const dir = '.agent-validation';
-          const names = ['lockfile_regeneration','npm_ci','dependency_tree','lint','typecheck','unit','build','playwright_install','smoke','routes'];
+          const dir = '.agent-validation/final';
+          const names = ['npm_ci','dependency_tree','lint','typecheck','unit','build','playwright_install','smoke','routes'];
           const results = Object.fromEntries(names.map((name) => [name, {
             command: fs.readFileSync(path.join(dir, `${name}.command`), 'utf8').trim(),
             status: Number(fs.readFileSync(path.join(dir, `${name}.status`), 'utf8').trim()),
@@ -196,40 +115,32 @@ jobs:
             npm: '10.9.2',
             lockfileVersion: lock.lockfileVersion,
             lockfilePackageEntries: Object.keys(lock.packages ?? {}).length,
+            lockfileRegenerationStatus: Number(fs.readFileSync('.agent-validation/lockfile_regeneration.status', 'utf8').trim()),
             results,
           };
           fs.writeFileSync(path.join(dir, 'results.json'), `${JSON.stringify(summary, null, 2)}\n`);
-          const lines = [
-            `Expected head: ${summary.expectedHead}`,
-            `Node: ${summary.node}`,
-            `npm: ${summary.npm}`,
-            `Lockfile version: ${summary.lockfileVersion}`,
-            `Lockfile package entries: ${summary.lockfilePackageEntries}`,
-            '',
-            ...Object.entries(results).map(([name, result]) => `${name}: ${result.status === 0 ? 'PASS' : 'FAIL'} (${result.status}) — ${result.command}`),
-          ];
-          fs.writeFileSync(path.join(dir, 'results.md'), `${lines.join('\n')}\n`);
           NODE
 
-          git diff -- package.json > .agent-validation/package-json.diff
-          git diff --stat > .agent-validation/candidate.diffstat
-          git diff > .agent-validation/candidate.diff
+          git diff --stat 40fe79035828a870a720d3ca858d8fd1bb9cc2ed -- \
+            package-lock.json \
+            src/pages/P42ThemeAccessibility.tsx \
+            src/components/page-specific/P19ApprovalsTasksWorkspace.tsx \
+            src/components/page-specific/P31RuntimeObjectsWorkspace.tsx \
+            src/components/page-specific/P36ResponseProjectsWorkspace.tsx \
+            src/components/page-specific/P36ResponseProjectsWorkspace.css \
+            src/p07/EventSearchPage.tsx > .agent-validation/final/candidate.diffstat
 
-      - name: Commit candidate and validation evidence to disposable ref
+      - name: Commit final candidate evidence to disposable ref
         if: always()
         shell: bash
         run: |
           set -euo pipefail
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add -A package-lock.json \
-            src/pages/P42ThemeAccessibility.tsx \
-            src/components/page-specific/P31RuntimeObjectsWorkspace.tsx \
-            src/components/page-specific/P36ResponseProjectsWorkspace.tsx \
-            src/p07/EventSearchPage.tsx \
-            src/components/page-specific/P19ApprovalsTasksWorkspace.tsx \
-            .agent-validation
-          git commit -m "test: validate static correctness candidate"
+          git add \
+            src/components/page-specific/P36ResponseProjectsWorkspace.css \
+            .agent-validation/final
+          git commit -m "test: validate P36 focused-height correction"
           git push origin HEAD:agent/gpt56-pro-elastic-eui-round2-validation-20260722
 
       - name: Fail run when any required validation failed
@@ -237,6 +148,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          for name in lockfile_regeneration npm_ci dependency_tree lint typecheck unit build playwright_install smoke routes; do
-            test "$(cat ".agent-validation/${name}.status")" = "0"
+          test "$(cat .agent-validation/lockfile_regeneration.status)" = "0"
+          for name in npm_ci dependency_tree lint typecheck unit build playwright_install smoke routes; do
+            test "$(cat ".agent-validation/final/${name}.status")" = "0"
           done
