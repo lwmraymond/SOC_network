@@ -1,0 +1,40 @@
+name: Agent static validation bootstrap
+
+on:
+  push:
+    branches:
+      - agent/gpt56-pro-elastic-eui-round2-validation-20260722
+
+permissions:
+  contents: read
+
+jobs:
+  bundle:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify immutable parent and create bundle
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected=40fe79035828a870a720d3ca858d8fd1bb9cc2ed
+          actual=$(git rev-parse HEAD^)
+          test "$actual" = "$expected"
+          git bundle create /tmp/soc-network.bundle --all
+          git archive --format=tar.gz --output=/tmp/soc-network-source.tar.gz "$expected"
+          printf '%s\n' "$expected" > /tmp/expected-head.txt
+
+      - name: Upload immutable checkout bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: soc-network-bootstrap
+          path: |
+            /tmp/soc-network.bundle
+            /tmp/soc-network-source.tar.gz
+            /tmp/expected-head.txt
+          if-no-files-found: error
+          retention-days: 1
