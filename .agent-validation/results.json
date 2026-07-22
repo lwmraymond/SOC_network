@@ -1,0 +1,49 @@
+{
+  "expectedHead": "40fe79035828a870a720d3ca858d8fd1bb9cc2ed",
+  "node": "v22.16.0",
+  "npm": "10.9.2",
+  "lockfileVersion": 3,
+  "lockfilePackageEntries": 534,
+  "results": {
+    "lockfile_regeneration": {
+      "command": "npm install --package-lock-only --ignore-scripts --no-audit --no-fund",
+      "status": 0
+    },
+    "npm_ci": {
+      "command": "npm ci",
+      "status": 0
+    },
+    "dependency_tree": {
+      "command": "test -x node_modules/.bin/vite && test -x node_modules/.bin/tsc && test -x node_modules/.bin/playwright && node -e \"console.log(require.resolve('rollup/package.json'))\"",
+      "status": 0
+    },
+    "lint": {
+      "command": "npm run lint",
+      "status": 0
+    },
+    "typecheck": {
+      "command": "npm run typecheck",
+      "status": 0
+    },
+    "unit": {
+      "command": "npm test",
+      "status": 0
+    },
+    "build": {
+      "command": "npm run build",
+      "status": 0
+    },
+    "playwright_install": {
+      "command": "npx playwright install --with-deps chromium",
+      "status": 0
+    },
+    "smoke": {
+      "command": "npx playwright test tests/e2e/all-pages.smoke.spec.ts --workers=1",
+      "status": 0
+    },
+    "routes": {
+      "command": "npm run e2e:routes",
+      "status": 1
+    }
+  }
+}

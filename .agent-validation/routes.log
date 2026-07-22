@@ -1,0 +1,177 @@
+
+> soc-network-prototype@0.3.0 e2e:routes
+> playwright test tests/e2e/full-route-validation.spec.ts --workers=1
+
+
+Running 46 tests using 1 worker
+
+  ✓   1 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P01 resolves and contains horizontal overflow (1.8s)
+  ✓   2 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P02 resolves and contains horizontal overflow (1.6s)
+  ✓   3 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P03 resolves and contains horizontal overflow (1.7s)
+  ✓   4 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P04 resolves and contains horizontal overflow (1.6s)
+  ✓   5 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P05 resolves and contains horizontal overflow (1.8s)
+  ✓   6 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P06 resolves and contains horizontal overflow (1.7s)
+  ✓   7 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P07 resolves and contains horizontal overflow (1.6s)
+  ✓   8 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P08 resolves and contains horizontal overflow (1.7s)
+  ✓   9 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P09 resolves and contains horizontal overflow (1.7s)
+  ✓  10 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P10 resolves and contains horizontal overflow (1.6s)
+  ✓  11 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P11 resolves and contains horizontal overflow (1.6s)
+  ✓  12 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P12 resolves and contains horizontal overflow (1.6s)
+  ✓  13 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P13 resolves and contains horizontal overflow (1.6s)
+  ✓  14 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P14 resolves and contains horizontal overflow (1.6s)
+  ✓  15 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P15 resolves and contains horizontal overflow (1.6s)
+  ✓  16 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P16 resolves and contains horizontal overflow (1.6s)
+  ✓  17 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P17 resolves and contains horizontal overflow (1.6s)
+  ✓  18 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P18 resolves and contains horizontal overflow (1.6s)
+  ✓  19 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P19 resolves and contains horizontal overflow (1.6s)
+  ✓  20 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P20 resolves and contains horizontal overflow (1.6s)
+  ✓  21 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P21 resolves and contains horizontal overflow (1.6s)
+  ✓  22 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P22 resolves and contains horizontal overflow (1.6s)
+  ✓  23 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P23 resolves and contains horizontal overflow (1.6s)
+  ✓  24 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P24 resolves and contains horizontal overflow (1.7s)
+  ✓  25 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P25 resolves and contains horizontal overflow (1.6s)
+  ✓  26 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P26 resolves and contains horizontal overflow (1.6s)
+  ✓  27 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P27 resolves and contains horizontal overflow (1.6s)
+  ✓  28 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P28 resolves and contains horizontal overflow (1.6s)
+  ✓  29 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P29 resolves and contains horizontal overflow (1.6s)
+  ✓  30 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P30 resolves and contains horizontal overflow (1.6s)
+  ✓  31 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P31 resolves and contains horizontal overflow (1.6s)
+  ✓  32 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P32 resolves and contains horizontal overflow (2.4s)
+  ✓  33 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P33 resolves and contains horizontal overflow (1.6s)
+  ✓  34 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P34 resolves and contains horizontal overflow (1.6s)
+  ✓  35 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P35 resolves and contains horizontal overflow (1.6s)
+  ✓  36 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P36 resolves and contains horizontal overflow (1.6s)
+  ✓  37 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P37 resolves and contains horizontal overflow (1.6s)
+  ✓  38 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P38 resolves and contains horizontal overflow (1.6s)
+  ✓  39 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P39 resolves and contains horizontal overflow (1.6s)
+  ✓  40 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P40 resolves and contains horizontal overflow (1.6s)
+  ✓  41 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P41 resolves and contains horizontal overflow (1.7s)
+  ✓  42 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P42 resolves and contains horizontal overflow (1.6s)
+  ✘  43 [chromium] › tests/e2e/full-route-validation.spec.ts:23:5 › P0 focused height at 1280 × 720 › P36 default state remains within 2.5 viewports (1.7s)
+  -  44 [chromium] › tests/e2e/full-route-validation.spec.ts:23:5 › P0 focused height at 1280 × 720 › P38 default state remains within 2.5 viewports
+  -  45 [chromium] › tests/e2e/full-route-validation.spec.ts:23:5 › P0 focused height at 1280 × 720 › P39 default state remains within 2.5 viewports
+  -  46 [chromium] › tests/e2e/full-route-validation.spec.ts:23:5 › P0 focused height at 1280 × 720 › P42 default state remains within 2.5 viewports
+  ✓  47 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P01 resolves and contains horizontal overflow (retry #1) (1.7s)
+  ✓  48 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P02 resolves and contains horizontal overflow (retry #1) (1.6s)
+  ✓  49 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P03 resolves and contains horizontal overflow (retry #1) (1.6s)
+  ✓  50 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P04 resolves and contains horizontal overflow (retry #1) (1.6s)
+  ✓  51 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P05 resolves and contains horizontal overflow (retry #1) (1.8s)
+  ✓  52 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P06 resolves and contains horizontal overflow (retry #1) (1.6s)
+  ✓  53 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P07 resolves and contains horizontal overflow (retry #1) (1.6s)
+  ✓  54 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P08 resolves and contains horizontal overflow (retry #1) (1.8s)
+  ✓  55 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P09 resolves and contains horizontal overflow (retry #1) (1.6s)
+  ✓  56 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P10 resolves and contains horizontal overflow (retry #1) (1.6s)
+  ✓  57 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P11 resolves and contains horizontal overflow (retry #1) (1.6s)
+  ✓  58 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P12 resolves and contains horizontal overflow (retry #1) (1.5s)
+  ✓  59 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P13 resolves and contains horizontal overflow (retry #1) (1.6s)
+  ✓  60 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P14 resolves and contains horizontal overflow (retry #1) (1.6s)
+  ✓  61 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P15 resolves and contains horizontal overflow (retry #1) (1.6s)
+  ✓  62 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P16 resolves and contains horizontal overflow (retry #1) (1.6s)
+  ✓  63 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P17 resolves and contains horizontal overflow (retry #1) (1.6s)
+  ✓  64 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P18 resolves and contains horizontal overflow (retry #1) (1.6s)
+  ✓  65 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P19 resolves and contains horizontal overflow (retry #1) (1.6s)
+  ✓  66 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P20 resolves and contains horizontal overflow (retry #1) (1.6s)
+  ✓  67 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P21 resolves and contains horizontal overflow (retry #1) (1.7s)
+  ✓  68 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P22 resolves and contains horizontal overflow (retry #1) (1.6s)
+  ✓  69 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P23 resolves and contains horizontal overflow (retry #1) (1.6s)
+  ✓  70 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P24 resolves and contains horizontal overflow (retry #1) (1.6s)
+  ✓  71 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P25 resolves and contains horizontal overflow (retry #1) (1.6s)
+  ✓  72 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P26 resolves and contains horizontal overflow (retry #1) (1.6s)
+  ✓  73 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P27 resolves and contains horizontal overflow (retry #1) (1.6s)
+  ✓  74 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P28 resolves and contains horizontal overflow (retry #1) (1.6s)
+  ✓  75 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P29 resolves and contains horizontal overflow (retry #1) (1.6s)
+  ✓  76 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P30 resolves and contains horizontal overflow (retry #1) (1.6s)
+  ✓  77 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P31 resolves and contains horizontal overflow (retry #1) (1.6s)
+  ✓  78 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P32 resolves and contains horizontal overflow (retry #1) (2.3s)
+  ✓  79 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P33 resolves and contains horizontal overflow (retry #1) (1.6s)
+  ✓  80 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P34 resolves and contains horizontal overflow (retry #1) (1.7s)
+  ✓  81 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P35 resolves and contains horizontal overflow (retry #1) (1.6s)
+  ✓  82 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P36 resolves and contains horizontal overflow (retry #1) (1.6s)
+  ✓  83 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P37 resolves and contains horizontal overflow (retry #1) (1.6s)
+  ✓  84 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P38 resolves and contains horizontal overflow (retry #1) (1.5s)
+  ✓  85 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P39 resolves and contains horizontal overflow (retry #1) (1.6s)
+  ✓  86 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P40 resolves and contains horizontal overflow (retry #1) (1.5s)
+  ✓  87 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P41 resolves and contains horizontal overflow (retry #1) (1.6s)
+  ✓  88 [chromium] › tests/e2e/full-route-validation.spec.ts:11:5 › canonical routes at 1440 × 900 › P42 resolves and contains horizontal overflow (retry #1) (1.6s)
+  ✘  89 [chromium] › tests/e2e/full-route-validation.spec.ts:23:5 › P0 focused height at 1280 × 720 › P36 default state remains within 2.5 viewports (retry #1) (1.6s)
+  -  90 [chromium] › tests/e2e/full-route-validation.spec.ts:23:5 › P0 focused height at 1280 × 720 › P38 default state remains within 2.5 viewports (retry #1)
+  -  91 [chromium] › tests/e2e/full-route-validation.spec.ts:23:5 › P0 focused height at 1280 × 720 › P39 default state remains within 2.5 viewports (retry #1)
+  -  92 [chromium] › tests/e2e/full-route-validation.spec.ts:23:5 › P0 focused height at 1280 × 720 › P42 default state remains within 2.5 viewports (retry #1)
+
+
+  1) [chromium] › tests/e2e/full-route-validation.spec.ts:23:5 › P0 focused height at 1280 × 720 › P36 default state remains within 2.5 viewports 
+
+    Error: {"height":1901,"viewport":720,"width":1280,"viewportWidth":1280}
+
+    expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 1800
+    Received:    1901
+
+      30 |         viewportWidth: window.innerWidth,
+      31 |       }));
+    > 32 |       expect(metrics.height, JSON.stringify(metrics)).toBeLessThanOrEqual(metrics.viewport * 2.5);
+         |                                                       ^
+      33 |       expect(metrics.width, JSON.stringify(metrics)).toBeLessThanOrEqual(metrics.viewportWidth + 1);
+      34 |     });
+      35 |   }
+        at /home/runner/work/SOC_network/SOC_network/tests/e2e/full-route-validation.spec.ts:32:55
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/full-route-validation-P0-f-a344a-emains-within-2-5-viewports-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/full-route-validation-P0-f-a344a-emains-within-2-5-viewports-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/full-route-validation-P0-f-a344a-emains-within-2-5-viewports-chromium/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/full-route-validation-P0-f-a344a-emains-within-2-5-viewports-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/full-route-validation-P0-f-a344a-emains-within-2-5-viewports-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: {"height":1901,"viewport":720,"width":1280,"viewportWidth":1280}
+
+    expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 1800
+    Received:    1901
+
+      30 |         viewportWidth: window.innerWidth,
+      31 |       }));
+    > 32 |       expect(metrics.height, JSON.stringify(metrics)).toBeLessThanOrEqual(metrics.viewport * 2.5);
+         |                                                       ^
+      33 |       expect(metrics.width, JSON.stringify(metrics)).toBeLessThanOrEqual(metrics.viewportWidth + 1);
+      34 |     });
+      35 |   }
+        at /home/runner/work/SOC_network/SOC_network/tests/e2e/full-route-validation.spec.ts:32:55
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/full-route-validation-P0-f-a344a-emains-within-2-5-viewports-chromium-retry1/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/full-route-validation-P0-f-a344a-emains-within-2-5-viewports-chromium-retry1/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/full-route-validation-P0-f-a344a-emains-within-2-5-viewports-chromium-retry1/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/full-route-validation-P0-f-a344a-emains-within-2-5-viewports-chromium-retry1/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/full-route-validation-P0-f-a344a-emains-within-2-5-viewports-chromium-retry1/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [chromium] › tests/e2e/full-route-validation.spec.ts:23:5 › P0 focused height at 1280 × 720 › P36 default state remains within 2.5 viewports 
+  3 did not run
+  42 passed (2.4m)

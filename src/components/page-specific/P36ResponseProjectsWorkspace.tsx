@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from 'react';
+import { useMemo, useRef, useState, type MouseEvent } from 'react';
 import {
   EuiAccordion,
   EuiBadge,
@@ -213,7 +213,7 @@ export function P36ResponseProjectsWorkspace({ fixture }: { fixture: PrototypePa
           <div className="p36TimelineScroller"><div className="p36Timeline"><header><span>Milestone</span>{['Aug 01', 'Aug 15', 'Sep 01', 'Sep 15', 'Oct 01', 'Oct 15'].map((label) => <b key={label}>{label}</b>)}</header>{milestones.map((item) => <div className="p36TimelineRow" key={item.id}><div><strong>{item.name}</strong><small>{item.owner} · due {item.due}</small></div><button type="button" className={item.status.toLowerCase().replaceAll(' ', '-')} style={{ gridColumn: `${item.position + 1} / span ${item.span}` }} onClick={(event) => openMilestone(item, event.currentTarget)}><span>{item.status}</span><small>{item.dependency}</small></button></div>)}</div></div>
           <EuiSpacer size="m" />
           <EuiAccordion id={`p36-exact-${selected.key}`} buttonContent="Show exact milestone table" paddingSize="s">
-            <div className="p36TableWrap"><table><thead><tr><th>Milestone</th><th>Owner</th><th>Due</th><th>Status</th><th>Dependency</th></tr></thead><tbody>{milestones.map((item) => <tr key={item.id}><td><EuiButtonEmpty size="xs" onClick={(event) => openMilestone(item, event.currentTarget)}>{item.id}</EuiButtonEmpty><small>{item.name}</small></td><td>{item.owner}</td><td>{item.due}</td><td><EuiBadge color={statusColor(item.status)}>{item.status}</EuiBadge></td><td>{item.dependency}</td></tr>)}</tbody></table></div>
+            <div className="p36TableWrap"><table><thead><tr><th>Milestone</th><th>Owner</th><th>Due</th><th>Status</th><th>Dependency</th></tr></thead><tbody>{milestones.map((item) => <tr key={item.id}><td><EuiButtonEmpty size="xs" onClick={(event: MouseEvent<HTMLButtonElement>) => openMilestone(item, event.currentTarget)}>{item.id}</EuiButtonEmpty><small>{item.name}</small></td><td>{item.owner}</td><td>{item.due}</td><td><EuiBadge color={statusColor(item.status)}>{item.status}</EuiBadge></td><td>{item.dependency}</td></tr>)}</tbody></table></div>
           </EuiAccordion>
         </div>}
 

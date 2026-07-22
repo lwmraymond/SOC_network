@@ -1,0 +1,4 @@
+
+> soc-network-prototype@0.3.0 typecheck
+> tsc -b --pretty false && tsc --noEmit -p tsconfig.e2e.json --pretty false
+
