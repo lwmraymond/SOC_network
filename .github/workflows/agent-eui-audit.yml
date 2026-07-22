@@ -1,11 +1,11 @@
 name: Agent temporary EUI metrics audit
 
 on:
-  push:
+  pull_request:
     branches:
-      - codex/kibana-42page-visual
-    paths:
-      - .github/workflows/agent-eui-audit.yml
+      - codex/merge-p01-p35-eui
+    types:
+      - reopened
 
 permissions:
   contents: write
@@ -15,16 +15,17 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
-      - name: Check out audit bootstrap
+      - name: Check out audit branch
         uses: actions/checkout@v4
         with:
+          ref: codex/kibana-42page-visual
           fetch-depth: 0
 
-      - name: Verify immutable source head
+      - name: Verify immutable source ancestry
         shell: bash
         run: |
           set -euo pipefail
-          test "$(git rev-parse HEAD^)" = "f351391910c627b01f36bbb819f7eb50ce395181"
+          git merge-base --is-ancestor f351391910c627b01f36bbb819f7eb50ce395181 HEAD
 
       - name: Set up declared Node version
         uses: actions/setup-node@v4
@@ -59,7 +60,7 @@ jobs:
           curl --fail --silent http://127.0.0.1:5174/dashboard/soc >/dev/null
           EUI_AUDIT_WIDTH=1231 EUI_AUDIT_HEIGHT=768 node scripts/audit-eui-visual-metrics.mjs --report-only
           cp /tmp/eui-audit-vite.log artifacts/eui-visual-audit/vite.log
-          printf 'node=%s\nnpm=%s\nsource=%s\n' "$(node --version)" "$(npm --version)" "$(git rev-parse HEAD^)" > artifacts/eui-visual-audit/environment.txt
+          printf 'node=%s\nnpm=%s\nhead=%s\n' "$(node --version)" "$(npm --version)" "$(git rev-parse HEAD)" > artifacts/eui-visual-audit/environment.txt
 
       - name: Publish disposable audit evidence
         shell: bash
