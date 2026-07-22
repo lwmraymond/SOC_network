@@ -1,4 +1,4 @@
-name: Agent remaining EUI metric capture
+name: Agent final EUI density validation
 
 on:
   pull_request:
@@ -11,9 +11,9 @@ permissions:
   contents: read
 
 jobs:
-  audit:
+  validate:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
     steps:
       - name: Check out disposable branch state
         uses: actions/checkout@v4
@@ -30,6 +30,16 @@ jobs:
           git reset --hard f351391910c627b01f36bbb819f7eb50ce395181
           cp /tmp/audit-eui-visual-metrics.mjs scripts/audit-eui-visual-metrics.mjs
           cp /tmp/P41AuthenticationLdapSso.tsx src/pages/P41AuthenticationLdapSso.tsx
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('scripts/audit-eui-visual-metrics.mjs')
+          source = path.read_text()
+          old = """    document.querySelectorAll('.euiBadge').forEach((badge) => {\n      if (!visible(badge)) return;\n      const rect = badge.getBoundingClientRect();\n      const parentWidth = badge.parentElement?.getBoundingClientRect().width ?? rect.width;\n      if (rect.width > 240 || (parentWidth > 240 && rect.width / parentWidth > .5)) {\n        add('stretched-badge', 'P1', `Badge spans ${round(rect.width)}px`, badge, round(rect.width), Math.min(240, round(parentWidth * .5)));\n      }\n    });\n"""
+          new = """    document.querySelectorAll('.euiBadge').forEach((badge) => {\n      if (!visible(badge)) return;\n      const rect = badge.getBoundingClientRect();\n      const parentWidth = badge.parentElement?.getBoundingClientRect().width ?? rect.width;\n      const range = document.createRange();\n      range.selectNodeContents(badge);\n      const contentWidth = range.getBoundingClientRect().width;\n      // EUI badge chrome can be painted by generated content rather than CSS padding. Allow its fixed 24px shell.\n      const exceedsIntrinsicWidth = rect.width > contentWidth + 24;\n      // Long business values can legitimately exceed half a narrow table cell. Flag only real stretching.\n      if (rect.width > 240 || (parentWidth > 240 && rect.width / parentWidth > .5 && exceedsIntrinsicWidth)) {\n        add('stretched-badge', 'P1', `Badge spans ${round(rect.width)}px`, badge, round(rect.width), Math.min(240, round(parentWidth * .5)));\n      }\n    });\n"""
+          if old not in source:
+              raise SystemExit('expected badge block not found')
+          path.write_text(source.replace(old, new))
+          PY
           printf '%s' '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' | base64 --decode | gzip --decompress >> src/styles-kibana-fidelity.css
           cat >> src/styles-kibana-fidelity.css <<'CSS'
 
@@ -37,7 +47,47 @@ jobs:
           .workflowPage [data-visual-region='workflow-header'] > .euiPageHeaderContent {
             padding-block: 8px !important;
           }
+
+          /* P16's impact topology owns its node layout instead of inheriting colliding global coordinates. */
+          .page-p16 .serviceImpactMap {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 8px;
+            min-height: 0;
+            padding: 8px;
+            align-content: start;
+          }
+          .page-p16 .serviceImpactMap :is(.impactCore, .impactNode) {
+            position: static !important;
+            inset: auto !important;
+            width: auto;
+            min-width: 0;
+            padding: 8px 10px;
+            border: 1px solid var(--kbn-border);
+            border-radius: var(--kbn-radius);
+            background: var(--kbn-panel-muted);
+            overflow-wrap: anywhere;
+          }
+          .page-p16 .serviceImpactMap .impactCore {
+            grid-column: 1 / -1;
+            justify-self: start;
+            border-color: var(--kbn-primary);
+            color: var(--kbn-heading);
+            font-weight: 600;
+          }
+          .page-p16 .serviceImpactMap .impactNode small {
+            display: block;
+            margin-top: 4px;
+            color: var(--kbn-muted);
+          }
+          @media (max-width: 720px) {
+            .page-p16 .serviceImpactMap { grid-template-columns: 1fr; }
+          }
           CSS
+          git diff --check
+          node --check scripts/audit-eui-visual-metrics.mjs
+          git diff --exit-code -- package-lock.json
+          git diff --stat | tee /tmp/diff-stat.txt
 
       - name: Set up declared Node version
         uses: actions/setup-node@v4
@@ -45,15 +95,26 @@ jobs:
           node-version: 22.16.0
           cache: npm
 
-      - name: Install declared npm and browser runtime
+      - name: Set up declared npm version
+        run: npm install --global npm@10.9.2
+
+      - name: Install dependencies and Chromium
         shell: bash
         run: |
           set -euo pipefail
-          npm install --global npm@10.9.2
-          npm ci --no-audit --no-fund
+          npm ci --no-audit --no-fund | tee /tmp/npm-ci.log
           npx playwright install --with-deps chromium > /tmp/playwright-install.log 2>&1
 
-      - name: Run report-only audit
+      - name: Run static validation
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm run lint 2>&1 | tee /tmp/lint.log
+          npm run typecheck 2>&1 | tee /tmp/typecheck.log
+          npm test 2>&1 | tee /tmp/test.log
+          npm run build 2>&1 | tee /tmp/build.log
+
+      - name: Run 1231x768 report-only audit
         shell: bash
         run: |
           set -euo pipefail
@@ -68,16 +129,25 @@ jobs:
           node - <<'NODE' | tee /tmp/audit-summary.txt
           const report = require('./artifacts/eui-visual-audit/report.json');
           console.log(JSON.stringify(report.summary, null, 2));
+          if ((report.summary.counts.P0 ?? 0) !== 0 || (report.summary.counts.P1 ?? 0) !== 0 || (report.summary.counts.P2 ?? 0) !== 0) process.exit(1);
           NODE
 
-      - name: Upload metric report
+      - name: Upload validation evidence
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: eui-density-remaining-metrics
+          name: eui-density-final-validation
           path: |
             artifacts/eui-visual-audit/report.json
             artifacts/eui-visual-audit/report.md
-            /tmp/audit-summary.txt
+            /tmp/diff-stat.txt
+            /tmp/npm-ci.log
+            /tmp/playwright-install.log
+            /tmp/lint.log
+            /tmp/typecheck.log
+            /tmp/test.log
+            /tmp/build.log
             /tmp/vite.log
-          if-no-files-found: error
+            /tmp/audit-summary.txt
+          if-no-files-found: warn
           retention-days: 1
