@@ -51,6 +51,13 @@ const P32 = lazy(() => import('./pages/P32ScriptWorkbench'));
 const P33 = lazy(() => import('./pages/P33KnowledgeSources'));
 const P34 = lazy(() => import('./pages/P34PlaybooksAutomationTemplates'));
 const P35 = lazy(() => import('./pages/P35DetectionNotes'));
+const P36 = lazy(() => import('./pages/P36ResponseProjects'));
+const P37 = lazy(() => import('./pages/P37Users'));
+const P38 = lazy(() => import('./pages/P38Roles'));
+const P39 = lazy(() => import('./pages/P39Permissions'));
+const P40 = lazy(() => import('./pages/P40PlatformSettingsDirectory'));
+const P41 = lazy(() => import('./pages/P41AuthenticationLdapSso'));
+const P42 = lazy(() => import('./pages/P42ThemeAccessibility'));
 
 const groupIcons: Record<PageGroup, 'inspect' | 'search' | 'document'> = {
   Dashboard: 'inspect',
@@ -61,6 +68,9 @@ const groupIcons: Record<PageGroup, 'inspect' | 'search' | 'document'> = {
   'SOC Agent': 'inspect',
   'Runtime Catalog': 'document',
   'Knowledge Base': 'document',
+  'Response Projects': 'document',
+  Administration: 'inspect',
+  'Platform Settings': 'document',
 };
 
 function Suspended({ children }: { children: ReactNode }) {
@@ -70,7 +80,7 @@ function Suspended({ children }: { children: ReactNode }) {
 function AppShell() {
   const location = useLocation();
   const navigate = useNavigate();
-  const [globalSearch,setGlobalSearch]=useState('');
+  const [globalSearch, setGlobalSearch] = useState('');
   const { mode, toggleMode } = usePlatformTheme();
   const currentPage = useMemo(() => pageSpecs.find((page) => Boolean(matchPath({ path: page.route, end: true }, location.pathname))), [location.pathname]);
   const sideNavItems = useMemo(() => [{
@@ -102,55 +112,62 @@ function AppShell() {
     <header aria-label="Application header">
       <EuiHeader position="fixed">
         <EuiHeaderSection grow={false}><EuiHeaderSectionItem><EuiHeaderLogo iconType="logoElastic">SOC Operations</EuiHeaderLogo></EuiHeaderSectionItem></EuiHeaderSection>
-        <EuiHeaderSection grow><EuiHeaderSectionItem><EuiFieldSearch compressed value={globalSearch} onChange={(event)=>setGlobalSearch(event.target.value)} onSearch={()=>navigate(`/analyzer/search?q=${encodeURIComponent(globalSearch)}`)} placeholder="Global object search" aria-label="Global search" /></EuiHeaderSectionItem></EuiHeaderSection>
+        <EuiHeaderSection grow><EuiHeaderSectionItem><EuiFieldSearch compressed value={globalSearch} onChange={(event) => setGlobalSearch(event.target.value)} onSearch={() => navigate(`/analyzer/search?q=${encodeURIComponent(globalSearch)}`)} placeholder="Global object search" aria-label="Global search" /></EuiHeaderSectionItem></EuiHeaderSection>
         <EuiHeaderSection grow={false}><EuiHeaderSectionItem><EuiBadge color="hollow">Prototype</EuiBadge></EuiHeaderSectionItem><EuiHeaderSectionItem><EuiButtonEmpty size="xs" onClick={toggleMode} aria-label={`Switch to ${mode === 'light' ? 'dark' : 'light'} theme`}>{mode === 'light' ? 'Dark' : 'Light'} theme</EuiButtonEmpty></EuiHeaderSectionItem></EuiHeaderSection>
       </EuiHeader>
     </header>
     <aside className="sidebar" aria-label="Primary navigation">
       <div className="sidebarIntro">
         <EuiText size="xs"><strong>Operations</strong><p>Security and service workspaces</p></EuiText>
-        <EuiBadge color="hollow">P01–P35</EuiBadge>
+        <EuiBadge color="hollow">P01–P42</EuiBadge>
       </div>
       <EuiSideNav items={sideNavItems} truncate mobileBreakpoints={undefined} />
       <div className="sidebarFooter"><EuiText size="xs" color="subdued"><p>Fixture-backed review environment</p></EuiText></div>
     </aside>
     <div className="content" id="main-content">
       <Routes>
-          <Route path="/dashboard/soc" element={<Suspended><P01 /></Suspended>} />
-          <Route path="/dashboard/executive" element={<Suspended><P02 /></Suspended>} />
-          <Route path="/dashboard/platform-health" element={<Suspended><P03 /></Suspended>} />
-          <Route path="/analyzer/cases" element={<Suspended><P04 /></Suspended>} />
-          <Route path="/analyzer/alerts" element={<Suspended><P05 /></Suspended>} />
-          <Route path="/analyzer/response-actions" element={<Suspended><P06 /></Suspended>} />
-          <Route path="/analyzer/search" element={<Suspended><P07 /></Suspended>} />
-          <Route path="/devices/inventory" element={<Suspended><P08 /></Suspended>} />
-          <Route path="/devices/vulnerabilities" element={<Suspended><P09 /></Suspended>} />
-          <Route path="/devices/vulnerability-matches" element={<Suspended><P10 /></Suspended>} />
-          <Route path="/devices/remediation" element={<Suspended><P11 /></Suspended>} />
-          <Route path="/devices/assets/:assetId" element={<Suspended><P12 /></Suspended>} />
-          <Route path="/itsm/overview" element={<Suspended><P13 /></Suspended>} />
-          <Route path="/itsm/queues" element={<Suspended><P14 /></Suspended>} />
-          <Route path="/itsm/requests" element={<Suspended><P15 /></Suspended>} />
-          <Route path="/itsm/incidents" element={<Suspended><P16 /></Suspended>} />
-          <Route path="/itsm/problems" element={<Suspended><P17 /></Suspended>} />
-          <Route path="/itsm/changes" element={<Suspended><P18 /></Suspended>} />
-          <Route path="/itsm/approvals" element={<Suspended><P19 /></Suspended>} />
-          <Route path="/itsm/analytics" element={<Suspended><P20 /></Suspended>} />
-          <Route path="/itsm/reports" element={<Suspended><P21 /></Suspended>} />
-          <Route path="/itsm/settings" element={<Suspended><P22 /></Suspended>} />
-          <Route path="/copilot" element={<Suspended><P23 /></Suspended>} />
-          <Route path="/agents" element={<Suspended><P24 /></Suspended>} />
-          <Route path="/agents/tasks" element={<Suspended><P25 /></Suspended>} />
-          <Route path="/agents/runtime-access" element={<Suspended><P26 /></Suspended>} />
-          <Route path="/runtime" element={<Suspended><P27 /></Suspended>} />
-          <Route path="/runtime/data-sources" element={<Suspended><P28 /></Suspended>} />
-          <Route path="/runtime/rules" element={<Suspended><P29 /></Suspended>} />
-          <Route path="/runtime/events" element={<Suspended><P30 /></Suspended>} />
-          <Route path="/runtime/objects" element={<Suspended><P31 /></Suspended>} />
-          <Route path="/runtime/script-workbench" element={<Suspended><P32 /></Suspended>} />
-          <Route path="/knowledge/sources" element={<Suspended><P33 /></Suspended>} />
-          <Route path="/knowledge/playbooks" element={<Suspended><P34 /></Suspended>} />
-          <Route path="/knowledge/detection-notes" element={<Suspended><P35 /></Suspended>} />
+        <Route path="/dashboard/soc" element={<Suspended><P01 /></Suspended>} />
+        <Route path="/dashboard/executive" element={<Suspended><P02 /></Suspended>} />
+        <Route path="/dashboard/platform-health" element={<Suspended><P03 /></Suspended>} />
+        <Route path="/analyzer/cases" element={<Suspended><P04 /></Suspended>} />
+        <Route path="/analyzer/alerts" element={<Suspended><P05 /></Suspended>} />
+        <Route path="/analyzer/response-actions" element={<Suspended><P06 /></Suspended>} />
+        <Route path="/analyzer/search" element={<Suspended><P07 /></Suspended>} />
+        <Route path="/devices/inventory" element={<Suspended><P08 /></Suspended>} />
+        <Route path="/devices/vulnerabilities" element={<Suspended><P09 /></Suspended>} />
+        <Route path="/devices/vulnerability-matches" element={<Suspended><P10 /></Suspended>} />
+        <Route path="/devices/remediation" element={<Suspended><P11 /></Suspended>} />
+        <Route path="/devices/assets/:assetId" element={<Suspended><P12 /></Suspended>} />
+        <Route path="/itsm/overview" element={<Suspended><P13 /></Suspended>} />
+        <Route path="/itsm/queues" element={<Suspended><P14 /></Suspended>} />
+        <Route path="/itsm/requests" element={<Suspended><P15 /></Suspended>} />
+        <Route path="/itsm/incidents" element={<Suspended><P16 /></Suspended>} />
+        <Route path="/itsm/problems" element={<Suspended><P17 /></Suspended>} />
+        <Route path="/itsm/changes" element={<Suspended><P18 /></Suspended>} />
+        <Route path="/itsm/approvals" element={<Suspended><P19 /></Suspended>} />
+        <Route path="/itsm/analytics" element={<Suspended><P20 /></Suspended>} />
+        <Route path="/itsm/reports" element={<Suspended><P21 /></Suspended>} />
+        <Route path="/itsm/settings" element={<Suspended><P22 /></Suspended>} />
+        <Route path="/copilot" element={<Suspended><P23 /></Suspended>} />
+        <Route path="/agents" element={<Suspended><P24 /></Suspended>} />
+        <Route path="/agents/tasks" element={<Suspended><P25 /></Suspended>} />
+        <Route path="/agents/runtime-access" element={<Suspended><P26 /></Suspended>} />
+        <Route path="/runtime" element={<Suspended><P27 /></Suspended>} />
+        <Route path="/runtime/data-sources" element={<Suspended><P28 /></Suspended>} />
+        <Route path="/runtime/rules" element={<Suspended><P29 /></Suspended>} />
+        <Route path="/runtime/events" element={<Suspended><P30 /></Suspended>} />
+        <Route path="/runtime/objects" element={<Suspended><P31 /></Suspended>} />
+        <Route path="/runtime/script-workbench" element={<Suspended><P32 /></Suspended>} />
+        <Route path="/knowledge/sources" element={<Suspended><P33 /></Suspended>} />
+        <Route path="/knowledge/playbooks" element={<Suspended><P34 /></Suspended>} />
+        <Route path="/knowledge/detection-notes" element={<Suspended><P35 /></Suspended>} />
+        <Route path="/projects/responses" element={<Suspended><P36 /></Suspended>} />
+        <Route path="/admin/users" element={<Suspended><P37 /></Suspended>} />
+        <Route path="/admin/roles" element={<Suspended><P38 /></Suspended>} />
+        <Route path="/admin/permissions" element={<Suspended><P39 /></Suspended>} />
+        <Route path="/settings" element={<Suspended><P40 /></Suspended>} />
+        <Route path="/settings/authentication" element={<Suspended><P41 /></Suspended>} />
+        <Route path="/settings/theme" element={<Suspended><P42 /></Suspended>} />
         <Route path="/" element={<div className="routeRedirect"><h1>SOC / ITSM Interactive Design</h1><p>Select a work surface from the navigation.</p><Link to="/dashboard/soc">Open Security Operations Overview</Link></div>} />
         <Route path="*" element={<div className="routeRedirect"><h1>Route not found</h1><p>The requested route is not part of the canonical catalog.</p><Link to="/dashboard/soc">Return to dashboard</Link></div>} />
       </Routes>
