@@ -27,21 +27,14 @@ jobs:
           ref: codex/p01-p42-density-measurement-20260722
           fetch-depth: 0
 
-      - name: Materialize density collector
+      - name: Materialize and verify density collector
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p scripts
-          cat .density-audit-temp/final-* | base64 --decode | gzip --decompress > scripts/audit-information-density.mjs
-          python - <<'PY'
-          from pathlib import Path
-          import re
-          path = Path('scripts/audit-information-density.mjs')
-          source = path.read_text()
-          source = re.sub(r"const percentileNumber = \(values, fraction\) => \{.*?^\};\n", "", source, flags=re.MULTILINE | re.DOTALL)
-          source = source.replace("  const portfolioVectors = scorableEntries.map(densityVector);\n", "")
-          path.write_text(source)
-          PY
+          cat .density-audit-temp/payload-* | base64 --decode | gzip --decompress > scripts/audit-information-density.mjs
+          test "$(wc -c < scripts/audit-information-density.mjs | tr -d ' ')" = "71277"
+          test "$(sha256sum scripts/audit-information-density.mjs | cut -d' ' -f1)" = "94213d25b758698a49a372fc61bdc6bb822c75bd47d12c6dc6ab877f6c7d7fc9"
           node --check scripts/audit-information-density.mjs
 
       - name: Set up declared Node
@@ -79,6 +72,7 @@ jobs:
           trap 'kill "$server_pid" 2>/dev/null || true' EXIT
           for attempt in $(seq 1 90); do
             if curl --fail --silent http://127.0.0.1:5174/dashboard/soc >/dev/null; then break; fi
+            if [ "$attempt" -eq 90 ]; then cat /tmp/density-vite.log; exit 1; fi
             sleep 1
           done
           node scripts/audit-information-density.mjs
