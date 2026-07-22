@@ -2,7 +2,7 @@ export type PageId =
   | 'P01' | 'P02' | 'P03' | 'P04' | 'P05' | 'P06' | 'P07' | 'P08' | 'P09' | 'P10' | 'P11'
   | 'P12' | 'P13' | 'P14' | 'P15' | 'P16' | 'P17' | 'P18' | 'P19' | 'P20' | 'P21' | 'P22'
   | 'P23' | 'P24' | 'P25' | 'P26' | 'P27' | 'P28' | 'P29' | 'P30' | 'P31' | 'P32' | 'P33'
-  | 'P34' | 'P35';
+  | 'P34' | 'P35' | 'P36' | 'P37' | 'P38' | 'P39' | 'P40' | 'P41' | 'P42';
 
 export type PageGroup =
   | 'Dashboard'
@@ -12,7 +12,10 @@ export type PageGroup =
   | 'AI Copilot'
   | 'SOC Agent'
   | 'Runtime Catalog'
-  | 'Knowledge Base';
+  | 'Knowledge Base'
+  | 'Response Projects'
+  | 'Administration'
+  | 'Platform Settings';
 
 export type PageSpec = {
   id: PageId;
@@ -266,6 +269,56 @@ export const pageSpecs: PageSpec[] = [
     fields: ['note', 'technique', 'evidence', 'status', 'owner', 'updated_at'],
     columns: ['note', 'technique', 'status', 'owner', 'updated_at'],
   }),
+  definePage({
+    id: 'P36', title: 'Response Projects', route: '/projects/responses', group: 'Response Projects',
+    archetype: 'Response Portfolio + Milestone + Outcome', primaryRole: 'Response programme owner', primaryAction: 'Create project',
+    kpis: ['Active projects', 'Overdue milestones', 'Blocked workstreams', 'Unverified outcomes'],
+    fields: ['project_id', 'name', 'objective_scope', 'health', 'owner_team', 'due_at', 'progress', 'outcome_state'],
+    columns: ['project_id', 'name', 'health', 'owner_team', 'due_at', 'progress', 'outcome_state'],
+    filters: ['Status', 'Risk', 'Owner', 'Service'],
+  }),
+  definePage({
+    id: 'P37', title: 'Users', route: '/admin/users', group: 'Administration',
+    archetype: 'User Governance + Session Security', primaryRole: 'Identity administrator', primaryAction: 'Invite user',
+    fields: ['user_id', 'display_name', 'email', 'provider', 'status', 'mfa_state', 'last_signin_at'],
+    columns: ['display_name', 'provider', 'status', 'mfa_state', 'roles', 'sessions', 'last_signin_at'],
+    filters: ['Status', 'Provider', 'MFA', 'Role'],
+  }),
+  definePage({
+    id: 'P38', title: 'Roles', route: '/admin/roles', group: 'Administration',
+    archetype: 'Role Catalog + Capability Matrix', primaryRole: 'Security administrator', primaryAction: 'Create role',
+    fields: ['role_id', 'name', 'lifecycle', 'owner', 'member_count', 'privileged_capabilities', 'sod_conflicts', 'scope'],
+    columns: ['role_id', 'name', 'lifecycle', 'owner', 'member_count', 'scope'],
+    filters: ['Lifecycle', 'Scope', 'Owner', 'Conflict'],
+  }),
+  definePage({
+    id: 'P39', title: 'Permissions', route: '/admin/permissions', group: 'Administration',
+    archetype: 'Effective Access Query + Review Queue', primaryRole: 'Authorization administrator', primaryAction: 'Evaluate access',
+    fields: ['grant_id', 'principal', 'capability', 'resource', 'decision', 'origin', 'conflicts', 'expires_at'],
+    columns: ['principal', 'capability', 'resource', 'decision', 'origin', 'last_decision_at'],
+    filters: ['Principal', 'Decision', 'Origin', 'Attention'],
+  }),
+  definePage({
+    id: 'P40', title: 'Platform Settings Directory', route: '/settings', group: 'Platform Settings',
+    archetype: 'Settings Directory + Provenance + Plan', primaryRole: 'Platform administrator', primaryAction: 'Edit override',
+    fields: ['setting_key', 'name', 'category', 'scope', 'source', 'effective_value', 'apply_mode', 'risk'],
+    columns: ['setting_key', 'name', 'scope', 'source', 'effective_value', 'apply_mode'],
+    filters: ['Category', 'Scope', 'Source', 'Risk'],
+  }),
+  definePage({
+    id: 'P41', title: 'Authentication / LDAP / SSO', route: '/settings/authentication', group: 'Platform Settings',
+    archetype: 'Provider Topology + Staged Rollout', primaryRole: 'Identity platform administrator', primaryAction: 'Add provider',
+    fields: ['provider_id', 'provider_type', 'realm_order', 'provider_order', 'connection', 'login', 'mapping', 'state'],
+    columns: ['provider_id', 'provider_type', 'state', 'connection', 'login', 'success_rate'],
+    filters: ['Type', 'State', 'Health', 'Support'],
+  }),
+  definePage({
+    id: 'P42', title: 'Theme & Accessibility', route: '/settings/theme', group: 'Platform Settings',
+    archetype: 'Theme Catalog + Token Workbench + Validation', primaryRole: 'Design system administrator', primaryAction: 'Validate theme',
+    fields: ['theme_id', 'name', 'lifecycle', 'scope', 'mode', 'revision', 'errors', 'warnings'],
+    columns: ['theme_id', 'name', 'lifecycle', 'scope', 'revision', 'errors', 'warnings'],
+    filters: ['Mode', 'Lifecycle', 'Scope', 'Validation'],
+  }),
 ];
 
 export const pageGroups: PageGroup[] = [
@@ -277,6 +330,9 @@ export const pageGroups: PageGroup[] = [
   'SOC Agent',
   'Runtime Catalog',
   'Knowledge Base',
+  'Response Projects',
+  'Administration',
+  'Platform Settings',
 ];
 
 export const pageSpecById = Object.fromEntries(pageSpecs.map((page) => [page.id, page])) as Record<string, PageSpec> & Record<PageId, PageSpec>;

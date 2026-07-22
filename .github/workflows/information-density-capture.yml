@@ -1,0 +1,93 @@
+name: P01-P42 information-density evidence capture
+
+on:
+  pull_request:
+    branches:
+      - codex/merge-p01-p35-eui
+    types:
+      - opened
+      - synchronize
+      - reopened
+
+permissions:
+  contents: read
+
+jobs:
+  capture:
+    if: github.head_ref == 'codex/p01-p42-information-density-audit-capture'
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - name: Check out capture branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify source and scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git merge-base HEAD fa466957dbdc997f965e93d1b7ba709b33d5c197)" = "fa466957dbdc997f965e93d1b7ba709b33d5c197"
+          git diff --exit-code fa466957dbdc997f965e93d1b7ba709b33d5c197 -- \
+            src package.json package-lock.json vite.config.ts playwright.config.ts \
+            tests/e2e/canonicalRoutes.ts
+          node --check scripts/capture-information-density-evidence.mjs
+
+      - name: Set up declared Node version
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.16.0
+          cache: npm
+
+      - name: Install declared npm, Chromium, and WebP encoder
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install --yes webp
+          npm install --global npm@10.9.2
+          npm ci --no-audit --no-fund
+          npx playwright install --with-deps chromium
+
+      - name: Run application typecheck
+        run: npm run typecheck
+
+      - name: Capture all page-specific screenshot pairs
+        shell: bash
+        env:
+          AUDIT_SOURCE_SHA: fa466957dbdc997f965e93d1b7ba709b33d5c197
+          VITE_ENABLE_FIXTURES: 'true'
+        run: |
+          set -euo pipefail
+          npm run dev -- --host 127.0.0.1 --port 5174 > /tmp/information-density-vite.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          for attempt in $(seq 1 90); do
+            if curl --fail --silent http://127.0.0.1:5174/dashboard/soc >/dev/null; then break; fi
+            if [ "$attempt" -eq 90 ]; then
+              cat /tmp/information-density-vite.log
+              exit 1
+            fi
+            sleep 1
+          done
+          node scripts/capture-information-density-evidence.mjs
+          node - <<'NODE'
+          const manifest = require('./docs/design/audit-2026-07-22/screenshots/manifest.json');
+          const validation = manifest.validation;
+          if (!validation.valid || validation.firstViewportCount !== 42 || validation.fullPageCount !== 42) {
+            console.error(JSON.stringify(validation, null, 2));
+            process.exit(1);
+          }
+          console.log(JSON.stringify(validation, null, 2));
+          NODE
+
+      - name: Upload screenshot evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: information-density-capture-fa466957
+          path: |
+            docs/design/audit-2026-07-22/
+            /tmp/information-density-vite.log
+          if-no-files-found: error
+          retention-days: 7

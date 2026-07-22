@@ -1,7 +1,8 @@
 import { defineConfig, devices } from '@playwright/test';
 
 const chromiumExecutable = process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH;
-
+const externalBaseUrl = process.env.PLAYWRIGHT_BASE_URL;
+const baseURL = externalBaseUrl ?? 'http://127.0.0.1:4173';
 const isCi = Boolean((globalThis as typeof globalThis & { process?: { env?: { CI?: string } } }).process?.env?.CI);
 
 export default defineConfig({
@@ -14,13 +15,13 @@ export default defineConfig({
   reporter: [['list'], ['html', { outputFolder: 'playwright-report', open: 'never' }]],
   outputDir: 'test-results',
   use: {
-    baseURL: 'http://127.0.0.1:4173',
+    baseURL,
     trace: 'retain-on-failure',
     screenshot: 'only-on-failure',
     video: chromiumExecutable ? 'off' : 'retain-on-failure',
     contextOptions: { reducedMotion: 'reduce' },
   },
-  webServer: {
+  webServer: externalBaseUrl ? undefined : {
     command: 'VITE_ENABLE_FIXTURES=true npm run dev -- --host 127.0.0.1 --port 4173',
     url: 'http://127.0.0.1:4173/dashboard/soc',
     reuseExistingServer: !isCi,
