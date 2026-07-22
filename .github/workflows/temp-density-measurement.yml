@@ -11,8 +11,9 @@ permissions:
   contents: write
 
 jobs:
-  diagnose-lint:
+  measure:
     runs-on: ubuntu-latest
+    timeout-minutes: 60
     steps:
       - name: Materialize verified collector
         shell: bash
@@ -24,34 +25,138 @@ jobs:
           for segment in 00 01 02 03 04 05 06 07; do
             curl --fail --silent --show-error --location "https://raw.githubusercontent.com/lwmraymond/SOC_network/${HEAD_SHA}/.density-audit-temp/payload-${segment}" >> /tmp/information-density.b64
           done
-          base64 --decode /tmp/information-density.b64 | gzip --decompress > /tmp/audit-information-density.mjs
+          base64 --decode /tmp/information-density.b64 > /tmp/information-density.mjs.gz
+          gzip --test /tmp/information-density.mjs.gz
+          gzip --decompress --stdout /tmp/information-density.mjs.gz > /tmp/audit-information-density.mjs
+          test "$(wc -c < /tmp/audit-information-density.mjs | tr -d ' ')" = "71277"
           test "$(sha256sum /tmp/audit-information-density.mjs | cut -d' ' -f1)" = "94213d25b758698a49a372fc61bdc6bb822c75bd47d12c6dc6ab877f6c7d7fc9"
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('/tmp/audit-information-density.mjs')
+          source = path.read_text()
+          source = source.replace(', URL, window */', ', window */')
+          path.write_text(source)
+          PY
+          test "$(wc -c < /tmp/audit-information-density.mjs | tr -d ' ')" = "71272"
+          test "$(sha256sum /tmp/audit-information-density.mjs | cut -d' ' -f1)" = "173d66c2b2738d822019aab4dfa5f0cb75ad293552135aeeaedde2f811b1c78e"
+          node --check /tmp/audit-information-density.mjs
 
-      - name: Check out branch
+      - name: Check out isolated measurement branch
         uses: actions/checkout@v4
         with:
           ref: codex/p01-p42-density-measurement-20260722
           fetch-depth: 1
           show-progress: false
 
-      - name: Install collector and dependencies
+      - name: Install verified collector
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p scripts
           cp /tmp/audit-information-density.mjs scripts/audit-information-density.mjs
-          npm ci --no-audit --no-fund
 
-      - name: Persist lint result
+      - name: Set up declared Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.16.0
+          cache: npm
+
+      - name: Install dependencies and Chromium
         shell: bash
         run: |
+          set -euo pipefail
+          npm install --global npm@10.9.2
+          npm ci --no-audit --no-fund
+          npx playwright install --with-deps chromium
+
+      - name: Run repository validation
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm run lint
+          npm run typecheck
+          npm test
+          npm run build
+
+      - name: Render and measure all canonical pages
+        shell: bash
+        env:
+          DENSITY_AUDIT_SOURCE_SHA: fa466957dbdc997f965e93d1b7ba709b33d5c197
+          DENSITY_AUDIT_OUTPUT: docs/design/audit-2026-07-22/p01-p42-information-density.metrics.json
+        run: |
+          set -euo pipefail
+          VITE_ENABLE_FIXTURES=true npm run dev -- --host 127.0.0.1 --port 5174 > /tmp/density-vite.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          for attempt in $(seq 1 90); do
+            if curl --fail --silent http://127.0.0.1:5174/dashboard/soc >/dev/null; then break; fi
+            if [ "$attempt" -eq 90 ]; then cat /tmp/density-vite.log; exit 1; fi
+            sleep 1
+          done
           set +e
-          npm run lint > .density-audit-temp/lint-output.txt 2>&1
-          status=$?
+          node scripts/audit-information-density.mjs
+          collector_status=$?
           set -e
+          echo "$collector_status" > docs/design/audit-2026-07-22/collector-exit-status.txt
+          node scripts/audit-information-density.mjs --validate-only docs/design/audit-2026-07-22/p01-p42-information-density.metrics.json
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const report = JSON.parse(fs.readFileSync('docs/design/audit-2026-07-22/p01-p42-information-density.metrics.json', 'utf8'));
+          const compact = {
+            schemaVersion: report.schemaVersion,
+            metricVersion: report.metricVersion,
+            generatedAt: report.generatedAt,
+            source: report.source,
+            environment: report.environment,
+            calibration: report.calibration,
+            limitations: report.limitations,
+            portfolio: report.portfolio,
+            validation: report.validation,
+            pages: report.pages.map((page) => ({
+              id: page.id,
+              title: page.title,
+              route: page.route,
+              sourceArchetype: page.sourceArchetype,
+              archetype: page.archetype,
+              scorable: page.scorable,
+              confidence: page.confidence,
+              priority: page.priority,
+              failures: page.failures,
+              scores: page.scores,
+              humanReviewRecommendation: page.humanReviewRecommendation,
+              primary: page.measurements.primary?.status === 'measured' ? {
+                first_work_surface_y_ratio: page.measurements.primary.firstViewport.first_work_surface_y_ratio,
+                meaningful_occupancy_ratio: page.measurements.primary.firstViewport.meaningful_occupancy_ratio,
+                blank_canvas_ratio: page.measurements.primary.firstViewport.blank_canvas_ratio,
+                text_chars_per_10k_px2: page.measurements.primary.firstViewport.text_chars_per_10k_px2,
+                dom_block_count_per_100k_px2: page.measurements.primary.firstViewport.dom_block_count_per_100k_px2,
+                top_level_group_count: page.measurements.primary.firstViewport.top_level_group_count,
+                local_density_p95: page.measurements.primary.firstViewport.local_density_p95,
+                hierarchy: page.measurements.primary.firstViewport.hierarchy,
+                typography: page.measurements.primary.firstViewport.typography,
+                interaction: page.measurements.primary.firstViewport.interaction,
+                data_surfaces: page.measurements.primary.firstViewport.data_surfaces,
+                resilience: page.measurements.primary.firstViewport.resilience,
+                textSpacing: page.measurements.primary.textSpacing,
+              } : null,
+              structuralOverflow: page.measurements.structural?.firstViewport?.resilience?.document_horizontal_overflow_px ?? null,
+              tableOverflow: page.measurements.table?.firstViewport?.resilience?.document_horizontal_overflow_px ?? null,
+            })),
+          };
+          fs.writeFileSync('docs/design/audit-2026-07-22/compact-summary.json', JSON.stringify(compact, null, 2) + '\n');
+          NODE
+
+      - name: Publish measurement evidence on temporary branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf .density-audit-temp .github/workflows/temp-density-measurement.yml docs/design/audit-2026-07-22/screenshots
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add .density-audit-temp/lint-output.txt
-          git commit -m 'chore: capture temporary density lint output [skip ci]'
+          git add -A .density-audit-temp .github/workflows/temp-density-measurement.yml
+          git add scripts/audit-information-density.mjs
+          git add docs/design/audit-2026-07-22/p01-p42-information-density.metrics.json
+          git add docs/design/audit-2026-07-22/compact-summary.json
+          git add docs/design/audit-2026-07-22/collector-exit-status.txt
+          git commit -m 'chore: capture temporary P01-P42 density evidence [skip ci]'
           git push origin HEAD:codex/p01-p42-density-measurement-20260722
-          exit "$status"
