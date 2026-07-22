@@ -4,6 +4,13 @@ on:
   push:
     branches:
       - codex/p01-p42-density-measurement-20260722
+  pull_request:
+    branches:
+      - codex/merge-p01-p35-eui
+    types:
+      - opened
+      - reopened
+      - synchronize
 
 permissions:
   contents: write
