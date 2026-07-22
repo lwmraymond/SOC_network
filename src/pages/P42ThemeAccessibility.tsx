@@ -105,6 +105,9 @@ function P42Workspace() {
   const previewStyle = {
     '--p42TextScale': Number(textScale) / 100,
     '--p42Focus': visibleFocus ? '3px solid #175CD3' : 'none',
+    backgroundColor: previewMode === 'dark' ? '#07101f' : '#ffffff',
+    borderColor: previewMode === 'dark' ? '#2b394f' : '#d3dae6',
+    color: previewMode === 'dark' ? '#cad3e2' : '#1d1e24',
   } as CSSProperties;
 
   return <div className={`pageComposition differentiatedPage p42Theme ${reducedMotion ? 'p42ReducedMotion' : ''}`} data-page-specific-composition="P42-catalog-edit-preview-validation-flow">

@@ -261,7 +261,7 @@ export default function P05AlertQueue() {
 
       {selectedIds.size > 0 && <><EuiCallOut title={`${selectedIds.size} alert groups selected`} color="primary">Eligibility is evaluated through the shared permission boundary. This Demo never mutates the browser fixture array.</EuiCallOut><EuiSpacer size="m" /></>}
 
-      <EuiFlexGroup gutterSize="m" alignItems="stretch" responsive={false}>
+      <EuiFlexGroup className="p05TriageLayout" gutterSize="m" alignItems="stretch" responsive={false} wrap>
         <EuiFlexItem grow={5}>
           <EuiPanel paddingSize="m" hasBorder data-visual-region="alert-group-triage-queue">
             <EuiFlexGroup justifyContent="spaceBetween" alignItems="center" responsive={false}><EuiFlexItem><EuiTitle size="s"><h2>Alert group triage queue</h2></EuiTitle><EuiText size="xs" color="subdued"><p>Grouped alerts are ranked by risk, projection health and case readiness—not raw event volume.</p></EuiText></EuiFlexItem><EuiFlexItem grow={false}><EuiBadge color="hollow">Page selection ≠ all matching</EuiBadge></EuiFlexItem></EuiFlexGroup>

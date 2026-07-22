@@ -20,20 +20,6 @@ import type { PrototypeViewState } from './usePrototypePage';
 import { PrototypeActionFlow, type PrototypeReceipt } from './PrototypeActionFlow';
 import { SocText } from './SocTypography';
 
-const groupIcon = {
-  Dashboard: 'inspect',
-  Analyze: 'search',
-  Device: 'inspect',
-  'Ticket System / ITSM': 'document',
-  'AI Copilot': 'search',
-  'SOC Agent': 'inspect',
-  'Runtime Catalog': 'document',
-  'Knowledge Base': 'document',
-  'Response Projects': 'document',
-  Administration: 'inspect',
-  'Platform Settings': 'document',
-} as const;
-
 const stateCopy: Record<Exclude<PrototypeViewState,'ready'|'loading'|'empty'|'filtered-empty'>,{title:string;body:string;color:'danger'|'warning'|'primary'}> = {
   error: { title: 'Unable to load this work surface', body: 'The adapter returned a classified error. Query, filters and navigation context are preserved.', color: 'danger' },
   denied: { title: 'Access denied', body: 'The unified policy decision denied this route or scope without exposing hidden object counts.', color: 'danger' },
@@ -64,7 +50,6 @@ export function PageFrame({ spec, fixture, adapterError, viewState, setViewState
     <EuiPageTemplate restrictWidth={1800} className="prototypePage" data-page-id={spec.id} data-fixture-ready={fixture ? 'true' : 'false'} data-page-mode={pageMode}>
       <EuiPageTemplate.Header
         data-visual-region="page-header"
-        iconType={groupIcon[spec.group]}
         pageTitle={spec.title}
         description={spec.archetype}
         paddingSize="m"

@@ -81,6 +81,7 @@ function AppShell() {
   const location = useLocation();
   const navigate = useNavigate();
   const [globalSearch, setGlobalSearch] = useState('');
+  const [navOpen, setNavOpen] = useState(true);
   const { mode, toggleMode } = usePlatformTheme();
   const currentPage = useMemo(() => pageSpecs.find((page) => Boolean(matchPath({ path: page.route, end: true }, location.pathname))), [location.pathname]);
   const sideNavItems = useMemo(() => [{
@@ -108,20 +109,27 @@ function AppShell() {
   useEffect(() => {
     document.title = `${currentPage?.title ?? 'SOC / ITSM Interactive Design'} · SOC Operations`;
   }, [currentPage?.title]);
-  return <div className={`appShell theme-${mode}`}>
+  return <div className={`appShell theme-${mode}`} data-nav-open={navOpen}>
     <header aria-label="Application header">
       <EuiHeader position="fixed">
-        <EuiHeaderSection grow={false}><EuiHeaderSectionItem><EuiHeaderLogo iconType="logoElastic">SOC Operations</EuiHeaderLogo></EuiHeaderSectionItem></EuiHeaderSection>
+        <EuiHeaderSection grow={false}><EuiHeaderSectionItem><EuiHeaderLogo iconType="inspect" iconTitle="SOC Operations">SOC Operations</EuiHeaderLogo></EuiHeaderSectionItem></EuiHeaderSection>
         <EuiHeaderSection grow><EuiHeaderSectionItem><EuiFieldSearch compressed value={globalSearch} onChange={(event) => setGlobalSearch(event.target.value)} onSearch={() => navigate(`/analyzer/search?q=${encodeURIComponent(globalSearch)}`)} placeholder="Global object search" aria-label="Global search" /></EuiHeaderSectionItem></EuiHeaderSection>
         <EuiHeaderSection grow={false}><EuiHeaderSectionItem><EuiBadge color="hollow">Prototype</EuiBadge></EuiHeaderSectionItem><EuiHeaderSectionItem><EuiButtonEmpty size="xs" onClick={toggleMode} aria-label={`Switch to ${mode === 'light' ? 'dark' : 'light'} theme`}>{mode === 'light' ? 'Dark' : 'Light'} theme</EuiButtonEmpty></EuiHeaderSectionItem></EuiHeaderSection>
       </EuiHeader>
     </header>
+    <div className="shellContextBar" aria-label="Workspace context">
+      <button className="shellContextMenu" type="button" aria-label="Toggle primary navigation" aria-expanded={navOpen} onClick={() => setNavOpen((open) => !open)}><EuiIcon type="document" size="s" /></button>
+      <EuiBadge color="hollow">{currentPage?.group ?? 'Operations'}</EuiBadge>
+      <span className="shellContextDivider" aria-hidden="true">/</span>
+      <strong>{currentPage?.title ?? 'Workspace'}</strong>
+      {currentPage && <span className="shellContextId">{currentPage.id}</span>}
+    </div>
     <aside className="sidebar" aria-label="Primary navigation">
       <div className="sidebarIntro">
         <EuiText size="xs"><strong>Operations</strong><p>Security and service workspaces</p></EuiText>
         <EuiBadge color="hollow">P01–P42</EuiBadge>
       </div>
-      <EuiSideNav items={sideNavItems} truncate mobileBreakpoints={undefined} />
+      <EuiSideNav items={sideNavItems} truncate={false} mobileBreakpoints={undefined} />
       <div className="sidebarFooter"><EuiText size="xs" color="subdued"><p>Fixture-backed review environment</p></EuiText></div>
     </aside>
     <div className="content" id="main-content">

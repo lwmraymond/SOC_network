@@ -6,6 +6,7 @@ import './styles.css';
 import './styles-differentiated.css';
 import './styles-polish.css';
 import './styles-round2.css';
+import './styles-kibana-fidelity.css';
 import { App } from './App';
 import { AppErrorBoundary } from './AppErrorBoundary';
 import { PlatformThemeProvider } from './theme';

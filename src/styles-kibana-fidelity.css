@@ -1,0 +1,353 @@
+:root {
+  --kbn-chrome: #0b1628;
+  --kbn-canvas: #07101f;
+  --kbn-panel: #0b1628;
+  --kbn-panel-muted: #172336;
+  --kbn-border: #2b394f;
+  --kbn-border-strong: #485975;
+  --kbn-text: #cad3e2;
+  --kbn-heading: #e3e8f2;
+  --kbn-muted: #8e9fbc;
+  --kbn-primary: #61a2ff;
+  --kbn-primary-soft: #0a2342;
+  --kbn-success: #24c292;
+  --kbn-warning: #facb3d;
+  --kbn-danger: #f6726a;
+  --kbn-risk: #ff995e;
+  --kbn-radius: 4px;
+  --kbn-header-height: 48px;
+  --kbn-context-height: 40px;
+  --kbn-sidebar-width: 224px;
+}
+
+html[data-theme='dark'],
+.theme-dark {
+  --shell-bg: var(--kbn-chrome);
+  --shell-bg-raised: var(--kbn-chrome);
+  --shell-border: var(--kbn-border);
+  --shell-text: var(--kbn-text);
+  --shell-muted: var(--kbn-muted);
+  --shell-active: var(--kbn-primary);
+  --canvas: var(--kbn-canvas);
+  --canvas-raised: var(--kbn-panel);
+  --canvas-muted: var(--kbn-panel-muted);
+  --text: var(--kbn-text);
+  --muted: var(--kbn-muted);
+  --border: var(--kbn-border);
+  --accent: var(--kbn-primary);
+  --accent-soft: var(--kbn-primary-soft);
+  --danger: var(--kbn-danger);
+  --warning: var(--kbn-warning);
+  --success: var(--kbn-success);
+  --focus: var(--kbn-primary);
+  --shadow: none;
+}
+
+html[data-theme='dark'] body,
+.theme-dark.appShell {
+  background: var(--kbn-canvas);
+  color: var(--kbn-text);
+}
+
+.appShell .euiHeader {
+  min-height: var(--kbn-header-height);
+  border-bottom: 1px solid var(--kbn-border);
+  background: var(--kbn-chrome);
+  box-shadow: none;
+}
+
+.appShell .euiHeaderLogo {
+  min-width: 286px;
+  color: var(--kbn-heading);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.appShell .euiHeader .euiFieldSearch {
+  width: min(490px, 42vw);
+  min-width: 260px;
+  border-color: var(--kbn-border-strong);
+  border-radius: var(--kbn-radius);
+  background: var(--kbn-canvas);
+}
+
+.shellContextBar {
+  position: fixed;
+  z-index: 950;
+  inset: var(--kbn-header-height) 0 auto 0;
+  display: flex;
+  height: var(--kbn-context-height);
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  border-bottom: 1px solid var(--kbn-border);
+  background: var(--kbn-chrome);
+  color: var(--kbn-muted);
+  font-size: 12px;
+}
+
+.shellContextBar strong {
+  overflow: hidden;
+  color: var(--kbn-text);
+  font-weight: 500;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.shellContextMenu {
+  display: inline-flex;
+  width: 32px;
+  height: 32px;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: var(--kbn-radius);
+  color: var(--kbn-muted);
+  background: transparent;
+  cursor: pointer;
+}
+
+.shellContextMenu:hover { background: rgba(255, 255, 255, .06); color: var(--kbn-heading); }
+.shellContextDivider { color: #5a6d8c; }
+.shellContextId { margin-left: auto; color: #6a7fa0; font-variant-numeric: tabular-nums; }
+
+.sidebar {
+  inset-block-start: calc(var(--kbn-header-height) + var(--kbn-context-height));
+  width: var(--kbn-sidebar-width);
+  padding: 16px 12px 24px;
+  border-right: 1px solid var(--kbn-border);
+  background: var(--kbn-canvas);
+}
+
+.content {
+  margin-left: var(--kbn-sidebar-width);
+  padding-top: calc(var(--kbn-header-height) + var(--kbn-context-height));
+  background: var(--kbn-canvas);
+}
+
+.appShell[data-nav-open='false'] .sidebar { transform: translateX(-100%); }
+.appShell[data-nav-open='false'] .content { margin-left: 0; }
+
+.sidebarIntro {
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom-color: var(--kbn-border);
+}
+
+.sidebarIntro strong { color: var(--kbn-heading); font-size: 14px; font-weight: 600; }
+.sidebarIntro .euiText p, .sidebarFooter p { color: var(--kbn-muted); }
+.sidebar .euiSideNavItemButton {
+  min-height: 32px;
+  padding-block: 5px;
+  border-radius: var(--kbn-radius);
+  font-size: 13px;
+  line-height: 1.3;
+  white-space: normal;
+}
+.sidebar .euiSideNavItemButton-isSelected { background: var(--kbn-panel-muted); }
+
+.prototypePage,
+.workflowPage,
+.content .euiPageTemplate {
+  background: var(--kbn-canvas);
+}
+
+.prototypePage .euiPageTemplate__header,
+.workflowPage .euiPageTemplate__header {
+  padding: 20px 20px 16px;
+  border-bottom: 1px solid var(--kbn-border);
+  background: var(--kbn-canvas);
+}
+
+.prototypePage .euiPageTemplate__header h1,
+.workflowPage .euiPageTemplate__header h1 {
+  color: var(--kbn-heading);
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: -.02em;
+}
+
+.prototypePage .euiPageTemplate__header [class*='description'],
+.workflowPage .euiPageTemplate__header [class*='description'] {
+  color: var(--kbn-muted);
+  font-size: 13px;
+}
+
+.prototypePage .euiPageTemplate__section,
+.workflowPage .euiPageTemplate__section {
+  padding: 16px 20px 32px;
+  background: var(--kbn-canvas);
+}
+
+.pageContextPanel {
+  padding-inline: 8px;
+  border: 0 !important;
+  border-bottom: 1px solid var(--kbn-border) !important;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none !important;
+}
+
+.pageComposition,
+.workflowComposition { gap: 16px; }
+.pageComposition > .euiFlexGroup,
+.workflowComposition > .euiFlexGroup { column-gap: 12px; row-gap: 12px; }
+
+.pageComposition .euiPanel,
+.workflowComposition .euiPanel,
+.p07Frame .euiPanel,
+.prototypePage [class*='Workspace'] > .euiPanel {
+  border-color: var(--kbn-border);
+  border-radius: var(--kbn-radius);
+  background: var(--kbn-panel);
+  box-shadow: none;
+}
+
+.prototypePage :is(.euiButton,.euiButtonEmpty,.euiFieldText,.euiFieldSearch,.euiSelect,.euiCallOut),
+.workflowPage :is(.euiButton,.euiButtonEmpty,.euiFieldText,.euiFieldSearch,.euiSelect,.euiCallOut) {
+  border-radius: var(--kbn-radius);
+}
+
+.prototypePage :is(.euiFieldText,.euiFieldSearch,.euiSelect),
+.workflowPage :is(.euiFieldText,.euiFieldSearch,.euiSelect) {
+  min-height: 32px;
+  border-color: var(--kbn-border-strong);
+  background: var(--kbn-canvas);
+}
+
+.prototypePage table,
+.workflowPage table,
+.p07Frame table {
+  border-radius: 0;
+  background: transparent;
+}
+
+.prototypePage table thead,
+.workflowPage table thead,
+.p07Frame table thead {
+  border-bottom: 1px solid var(--kbn-border);
+  background: transparent;
+}
+
+.prototypePage table th,
+.workflowPage table th,
+.p07Frame table th {
+  height: 36px;
+  color: var(--kbn-muted);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.prototypePage table td,
+.workflowPage table td,
+.p07Frame table td {
+  min-height: 40px;
+  border-bottom-color: var(--kbn-border);
+  color: var(--kbn-text);
+  font-size: 12px;
+}
+
+.prototypePage table tbody tr:hover,
+.workflowPage table tbody tr:hover,
+.p07Frame table tbody tr:hover { background: rgba(255, 255, 255, .06); }
+
+.p05TriageLayout > .euiFlexItem:first-child {
+  flex-basis: 100%;
+  min-width: 100%;
+}
+
+.p05TriageLayout > .euiFlexItem:nth-child(2) { flex-basis: min(620px, 64%); }
+.p05TriageLayout > .euiFlexItem:nth-child(3) { flex-basis: min(320px, 32%); }
+
+.p05TriageLayout [data-visual-region='alert-group-triage-queue'] {
+  overflow-x: auto;
+}
+
+.p05TriageLayout [data-visual-region='alert-group-triage-queue'] table {
+  min-width: 760px;
+}
+
+.p08InventoryLayout {
+  display: grid !important;
+  grid-template-columns: minmax(0, 2fr) minmax(285px, 1fr);
+  align-items: start;
+}
+
+.p08InventoryLayout > .euiFlexItem { min-width: 0 !important; }
+.p08InventoryLayout > .euiFlexItem:nth-child(1) { grid-column: 1; grid-row: 2; }
+.p08InventoryLayout > .euiFlexItem:nth-child(2) { grid-column: 1 / -1; grid-row: 1; }
+.p08InventoryLayout > .euiFlexItem:nth-child(3) { grid-column: 2; grid-row: 2; }
+
+.p08InventoryLayout [data-visual-region='canonical-asset-inventory-grid'] { min-width: 0; }
+.page-p08 [data-visual-region='asset-search-facet-command-bar'] { min-width: 0; }
+
+.p08ScopeControls {
+  display: grid !important;
+  grid-template-columns: minmax(280px, 2fr) repeat(3, minmax(145px, 1fr));
+}
+
+.p08ScopeControls > .euiFlexItem { min-width: 0 !important; }
+.p08ScopeControls .euiFieldSearch,
+.p08ScopeControls .euiSelect { width: 100%; }
+.p08SavedViews { row-gap: 4px; }
+
+.page-p22 > .euiFlexGroup {
+  display: grid !important;
+  grid-template-columns: 220px minmax(0, 1fr);
+  align-items: start;
+}
+
+.page-p22 > .euiFlexGroup > .euiFlexItem { min-width: 0; }
+.page-p22 > .euiFlexGroup > .euiFlexItem:first-child { grid-column: 1; grid-row: 1 / span 2; }
+.page-p22 > .euiFlexGroup > .euiFlexItem:nth-child(2) { grid-column: 2; grid-row: 1; }
+.page-p22 > .euiFlexGroup > .euiFlexItem:nth-child(3) { grid-column: 2; grid-row: 2; }
+
+.page-p22 [data-visual-region='settings-local-navigation'] h2 { overflow-wrap: normal; }
+.page-p22 [data-visual-region='settings-edit-workbench'] { min-width: 0; }
+
+.prototypePage .euiTitle h2,
+.prototypePage .euiTitle h3,
+.workflowPage .euiTitle h2,
+.workflowPage .euiTitle h3 { color: var(--kbn-heading); }
+
+.prototypePage .euiStat__title,
+.workflowPage .euiStat__title { color: var(--kbn-heading); font-variant-numeric: tabular-nums; }
+
+.prototypePage .euiBadge,
+.workflowPage .euiBadge { border-radius: 2px; font-size: 11px; }
+
+.prototypePage .euiFlyout,
+.workflowPage .euiFlyout,
+.euiFlyout { border-left: 1px solid var(--kbn-border); background: var(--kbn-panel); }
+
+.receiptDock { border-color: var(--kbn-border); background: var(--kbn-panel); color: var(--kbn-text); }
+
+@media (max-width: 992px) {
+  .appShell .euiHeaderLogo { min-width: auto; }
+  .appShell .euiHeader .euiFieldSearch { min-width: 200px; width: 36vw; }
+  .sidebar { width: 190px; }
+  .content { margin-left: 190px; }
+}
+
+@media (max-width: 768px) {
+  .appShell .euiHeader .euiFieldSearch { display: none; }
+  .sidebar {
+    z-index: 940;
+    display: block;
+    width: min(82vw, 280px);
+    transform: translateX(-100%);
+    transition: transform 150ms ease;
+  }
+  .appShell[data-nav-open='true'] .sidebar { transform: translateX(0); }
+  .content { margin-left: 0; }
+  .prototypePage .euiPageTemplate__header,
+  .workflowPage .euiPageTemplate__header,
+  .prototypePage .euiPageTemplate__section,
+  .workflowPage .euiPageTemplate__section { padding-inline: 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .appShell *, .prototypePage *, .workflowPage * { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}

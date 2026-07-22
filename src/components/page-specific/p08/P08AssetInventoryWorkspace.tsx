@@ -80,7 +80,7 @@ export function P08AssetInventoryWorkspace({ fixture, onOpenDeviceStatus }: Prop
       ].map(([label, value, note]) => <EuiFlexItem key={label} style={{ minWidth: 180 }}><EuiPanel paddingSize="s" hasBorder><EuiStat title={String(value)} description={label} titleSize="s" /><EuiText size="xs" color="subdued"><p>{note}</p></EuiText></EuiPanel></EuiFlexItem>)}
     </EuiFlexGroup>
     <EuiSpacer size="m" />
-    <EuiFlexGroup gutterSize="m" alignItems="stretch" responsive>
+    <EuiFlexGroup className="p08InventoryLayout" gutterSize="m" alignItems="stretch" responsive>
       <EuiFlexItem grow={2} style={{ minWidth: 245 }}><EuiPanel paddingSize="m" hasBorder data-visual-region="inventory-source-coverage">
         <EuiTitle size="xs"><h2>Source coverage and blind spots</h2></EuiTitle><EuiText size="xs" color="subdued"><p>Canonical, unmatched and stale observations by authoritative source.</p></EuiText><EuiSpacer size="s" />
         {sourceCoverage.map((item) => <div key={item.source} style={{ marginBottom: 14 }}><EuiFlexGroup justifyContent="spaceBetween" gutterSize="s" responsive={false}><EuiFlexItem><strong>{item.source}</strong></EuiFlexItem><EuiFlexItem grow={false}><small>{item.canonical}% canonical</small></EuiFlexItem></EuiFlexGroup><EuiProgress value={item.canonical} max={100} size="s" color={item.canonical < 85 ? 'warning' : 'primary'} /><small>{item.unmatched}% unmatched · {item.stale}% stale</small></div>)}
