@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useReducer, useRef, useState } from 'react';
+import { useEffect, useMemo, useReducer, useRef, useState, type MouseEvent } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import {
   EuiAccordion,
@@ -224,7 +224,7 @@ export function EventSearchPage() {
             {state.status === 'loading'
               ? <EuiCallOut title="Loading query execution">Cancellation is wired through AbortSignal.</EuiCallOut>
               : <EuiBasicTable tableCaption="Event search results" items={display} itemId="id" columns={[
-                { field: 'id', name: 'Event ID', render: (value: string, item: EventRecord) => <EuiButtonEmpty size="xs" onClick={(event) => { inspectorOpener.current = event.currentTarget; setSelected(item); dispatch({ type: 'select', value: item.id }); }}>{value}</EuiButtonEmpty> },
+                { field: 'id', name: 'Event ID', render: (value: string, item: EventRecord) => <EuiButtonEmpty size="xs" onClick={(event: MouseEvent<HTMLButtonElement>) => { inspectorOpener.current = event.currentTarget; setSelected(item); dispatch({ type: 'select', value: item.id }); }}>{value}</EuiButtonEmpty> },
                 { field: 'event_time', name: 'Event time', sortable: true },
                 { field: 'severity', name: 'Severity', render: (value: string) => <EuiBadge>{value}</EuiBadge> },
                 { field: 'source', name: 'Source' },

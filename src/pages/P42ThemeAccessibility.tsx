@@ -20,7 +20,6 @@ import {
   EuiModalHeader,
   EuiModalHeaderTitle,
   EuiPanel,
-  EuiProgress,
   EuiSelect,
   EuiSpacer,
   EuiSwitch,
