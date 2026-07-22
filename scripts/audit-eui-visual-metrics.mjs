@@ -59,11 +59,30 @@ for (const [id, route] of routes) {
       const region = element.closest('[data-visual-region]')?.getAttribute('data-visual-region');
       return `${region ? `[data-visual-region="${region}"] ` : ''}${element.tagName.toLowerCase()}${idPart}${classes}`;
     };
-    const visible = (element) => {
-      const rect = element.getBoundingClientRect();
-      const style = getComputedStyle(element);
-      return rect.width > 0 && rect.height > 0 && style.display !== 'none' && style.visibility !== 'hidden' && Number(style.opacity) > 0;
+    const intersect = (rect, clip, clipX, clipY) => {
+      const left = clipX ? Math.max(rect.left, clip.left) : rect.left;
+      const right = clipX ? Math.min(rect.right, clip.right) : rect.right;
+      const top = clipY ? Math.max(rect.top, clip.top) : rect.top;
+      const bottom = clipY ? Math.min(rect.bottom, clip.bottom) : rect.bottom;
+      return { left, right, top, bottom, x: left, y: top, width: Math.max(0, right - left), height: Math.max(0, bottom - top) };
     };
+    const visibleRect = (element) => {
+      const rect = element.getBoundingClientRect();
+      let clipped = intersect(rect, { left: 0, right: document.documentElement.clientWidth, top: rect.top, bottom: rect.bottom }, true, false);
+      for (let current = element; current; current = current.parentElement) {
+        const style = getComputedStyle(current);
+        if (style.display === 'none' || style.visibility === 'hidden' || Number(style.opacity) <= 0) return null;
+        if (current !== element) {
+          const ancestorRect = current.getBoundingClientRect();
+          const clipX = ['auto', 'scroll', 'hidden', 'clip'].includes(style.overflowX);
+          const clipY = ['auto', 'scroll', 'hidden', 'clip'].includes(style.overflowY);
+          if (clipX || clipY) clipped = intersect(clipped, ancestorRect, clipX, clipY);
+        }
+        if (clipped.width <= 1 || clipped.height <= 1) return null;
+      }
+      return clipped;
+    };
+    const visible = (element) => Boolean(visibleRect(element));
     const rgba = (value) => {
       const values = value.match(/[\d.]+/g)?.map(Number) ?? [];
       return values.length >= 3 ? [values[0], values[1], values[2], values[3] ?? 1] : [0, 0, 0, 0];
@@ -73,10 +92,18 @@ for (const [id, route] of routes) {
       if (!alpha) return [0, 0, 0, 0];
       return [0, 1, 2].map((index) => (front[index] * front[3] + back[index] * back[3] * (1 - front[3])) / alpha).concat(alpha);
     };
+    const paintLayers = (element) => {
+      const layers = [rgba(getComputedStyle(element).backgroundColor)];
+      for (const pseudo of ['::before', '::after']) {
+        const style = getComputedStyle(element, pseudo);
+        if (style.content !== 'none' && style.display !== 'none' && Number(style.opacity) > 0) layers.push(rgba(style.backgroundColor));
+      }
+      return layers;
+    };
     const background = (element) => {
-      const layers = [];
-      for (let current = element; current; current = current.parentElement) layers.push(rgba(getComputedStyle(current).backgroundColor));
-      return layers.reverse().reduce((color, layer) => composite(layer, color), [7, 16, 31, 1]);
+      const ancestors = [];
+      for (let current = element; current; current = current.parentElement) ancestors.push(current);
+      return ancestors.reverse().flatMap(paintLayers).reduce((color, layer) => composite(layer, color), [7, 16, 31, 1]);
     };
     const luminance = (color) => {
       const channel = (value) => { const normalized = value / 255; return normalized <= .04045 ? normalized / 12.92 : ((normalized + .055) / 1.055) ** 2.4; };
@@ -101,8 +128,8 @@ for (const [id, route] of routes) {
       const style = getComputedStyle(heading);
       const rect = heading.getBoundingClientRect();
       const ownBg = rgba(style.backgroundColor);
-      const parentBg = rgba(getComputedStyle(heading.parentElement).backgroundColor);
-      if ((ownBg[3] > .05 || parentBg[3] > .05) && rect.width > viewportWidth * .45) {
+      // A panel background is not a title bar. Flag only paint owned by the heading itself.
+      if (ownBg[3] > .05 && rect.width > viewportWidth * .45) {
         add('colored-title-bar', 'P1', 'Heading is rendered as a wide colored surface instead of plain Kibana title text', heading, round(rect.width), round(viewportWidth * .45));
       }
     });
@@ -121,7 +148,10 @@ for (const [id, route] of routes) {
       const minimum = large ? 3 : 4.5;
       if (ratio + .01 < minimum) add('text-contrast', ratio < 3 ? 'P0' : 'P1', `Text contrast is ${round(ratio)}:1`, element, round(ratio), minimum);
       const lineHeight = Number.parseFloat(style.lineHeight);
-      if (Number.isFinite(lineHeight) && fontSize >= 11 && lineHeight / fontSize < 1.35) {
+      const normalText = element.matches('p:not(.euiTitle),li,td,th,dt,dd,small,label');
+      const standardCompactLeading = fontSize <= 12.1 && lineHeight >= 16;
+      // The standard explicitly permits 12/16 supporting and 11/16 metadata text.
+      if (normalText && Number.isFinite(lineHeight) && fontSize >= 11 && !standardCompactLeading && lineHeight / fontSize < 1.35) {
         add('line-height', 'P2', `Line-height ratio is ${round(lineHeight / fontSize)}`, element, round(lineHeight / fontSize), 1.35);
       }
     });
@@ -163,9 +193,11 @@ for (const [id, route] of routes) {
     });
 
     const textBoxes = [...document.querySelectorAll('h1,h2,h3,p,li,td,th,dt,dd,small,label,button,.euiBadge,span,strong')]
+      .filter((element) => !element.closest('pre,code,[class*="euiCodeBlock"]'))
       .filter((element) => visible(element) && [...element.childNodes].some((node) => node.nodeType === 3 && node.textContent.trim()))
       .slice(0, 400)
-      .map((element) => ({ element, rect: element.getBoundingClientRect(), region: element.closest('[data-visual-region]') }));
+      .map((element) => ({ element, rect: visibleRect(element), region: element.closest('[data-visual-region]') }))
+      .filter((item) => item.rect);
     textBoxes.sort((first, second) => first.rect.top - second.rect.top || first.rect.left - second.rect.left);
     const overlapKeys = new Set();
     for (let firstIndex = 0; firstIndex < textBoxes.length; firstIndex += 1) {
@@ -187,7 +219,9 @@ for (const [id, route] of routes) {
     }
 
     document.querySelectorAll('[data-visual-region] :is(article,li,button)').forEach((item) => {
-      if (!visible(item) || item.closest('nav,.sidebar,[role="tablist"],table') || item.textContent.trim().length < 20) return;
+      const regionName = item.closest('[data-visual-region]')?.getAttribute('data-visual-region') ?? '';
+      // Compact scope/filter/command controls are not repeated queue or list records.
+      if (!visible(item) || item.closest('nav,.sidebar,[role="tablist"],table') || /scope|filter|command|toolbar/.test(regionName) || item.textContent.trim().length < 20) return;
       const parentStyle = getComputedStyle(item.parentElement);
       const isRepeatedLayout = parentStyle.display === 'grid' || (parentStyle.display === 'flex' && parentStyle.flexDirection === 'column');
       const height = item.getBoundingClientRect().height;
