@@ -27,6 +27,8 @@
     "e2e:gate": "playwright test tests/e2e/full-route-validation.spec.ts tests/e2e/axe-full-page.spec.ts tests/e2e/all-pages.visual.spec.ts --workers=1",
     "reports:github-actions": "node scripts/generate-github-actions-report.mjs",
     "audit:differentiation": "node scripts/run-page-differentiation-audit.mjs",
+    "audit:eui-visual": "node scripts/audit-eui-visual-metrics.mjs --report-only",
+    "audit:eui-visual:strict": "node scripts/audit-eui-visual-metrics.mjs --strict",
     "audit:differentiation:extract": "node scripts/extract-page-architecture.mjs",
     "audit:differentiation:calculate": "node scripts/audit-page-differentiation.mjs",
     "visual-audit:bundle": "node scripts/visual-audit/build-bundle.mjs",

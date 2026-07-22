@@ -13,7 +13,7 @@ const PlatformThemeContext = createContext<PlatformThemeContextValue | undefined
 export function PlatformThemeProvider({ children }: { children: ReactNode }) {
   const [mode, setMode] = useState<ThemeMode>(() => {
     const requested = typeof window === 'undefined' ? null : new URLSearchParams(window.location.search).get('theme');
-    return requested === 'dark' ? 'dark' : 'light';
+    return requested === 'light' ? 'light' : 'dark';
   });
 
   useEffect(() => {

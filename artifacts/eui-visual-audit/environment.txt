@@ -1,0 +1,3 @@
+node=v22.16.0
+npm=10.9.2
+head=3a08e2c39fdabd46c27526ec3e6213ab521b7263
