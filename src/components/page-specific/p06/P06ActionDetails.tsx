@@ -6,7 +6,7 @@ export function P06ActionDetails({ action, fixture, activeTab, onTab, onOpenDeta
   return <EuiPanel paddingSize="m" hasBorder data-visual-region="selected-action-governance-workspace">
     <EuiFlexGroup justifyContent="spaceBetween" alignItems="flexStart" responsive={false}>
       <EuiFlexItem><EuiBadge color={badgeColorForRisk(action.risk)}>{action.risk} risk</EuiBadge><EuiSpacer size="s" /><EuiTitle size="m"><h2>{action.actionType}</h2></EuiTitle><EuiText size="s" color="subdued"><p>{action.id} · target {action.target} · case {action.caseRef}</p></EuiText></EuiFlexItem>
-      <EuiFlexItem grow={false}><EuiButtonEmpty onClick={onOpenDetails}>Open logs / receipt</EuiButtonEmpty>{action.approval === 'Pending' ? <EuiButton fill color="warning" onClick={onOpenApproval}>Review approval</EuiButton> : <EuiButton fill onClick={() => onDecision(action.execution === 'Failed' ? 'Retry request' : 'Action follow-up')}>{action.execution === 'Failed' ? 'Retry' : 'Request follow-up'}</EuiButton>}</EuiFlexItem>
+      <EuiFlexItem grow={false}><EuiButtonEmpty onClick={onOpenDetails}>Open logs / receipt</EuiButtonEmpty>{action.approval === 'Pending' ? <EuiButton fill onClick={onOpenApproval}>Review approval</EuiButton> : <EuiButton fill onClick={() => onDecision(action.execution === 'Failed' ? 'Retry request' : 'Action follow-up')}>{action.execution === 'Failed' ? 'Retry' : 'Request follow-up'}</EuiButton>}</EuiFlexItem>
     </EuiFlexGroup>
     <EuiSpacer size="m" /><EuiTabs size="s">{detailTabs.map((tab) => <EuiTab key={tab} isSelected={activeTab === tab} onClick={() => onTab(tab)}>{tab}</EuiTab>)}</EuiTabs><EuiSpacer size="m" />
 

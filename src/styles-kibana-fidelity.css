@@ -41,6 +41,16 @@ html[data-theme='dark'],
   --success: var(--kbn-success);
   --focus: var(--kbn-primary);
   --shadow: none;
+  /* Compatibility aliases for page-specific workspaces that consume EUI tokens. */
+  --euiColorLightestShade: var(--kbn-panel-muted);
+  --euiColorEmptyShade: var(--kbn-panel);
+  --euiTextColor: var(--kbn-text);
+  --euiTextSubduedColor: var(--kbn-muted);
+  --euiBorderColor: var(--kbn-border);
+  --euiColorPrimary: var(--kbn-primary);
+  --euiColorSuccess: var(--kbn-success);
+  --euiColorWarning: var(--kbn-warning);
+  --euiColorDanger: var(--kbn-danger);
 }
 
 html[data-theme='dark'] body,
@@ -154,9 +164,15 @@ html[data-theme='dark'] body,
 
 .prototypePage .euiPageTemplate__header,
 .workflowPage .euiPageTemplate__header {
-  padding: 20px 20px 16px;
+  min-height: 80px;
+  padding: 14px 20px 12px;
   border-bottom: 1px solid var(--kbn-border);
   background: var(--kbn-canvas);
+}
+
+.prototypePage [data-visual-region='page-header'] > div,
+.workflowPage [data-visual-region='workflow-header'] > div {
+  align-items: center;
 }
 
 .prototypePage .euiPageTemplate__header h1,
@@ -169,8 +185,10 @@ html[data-theme='dark'] body,
 
 .prototypePage .euiPageTemplate__header [class*='description'],
 .workflowPage .euiPageTemplate__header [class*='description'] {
+  margin-top: 4px;
   color: var(--kbn-muted);
   font-size: 13px;
+  line-height: 20px;
 }
 
 .prototypePage .euiPageTemplate__section,
@@ -403,7 +421,96 @@ html[data-theme='dark'] body,
 .workflowPage .euiStat__title { color: var(--kbn-heading); font-variant-numeric: tabular-nums; }
 
 .prototypePage .euiBadge,
-.workflowPage .euiBadge { border-radius: 2px; font-size: 11px; }
+.workflowPage .euiBadge {
+  flex: 0 0 auto;
+  align-self: flex-start;
+  width: max-content;
+  max-width: 100%;
+  border-radius: 2px;
+  font-size: 11px;
+  line-height: 16px;
+}
+
+/* EUI uses status color as a signal, not as a section-title surface. */
+.prototypePage :is(.euiButton--fill.euiButton--warning, .euiButton--fill[class*='warning']),
+.workflowPage :is(.euiButton--fill.euiButton--warning, .euiButton--fill[class*='warning']) {
+  border-color: var(--kbn-primary);
+  background: var(--kbn-primary);
+  color: #07101f;
+}
+
+/* Shared typography rhythm: 4px baseline, with enough leading for scan-heavy pages. */
+.prototypePage :is(p, li, dd, td),
+.workflowPage :is(p, li, dd, td) {
+  line-height: 20px;
+}
+
+.prototypePage :is(small, .euiText--extraSmall),
+.workflowPage :is(small, .euiText--extraSmall) {
+  line-height: 16px;
+}
+
+.prototypePage table td,
+.workflowPage table td {
+  padding-block: 10px;
+}
+
+/* P27: keep its three work areas readable and move labels outside narrow bars. */
+.page-p27 .p27Workspace {
+  display: grid;
+  grid-template-columns: minmax(250px, .8fr) minmax(520px, 1.7fr) minmax(300px, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.page-p27 .p27Workspace > .euiFlexItem { min-width: 0; }
+.page-p27 [data-visual-region='runtime-attention-table'] { overflow: hidden; }
+.page-p27 .p27TableWrap { overflow-x: auto; }
+.page-p27 .p27TableWrap table { min-width: 720px; }
+.page-p27 .p27ReadinessRow { padding: 12px 0; border-bottom: 1px solid var(--kbn-border); }
+.page-p27 .p27ReadinessRow > header,
+.page-p27 .p27ReadinessLegend { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+.page-p27 .p27ReadinessRow > header small { flex: none; }
+.page-p27 .readinessStack {
+  display: flex;
+  height: 8px;
+  margin: 8px 0;
+  overflow: hidden;
+  border-radius: 2px;
+  background: var(--kbn-panel-muted);
+}
+.page-p27 .readinessStack > * { display: block; min-width: 4px; overflow: hidden; color: transparent; font-size: 0; }
+.page-p27 .readinessStack > span { background: var(--kbn-success); }
+.page-p27 .readinessStack > i { background: var(--kbn-primary); }
+.page-p27 .readinessStack > b { background: var(--kbn-danger); }
+.page-p27 .p27ReadinessLegend { justify-content: flex-start; color: var(--kbn-muted); font-size: 11px; line-height: 16px; }
+.page-p27 .p27ReadinessLegend span { display: inline-flex; align-items: center; gap: 4px; }
+.page-p27 .p27ReadinessLegend span::before { width: 6px; height: 6px; border-radius: 50%; background: var(--legend-color); content: ''; }
+.page-p27 .p27ReadinessLegend span:nth-child(1) { --legend-color: var(--kbn-success); }
+.page-p27 .p27ReadinessLegend span:nth-child(2) { --legend-color: var(--kbn-primary); }
+.page-p27 .p27ReadinessLegend span:nth-child(3) { --legend-color: var(--kbn-danger); }
+.page-p27 [data-visual-region='runtime-resource-preview-dependency'] > p { margin: 4px 0 12px; color: var(--kbn-muted); }
+.page-p27 [data-visual-region='runtime-resource-preview-dependency'] dl { display: grid; gap: 0; }
+.page-p27 [data-visual-region='runtime-resource-preview-dependency'] dl > div {
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr);
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--kbn-border);
+}
+.page-p27 [data-visual-region='runtime-resource-preview-dependency'] dd { margin: 0; }
+
+@media (max-width: 1500px) {
+  .page-p27 .p27Workspace { grid-template-columns: minmax(250px, .75fr) minmax(520px, 1.75fr); }
+  .page-p27 .p27Workspace > .euiFlexItem:last-child { grid-column: 1 / -1; }
+  .p40Directory .p40Grid { grid-template-columns: 230px minmax(0, 1fr); }
+  .p40Directory .p40Inspector { grid-column: 1 / -1; }
+}
+
+@media (max-width: 1050px) {
+  .page-p27 .p27Workspace { grid-template-columns: 1fr; }
+  .page-p27 .p27Workspace > .euiFlexItem:last-child { grid-column: auto; }
+}
 
 .prototypePage .euiFlyout,
 .workflowPage .euiFlyout,
