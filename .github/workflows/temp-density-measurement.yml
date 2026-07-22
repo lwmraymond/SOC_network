@@ -21,6 +21,29 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
+      - name: Verify collector payload before checkout
+        shell: bash
+        env:
+          HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euxo pipefail
+          : > /tmp/information-density.b64
+          for segment in 00 01 02 03 04 05 06 07; do
+            curl --fail --silent --show-error --location "https://raw.githubusercontent.com/lwmraymond/SOC_network/${HEAD_SHA}/.density-audit-temp/payload-${segment}" >> /tmp/information-density.b64
+          done
+          wc -c /tmp/information-density.b64
+          sha256sum /tmp/information-density.b64
+          base64 --decode /tmp/information-density.b64 > /tmp/information-density.mjs.gz
+          wc -c /tmp/information-density.mjs.gz
+          sha256sum /tmp/information-density.mjs.gz
+          gzip --test /tmp/information-density.mjs.gz
+          gzip --decompress --stdout /tmp/information-density.mjs.gz > /tmp/audit-information-density.mjs
+          wc -c /tmp/audit-information-density.mjs
+          sha256sum /tmp/audit-information-density.mjs
+          test "$(wc -c < /tmp/audit-information-density.mjs | tr -d ' ')" = "71277"
+          test "$(sha256sum /tmp/audit-information-density.mjs | cut -d' ' -f1)" = "94213d25b758698a49a372fc61bdc6bb822c75bd47d12c6dc6ab877f6c7d7fc9"
+          node --check /tmp/audit-information-density.mjs
+
       - name: Check out isolated measurement branch
         uses: actions/checkout@v4
         with:
@@ -28,24 +51,12 @@ jobs:
           fetch-depth: 1
           show-progress: false
 
-      - name: Materialize and verify density collector
+      - name: Install verified collector
         shell: bash
         run: |
-          set -euxo pipefail
+          set -euo pipefail
           mkdir -p scripts
-          cat .density-audit-temp/payload-* > /tmp/information-density.b64
-          wc -c /tmp/information-density.b64
-          sha256sum /tmp/information-density.b64
-          base64 --decode /tmp/information-density.b64 > /tmp/information-density.mjs.gz
-          wc -c /tmp/information-density.mjs.gz
-          sha256sum /tmp/information-density.mjs.gz
-          gzip --test /tmp/information-density.mjs.gz
-          gzip --decompress --stdout /tmp/information-density.mjs.gz > scripts/audit-information-density.mjs
-          wc -c scripts/audit-information-density.mjs
-          sha256sum scripts/audit-information-density.mjs
-          test "$(wc -c < scripts/audit-information-density.mjs | tr -d ' ')" = "71277"
-          test "$(sha256sum scripts/audit-information-density.mjs | cut -d' ' -f1)" = "94213d25b758698a49a372fc61bdc6bb822c75bd47d12c6dc6ab877f6c7d7fc9"
-          node --check scripts/audit-information-density.mjs
+          cp /tmp/audit-information-density.mjs scripts/audit-information-density.mjs
 
       - name: Set up declared Node
         uses: actions/setup-node@v4
