@@ -1,4 +1,4 @@
-name: Agent final EUI candidate validation
+name: Agent EUI metric diagnostic
 
 on:
   pull_request:
@@ -11,9 +11,9 @@ permissions:
   contents: read
 
 jobs:
-  validate:
+  diagnose:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 30
     steps:
       - name: Check out disposable branch state
         uses: actions/checkout@v4
@@ -21,299 +21,28 @@ jobs:
           ref: codex/kibana-42page-visual
           fetch-depth: 0
 
-      - name: Restore verified source and assemble candidate
+      - name: Assemble style candidate
         shell: bash
         run: |
           set -euo pipefail
-          cp scripts/audit-eui-visual-metrics.mjs /tmp/audit-eui-visual-metrics.mjs
-          cp src/pages/P41AuthenticationLdapSso.tsx /tmp/P41AuthenticationLdapSso.tsx
           git reset --hard f351391910c627b01f36bbb819f7eb50ce395181
-          cp /tmp/audit-eui-visual-metrics.mjs scripts/audit-eui-visual-metrics.mjs
-          cp /tmp/P41AuthenticationLdapSso.tsx src/pages/P41AuthenticationLdapSso.tsx
-          cat >> src/styles-kibana-fidelity.css <<'CSS'
+          printf '%s' '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' | base64 --decode | gzip --decompress >> src/styles-kibana-fidelity.css
 
-          /* Audit-backed typography and density refinements. */
-          .prototypePage .euiPageTemplate__header,
-          .workflowPage .euiPageTemplate__header {
-            min-height: 80px !important;
-            padding: 12px 20px !important;
-          }
-
-          .prototypePage .euiPageTemplate__header h1,
-          .workflowPage .euiPageTemplate__header h1 {
-            margin: 0 !important;
-            font-size: 24px !important;
-            line-height: 32px !important;
-          }
-
-          .prototypePage .euiPageTemplate__header [class*='description'],
-          .workflowPage .euiPageTemplate__header [class*='description'] {
-            margin: 4px 0 0 !important;
-            font-size: 13px !important;
-            line-height: 20px !important;
-          }
-
-          .prototypePage h2.euiTitle,
-          .workflowPage h2.euiTitle { font-size: 16px !important; line-height: 24px !important; }
-          .prototypePage h3.euiTitle,
-          .workflowPage h3.euiTitle { font-size: 14px !important; line-height: 20px !important; }
-
-          .prototypePage p:not(.euiTitle),
-          .workflowPage p:not(.euiTitle),
-          .prototypePage li,
-          .workflowPage li,
-          .prototypePage dd,
-          .workflowPage dd {
-            font-size: 13px;
-            line-height: 20px !important;
-          }
-
-          .prototypePage :is(dt, label, .euiFormLabel),
-          .workflowPage :is(dt, label, .euiFormLabel) {
-            font-size: 12px;
-            line-height: 16px !important;
-          }
-
-          .prototypePage :is(small, .euiText--extraSmall),
-          .workflowPage :is(small, .euiText--extraSmall) {
-            font-size: 11px;
-            line-height: 16px !important;
-          }
-
-          .prototypePage .euiStat__title,
-          .workflowPage .euiStat__title {
-            height: auto !important;
-            overflow: visible !important;
-            line-height: 1.2 !important;
-          }
-
-          .prototypePage .euiStat__description,
-          .workflowPage .euiStat__description { font-size: 12px; line-height: 16px !important; }
-
-          .prototypePage table th,
-          .workflowPage table th,
-          .p07Frame table th {
-            height: 36px;
-            padding-block: 8px;
-            font-size: 11px;
-            line-height: 16px !important;
-          }
-
-          .prototypePage table td,
-          .workflowPage table td,
-          .p07Frame table td {
-            min-height: 40px;
-            padding-block: 10px;
-            font-size: 12px;
-            line-height: 20px !important;
-          }
-
-          .prototypePage .pageComposition button:not(.euiButton):not(.euiButtonEmpty):not(.euiTab),
-          .workflowPage .workflowComposition button:not(.euiButton):not(.euiButtonEmpty):not(.euiTab) {
-            font-size: 13px;
-            line-height: 20px;
-          }
-
-          .prototypePage .euiButton[class*='fill-primary'],
-          .workflowPage .euiButton[class*='fill-primary'] {
-            border-color: var(--kbn-primary) !important;
-            background-color: var(--kbn-primary) !important;
-            color: #07101f !important;
-            box-shadow: none !important;
-          }
-
-          .prototypePage .euiBadge,
-          .workflowPage .euiBadge {
-            display: inline-flex !important;
-            width: fit-content !important;
-            max-width: 100%;
-            align-items: center;
-            justify-self: start;
-            white-space: normal;
-          }
-
-          .prototypePage .euiBadge[class*='euiBadge-success'],
-          .workflowPage .euiBadge[class*='euiBadge-success'] {
-            border-color: color-mix(in srgb, var(--kbn-success) 55%, var(--kbn-border)) !important;
-            background-color: color-mix(in srgb, var(--kbn-success) 18%, var(--kbn-panel)) !important;
-            color: #dffbf2 !important;
-            box-shadow: none !important;
-          }
-
-          .prototypePage .euiBadge[class*='euiBadge-warning'],
-          .workflowPage .euiBadge[class*='euiBadge-warning'] {
-            border-color: color-mix(in srgb, var(--kbn-warning) 58%, var(--kbn-border)) !important;
-            background-color: color-mix(in srgb, var(--kbn-warning) 16%, var(--kbn-panel)) !important;
-            color: #fff0b3 !important;
-            box-shadow: none !important;
-          }
-
-          .prototypePage .euiBadge[class*='euiBadge-danger'],
-          .workflowPage .euiBadge[class*='euiBadge-danger'] {
-            border-color: color-mix(in srgb, var(--kbn-danger) 58%, var(--kbn-border)) !important;
-            background-color: color-mix(in srgb, var(--kbn-danger) 17%, var(--kbn-panel)) !important;
-            color: #ffd8d5 !important;
-            box-shadow: none !important;
-          }
-
-          .prototypePage .euiBadge[class*='euiBadge-primary'],
-          .workflowPage .euiBadge[class*='euiBadge-primary'] {
-            border-color: color-mix(in srgb, var(--kbn-primary) 58%, var(--kbn-border)) !important;
-            background-color: color-mix(in srgb, var(--kbn-primary) 17%, var(--kbn-panel)) !important;
-            color: #d8e9ff !important;
-            box-shadow: none !important;
-          }
-
-          .prototypePage .euiBadge[class*='euiBadge-hollow'],
-          .workflowPage .euiBadge[class*='euiBadge-hollow'] {
-            border-color: var(--kbn-border-strong) !important;
-            background-color: transparent !important;
-            color: var(--kbn-text) !important;
-            box-shadow: none !important;
-          }
-
-          /* P08 identity links own their wrapped two-line label instead of clipping it. */
-          .page-p08 [data-visual-region='canonical-asset-inventory-grid'] .euiButtonEmpty {
-            min-height: 36px;
-            height: auto;
-            align-items: flex-start;
-            white-space: normal;
-          }
-          .page-p08 [data-visual-region='canonical-asset-inventory-grid'] .euiButtonEmpty__text {
-            overflow: visible;
-            line-height: 16px;
-            white-space: normal;
-          }
-
-          /* P23 keeps the three-column workbench while making the session rail scan cleanly. */
-          .page-p23 > .euiFlexGroup > .euiFlexItem { min-width: 0; }
-          .page-p23 [data-visual-region='copilot-session-rail'] > button {
-            display: grid;
-            width: 100%;
-            min-height: 68px;
-            gap: 4px;
-            padding: 8px 10px;
-            border: 0;
-            border-bottom: 1px solid var(--kbn-border);
-            background: transparent;
-            color: var(--kbn-text);
-            text-align: left;
-          }
-          .page-p23 [data-visual-region='copilot-session-rail'] > button.selected {
-            background: var(--kbn-primary-soft);
-            box-shadow: inset 3px 0 0 var(--kbn-primary);
-          }
-          .page-p23 [data-visual-region='copilot-session-rail'] > button :is(strong, span, small) {
-            display: block;
-            min-width: 0;
-            margin: 0;
-            overflow-wrap: anywhere;
-          }
-          .page-p23 [data-visual-region='copilot-session-rail'] > button strong { line-height: 20px; }
-          .page-p23 [data-visual-region='copilot-session-rail'] > button span { color: var(--kbn-text); line-height: 16px; }
-          .page-p23 [data-visual-region='copilot-session-rail'] > button small { color: var(--kbn-muted); }
-
-          /* P27 regression: the dependency map had no owned layout and collapsed every node. */
-          .page-p27 .dependencyMap {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 8px;
-            min-width: 0;
-          }
-          .page-p27 .dependencyMap :is(.center, .node) {
-            position: static !important;
-            inset: auto !important;
-            translate: none !important;
-            width: auto !important;
-            min-width: 0;
-            max-width: none;
-            padding: 8px 10px;
-            border: 1px solid var(--kbn-border);
-            border-radius: var(--kbn-radius);
-            background: var(--kbn-panel-muted);
-            overflow-wrap: anywhere;
-          }
-          .page-p27 .dependencyMap .center {
-            grid-column: 1 / -1;
-            justify-self: start;
-            border-color: var(--kbn-primary);
-            color: var(--kbn-heading);
-            font-weight: 600;
-          }
-          .page-p27 .dependencyMap .node small { display: block; margin-top: 4px; color: var(--kbn-muted); }
-
-          /* Dense registries own their horizontal table overflow instead of expanding adjacent panes. */
-          .p37Layout > .euiPanel,
-          .p41Workspace > .euiPanel { min-width: 0; }
-          .p37Table,
-          .p41Workspace > .euiPanel:first-child { overflow: hidden; }
-          .p37TableWrap,
-          .p41TableWrap { width: 100%; min-width: 0; max-width: 100%; overflow-x: auto; }
-
-          @media (max-width: 720px) {
-            .page-p27 .dependencyMap { grid-template-columns: 1fr; }
-          }
-
-          /* EuiPageTemplate.Header renders an EuiPageHeader node rather than the legacy wrapper class. */
-          .prototypePage [data-visual-region='page-header'],
-          .workflowPage [data-visual-region='workflow-header'] {
-            min-height: 80px !important;
-            padding: 12px 20px !important;
-          }
-          .prototypePage [data-visual-region='page-header'] h1,
-          .workflowPage [data-visual-region='workflow-header'] h1 {
-            margin: 0 !important;
-            font-size: 24px !important;
-            line-height: 32px !important;
-          }
-          .prototypePage [data-visual-region='page-header'] [class*='description'],
-          .workflowPage [data-visual-region='workflow-header'] [class*='description'] {
-            margin: 4px 0 0 !important;
-            font-size: 13px !important;
-            line-height: 20px !important;
-          }
-
-          .prototypePage .euiBadge,
-          .workflowPage .euiBadge {
-            flex: 0 0 auto !important;
-            min-width: 0 !important;
-            width: max-content !important;
-            max-width: 100% !important;
-            inline-size: max-content !important;
-            max-inline-size: 100% !important;
-          }
-          CSS
-          git diff --check
-          git diff --exit-code -- package-lock.json
-          git diff --stat | tee /tmp/diff-stat.txt
-
-      - name: Set up declared Node version
+      - name: Set up Node and browser
         uses: actions/setup-node@v4
         with:
           node-version: 22.16.0
           cache: npm
 
-      - name: Set up declared npm version
-        shell: bash
-        run: npm install --global npm@10.9.2
-
-      - name: Install dependencies and Chromium
+      - name: Install runtime
         shell: bash
         run: |
           set -euo pipefail
-          npm ci --no-audit --no-fund | tee /tmp/npm-ci.log
+          npm install --global npm@10.9.2
+          npm ci --no-audit --no-fund
           npx playwright install --with-deps chromium > /tmp/playwright-install.log 2>&1
 
-      - name: Run static validation
-        shell: bash
-        run: |
-          set -euo pipefail
-          npm run lint 2>&1 | tee /tmp/lint.log
-          npm run typecheck 2>&1 | tee /tmp/typecheck.log
-          npm test 2>&1 | tee /tmp/test.log
-          npm run build 2>&1 | tee /tmp/build.log
-
-      - name: Run 1231x768 report-only audit
+      - name: Capture computed metrics
         shell: bash
         run: |
           set -euo pipefail
@@ -324,28 +53,76 @@ jobs:
             if curl --fail --silent http://127.0.0.1:5174/dashboard/soc >/dev/null; then break; fi
             sleep 1
           done
-          curl --fail --silent http://127.0.0.1:5174/dashboard/soc >/dev/null
-          EUI_AUDIT_WIDTH=1231 EUI_AUDIT_HEIGHT=768 node scripts/audit-eui-visual-metrics.mjs --report-only
-          node - <<'NODE' | tee /tmp/audit-summary.txt
-          const report = require('./artifacts/eui-visual-audit/report.json');
-          console.log(JSON.stringify(report.summary, null, 2));
+          node --input-type=module <<'NODE' > /tmp/eui-diagnostic.json
+          import { chromium } from '@playwright/test';
+          const browser = await chromium.launch({ headless: true });
+          const context = await browser.newContext({ viewport: { width: 1231, height: 768 }, colorScheme: 'dark' });
+          const page = await context.newPage();
+          const style = (element) => {
+            const computed = getComputedStyle(element);
+            const rect = element.getBoundingClientRect();
+            return {
+              tag: element.tagName,
+              className: element.className,
+              text: element.textContent?.trim().slice(0, 160),
+              rect: { x: rect.x, y: rect.y, width: rect.width, height: rect.height, bottom: rect.bottom },
+              display: computed.display,
+              position: computed.position,
+              boxSizing: computed.boxSizing,
+              height: computed.height,
+              minHeight: computed.minHeight,
+              maxHeight: computed.maxHeight,
+              padding: computed.padding,
+              paddingTop: computed.paddingTop,
+              paddingBottom: computed.paddingBottom,
+              margin: computed.margin,
+              lineHeight: computed.lineHeight,
+              fontSize: computed.fontSize,
+              alignItems: computed.alignItems,
+              justifyContent: computed.justifyContent,
+              flex: computed.flex,
+              width: computed.width,
+              minWidth: computed.minWidth,
+              maxWidth: computed.maxWidth,
+              inlineSize: computed.inlineSize,
+            };
+          };
+          await page.goto('http://127.0.0.1:5174/dashboard/soc', { waitUntil: 'networkidle' });
+          await page.locator('[data-page-id="P01"]').waitFor();
+          const header = await page.evaluate(() => {
+            const root = document.querySelector('[data-visual-region="page-header"]');
+            const description = root?.querySelector('[class*="description"], p');
+            const walk = (element, depth = 0) => ({ style: globalThis.__style(element), children: depth < 4 ? [...element.children].map((child) => walk(child, depth + 1)) : [] });
+            globalThis.__style = (element) => {
+              const computed = getComputedStyle(element);
+              const rect = element.getBoundingClientRect();
+              return { tag: element.tagName, className: element.className, text: element.textContent?.trim().slice(0, 160), rect: { x: rect.x, y: rect.y, width: rect.width, height: rect.height, bottom: rect.bottom }, display: computed.display, position: computed.position, boxSizing: computed.boxSizing, height: computed.height, minHeight: computed.minHeight, maxHeight: computed.maxHeight, padding: computed.padding, paddingTop: computed.paddingTop, paddingBottom: computed.paddingBottom, margin: computed.margin, lineHeight: computed.lineHeight, fontSize: computed.fontSize, alignItems: computed.alignItems, justifyContent: computed.justifyContent, flex: computed.flex, width: computed.width, minWidth: computed.minWidth, maxWidth: computed.maxWidth, inlineSize: computed.inlineSize };
+            };
+            return { tree: walk(root), gapBelowDescription: root && description ? root.getBoundingClientRect().bottom - description.getBoundingClientRect().bottom : null, outerHTML: root?.outerHTML.slice(0, 10000) };
+          });
+          await page.goto('http://127.0.0.1:5174/itsm/approvals', { waitUntil: 'networkidle' });
+          await page.locator('[data-page-id="P19"]').waitFor();
+          const badges = await page.evaluate(() => [...document.querySelectorAll('[data-visual-region="approval-task-queue"] .euiBadge')].slice(0, 8).map((badge) => {
+            const computed = getComputedStyle(badge);
+            const rect = badge.getBoundingClientRect();
+            const parent = badge.parentElement;
+            const parentStyle = parent ? getComputedStyle(parent) : null;
+            const parentRect = parent?.getBoundingClientRect();
+            const range = document.createRange();
+            range.selectNodeContents(badge);
+            const contentRect = range.getBoundingClientRect();
+            return { text: badge.textContent?.trim(), rect: { width: rect.width, height: rect.height }, contentRect: { width: contentRect.width, height: contentRect.height }, display: computed.display, width: computed.width, minWidth: computed.minWidth, maxWidth: computed.maxWidth, inlineSize: computed.inlineSize, flex: computed.flex, alignSelf: computed.alignSelf, justifySelf: computed.justifySelf, whiteSpace: computed.whiteSpace, parent: { tag: parent?.tagName, className: parent?.className, rect: parentRect ? { width: parentRect.width, height: parentRect.height } : null, display: parentStyle?.display, alignItems: parentStyle?.alignItems, justifyItems: parentStyle?.justifyItems } };
+          }));
+          console.log(JSON.stringify({ header, badges }, null, 2));
+          await browser.close();
           NODE
 
-      - name: Upload candidate evidence
+      - name: Upload diagnostic
         uses: actions/upload-artifact@v4
         with:
-          name: eui-density-candidate-final
+          name: eui-metric-diagnostic
           path: |
-            artifacts/eui-visual-audit/report.json
-            artifacts/eui-visual-audit/report.md
-            /tmp/diff-stat.txt
-            /tmp/npm-ci.log
-            /tmp/playwright-install.log
-            /tmp/lint.log
-            /tmp/typecheck.log
-            /tmp/test.log
-            /tmp/build.log
+            /tmp/eui-diagnostic.json
             /tmp/vite.log
-            /tmp/audit-summary.txt
           if-no-files-found: error
           retention-days: 1
