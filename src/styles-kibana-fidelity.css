@@ -307,6 +307,93 @@ html[data-theme='dark'] body,
 .page-p22 [data-visual-region='settings-local-navigation'] h2 { overflow-wrap: normal; }
 .page-p22 [data-visual-region='settings-edit-workbench'] { min-width: 0; }
 
+.page-p23 .conversationTranscript {
+  display: grid;
+  gap: 10px;
+}
+
+.page-p23 .conversationTranscript article {
+  min-width: 0;
+  padding: 10px 12px;
+  border: 1px solid var(--kbn-border);
+  border-radius: var(--kbn-radius);
+  background: var(--kbn-canvas);
+}
+
+.page-p23 .conversationTranscript article.assistant {
+  border-left: 3px solid var(--kbn-primary);
+  background: color-mix(in srgb, var(--kbn-primary) 7%, var(--kbn-canvas));
+}
+
+.page-p23 .conversationTranscript article.user {
+  margin-left: 8%;
+  border-left: 3px solid var(--kbn-border-strong);
+  background: var(--kbn-panel-raised);
+}
+
+.page-p23 .conversationTranscript article > header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 5px;
+}
+
+.page-p23 .conversationTranscript article > header strong {
+  color: var(--kbn-heading);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.page-p23 .conversationTranscript article > header time {
+  flex: none;
+  color: var(--kbn-muted);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+
+.page-p23 .conversationTranscript article > p {
+  margin: 0;
+  color: var(--kbn-text);
+  font-size: 12px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.page-p23 .conversationTranscript article > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.page-p23 .copilotCitationRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 2px 8px;
+  align-items: center;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--kbn-border);
+}
+
+.page-p23 .copilotCitationRow strong {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.page-p23 .copilotCitationRow span {
+  grid-column: 1;
+  color: var(--kbn-muted);
+  font-size: 11px;
+}
+
+.page-p23 .copilotCitationRow .euiBadge {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+
 .prototypePage .euiTitle h2,
 .prototypePage .euiTitle h3,
 .workflowPage .euiTitle h2,
