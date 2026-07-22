@@ -5,7 +5,7 @@ import { mkdir, readFile, stat, unlink, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { promisify } from 'node:util';
 
-/* global document, getComputedStyle, location, Node, NodeFilter, Range, window */
+/* global document, getComputedStyle, location, NodeFilter, Range, window */
 
 const runFile = promisify(execFile);
 const VERSION = 'information-density-v1.0.0';
