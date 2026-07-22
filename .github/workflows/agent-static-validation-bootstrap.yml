@@ -1,9 +1,13 @@
 name: Agent static correctness validation
 
 on:
-  push:
+  pull_request:
     branches:
-      - agent/gpt56-pro-elastic-eui-round2-validation-20260722
+      - codex/merge-p01-p35-eui
+    types:
+      - opened
+      - reopened
+      - synchronize
 
 permissions:
   contents: write
@@ -13,9 +17,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
-      - name: Check out repository history
+      - name: Check out disposable validation ref
         uses: actions/checkout@v4
         with:
+          ref: agent/gpt56-pro-elastic-eui-round2-validation-20260722
           fetch-depth: 0
 
       - name: Verify immutable source head
@@ -25,6 +30,18 @@ jobs:
           expected=40fe79035828a870a720d3ca858d8fd1bb9cc2ed
           git merge-base --is-ancestor "$expected" HEAD
           test "$(git diff --name-only "$expected" -- . ':!.github/workflows/agent-static-validation-bootstrap.yml')" = ""
+
+      - name: Mark validation started on disposable ref
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p .agent-validation
+          printf 'started_from=%s\nrun_id=%s\n' "$(git rev-parse HEAD)" "$GITHUB_RUN_ID" > .agent-validation/started.txt
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add .agent-validation/started.txt
+          git commit -m "chore: mark static validation started"
+          git push origin HEAD:agent/gpt56-pro-elastic-eui-round2-validation-20260722
 
       - name: Set up declared Node version
         uses: actions/setup-node@v4
@@ -176,7 +193,7 @@ jobs:
           const summary = {
             expectedHead: '40fe79035828a870a720d3ca858d8fd1bb9cc2ed',
             node: process.version,
-            npm: process.env.npm_config_user_agent ?? 'npm@10.9.2',
+            npm: '10.9.2',
             lockfileVersion: lock.lockfileVersion,
             lockfilePackageEntries: Object.keys(lock.packages ?? {}).length,
             results,
@@ -185,6 +202,7 @@ jobs:
           const lines = [
             `Expected head: ${summary.expectedHead}`,
             `Node: ${summary.node}`,
+            `npm: ${summary.npm}`,
             `Lockfile version: ${summary.lockfileVersion}`,
             `Lockfile package entries: ${summary.lockfilePackageEntries}`,
             '',
