@@ -39,10 +39,12 @@ jobs:
           node-version: 22.16.0
           cache: npm
 
-      - name: Install declared npm and Chromium
+      - name: Install declared npm, Chromium, and WebP encoder
         shell: bash
         run: |
           set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install --yes webp
           npm install --global npm@10.9.2
           npm ci --no-audit --no-fund
           npx playwright install --with-deps chromium
