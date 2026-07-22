@@ -12,7 +12,7 @@ const options = (values: readonly string[]) => values.map((value) => ({ value, t
 
 export function P08AssetScopeBar(props: Props) {
   return <EuiPanel paddingSize="m" hasBorder data-visual-region="asset-search-facet-command-bar">
-    <EuiFlexGroup alignItems="center" gutterSize="s" wrap>
+    <EuiFlexGroup className="p08ScopeControls" alignItems="center" gutterSize="s" wrap>
       <EuiFlexItem grow={2}><EuiFieldSearch compressed value={props.query} onChange={(event) => props.onQuery(event.target.value)} onSearch={props.onApply} placeholder="Asset ID, hostname, IP/MAC, serial, cloud ID, owner or observation" aria-label="Search canonical assets" /></EuiFlexItem>
       <EuiFlexItem grow={false} style={{ minWidth: 145 }}><EuiSelect compressed value={props.typeFilter} onChange={(event) => props.onType(event.target.value)} aria-label="Asset type filter" options={options(['All types', ...assetTypes])} /></EuiFlexItem>
       <EuiFlexItem grow={false} style={{ minWidth: 145 }}><EuiSelect compressed value={props.lifecycleFilter} onChange={(event) => props.onLifecycle(event.target.value)} aria-label="Lifecycle filter" options={options(['All lifecycle', ...lifecycles])} /></EuiFlexItem>
@@ -23,7 +23,7 @@ export function P08AssetScopeBar(props: Props) {
       <EuiFlexItem grow={false}><EuiButton fill size="s" onClick={props.onApply}>Apply scope</EuiButton></EuiFlexItem>
     </EuiFlexGroup>
     <EuiSpacer size="s" />
-    <EuiFlexGroup alignItems="center" gutterSize="s" wrap>
+    <EuiFlexGroup className="p08SavedViews" alignItems="center" gutterSize="s" wrap>
       <EuiFlexItem grow={false}><EuiText size="xs" color="subdued"><p>Saved views:</p></EuiText></EuiFlexItem>
       {['Canonical active', 'Reconciliation attention', 'Unowned critical', 'Stale telemetry'].map((label, index) => <EuiFlexItem key={label} grow={false}><EuiButtonEmpty size="xs" color={index === 0 ? 'primary' : 'text'} onClick={() => props.onSavedView(label)}>{label}</EuiButtonEmpty></EuiFlexItem>)}
       <EuiFlexItem /><EuiFlexItem grow={false}><EuiBadge color="hollow">Current snapshot · observations 30d</EuiBadge></EuiFlexItem>

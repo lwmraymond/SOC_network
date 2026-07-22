@@ -18,7 +18,7 @@ export function P06ActionOverlays({ action, fixture, detailOpen, approvalOpen, o
     {approvalOpen && <EuiModal onClose={onCloseApproval} aria-labelledby="p06-approval-title">
       <EuiModalHeader><EuiModalHeaderTitle id="p06-approval-title">Review governed action</EuiModalHeaderTitle></EuiModalHeader>
       <EuiModalBody><EuiCallOut title={`${action.risk} risk · ${action.actionType}`} color="warning">Target {action.target}; requester {action.requester}; policy expires {action.expires}.</EuiCallOut><EuiSpacer size="m" /><EuiText><p>Approving creates an approval receipt only. Execution, external confirmation and completion remain separate downstream states.</p></EuiText></EuiModalBody>
-      <EuiModalFooter><EuiButtonEmpty onClick={() => onDecision('Decline')}>Decline</EuiButtonEmpty><EuiButton fill color="warning" onClick={() => onDecision('Approval')}>Approve prototype request</EuiButton></EuiModalFooter>
+      <EuiModalFooter><EuiButtonEmpty onClick={() => onDecision('Decline')}>Decline</EuiButtonEmpty><EuiButton fill onClick={() => onDecision('Approval')}>Approve prototype request</EuiButton></EuiModalFooter>
     </EuiModal>}
   </>;
 }

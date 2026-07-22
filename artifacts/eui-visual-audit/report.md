@@ -1,0 +1,1665 @@
+# EUI visual metrics audit
+
+Generated: 2026-07-22T07:50:44.366Z
+Base URL: http://127.0.0.1:5174
+Viewport: 1231 × 768
+Counts: P0 273 · P1 186 · P2 1152
+
+| Page | P0 | P1 | P2 | Header | Rules |
+|---|---:|---:|---:|---:|---|
+| P01 | 2 | 9 | 20 | 113px | page-header-height, colored-title-bar, line-height, text-contrast, text-clipping |
+| P02 | 1 | 4 | 33 | 113px | page-header-height, line-height, text-contrast, text-clipping |
+| P03 | 1 | 2 | 31 | 113px | page-header-height, colored-title-bar, line-height, text-contrast |
+| P04 | 2 | 1 | 27 | 113px | page-header-height, line-height, text-contrast, repeated-item-height |
+| P05 | 2 | 2 | 23 | 113px | page-header-height, colored-title-bar, line-height, text-contrast |
+| P06 | 2 | 1 | 25 | 113px | page-header-height, line-height, text-contrast, repeated-item-height |
+| P07 | 1 | 0 | 19 | —px | line-height, text-contrast |
+| P08 | 2 | 20 | 25 | 113px | page-header-height, line-height, text-contrast, text-clipping, repeated-item-height |
+| P09 | 1 | 6 | 51 | 113px | page-header-height, line-height, text-contrast, text-clipping |
+| P10 | 7 | 2 | 22 | 113px | page-header-height, colored-title-bar, line-height, text-contrast |
+| P11 | 9 | 3 | 22 | 113px | page-header-height, colored-title-bar, line-height, text-contrast, text-overlap |
+| P12 | 2 | 1 | 22 | 113px | page-header-height, line-height, text-contrast |
+| P13 | 6 | 3 | 23 | 113px | page-header-height, colored-title-bar, line-height, text-contrast, text-overlap |
+| P14 | 1 | 2 | 27 | 113px | page-header-height, colored-title-bar, line-height, text-contrast |
+| P15 | 2 | 2 | 24 | 113px | page-header-height, colored-title-bar, line-height, text-contrast |
+| P16 | 9 | 8 | 27 | 113px | page-header-height, colored-title-bar, line-height, text-contrast, text-clipping, text-overlap |
+| P17 | 2 | 4 | 22 | 113px | page-header-height, colored-title-bar, line-height, text-contrast |
+| P18 | 7 | 6 | 22 | 113px | page-header-height, colored-title-bar, line-height, text-contrast, text-clipping |
+| P19 | 7 | 17 | 26 | 113px | page-header-height, colored-title-bar, line-height, text-contrast, stretched-badge |
+| P20 | 2 | 7 | 32 | 113px | page-header-height, colored-title-bar, line-height, text-contrast, text-clipping |
+| P21 | 2 | 3 | 25 | 113px | page-header-height, colored-title-bar, line-height, text-contrast, text-clipping |
+| P22 | 4 | 1 | 37 | 113px | page-header-height, line-height, text-contrast |
+| P23 | 11 | 1 | 18 | 113px | page-header-height, line-height, text-contrast, text-overlap |
+| P24 | 2 | 6 | 28 | 113px | page-header-height, line-height, text-contrast, text-clipping |
+| P25 | 2 | 7 | 28 | 113px | page-header-height, colored-title-bar, line-height, text-contrast, text-clipping |
+| P26 | 2 | 1 | 25 | 113px | page-header-height, line-height, text-contrast |
+| P27 | 10 | 7 | 29 | 113px | page-header-height, colored-title-bar, line-height, text-contrast, text-clipping, text-overlap |
+| P28 | 2 | 7 | 34 | 113px | page-header-height, colored-title-bar, line-height, text-contrast, text-clipping |
+| P29 | 9 | 7 | 30 | 113px | page-header-height, colored-title-bar, line-height, text-contrast, text-clipping, text-overlap |
+| P30 | 38 | 9 | 29 | 113px | page-header-height, colored-title-bar, line-height, text-contrast, text-clipping, text-overlap |
+| P31 | 25 | 1 | 25 | 113px | page-header-height, line-height, text-contrast, text-overlap |
+| P32 | 24 | 1 | 22 | 113px | page-header-height, line-height, text-contrast, text-overlap |
+| P33 | 1 | 8 | 32 | 113px | page-header-height, colored-title-bar, line-height, text-contrast, text-clipping |
+| P34 | 35 | 8 | 30 | 113px | page-header-height, colored-title-bar, line-height, text-contrast, text-clipping, text-overlap |
+| P35 | 1 | 5 | 28 | 113px | page-header-height, line-height, text-contrast, text-clipping |
+| P36 | 3 | 1 | 23 | 113px | page-header-height, line-height, text-contrast |
+| P37 | 11 | 7 | 34 | 113px | page-header-height, colored-title-bar, line-height, text-contrast, text-clipping, text-overlap |
+| P38 | 3 | 1 | 35 | 113px | page-header-height, line-height, text-contrast |
+| P39 | 2 | 1 | 27 | 113px | page-header-height, line-height, text-contrast |
+| P40 | 3 | 1 | 35 | 113px | page-header-height, line-height, text-contrast, text-overlap |
+| P41 | 11 | 2 | 30 | 113px | page-header-height, colored-title-bar, line-height, text-contrast, text-overlap |
+| P42 | 4 | 1 | 25 | 113px | page-header-height, line-height, text-contrast |
+
+## Findings
+
+- **P1 P01 page-header-height:** Page header is 113px high — `[data-visual-region="page-header"] header.euiPageHeader.css-1kmz19p-euiPageHeader-m-border`
+- **P1 P01 colored-title-bar:** Heading is rendered as a wide colored surface instead of plain Kibana title text — `[data-visual-region="attack-coverage-map"] h2.euiTitle.css-8a1usq-euiTitle-xs`
+- **P1 P01 colored-title-bar:** Heading is rendered as a wide colored surface instead of plain Kibana title text — `[data-visual-region="analyst-workload-board"] h2.euiTitle.css-8a1usq-euiTitle-xs`
+- **P1 P01 colored-title-bar:** Heading is rendered as a wide colored surface instead of plain Kibana title text — `[data-visual-region="source-integrity-matrix"] h2.euiTitle.css-8a1usq-euiTitle-xs`
+- **P2 P01 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.euiSideNavItemButton-isOpen.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P01 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P01 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P01 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P01 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P01 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P01 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P01 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P01 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P01 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P01 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P01 line-height:** Line-height ratio is 1.33 — `p`
+- **P2 P01 line-height:** Line-height ratio is 1.2 — `[data-visual-region="page-header"] h1.euiTitle.css-4x7w6l-euiTitle-l`
+- **P2 P01 line-height:** Line-height ratio is 1.25 — `[data-visual-region="page-header"] p`
+- **P0 P01 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="page-header"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P0 P01 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="soc-scope-command-bar"] button.euiButton.css-1ilfsa9-euiButtonDisplay-s-defaultMinWidth-fill-primary`
+- **P2 P01 line-height:** Line-height ratio is 0.67 — `[data-visual-region="soc-decision-summary"] p.euiTitle.euiStat__title.css-6i9fh6-euiTitle-l-euiStat__title-danger`
+- **P2 P01 line-height:** Line-height ratio is 0.67 — `[data-visual-region="soc-decision-summary"] p.euiTitle.euiStat__title.css-1ucs7wl-euiTitle-l-euiStat__title-warning`
+- **P2 P01 line-height:** Line-height ratio is 0.67 — `[data-visual-region="soc-decision-summary"] p.euiTitle.euiStat__title.css-1ucs7wl-euiTitle-l-euiStat__title-warning`
+- **P2 P01 line-height:** Line-height ratio is 0.67 — `[data-visual-region="soc-decision-summary"] p.euiTitle.euiStat__title.css-13nr0qr-euiTitle-l-euiStat__title-primary`
+- **P2 P01 line-height:** Line-height ratio is 0.67 — `[data-visual-region="soc-decision-summary"] p.euiTitle.euiStat__title.css-jvv3mm-euiTitle-l-euiStat__title-success`
+- **P2 P01 line-height:** Line-height ratio is 1.14 — `[data-visual-region="critical-attention-board"] h2`
+- **P1 P01 text-clipping:** Text is clipped (173×20 vs 173×27) — `[data-visual-region="soc-decision-summary"] p.euiTitle.euiStat__title.css-6i9fh6-euiTitle-l-euiStat__title-danger`
+- **P1 P01 text-clipping:** Text is clipped (173×20 vs 173×27) — `[data-visual-region="soc-decision-summary"] p.euiTitle.euiStat__title.css-1ucs7wl-euiTitle-l-euiStat__title-warning`
+- **P1 P01 text-clipping:** Text is clipped (173×20 vs 173×27) — `[data-visual-region="soc-decision-summary"] p.euiTitle.euiStat__title.css-1ucs7wl-euiTitle-l-euiStat__title-warning`
+- **P1 P01 text-clipping:** Text is clipped (173×20 vs 173×27) — `[data-visual-region="soc-decision-summary"] p.euiTitle.euiStat__title.css-13nr0qr-euiTitle-l-euiStat__title-primary`
+- **P1 P01 text-clipping:** Text is clipped (173×20 vs 173×27) — `[data-visual-region="soc-decision-summary"] p.euiTitle.euiStat__title.css-jvv3mm-euiTitle-l-euiStat__title-success`
+- **P1 P02 page-header-height:** Page header is 113px high — `[data-visual-region="page-header"] header.euiPageHeader.css-1kmz19p-euiPageHeader-m-border`
+- **P2 P02 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.euiSideNavItemButton-isOpen.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P02 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P02 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P02 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P02 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P02 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P02 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P02 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P02 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P02 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P02 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P02 line-height:** Line-height ratio is 1.33 — `p`
+- **P2 P02 line-height:** Line-height ratio is 1.2 — `[data-visual-region="page-header"] h1.euiTitle.css-4x7w6l-euiTitle-l`
+- **P2 P02 line-height:** Line-height ratio is 1.25 — `[data-visual-region="page-header"] p`
+- **P0 P02 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="page-header"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P2 P02 line-height:** Line-height ratio is 1.2 — `[data-visual-region="executive-posture-hero"] h2#p02-executive-posture.euiTitle.css-4x7w6l-euiTitle-l`
+- **P2 P02 line-height:** Line-height ratio is 1.25 — `[data-visual-region="executive-posture-hero"] p`
+- **P2 P02 line-height:** Line-height ratio is 0.67 — `[data-visual-region="executive-posture-hero"] p.euiTitle.euiStat__title.css-1ucs7wl-euiTitle-l-euiStat__title-warning`
+- **P2 P02 line-height:** Line-height ratio is 0.67 — `[data-visual-region="executive-posture-hero"] p.euiTitle.euiStat__title.css-1ucs7wl-euiTitle-l-euiStat__title-warning`
+- **P2 P02 line-height:** Line-height ratio is 0.67 — `[data-visual-region="executive-posture-hero"] p.euiTitle.euiStat__title.css-jvv3mm-euiTitle-l-euiStat__title-success`
+- **P2 P02 line-height:** Line-height ratio is 1.25 — `[data-visual-region="executive-posture-hero"] p.euiTitle.euiCallOutHeader__title.css-1fvls3y-euiTitle-xs-euiCallOutHeader-warning`
+- **P2 P02 line-height:** Line-height ratio is 1.2 — `[data-visual-region="business-risk-trend"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P02 line-height:** Line-height ratio is 1.14 — `[data-visual-region="business-risk-trend"] th`
+- **P2 P02 line-height:** Line-height ratio is 1.14 — `[data-visual-region="business-risk-trend"] th`
+- **P2 P02 line-height:** Line-height ratio is 1.14 — `[data-visual-region="business-risk-trend"] th`
+- **P2 P02 line-height:** Line-height ratio is 1.2 — `[data-visual-region="business-unit-risk-heatmap"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P02 line-height:** Line-height ratio is 1.2 — `[data-visual-region="management-commitments"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P02 line-height:** Line-height ratio is 1.14 — `[data-visual-region="management-commitments"] th`
+- **P2 P02 line-height:** Line-height ratio is 1.14 — `[data-visual-region="management-commitments"] th`
+- **P2 P02 line-height:** Line-height ratio is 1.14 — `[data-visual-region="management-commitments"] th`
+- **P2 P02 line-height:** Line-height ratio is 1.14 — `[data-visual-region="management-commitments"] th`
+- **P2 P02 line-height:** Line-height ratio is 1.14 — `[data-visual-region="management-commitments"] th`
+- **P2 P02 line-height:** Line-height ratio is 1.14 — `[data-visual-region="management-commitments"] th`
+- **P2 P02 line-height:** Line-height ratio is 1.14 — `[data-visual-region="management-commitments"] th`
+- **P1 P02 text-clipping:** Text is clipped (204×20 vs 204×27) — `[data-visual-region="executive-posture-hero"] p.euiTitle.euiStat__title.css-1ucs7wl-euiTitle-l-euiStat__title-warning`
+- **P1 P02 text-clipping:** Text is clipped (204×20 vs 204×27) — `[data-visual-region="executive-posture-hero"] p.euiTitle.euiStat__title.css-1ucs7wl-euiTitle-l-euiStat__title-warning`
+- **P1 P02 text-clipping:** Text is clipped (204×20 vs 204×27) — `[data-visual-region="executive-posture-hero"] p.euiTitle.euiStat__title.css-jvv3mm-euiTitle-l-euiStat__title-success`
+- **P1 P03 page-header-height:** Page header is 113px high — `[data-visual-region="page-header"] header.euiPageHeader.css-1kmz19p-euiPageHeader-m-border`
+- **P1 P03 colored-title-bar:** Heading is rendered as a wide colored surface instead of plain Kibana title text — `h2.euiTitle.css-1k28e9z-euiTitle-xxs`
+- **P2 P03 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.euiSideNavItemButton-isOpen.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P03 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P03 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P03 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P03 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P03 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P03 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P03 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P03 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P03 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P03 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P03 line-height:** Line-height ratio is 1.33 — `p`
+- **P2 P03 line-height:** Line-height ratio is 1.2 — `[data-visual-region="page-header"] h1.euiTitle.css-4x7w6l-euiTitle-l`
+- **P2 P03 line-height:** Line-height ratio is 1.25 — `[data-visual-region="page-header"] p`
+- **P0 P03 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="page-header"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P2 P03 line-height:** Line-height ratio is 1.2 — `[data-visual-region="active-degradation-chain"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P03 line-height:** Line-height ratio is 1.25 — `[data-visual-region="active-degradation-chain"] p.euiTitle.euiCallOutHeader__title.css-1fvls3y-euiTitle-xs-euiCallOutHeader-warning`
+- **P2 P03 line-height:** Line-height ratio is 1.2 — `[data-visual-region="recovery-decision"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P03 line-height:** Line-height ratio is 1.25 — `[data-visual-region="recovery-decision"] p.euiTitle.euiCallOutHeader__title.css-1jvtbrd-euiTitle-xs-euiCallOutHeader-primary`
+- **P2 P03 line-height:** Line-height ratio is 1.17 — `[data-visual-region="platform-telemetry"] h3.euiTitle.css-gbi2oy-euiTitle-m`
+- **P2 P03 line-height:** Line-height ratio is 1.17 — `[data-visual-region="platform-telemetry"] h3.euiTitle.css-gbi2oy-euiTitle-m`
+- **P2 P03 line-height:** Line-height ratio is 1.17 — `[data-visual-region="platform-telemetry"] h3.euiTitle.css-gbi2oy-euiTitle-m`
+- **P2 P03 line-height:** Line-height ratio is 1.2 — `[data-visual-region="health-issue-queue"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P03 line-height:** Line-height ratio is 1.14 — `[data-visual-region="health-issue-queue"] th`
+- **P2 P03 line-height:** Line-height ratio is 1.14 — `[data-visual-region="health-issue-queue"] th`
+- **P2 P03 line-height:** Line-height ratio is 1.14 — `[data-visual-region="health-issue-queue"] th`
+- **P2 P03 line-height:** Line-height ratio is 1.14 — `[data-visual-region="health-issue-queue"] th`
+- **P2 P03 line-height:** Line-height ratio is 1.14 — `[data-visual-region="health-issue-queue"] th`
+- **P2 P03 line-height:** Line-height ratio is 1.14 — `[data-visual-region="health-issue-queue"] th`
+- **P2 P03 line-height:** Line-height ratio is 1.14 — `[data-visual-region="health-issue-queue"] th`
+- **P2 P03 line-height:** Line-height ratio is 1.14 — `[data-visual-region="health-issue-queue"] th`
+- **P2 P03 line-height:** Line-height ratio is 1.2 — `[data-visual-region="affected-capabilities"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P1 P04 page-header-height:** Page header is 113px high — `[data-visual-region="page-header"] header.euiPageHeader.css-1kmz19p-euiPageHeader-m-border`
+- **P2 P04 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P04 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.euiSideNavItemButton-isOpen.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P04 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P04 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P04 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P04 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P04 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P04 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P04 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P04 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P04 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P04 line-height:** Line-height ratio is 1.33 — `p`
+- **P2 P04 line-height:** Line-height ratio is 1.2 — `[data-visual-region="page-header"] h1.euiTitle.css-4x7w6l-euiTitle-l`
+- **P2 P04 line-height:** Line-height ratio is 1.25 — `[data-visual-region="page-header"] p`
+- **P0 P04 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="page-header"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P2 P04 line-height:** Line-height ratio is 1.17 — `[data-visual-region="selected-case-investigation"] h2.euiTitle.css-gbi2oy-euiTitle-m`
+- **P0 P04 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="selected-case-investigation"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P2 P04 line-height:** Line-height ratio is 1.14 — `[data-visual-region="selected-case-investigation"] button.euiTab.euiTab-isSelected.css-1krql02-euiTab-selected`
+- **P2 P04 line-height:** Line-height ratio is 1.14 — `[data-visual-region="selected-case-investigation"] button.euiTab.css-11s5t0i-euiTab`
+- **P2 P04 line-height:** Line-height ratio is 1.14 — `[data-visual-region="selected-case-investigation"] button.euiTab.css-11s5t0i-euiTab`
+- **P2 P04 line-height:** Line-height ratio is 1.14 — `[data-visual-region="selected-case-investigation"] button.euiTab.css-11s5t0i-euiTab`
+- **P2 P04 line-height:** Line-height ratio is 1.14 — `[data-visual-region="selected-case-investigation"] button.euiTab.css-11s5t0i-euiTab`
+- **P2 P04 line-height:** Line-height ratio is 1.14 — `[data-visual-region="selected-case-investigation"] button.euiTab.css-11s5t0i-euiTab`
+- **P2 P04 line-height:** Line-height ratio is 1.14 — `[data-visual-region="selected-case-investigation"] button.euiTab.css-11s5t0i-euiTab`
+- **P2 P04 line-height:** Line-height ratio is 1.14 — `[data-visual-region="selected-case-investigation"] button.euiTab.css-11s5t0i-euiTab`
+- **P2 P04 line-height:** Line-height ratio is 1.25 — `[data-visual-region="selected-case-investigation"] p`
+- **P2 P04 line-height:** Line-height ratio is 1.2 — `[data-visual-region="case-next-decision"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P04 line-height:** Line-height ratio is 1.25 — `[data-visual-region="case-next-decision"] p.euiTitle.euiCallOutHeader__title.css-1fvls3y-euiTitle-xs-euiCallOutHeader-warning`
+- **P2 P04 repeated-item-height:** Repeated item is only 24px high — `[data-visual-region="case-scope-toolbar"] button.euiButtonEmpty.css-zwydjg-euiButtonDisplay-euiButtonEmpty-xs-empty-text`
+- **P1 P05 page-header-height:** Page header is 113px high — `[data-visual-region="page-header"] header.euiPageHeader.css-1kmz19p-euiPageHeader-m-border`
+- **P1 P05 colored-title-bar:** Heading is rendered as a wide colored surface instead of plain Kibana title text — `[data-visual-region="alert-evidence-preview"] h3.euiTitle.css-8a1usq-euiTitle-xs`
+- **P2 P05 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P05 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.euiSideNavItemButton-isOpen.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P05 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P05 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P05 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P05 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P05 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P05 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P05 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P05 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P05 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P05 line-height:** Line-height ratio is 1.33 — `p`
+- **P2 P05 line-height:** Line-height ratio is 1.2 — `[data-visual-region="page-header"] h1.euiTitle.css-4x7w6l-euiTitle-l`
+- **P2 P05 line-height:** Line-height ratio is 1.25 — `[data-visual-region="page-header"] p`
+- **P0 P05 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="page-header"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P0 P05 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="alert-query-and-saved-views"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P2 P05 line-height:** Line-height ratio is 1.17 — `[data-visual-region="alert-pressure-summary"] h2.euiTitle.css-gbi2oy-euiTitle-m`
+- **P2 P05 line-height:** Line-height ratio is 1.17 — `[data-visual-region="alert-pressure-summary"] h2.euiTitle.css-gbi2oy-euiTitle-m`
+- **P2 P05 line-height:** Line-height ratio is 1.17 — `[data-visual-region="alert-pressure-summary"] h2.euiTitle.css-gbi2oy-euiTitle-m`
+- **P2 P05 line-height:** Line-height ratio is 1.17 — `[data-visual-region="alert-pressure-summary"] h2.euiTitle.css-gbi2oy-euiTitle-m`
+- **P2 P05 line-height:** Line-height ratio is 1.2 — `[data-visual-region="alert-group-triage-queue"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P05 line-height:** Line-height ratio is 1.2 — `[data-visual-region="alert-evidence-preview"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P05 line-height:** Line-height ratio is 1.25 — `[data-visual-region="alert-evidence-preview"] p.euiTitle.euiCallOutHeader__title.css-1jvtbrd-euiTitle-xs-euiCallOutHeader-primary`
+- **P2 P05 line-height:** Line-height ratio is 1.2 — `[data-visual-region="alert-triage-decision"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P05 line-height:** Line-height ratio is 1.25 — `[data-visual-region="alert-triage-decision"] p.euiTitle.euiCallOutHeader__title.css-1fvls3y-euiTitle-xs-euiCallOutHeader-warning`
+- **P1 P06 page-header-height:** Page header is 113px high — `[data-visual-region="page-header"] header.euiPageHeader.css-1kmz19p-euiPageHeader-m-border`
+- **P2 P06 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P06 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.euiSideNavItemButton-isOpen.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P06 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P06 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P06 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P06 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P06 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P06 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P06 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P06 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P06 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P06 line-height:** Line-height ratio is 1.33 — `p`
+- **P2 P06 line-height:** Line-height ratio is 1.2 — `[data-visual-region="page-header"] h1.euiTitle.css-4x7w6l-euiTitle-l`
+- **P2 P06 line-height:** Line-height ratio is 1.25 — `[data-visual-region="page-header"] p`
+- **P0 P06 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="page-header"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P2 P06 line-height:** Line-height ratio is 1.17 — `[data-visual-region="selected-action-governance-workspace"] h2.euiTitle.css-gbi2oy-euiTitle-m`
+- **P0 P06 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="selected-action-governance-workspace"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P2 P06 line-height:** Line-height ratio is 1.14 — `[data-visual-region="selected-action-governance-workspace"] button.euiTab.euiTab-isSelected.css-1krql02-euiTab-selected`
+- **P2 P06 line-height:** Line-height ratio is 1.14 — `[data-visual-region="selected-action-governance-workspace"] button.euiTab.css-11s5t0i-euiTab`
+- **P2 P06 line-height:** Line-height ratio is 1.14 — `[data-visual-region="selected-action-governance-workspace"] button.euiTab.css-11s5t0i-euiTab`
+- **P2 P06 line-height:** Line-height ratio is 1.14 — `[data-visual-region="selected-action-governance-workspace"] button.euiTab.css-11s5t0i-euiTab`
+- **P2 P06 line-height:** Line-height ratio is 1.2 — `[data-visual-region="selected-action-governance-workspace"] h3.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P06 line-height:** Line-height ratio is 1.2 — `[data-visual-region="selected-action-governance-workspace"] h3.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P06 line-height:** Line-height ratio is 1.2 — `[data-visual-region="selected-action-governance-workspace"] h3.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P06 line-height:** Line-height ratio is 1.2 — `[data-visual-region="authoritative-state-and-recovery-lane"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P06 line-height:** Line-height ratio is 1.25 — `[data-visual-region="authoritative-state-and-recovery-lane"] p.euiTitle.euiCallOutHeader__title.css-1fvls3y-euiTitle-xs-euiCallOutHeader-warning`
+- **P2 P06 repeated-item-height:** Repeated item is only 24px high — `[data-visual-region="action-scope-and-status-filters"] button.euiButtonEmpty.css-zwydjg-euiButtonDisplay-euiButtonEmpty-xs-empty-text`
+- **P2 P07 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P07 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.euiSideNavItemButton-isOpen.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P07 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P07 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P07 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P07 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P07 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P07 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P07 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P07 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P07 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P07 line-height:** Line-height ratio is 1.33 — `p`
+- **P2 P07 line-height:** Line-height ratio is 1.2 — `h1.euiTitle.css-4x7w6l-euiTitle-l`
+- **P2 P07 line-height:** Line-height ratio is 1.25 — `p`
+- **P0 P07 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="hunt-query-workbench"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P2 P07 line-height:** Line-height ratio is 1.2 — `[data-visual-region="hunt-event-grid"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P07 line-height:** Line-height ratio is 1.14 — `[data-visual-region="hunt-event-grid"] th`
+- **P2 P07 line-height:** Line-height ratio is 1.14 — `[data-visual-region="hunt-event-grid"] th`
+- **P2 P07 line-height:** Line-height ratio is 1.14 — `[data-visual-region="hunt-event-grid"] th`
+- **P2 P07 line-height:** Line-height ratio is 1.14 — `[data-visual-region="hunt-event-grid"] th`
+- **P1 P08 page-header-height:** Page header is 113px high — `[data-visual-region="page-header"] header.euiPageHeader.css-1kmz19p-euiPageHeader-m-border`
+- **P2 P08 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P08 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P08 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.euiSideNavItemButton-isOpen.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P08 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P08 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P08 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P08 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P08 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P08 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P08 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P08 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P08 line-height:** Line-height ratio is 1.33 — `p`
+- **P2 P08 line-height:** Line-height ratio is 1.2 — `[data-visual-region="page-header"] h1.euiTitle.css-4x7w6l-euiTitle-l`
+- **P2 P08 line-height:** Line-height ratio is 1.25 — `[data-visual-region="page-header"] p`
+- **P0 P08 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="page-header"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P0 P08 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="asset-search-facet-command-bar"] button.euiButton.css-1ilfsa9-euiButtonDisplay-s-defaultMinWidth-fill-primary`
+- **P2 P08 line-height:** Line-height ratio is 1 — `[data-visual-region="asset-decision-summary"] p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P08 line-height:** Line-height ratio is 1 — `[data-visual-region="asset-decision-summary"] p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P08 line-height:** Line-height ratio is 1 — `[data-visual-region="asset-decision-summary"] p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P08 line-height:** Line-height ratio is 1 — `[data-visual-region="asset-decision-summary"] p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P08 line-height:** Line-height ratio is 1 — `[data-visual-region="asset-decision-summary"] p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P08 line-height:** Line-height ratio is 1.14 — `[data-visual-region="inventory-source-coverage"] th`
+- **P2 P08 line-height:** Line-height ratio is 1.14 — `[data-visual-region="inventory-source-coverage"] th`
+- **P2 P08 line-height:** Line-height ratio is 1.14 — `[data-visual-region="inventory-source-coverage"] th`
+- **P2 P08 line-height:** Line-height ratio is 1.2 — `[data-visual-region="canonical-asset-inventory-grid"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P08 line-height:** Line-height ratio is 1.2 — `[data-visual-region="asset-identity-preview"] h3.euiTitle.css-16incrq-euiTitle-s`
+- **P1 P08 text-clipping:** Text is clipped (169×20 vs 169×22) — `[data-visual-region="asset-decision-summary"] p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P08 text-clipping:** Text is clipped (169×20 vs 169×22) — `[data-visual-region="asset-decision-summary"] p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P08 text-clipping:** Text is clipped (169×20 vs 169×22) — `[data-visual-region="asset-decision-summary"] p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P08 text-clipping:** Text is clipped (169×20 vs 169×22) — `[data-visual-region="asset-decision-summary"] p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P08 text-clipping:** Text is clipped (169×20 vs 169×22) — `[data-visual-region="asset-decision-summary"] p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P08 text-clipping:** Text is clipped (213×24 vs 213×31) — `[data-visual-region="canonical-asset-inventory-grid"] button.euiButtonEmpty.css-1fdp6pe-euiButtonDisplay-euiButtonEmpty-xs-empty-primary`
+- **P1 P08 text-clipping:** Text is clipped (213×24 vs 213×31) — `[data-visual-region="canonical-asset-inventory-grid"] button.euiButtonEmpty.css-1fdp6pe-euiButtonDisplay-euiButtonEmpty-xs-empty-primary`
+- **P1 P08 text-clipping:** Text is clipped (213×24 vs 213×31) — `[data-visual-region="canonical-asset-inventory-grid"] button.euiButtonEmpty.css-1fdp6pe-euiButtonDisplay-euiButtonEmpty-xs-empty-primary`
+- **P1 P08 text-clipping:** Text is clipped (213×24 vs 213×31) — `[data-visual-region="canonical-asset-inventory-grid"] button.euiButtonEmpty.css-1fdp6pe-euiButtonDisplay-euiButtonEmpty-xs-empty-primary`
+- **P1 P08 text-clipping:** Text is clipped (213×24 vs 213×31) — `[data-visual-region="canonical-asset-inventory-grid"] button.euiButtonEmpty.css-1fdp6pe-euiButtonDisplay-euiButtonEmpty-xs-empty-primary`
+- **P1 P08 text-clipping:** Text is clipped (213×24 vs 213×31) — `[data-visual-region="canonical-asset-inventory-grid"] button.euiButtonEmpty.css-1fdp6pe-euiButtonDisplay-euiButtonEmpty-xs-empty-primary`
+- **P1 P08 text-clipping:** Text is clipped (213×24 vs 213×31) — `[data-visual-region="canonical-asset-inventory-grid"] button.euiButtonEmpty.css-1fdp6pe-euiButtonDisplay-euiButtonEmpty-xs-empty-primary`
+- **P1 P08 text-clipping:** Text is clipped (213×24 vs 213×31) — `[data-visual-region="canonical-asset-inventory-grid"] button.euiButtonEmpty.css-1fdp6pe-euiButtonDisplay-euiButtonEmpty-xs-empty-primary`
+- **P1 P08 text-clipping:** Text is clipped (213×24 vs 213×31) — `[data-visual-region="canonical-asset-inventory-grid"] button.euiButtonEmpty.css-1fdp6pe-euiButtonDisplay-euiButtonEmpty-xs-empty-primary`
+- **P1 P08 text-clipping:** Text is clipped (221×24 vs 221×31) — `[data-visual-region="canonical-asset-inventory-grid"] button.euiButtonEmpty.css-1fdp6pe-euiButtonDisplay-euiButtonEmpty-xs-empty-primary`
+- **P1 P08 text-clipping:** Text is clipped (220×24 vs 220×31) — `[data-visual-region="canonical-asset-inventory-grid"] button.euiButtonEmpty.css-1fdp6pe-euiButtonDisplay-euiButtonEmpty-xs-empty-primary`
+- **P1 P08 text-clipping:** Text is clipped (221×24 vs 221×31) — `[data-visual-region="canonical-asset-inventory-grid"] button.euiButtonEmpty.css-1fdp6pe-euiButtonDisplay-euiButtonEmpty-xs-empty-primary`
+- **P1 P08 text-clipping:** Text is clipped (221×24 vs 221×31) — `[data-visual-region="canonical-asset-inventory-grid"] button.euiButtonEmpty.css-1fdp6pe-euiButtonDisplay-euiButtonEmpty-xs-empty-primary`
+- **P1 P08 text-clipping:** Text is clipped (221×24 vs 221×31) — `[data-visual-region="canonical-asset-inventory-grid"] button.euiButtonEmpty.css-1fdp6pe-euiButtonDisplay-euiButtonEmpty-xs-empty-primary`
+- **P2 P08 repeated-item-height:** Repeated item is only 24px high — `[data-visual-region="asset-search-facet-command-bar"] button.euiButtonEmpty.css-zwydjg-euiButtonDisplay-euiButtonEmpty-xs-empty-text`
+- **P1 P09 page-header-height:** Page header is 113px high — `[data-visual-region="page-header"] header.euiPageHeader.css-1kmz19p-euiPageHeader-m-border`
+- **P2 P09 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P09 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P09 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.euiSideNavItemButton-isOpen.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P09 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P09 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P09 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P09 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P09 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P09 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P09 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P09 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P09 line-height:** Line-height ratio is 1.33 — `p`
+- **P2 P09 line-height:** Line-height ratio is 1.2 — `[data-visual-region="page-header"] h1.euiTitle.css-4x7w6l-euiTitle-l`
+- **P2 P09 line-height:** Line-height ratio is 1.25 — `[data-visual-region="page-header"] p`
+- **P0 P09 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="page-header"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P2 P09 line-height:** Line-height ratio is 1 — `[data-visual-region="exposure-decision-summary"] p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P09 line-height:** Line-height ratio is 1 — `[data-visual-region="exposure-decision-summary"] p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P09 line-height:** Line-height ratio is 1 — `[data-visual-region="exposure-decision-summary"] p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P09 line-height:** Line-height ratio is 1 — `[data-visual-region="exposure-decision-summary"] p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P09 line-height:** Line-height ratio is 1 — `[data-visual-region="exposure-decision-summary"] p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P09 line-height:** Line-height ratio is 1.14 — `[data-visual-region="exposure-risk-trend"] th`
+- **P2 P09 line-height:** Line-height ratio is 1.14 — `[data-visual-region="exposure-risk-trend"] th`
+- **P2 P09 line-height:** Line-height ratio is 1.14 — `[data-visual-region="exposure-risk-trend"] th`
+- **P2 P09 line-height:** Line-height ratio is 1.14 — `[data-visual-region="exposure-risk-trend"] th`
+- **P2 P09 line-height:** Line-height ratio is 1.14 — `[data-visual-region="exposure-risk-trend"] th`
+- **P2 P09 line-height:** Line-height ratio is 1.14 — `[data-visual-region="exposure-risk-trend"] th`
+- **P2 P09 line-height:** Line-height ratio is 1.14 — `[data-visual-region="exposure-risk-trend"] th`
+- **P2 P09 line-height:** Line-height ratio is 1.14 — `[data-visual-region="exposure-risk-trend"] th`
+- **P2 P09 line-height:** Line-height ratio is 1.14 — `[data-visual-region="exposure-risk-trend"] th`
+- **P2 P09 line-height:** Line-height ratio is 1.14 — `[data-visual-region="exposure-risk-trend"] th`
+- **P2 P09 line-height:** Line-height ratio is 1.14 — `[data-visual-region="exposure-risk-trend"] th`
+- **P2 P09 line-height:** Line-height ratio is 1.14 — `[data-visual-region="exposure-risk-trend"] th`
+- **P2 P09 line-height:** Line-height ratio is 1.14 — `[data-visual-region="service-due-state"] th`
+- **P2 P09 line-height:** Line-height ratio is 1.14 — `[data-visual-region="service-due-state"] th`
+- **P2 P09 line-height:** Line-height ratio is 1.14 — `[data-visual-region="service-due-state"] th`
+- **P2 P09 line-height:** Line-height ratio is 1.14 — `[data-visual-region="service-due-state"] th`
+- **P2 P09 line-height:** Line-height ratio is 1.14 — `[data-visual-region="service-due-state"] th`
+- **P2 P09 line-height:** Line-height ratio is 1.14 — `[data-visual-region="service-due-state"] th`
+- **P2 P09 line-height:** Line-height ratio is 1.14 — `[data-visual-region="service-due-state"] th`
+- **P2 P09 line-height:** Line-height ratio is 1.14 — `[data-visual-region="service-due-state"] th`
+- **P2 P09 line-height:** Line-height ratio is 1.2 — `[data-visual-region="exposure-remediation-queue"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P09 line-height:** Line-height ratio is 1.14 — `[data-visual-region="exposure-remediation-queue"] th`
+- **P2 P09 line-height:** Line-height ratio is 1.14 — `[data-visual-region="exposure-remediation-queue"] th`
+- **P2 P09 line-height:** Line-height ratio is 1.14 — `[data-visual-region="exposure-remediation-queue"] th`
+- **P2 P09 line-height:** Line-height ratio is 1.14 — `[data-visual-region="exposure-remediation-queue"] th`
+- **P2 P09 line-height:** Line-height ratio is 1.14 — `[data-visual-region="exposure-remediation-queue"] th`
+- **P2 P09 line-height:** Line-height ratio is 1.14 — `[data-visual-region="exposure-remediation-queue"] th`
+- **P2 P09 line-height:** Line-height ratio is 1.14 — `[data-visual-region="exposure-remediation-queue"] th`
+- **P2 P09 line-height:** Line-height ratio is 1.14 — `[data-visual-region="exposure-remediation-queue"] th`
+- **P2 P09 line-height:** Line-height ratio is 1.14 — `[data-visual-region="exposure-remediation-queue"] th`
+- **P2 P09 line-height:** Line-height ratio is 1.14 — `[data-visual-region="exposure-remediation-queue"] th`
+- **P2 P09 line-height:** Line-height ratio is 1.14 — `[data-visual-region="exposure-remediation-queue"] th`
+- **P1 P09 text-clipping:** Text is clipped (169×20 vs 169×22) — `[data-visual-region="exposure-decision-summary"] p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P09 text-clipping:** Text is clipped (169×20 vs 169×22) — `[data-visual-region="exposure-decision-summary"] p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P09 text-clipping:** Text is clipped (169×20 vs 169×22) — `[data-visual-region="exposure-decision-summary"] p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P09 text-clipping:** Text is clipped (169×20 vs 169×22) — `[data-visual-region="exposure-decision-summary"] p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P09 text-clipping:** Text is clipped (169×20 vs 169×22) — `[data-visual-region="exposure-decision-summary"] p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P10 page-header-height:** Page header is 113px high — `[data-visual-region="page-header"] header.euiPageHeader.css-1kmz19p-euiPageHeader-m-border`
+- **P1 P10 colored-title-bar:** Heading is rendered as a wide colored surface instead of plain Kibana title text — `[data-visual-region="match-review-queue"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P10 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P10 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P10 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.euiSideNavItemButton-isOpen.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P10 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P10 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P10 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P10 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P10 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P10 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P10 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P10 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P10 line-height:** Line-height ratio is 1.33 — `p`
+- **P2 P10 line-height:** Line-height ratio is 1.2 — `[data-visual-region="page-header"] h1.euiTitle.css-4x7w6l-euiTitle-l`
+- **P2 P10 line-height:** Line-height ratio is 1.25 — `[data-visual-region="page-header"] p`
+- **P0 P10 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="page-header"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P2 P10 line-height:** Line-height ratio is 1.2 — `[data-visual-region="match-review-queue"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P10 line-height:** Line-height ratio is 1.14 — `[data-visual-region="match-review-queue"] th`
+- **P2 P10 line-height:** Line-height ratio is 1.14 — `[data-visual-region="match-review-queue"] th`
+- **P2 P10 line-height:** Line-height ratio is 1.14 — `[data-visual-region="match-review-queue"] th`
+- **P2 P10 line-height:** Line-height ratio is 1.14 — `[data-visual-region="match-review-queue"] th`
+- **P2 P10 line-height:** Line-height ratio is 1.14 — `[data-visual-region="match-review-queue"] th`
+- **P2 P10 line-height:** Line-height ratio is 1.14 — `[data-visual-region="match-review-queue"] th`
+- **P2 P10 line-height:** Line-height ratio is 1.2 — `[data-visual-region="match-evidence-inspector"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P0 P10 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="match-evidence-inspector"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P0 P10 text-contrast:** Text contrast is 1.75:1 — `[data-visual-region="match-conflict-ledger"] span.euiBadge.css-1mtvcwp-euiBadge-warning`
+- **P0 P10 text-contrast:** Text contrast is 1.75:1 — `[data-visual-region="match-conflict-ledger"] span.euiBadge.css-1mtvcwp-euiBadge-warning`
+- **P0 P10 text-contrast:** Text contrast is 1.75:1 — `[data-visual-region="match-conflict-ledger"] span.euiBadge.css-1mtvcwp-euiBadge-warning`
+- **P0 P10 text-contrast:** Text contrast is 1.75:1 — `[data-visual-region="match-conflict-ledger"] span.euiBadge.css-1mtvcwp-euiBadge-warning`
+- **P0 P10 text-contrast:** Text contrast is 1.75:1 — `[data-visual-region="match-conflict-ledger"] span.euiBadge.css-1mtvcwp-euiBadge-warning`
+- **P1 P11 page-header-height:** Page header is 113px high — `[data-visual-region="page-header"] header.euiPageHeader.css-1kmz19p-euiPageHeader-m-border`
+- **P1 P11 colored-title-bar:** Heading is rendered as a wide colored surface instead of plain Kibana title text — `[data-visual-region="remediation-portfolio"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P1 P11 colored-title-bar:** Heading is rendered as a wide colored surface instead of plain Kibana title text — `[data-visual-region="remediation-plan-inspector"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P11 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P11 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P11 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.euiSideNavItemButton-isOpen.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P11 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P11 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P11 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P11 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P11 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P11 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P11 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P11 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P11 line-height:** Line-height ratio is 1.33 — `p`
+- **P2 P11 line-height:** Line-height ratio is 1.2 — `[data-visual-region="page-header"] h1.euiTitle.css-4x7w6l-euiTitle-l`
+- **P2 P11 line-height:** Line-height ratio is 1.25 — `[data-visual-region="page-header"] p`
+- **P0 P11 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="page-header"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P0 P11 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="remediation-scope-bar"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P2 P11 line-height:** Line-height ratio is 1.2 — `[data-visual-region="remediation-portfolio"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P11 line-height:** Line-height ratio is 1.14 — `[data-visual-region="remediation-portfolio"] th`
+- **P2 P11 line-height:** Line-height ratio is 1.14 — `[data-visual-region="remediation-portfolio"] th`
+- **P2 P11 line-height:** Line-height ratio is 1.14 — `[data-visual-region="remediation-portfolio"] th`
+- **P2 P11 line-height:** Line-height ratio is 1.14 — `[data-visual-region="remediation-portfolio"] th`
+- **P2 P11 line-height:** Line-height ratio is 1.14 — `[data-visual-region="remediation-portfolio"] th`
+- **P2 P11 line-height:** Line-height ratio is 1.14 — `[data-visual-region="remediation-portfolio"] th`
+- **P2 P11 line-height:** Line-height ratio is 1.2 — `[data-visual-region="remediation-plan-inspector"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P0 P11 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="remediation-plan-inspector"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P0 P11 text-contrast:** Text contrast is 1.04:1 — `[data-visual-region="change-window-and-blockers"] span.euiBadge.css-qq6lck-euiBadge-danger`
+- **P0 P11 text-contrast:** Text contrast is 1.75:1 — `[data-visual-region="change-window-and-blockers"] span.euiBadge.css-1mtvcwp-euiBadge-warning`
+- **P0 P11 text-contrast:** Text contrast is 1.04:1 — `[data-visual-region="change-window-and-blockers"] span.euiBadge.css-qq6lck-euiBadge-danger`
+- **P0 P11 text-contrast:** Text contrast is 1.75:1 — `[data-visual-region="change-window-and-blockers"] span.euiBadge.css-1mtvcwp-euiBadge-warning`
+- **P0 P11 text-contrast:** Text contrast is 1.75:1 — `[data-visual-region="change-window-and-blockers"] span.euiBadge.css-1mtvcwp-euiBadge-warning`
+- **P0 P11 text-overlap:** Visible text boxes overlap by 13.38×12px with [data-visual-region="remediation-portfolio"] span — `[data-visual-region="remediation-portfolio"] span`
+- **P1 P12 page-header-height:** Page header is 113px high — `[data-visual-region="page-header"] header.euiPageHeader.css-1kmz19p-euiPageHeader-m-border`
+- **P2 P12 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P12 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P12 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.euiSideNavItemButton-isOpen.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P12 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P12 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P12 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P12 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P12 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P12 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P12 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P12 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P12 line-height:** Line-height ratio is 1.33 — `p`
+- **P2 P12 line-height:** Line-height ratio is 1.2 — `[data-visual-region="page-header"] h1.euiTitle.css-4x7w6l-euiTitle-l`
+- **P2 P12 line-height:** Line-height ratio is 1.25 — `[data-visual-region="page-header"] p`
+- **P0 P12 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="page-header"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P2 P12 line-height:** Line-height ratio is 1.2 — `[data-visual-region="asset-identity-header"] h2.euiTitle.css-4x7w6l-euiTitle-l`
+- **P2 P12 line-height:** Line-height ratio is 1.14 — `[data-visual-region="asset-tabbed-workspace"] button`
+- **P2 P12 line-height:** Line-height ratio is 1.14 — `[data-visual-region="asset-tabbed-workspace"] button`
+- **P2 P12 line-height:** Line-height ratio is 1.14 — `[data-visual-region="asset-tabbed-workspace"] button`
+- **P2 P12 line-height:** Line-height ratio is 1.14 — `[data-visual-region="asset-tabbed-workspace"] button`
+- **P2 P12 line-height:** Line-height ratio is 1.14 — `[data-visual-region="asset-tabbed-workspace"] button`
+- **P2 P12 line-height:** Line-height ratio is 1.14 — `[data-visual-region="asset-tabbed-workspace"] button`
+- **P2 P12 line-height:** Line-height ratio is 1.14 — `[data-visual-region="asset-tabbed-workspace"] button`
+- **P0 P12 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="asset-context-actions"] button.euiButton.css-mg6guq-euiButtonDisplay-m-fullWidth-defaultMinWidth-fill-primary`
+- **P1 P13 page-header-height:** Page header is 113px high — `[data-visual-region="page-header"] header.euiPageHeader.css-1kmz19p-euiPageHeader-m-border`
+- **P1 P13 colored-title-bar:** Heading is rendered as a wide colored surface instead of plain Kibana title text — `[data-visual-region="service-health-command"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P1 P13 colored-title-bar:** Heading is rendered as a wide colored surface instead of plain Kibana title text — `[data-visual-region="itsm-attention-queue"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P13 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P13 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P13 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P13 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.euiSideNavItemButton-isOpen.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P13 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P13 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P13 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P13 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P13 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P13 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P13 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P13 line-height:** Line-height ratio is 1.33 — `p`
+- **P2 P13 line-height:** Line-height ratio is 1.2 — `[data-visual-region="page-header"] h1.euiTitle.css-4x7w6l-euiTitle-l`
+- **P2 P13 line-height:** Line-height ratio is 1.25 — `[data-visual-region="page-header"] p`
+- **P0 P13 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="page-header"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P0 P13 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="itsm-scope-bar"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P2 P13 line-height:** Line-height ratio is 1.2 — `[data-visual-region="service-health-command"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P13 line-height:** Line-height ratio is 1.2 — `[data-visual-region="itsm-attention-queue"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P13 line-height:** Line-height ratio is 1.14 — `[data-visual-region="itsm-attention-queue"] th`
+- **P2 P13 line-height:** Line-height ratio is 1.14 — `[data-visual-region="itsm-attention-queue"] th`
+- **P2 P13 line-height:** Line-height ratio is 1.14 — `[data-visual-region="itsm-attention-queue"] th`
+- **P2 P13 line-height:** Line-height ratio is 1.14 — `[data-visual-region="itsm-attention-queue"] th`
+- **P2 P13 line-height:** Line-height ratio is 1.14 — `[data-visual-region="itsm-attention-queue"] th`
+- **P2 P13 line-height:** Line-height ratio is 1.14 — `[data-visual-region="itsm-attention-queue"] th`
+- **P2 P13 line-height:** Line-height ratio is 1.25 — `[data-visual-region="change-window-collisions"] p.euiTitle.euiCallOutHeader__title.css-1fvls3y-euiTitle-xs-euiCallOutHeader-warning`
+- **P0 P13 text-contrast:** Text contrast is 1.04:1 — `[data-visual-region="soc-itsm-sync-conflicts"] span.euiBadge.css-qq6lck-euiBadge-danger`
+- **P0 P13 text-contrast:** Text contrast is 1.75:1 — `[data-visual-region="soc-itsm-sync-conflicts"] span.euiBadge.css-1mtvcwp-euiBadge-warning`
+- **P0 P13 text-contrast:** Text contrast is 1.75:1 — `[data-visual-region="soc-itsm-sync-conflicts"] span.euiBadge.css-1mtvcwp-euiBadge-warning`
+- **P0 P13 text-overlap:** Visible text boxes overlap by 17.98×24.88px with [data-visual-region="change-window-collisions"] span — `[data-visual-region="change-window-collisions"] span`
+- **P1 P14 page-header-height:** Page header is 113px high — `[data-visual-region="page-header"] header.euiPageHeader.css-1kmz19p-euiPageHeader-m-border`
+- **P1 P14 colored-title-bar:** Heading is rendered as a wide colored surface instead of plain Kibana title text — `[data-visual-region="saved-view-rail"] h2.euiTitle.css-8a1usq-euiTitle-xs`
+- **P2 P14 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P14 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P14 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P14 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.euiSideNavItemButton-isOpen.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P14 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P14 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P14 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P14 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P14 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P14 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P14 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P14 line-height:** Line-height ratio is 1.33 — `p`
+- **P2 P14 line-height:** Line-height ratio is 1.2 — `[data-visual-region="page-header"] h1.euiTitle.css-4x7w6l-euiTitle-l`
+- **P2 P14 line-height:** Line-height ratio is 1.25 — `[data-visual-region="page-header"] p`
+- **P0 P14 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="page-header"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P2 P14 line-height:** Line-height ratio is 1.14 — `[data-visual-region="saved-view-rail"] button.selected`
+- **P2 P14 line-height:** Line-height ratio is 1.14 — `[data-visual-region="saved-view-rail"] button`
+- **P2 P14 line-height:** Line-height ratio is 1.14 — `[data-visual-region="saved-view-rail"] button`
+- **P2 P14 line-height:** Line-height ratio is 1.14 — `[data-visual-region="saved-view-rail"] button`
+- **P2 P14 line-height:** Line-height ratio is 1.14 — `[data-visual-region="saved-view-rail"] button`
+- **P2 P14 line-height:** Line-height ratio is 1.14 — `[data-visual-region="queue-command-and-grid"] th`
+- **P2 P14 line-height:** Line-height ratio is 1.14 — `[data-visual-region="queue-command-and-grid"] th`
+- **P2 P14 line-height:** Line-height ratio is 1.14 — `[data-visual-region="queue-command-and-grid"] th`
+- **P2 P14 line-height:** Line-height ratio is 1.14 — `[data-visual-region="queue-command-and-grid"] th`
+- **P2 P14 line-height:** Line-height ratio is 1.14 — `[data-visual-region="queue-command-and-grid"] th`
+- **P2 P14 line-height:** Line-height ratio is 1.14 — `[data-visual-region="queue-command-and-grid"] th`
+- **P2 P14 line-height:** Line-height ratio is 1.14 — `[data-visual-region="queue-command-and-grid"] th`
+- **P2 P14 line-height:** Line-height ratio is 1.14 — `[data-visual-region="queue-command-and-grid"] th`
+- **P1 P15 page-header-height:** Page header is 113px high — `[data-visual-region="page-header"] header.euiPageHeader.css-1kmz19p-euiPageHeader-m-border`
+- **P1 P15 colored-title-bar:** Heading is rendered as a wide colored surface instead of plain Kibana title text — `[data-visual-region="catalog-item-detail"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P15 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P15 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P15 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P15 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.euiSideNavItemButton-isOpen.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P15 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P15 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P15 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P15 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P15 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P15 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P15 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P15 line-height:** Line-height ratio is 1.33 — `p`
+- **P2 P15 line-height:** Line-height ratio is 1.2 — `[data-visual-region="page-header"] h1.euiTitle.css-4x7w6l-euiTitle-l`
+- **P2 P15 line-height:** Line-height ratio is 1.25 — `[data-visual-region="page-header"] p`
+- **P0 P15 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="page-header"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P2 P15 line-height:** Line-height ratio is 1.14 — `[data-visual-region="catalog-tabs-and-scope"] button`
+- **P2 P15 line-height:** Line-height ratio is 1.14 — `[data-visual-region="catalog-tabs-and-scope"] button`
+- **P2 P15 line-height:** Line-height ratio is 1.14 — `[data-visual-region="catalog-tabs-and-scope"] button`
+- **P2 P15 line-height:** Line-height ratio is 1.14 — `[data-visual-region="catalog-taxonomy"] button`
+- **P2 P15 line-height:** Line-height ratio is 1.14 — `[data-visual-region="catalog-taxonomy"] button`
+- **P2 P15 line-height:** Line-height ratio is 1.14 — `[data-visual-region="catalog-taxonomy"] button`
+- **P2 P15 line-height:** Line-height ratio is 1.14 — `[data-visual-region="catalog-taxonomy"] button`
+- **P2 P15 line-height:** Line-height ratio is 1.14 — `[data-visual-region="catalog-taxonomy"] button`
+- **P2 P15 line-height:** Line-height ratio is 1.2 — `[data-visual-region="catalog-item-detail"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P15 line-height:** Line-height ratio is 1.25 — `[data-visual-region="catalog-item-detail"] p.euiTitle.euiCallOutHeader__title.css-1jvtbrd-euiTitle-xs-euiCallOutHeader-primary`
+- **P0 P15 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="catalog-item-detail"] button.euiButton.css-mg6guq-euiButtonDisplay-m-fullWidth-defaultMinWidth-fill-primary`
+- **P1 P16 page-header-height:** Page header is 113px high — `[data-visual-region="page-header"] header.euiPageHeader.css-1kmz19p-euiPageHeader-m-border`
+- **P1 P16 colored-title-bar:** Heading is rendered as a wide colored surface instead of plain Kibana title text — `[data-visual-region="incident-queue"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P1 P16 colored-title-bar:** Heading is rendered as a wide colored surface instead of plain Kibana title text — `[data-visual-region="incident-command-center"] h3.euiTitle.css-8a1usq-euiTitle-xs`
+- **P2 P16 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P16 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P16 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P16 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.euiSideNavItemButton-isOpen.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P16 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P16 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P16 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P16 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P16 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P16 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P16 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P16 line-height:** Line-height ratio is 1.33 — `p`
+- **P2 P16 line-height:** Line-height ratio is 1.2 — `[data-visual-region="page-header"] h1.euiTitle.css-4x7w6l-euiTitle-l`
+- **P2 P16 line-height:** Line-height ratio is 1.25 — `[data-visual-region="page-header"] p`
+- **P0 P16 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="page-header"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P0 P16 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="incident-scope-bar"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P2 P16 line-height:** Line-height ratio is 1 — `[data-visual-region="incident-decision-summary"] p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P16 line-height:** Line-height ratio is 1 — `[data-visual-region="incident-decision-summary"] p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P16 line-height:** Line-height ratio is 1 — `[data-visual-region="incident-decision-summary"] p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P16 line-height:** Line-height ratio is 1 — `[data-visual-region="incident-decision-summary"] p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P16 line-height:** Line-height ratio is 1 — `[data-visual-region="incident-decision-summary"] p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P16 line-height:** Line-height ratio is 1.2 — `[data-visual-region="incident-queue"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P16 line-height:** Line-height ratio is 1.14 — `[data-visual-region="incident-queue"] th`
+- **P2 P16 line-height:** Line-height ratio is 1.14 — `[data-visual-region="incident-queue"] th`
+- **P2 P16 line-height:** Line-height ratio is 1.14 — `[data-visual-region="incident-queue"] th`
+- **P2 P16 line-height:** Line-height ratio is 1.14 — `[data-visual-region="incident-queue"] th`
+- **P2 P16 line-height:** Line-height ratio is 1.14 — `[data-visual-region="incident-queue"] th`
+- **P2 P16 line-height:** Line-height ratio is 1.14 — `[data-visual-region="incident-queue"] th`
+- **P2 P16 line-height:** Line-height ratio is 1.2 — `[data-visual-region="incident-command-center"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P0 P16 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="incident-command-center"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P0 P16 text-contrast:** Text contrast is 1.17:1 — `[data-visual-region="incident-readiness"] span.euiBadge.css-1rijyqy-euiBadge-success`
+- **P0 P16 text-contrast:** Text contrast is 1.17:1 — `[data-visual-region="incident-readiness"] span.euiBadge.css-1rijyqy-euiBadge-success`
+- **P0 P16 text-contrast:** Text contrast is 1.17:1 — `[data-visual-region="incident-readiness"] span.euiBadge.css-1rijyqy-euiBadge-success`
+- **P0 P16 text-contrast:** Text contrast is 1.75:1 — `[data-visual-region="incident-readiness"] span.euiBadge.css-1mtvcwp-euiBadge-warning`
+- **P0 P16 text-contrast:** Text contrast is 1.75:1 — `[data-visual-region="incident-readiness"] span.euiBadge.css-1mtvcwp-euiBadge-warning`
+- **P1 P16 text-clipping:** Text is clipped (169×20 vs 169×22) — `[data-visual-region="incident-decision-summary"] p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P16 text-clipping:** Text is clipped (169×20 vs 169×22) — `[data-visual-region="incident-decision-summary"] p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P16 text-clipping:** Text is clipped (169×20 vs 169×22) — `[data-visual-region="incident-decision-summary"] p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P16 text-clipping:** Text is clipped (169×20 vs 169×22) — `[data-visual-region="incident-decision-summary"] p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P16 text-clipping:** Text is clipped (169×20 vs 169×22) — `[data-visual-region="incident-decision-summary"] p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P0 P16 text-overlap:** Visible text boxes overlap by 53.66×16px with [data-visual-region="incident-command-center"] span.impactNode.node-0 — `[data-visual-region="incident-command-center"] span.impactCore`
+- **P1 P17 page-header-height:** Page header is 113px high — `[data-visual-region="page-header"] header.euiPageHeader.css-1kmz19p-euiPageHeader-m-border`
+- **P1 P17 colored-title-bar:** Heading is rendered as a wide colored surface instead of plain Kibana title text — `[data-visual-region="problem-evidence-workbench"] h3.euiTitle.css-8a1usq-euiTitle-xs`
+- **P1 P17 colored-title-bar:** Heading is rendered as a wide colored surface instead of plain Kibana title text — `[data-visual-region="problem-evidence-workbench"] h3.euiTitle.css-8a1usq-euiTitle-xs`
+- **P1 P17 colored-title-bar:** Heading is rendered as a wide colored surface instead of plain Kibana title text — `[data-visual-region="known-error-governance"] h2.euiTitle.css-8a1usq-euiTitle-xs`
+- **P2 P17 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P17 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P17 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P17 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.euiSideNavItemButton-isOpen.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P17 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P17 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P17 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P17 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P17 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P17 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P17 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P17 line-height:** Line-height ratio is 1.33 — `p`
+- **P2 P17 line-height:** Line-height ratio is 1.2 — `[data-visual-region="page-header"] h1.euiTitle.css-4x7w6l-euiTitle-l`
+- **P2 P17 line-height:** Line-height ratio is 1.25 — `[data-visual-region="page-header"] p`
+- **P0 P17 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="page-header"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P0 P17 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="problem-scope-bar"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P2 P17 line-height:** Line-height ratio is 1.2 — `[data-visual-region="recurrence-cluster-candidates"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P17 line-height:** Line-height ratio is 1.2 — `[data-visual-region="problem-evidence-workbench"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P17 line-height:** Line-height ratio is 1.14 — `[data-visual-region="problem-evidence-workbench"] button`
+- **P2 P17 line-height:** Line-height ratio is 1.14 — `[data-visual-region="problem-evidence-workbench"] button`
+- **P2 P17 line-height:** Line-height ratio is 1.14 — `[data-visual-region="problem-evidence-workbench"] button`
+- **P2 P17 line-height:** Line-height ratio is 1.14 — `[data-visual-region="problem-evidence-workbench"] button`
+- **P2 P17 line-height:** Line-height ratio is 1.14 — `[data-visual-region="problem-evidence-workbench"] button`
+- **P2 P17 line-height:** Line-height ratio is 1.14 — `[data-visual-region="problem-evidence-workbench"] button`
+- **P1 P18 page-header-height:** Page header is 113px high — `[data-visual-region="page-header"] header.euiPageHeader.css-1kmz19p-euiPageHeader-m-border`
+- **P1 P18 colored-title-bar:** Heading is rendered as a wide colored surface instead of plain Kibana title text — `[data-visual-region="change-calendar"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P18 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P18 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P18 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P18 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.euiSideNavItemButton-isOpen.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P18 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P18 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P18 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P18 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P18 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P18 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P18 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P18 line-height:** Line-height ratio is 1.33 — `p`
+- **P2 P18 line-height:** Line-height ratio is 1.2 — `[data-visual-region="page-header"] h1.euiTitle.css-4x7w6l-euiTitle-l`
+- **P2 P18 line-height:** Line-height ratio is 1.25 — `[data-visual-region="page-header"] p`
+- **P0 P18 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="page-header"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P2 P18 line-height:** Line-height ratio is 1.14 — `[data-visual-region="change-scope-tabs"] button`
+- **P2 P18 line-height:** Line-height ratio is 1.14 — `[data-visual-region="change-scope-tabs"] button`
+- **P2 P18 line-height:** Line-height ratio is 1.14 — `[data-visual-region="change-scope-tabs"] button`
+- **P0 P18 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="change-scope-tabs"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P2 P18 line-height:** Line-height ratio is 1 — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P18 line-height:** Line-height ratio is 1 — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P18 line-height:** Line-height ratio is 1 — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P18 line-height:** Line-height ratio is 1 — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P18 line-height:** Line-height ratio is 1.2 — `[data-visual-region="change-calendar"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P0 P18 text-contrast:** Text contrast is 1.04:1 — `[data-visual-region="calendar-conflict-inspector"] span.euiBadge.css-qq6lck-euiBadge-danger`
+- **P0 P18 text-contrast:** Text contrast is 1.04:1 — `[data-visual-region="calendar-conflict-inspector"] span.euiBadge.css-qq6lck-euiBadge-danger`
+- **P0 P18 text-contrast:** Text contrast is 1.04:1 — `[data-visual-region="calendar-conflict-inspector"] span.euiBadge.css-qq6lck-euiBadge-danger`
+- **P0 P18 text-contrast:** Text contrast is 1.04:1 — `[data-visual-region="calendar-conflict-inspector"] span.euiBadge.css-qq6lck-euiBadge-danger`
+- **P0 P18 text-contrast:** Text contrast is 1.04:1 — `[data-visual-region="calendar-conflict-inspector"] span.euiBadge.css-qq6lck-euiBadge-danger`
+- **P1 P18 text-clipping:** Text is clipped (219×20 vs 219×22) — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P18 text-clipping:** Text is clipped (219×20 vs 219×22) — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P18 text-clipping:** Text is clipped (219×20 vs 219×22) — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P18 text-clipping:** Text is clipped (219×20 vs 219×22) — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P19 page-header-height:** Page header is 113px high — `[data-visual-region="page-header"] header.euiPageHeader.css-1kmz19p-euiPageHeader-m-border`
+- **P1 P19 colored-title-bar:** Heading is rendered as a wide colored surface instead of plain Kibana title text — `[data-visual-region="approval-task-queue"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P1 P19 colored-title-bar:** Heading is rendered as a wide colored surface instead of plain Kibana title text — `[data-visual-region="decision-context"] h3.euiTitle.css-8a1usq-euiTitle-xs`
+- **P2 P19 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P19 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P19 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P19 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.euiSideNavItemButton-isOpen.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P19 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P19 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P19 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P19 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P19 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P19 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P19 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P19 line-height:** Line-height ratio is 1.33 — `p`
+- **P2 P19 line-height:** Line-height ratio is 1.2 — `[data-visual-region="page-header"] h1.euiTitle.css-4x7w6l-euiTitle-l`
+- **P2 P19 line-height:** Line-height ratio is 1.25 — `[data-visual-region="page-header"] p`
+- **P0 P19 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="page-header"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P2 P19 line-height:** Line-height ratio is 1.14 — `[data-visual-region="approval-tabs-scope"] button`
+- **P2 P19 line-height:** Line-height ratio is 1.14 — `[data-visual-region="approval-tabs-scope"] button`
+- **P2 P19 line-height:** Line-height ratio is 1.14 — `[data-visual-region="approval-tabs-scope"] button`
+- **P2 P19 line-height:** Line-height ratio is 1.14 — `[data-visual-region="approval-tabs-scope"] button`
+- **P2 P19 line-height:** Line-height ratio is 1.2 — `[data-visual-region="approval-task-queue"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P19 line-height:** Line-height ratio is 1.14 — `[data-visual-region="approval-task-queue"] th`
+- **P2 P19 line-height:** Line-height ratio is 1.14 — `[data-visual-region="approval-task-queue"] th`
+- **P2 P19 line-height:** Line-height ratio is 1.14 — `[data-visual-region="approval-task-queue"] th`
+- **P2 P19 line-height:** Line-height ratio is 1.14 — `[data-visual-region="approval-task-queue"] th`
+- **P2 P19 line-height:** Line-height ratio is 1.14 — `[data-visual-region="approval-task-queue"] th`
+- **P2 P19 line-height:** Line-height ratio is 1.2 — `[data-visual-region="decision-context"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P19 line-height:** Line-height ratio is 1.25 — `[data-visual-region="decision-context"] p.euiTitle.euiCallOutHeader__title.css-1jvtbrd-euiTitle-xs-euiCallOutHeader-primary`
+- **P0 P19 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="decision-context"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P0 P19 text-contrast:** Text contrast is 1.75:1 — `[data-visual-region="policy-sod-inspector"] span.euiBadge.css-1mtvcwp-euiBadge-warning`
+- **P0 P19 text-contrast:** Text contrast is 1.75:1 — `[data-visual-region="policy-sod-inspector"] span.euiBadge.css-1mtvcwp-euiBadge-warning`
+- **P0 P19 text-contrast:** Text contrast is 1.17:1 — `[data-visual-region="policy-sod-inspector"] span.euiBadge.css-1rijyqy-euiBadge-success`
+- **P0 P19 text-contrast:** Text contrast is 1.17:1 — `[data-visual-region="policy-sod-inspector"] span.euiBadge.css-1rijyqy-euiBadge-success`
+- **P0 P19 text-contrast:** Text contrast is 1.17:1 — `[data-visual-region="policy-sod-inspector"] span.euiBadge.css-1rijyqy-euiBadge-success`
+- **P1 P19 stretched-badge:** Badge spans 143.84px — `[data-visual-region="approval-task-queue"] span.euiBadge.css-kzuoc1-euiBadge-hollow`
+- **P1 P19 stretched-badge:** Badge spans 143.84px — `[data-visual-region="approval-task-queue"] span.euiBadge.css-kzuoc1-euiBadge-hollow`
+- **P1 P19 stretched-badge:** Badge spans 143.84px — `[data-visual-region="approval-task-queue"] span.euiBadge.css-kzuoc1-euiBadge-hollow`
+- **P1 P19 stretched-badge:** Badge spans 143.84px — `[data-visual-region="approval-task-queue"] span.euiBadge.css-kzuoc1-euiBadge-hollow`
+- **P1 P19 stretched-badge:** Badge spans 143.84px — `[data-visual-region="approval-task-queue"] span.euiBadge.css-kzuoc1-euiBadge-hollow`
+- **P1 P19 stretched-badge:** Badge spans 143.84px — `[data-visual-region="approval-task-queue"] span.euiBadge.css-kzuoc1-euiBadge-hollow`
+- **P1 P19 stretched-badge:** Badge spans 143.84px — `[data-visual-region="approval-task-queue"] span.euiBadge.css-kzuoc1-euiBadge-hollow`
+- **P1 P19 stretched-badge:** Badge spans 143.84px — `[data-visual-region="approval-task-queue"] span.euiBadge.css-kzuoc1-euiBadge-hollow`
+- **P1 P19 stretched-badge:** Badge spans 143.84px — `[data-visual-region="approval-task-queue"] span.euiBadge.css-kzuoc1-euiBadge-hollow`
+- **P1 P19 stretched-badge:** Badge spans 143.84px — `[data-visual-region="approval-task-queue"] span.euiBadge.css-kzuoc1-euiBadge-hollow`
+- **P1 P19 stretched-badge:** Badge spans 143.84px — `[data-visual-region="approval-task-queue"] span.euiBadge.css-kzuoc1-euiBadge-hollow`
+- **P1 P19 stretched-badge:** Badge spans 143.84px — `[data-visual-region="approval-task-queue"] span.euiBadge.css-kzuoc1-euiBadge-hollow`
+- **P1 P19 stretched-badge:** Badge spans 143.84px — `[data-visual-region="approval-task-queue"] span.euiBadge.css-kzuoc1-euiBadge-hollow`
+- **P1 P19 stretched-badge:** Badge spans 143.84px — `[data-visual-region="approval-task-queue"] span.euiBadge.css-kzuoc1-euiBadge-hollow`
+- **P1 P20 page-header-height:** Page header is 113px high — `[data-visual-region="page-header"] header.euiPageHeader.css-1kmz19p-euiPageHeader-m-border`
+- **P1 P20 colored-title-bar:** Heading is rendered as a wide colored surface instead of plain Kibana title text — `[data-visual-region="metric-contract-inspector"] h2.euiTitle.css-8a1usq-euiTitle-xs`
+- **P2 P20 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P20 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P20 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P20 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.euiSideNavItemButton-isOpen.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P20 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P20 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P20 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P20 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P20 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P20 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P20 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P20 line-height:** Line-height ratio is 1.33 — `p`
+- **P2 P20 line-height:** Line-height ratio is 1.2 — `[data-visual-region="page-header"] h1.euiTitle.css-4x7w6l-euiTitle-l`
+- **P2 P20 line-height:** Line-height ratio is 1.25 — `[data-visual-region="page-header"] p`
+- **P0 P20 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="page-header"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P2 P20 line-height:** Line-height ratio is 1.2 — `[data-visual-region="analysis-definition-rail"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P0 P20 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="analysis-definition-rail"] button.euiButton.css-mg6guq-euiButtonDisplay-m-fullWidth-defaultMinWidth-fill-primary`
+- **P2 P20 line-height:** Line-height ratio is 1.2 — `[data-visual-region="analytics-canvas"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P20 line-height:** Line-height ratio is 1 — `[data-visual-region="analytics-canvas"] p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P20 line-height:** Line-height ratio is 1 — `[data-visual-region="analytics-canvas"] p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P20 line-height:** Line-height ratio is 1 — `[data-visual-region="analytics-canvas"] p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P20 line-height:** Line-height ratio is 1 — `[data-visual-region="analytics-canvas"] p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P20 line-height:** Line-height ratio is 1 — `[data-visual-region="analytics-canvas"] p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P20 line-height:** Line-height ratio is 1.14 — `[data-visual-region="analytics-canvas"] th`
+- **P2 P20 line-height:** Line-height ratio is 1.14 — `[data-visual-region="analytics-canvas"] th`
+- **P2 P20 line-height:** Line-height ratio is 1.14 — `[data-visual-region="analytics-canvas"] th`
+- **P2 P20 line-height:** Line-height ratio is 1.2 — `[data-visual-region="analytics-exact-records"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P20 line-height:** Line-height ratio is 1.14 — `[data-visual-region="analytics-exact-records"] th`
+- **P2 P20 line-height:** Line-height ratio is 1.14 — `[data-visual-region="analytics-exact-records"] th`
+- **P2 P20 line-height:** Line-height ratio is 1.14 — `[data-visual-region="analytics-exact-records"] th`
+- **P2 P20 line-height:** Line-height ratio is 1.14 — `[data-visual-region="analytics-exact-records"] th`
+- **P2 P20 line-height:** Line-height ratio is 1.14 — `[data-visual-region="analytics-exact-records"] th`
+- **P2 P20 line-height:** Line-height ratio is 1.14 — `[data-visual-region="analytics-exact-records"] th`
+- **P2 P20 line-height:** Line-height ratio is 1.25 — `[data-visual-region="metric-contract-inspector"] p.euiTitle.euiCallOutHeader__title.css-1jvtbrd-euiTitle-xs-euiCallOutHeader-primary`
+- **P1 P20 text-clipping:** Text is clipped (116×20 vs 116×22) — `[data-visual-region="analytics-canvas"] p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P20 text-clipping:** Text is clipped (116×20 vs 116×22) — `[data-visual-region="analytics-canvas"] p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P20 text-clipping:** Text is clipped (116×20 vs 116×22) — `[data-visual-region="analytics-canvas"] p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P20 text-clipping:** Text is clipped (116×20 vs 116×22) — `[data-visual-region="analytics-canvas"] p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P20 text-clipping:** Text is clipped (116×20 vs 116×22) — `[data-visual-region="analytics-canvas"] p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P21 page-header-height:** Page header is 113px high — `[data-visual-region="page-header"] header.euiPageHeader.css-1kmz19p-euiPageHeader-m-border`
+- **P1 P21 colored-title-bar:** Heading is rendered as a wide colored surface instead of plain Kibana title text — `[data-visual-region="artifact-delivery-detail"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P21 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P21 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P21 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P21 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.euiSideNavItemButton-isOpen.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P21 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P21 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P21 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P21 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P21 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P21 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P21 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P21 line-height:** Line-height ratio is 1.33 — `p`
+- **P2 P21 line-height:** Line-height ratio is 1.2 — `[data-visual-region="page-header"] h1.euiTitle.css-4x7w6l-euiTitle-l`
+- **P2 P21 line-height:** Line-height ratio is 1.25 — `[data-visual-region="page-header"] p`
+- **P0 P21 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="page-header"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P0 P21 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="report-job-scope"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P2 P21 line-height:** Line-height ratio is 1.2 — `[data-visual-region="report-template-catalog"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P21 line-height:** Line-height ratio is 1.2 — `[data-visual-region="report-job-center"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P21 line-height:** Line-height ratio is 1 — `[data-visual-region="report-job-center"] p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P21 line-height:** Line-height ratio is 1.14 — `[data-visual-region="report-job-center"] th`
+- **P2 P21 line-height:** Line-height ratio is 1.14 — `[data-visual-region="report-job-center"] th`
+- **P2 P21 line-height:** Line-height ratio is 1.14 — `[data-visual-region="report-job-center"] th`
+- **P2 P21 line-height:** Line-height ratio is 1.14 — `[data-visual-region="report-job-center"] th`
+- **P2 P21 line-height:** Line-height ratio is 1.14 — `[data-visual-region="report-job-center"] th`
+- **P2 P21 line-height:** Line-height ratio is 1.14 — `[data-visual-region="report-job-center"] th`
+- **P2 P21 line-height:** Line-height ratio is 1.2 — `[data-visual-region="artifact-delivery-detail"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P21 line-height:** Line-height ratio is 1.25 — `[data-visual-region="artifact-delivery-detail"] p.euiTitle.euiCallOutHeader__title.css-1jvtbrd-euiTitle-xs-euiCallOutHeader-primary`
+- **P1 P21 text-clipping:** Text is clipped (76×20 vs 76×22) — `[data-visual-region="report-job-center"] p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P22 page-header-height:** Page header is 113px high — `[data-visual-region="page-header"] header.euiPageHeader.css-1kmz19p-euiPageHeader-m-border`
+- **P2 P22 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P22 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P22 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P22 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.euiSideNavItemButton-isOpen.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P22 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P22 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P22 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P22 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P22 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P22 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P22 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P22 line-height:** Line-height ratio is 1.33 — `p`
+- **P2 P22 line-height:** Line-height ratio is 1.2 — `[data-visual-region="page-header"] h1.euiTitle.css-4x7w6l-euiTitle-l`
+- **P2 P22 line-height:** Line-height ratio is 1.25 — `[data-visual-region="page-header"] p`
+- **P0 P22 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="page-header"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P2 P22 line-height:** Line-height ratio is 1.2 — `[data-visual-region="settings-local-navigation"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P22 line-height:** Line-height ratio is 1.14 — `[data-visual-region="settings-local-navigation"] button.selected`
+- **P2 P22 line-height:** Line-height ratio is 1.14 — `[data-visual-region="settings-local-navigation"] button`
+- **P2 P22 line-height:** Line-height ratio is 1.14 — `[data-visual-region="settings-local-navigation"] button`
+- **P2 P22 line-height:** Line-height ratio is 1.14 — `[data-visual-region="settings-local-navigation"] button`
+- **P2 P22 line-height:** Line-height ratio is 1.14 — `[data-visual-region="settings-local-navigation"] button`
+- **P2 P22 line-height:** Line-height ratio is 1.14 — `[data-visual-region="settings-local-navigation"] button`
+- **P2 P22 line-height:** Line-height ratio is 1.14 — `[data-visual-region="settings-local-navigation"] button`
+- **P2 P22 line-height:** Line-height ratio is 1.14 — `[data-visual-region="settings-local-navigation"] button`
+- **P2 P22 line-height:** Line-height ratio is 1.14 — `[data-visual-region="settings-local-navigation"] button`
+- **P2 P22 line-height:** Line-height ratio is 1.14 — `[data-visual-region="settings-local-navigation"] button`
+- **P2 P22 line-height:** Line-height ratio is 1.2 — `[data-visual-region="settings-resource-table"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P0 P22 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="settings-resource-table"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P2 P22 line-height:** Line-height ratio is 1.14 — `[data-visual-region="settings-resource-table"] th`
+- **P2 P22 line-height:** Line-height ratio is 1.14 — `[data-visual-region="settings-resource-table"] th`
+- **P2 P22 line-height:** Line-height ratio is 1.14 — `[data-visual-region="settings-resource-table"] th`
+- **P2 P22 line-height:** Line-height ratio is 1.14 — `[data-visual-region="settings-resource-table"] th`
+- **P2 P22 line-height:** Line-height ratio is 1.14 — `[data-visual-region="settings-resource-table"] th`
+- **P2 P22 line-height:** Line-height ratio is 1.14 — `[data-visual-region="settings-resource-table"] th`
+- **P2 P22 line-height:** Line-height ratio is 1.2 — `[data-visual-region="settings-edit-workbench"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P22 line-height:** Line-height ratio is 1.33 — `[data-visual-region="settings-edit-workbench"] label#:r3:-label.euiFormLabel.euiFormRow__label.css-1j7t7ey-euiFormLabel`
+- **P2 P22 line-height:** Line-height ratio is 1.33 — `[data-visual-region="settings-edit-workbench"] label#:r5:-label.euiFormLabel.euiFormRow__label.css-1j7t7ey-euiFormLabel`
+- **P2 P22 line-height:** Line-height ratio is 1.33 — `[data-visual-region="settings-edit-workbench"] label#:r7:-label.euiFormLabel.euiFormRow__label.css-1j7t7ey-euiFormLabel`
+- **P0 P22 text-contrast:** Text contrast is 1.75:1 — `[data-visual-region="settings-edit-workbench"] span.euiBadge.css-1mtvcwp-euiBadge-warning`
+- **P2 P22 line-height:** Line-height ratio is 1.25 — `[data-visual-region="settings-edit-workbench"] p.euiTitle.euiCallOutHeader__title.css-q553nr-euiTitle-xs-euiCallOutHeader-success`
+- **P0 P22 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="settings-edit-workbench"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P1 P23 page-header-height:** Page header is 113px high — `[data-visual-region="page-header"] header.euiPageHeader.css-1kmz19p-euiPageHeader-m-border`
+- **P2 P23 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P23 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P23 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P23 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P23 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.euiSideNavItemButton-isOpen.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P23 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P23 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P23 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P23 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P23 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P23 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P23 line-height:** Line-height ratio is 1.33 — `p`
+- **P2 P23 line-height:** Line-height ratio is 1.2 — `[data-visual-region="page-header"] h1.euiTitle.css-4x7w6l-euiTitle-l`
+- **P2 P23 line-height:** Line-height ratio is 1.25 — `[data-visual-region="page-header"] p`
+- **P0 P23 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="page-header"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P2 P23 line-height:** Line-height ratio is 1.2 — `[data-visual-region="copilot-session-rail"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P23 line-height:** Line-height ratio is 1.2 — `[data-visual-region="copilot-conversation-workbench"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P23 line-height:** Line-height ratio is 1.33 — `[data-visual-region="copilot-conversation-workbench"] label#:r3:-label.euiFormLabel.euiFormRow__label.css-1j7t7ey-euiFormLabel`
+- **P0 P23 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="copilot-conversation-workbench"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P2 P23 line-height:** Line-height ratio is 1.2 — `[data-visual-region="copilot-evidence-tool-context"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P0 P23 text-contrast:** Text contrast is 1.17:1 — `[data-visual-region="copilot-evidence-tool-context"] span.euiBadge.css-1rijyqy-euiBadge-success`
+- **P0 P23 text-contrast:** Text contrast is 1.17:1 — `[data-visual-region="copilot-evidence-tool-context"] span.euiBadge.css-1rijyqy-euiBadge-success`
+- **P0 P23 text-contrast:** Text contrast is 1.04:1 — `[data-visual-region="copilot-evidence-tool-context"] span.euiBadge.css-qq6lck-euiBadge-danger`
+- **P0 P23 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="copilot-evidence-tool-context"] button.euiButton.css-mg6guq-euiButtonDisplay-m-fullWidth-defaultMinWidth-fill-primary`
+- **P0 P23 text-overlap:** Visible text boxes overlap by 115.16×16px with [data-visual-region="copilot-session-rail"] span — `[data-visual-region="copilot-session-rail"] strong`
+- **P0 P23 text-overlap:** Visible text boxes overlap by 79.67×13px with [data-visual-region="copilot-session-rail"] small — `[data-visual-region="copilot-session-rail"] span`
+- **P0 P23 text-overlap:** Visible text boxes overlap by 73.83×13px with [data-visual-region="copilot-session-rail"] small — `[data-visual-region="copilot-session-rail"] strong`
+- **P0 P23 text-overlap:** Visible text boxes overlap by 57.55×14px with [data-visual-region="copilot-evidence-tool-context"] span.token.property — `[data-visual-region="copilot-evidence-tool-context"] span.token.string`
+- **P0 P23 text-overlap:** Visible text boxes overlap by 7.2×14px with [data-visual-region="copilot-evidence-tool-context"] span.token.operator — `[data-visual-region="copilot-evidence-tool-context"] span.token.string`
+- **P1 P24 page-header-height:** Page header is 113px high — `[data-visual-region="page-header"] header.euiPageHeader.css-1kmz19p-euiPageHeader-m-border`
+- **P2 P24 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P24 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P24 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P24 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P24 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P24 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.euiSideNavItemButton-isOpen.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P24 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P24 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P24 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P24 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P24 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P24 line-height:** Line-height ratio is 1.33 — `p`
+- **P2 P24 line-height:** Line-height ratio is 1.2 — `[data-visual-region="page-header"] h1.euiTitle.css-4x7w6l-euiTitle-l`
+- **P2 P24 line-height:** Line-height ratio is 1.25 — `[data-visual-region="page-header"] p`
+- **P0 P24 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="page-header"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P0 P24 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="fleet-scope-bar"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P2 P24 line-height:** Line-height ratio is 1 — `[data-visual-region="fleet-kpi-summary"] p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P24 line-height:** Line-height ratio is 1 — `[data-visual-region="fleet-kpi-summary"] p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P24 line-height:** Line-height ratio is 1 — `[data-visual-region="fleet-kpi-summary"] p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P24 line-height:** Line-height ratio is 1 — `[data-visual-region="fleet-kpi-summary"] p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P24 line-height:** Line-height ratio is 1 — `[data-visual-region="fleet-kpi-summary"] p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P24 line-height:** Line-height ratio is 1.2 — `[data-visual-region="fleet-agent-grid"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P24 line-height:** Line-height ratio is 1.14 — `[data-visual-region="fleet-agent-grid"] th`
+- **P2 P24 line-height:** Line-height ratio is 1.14 — `[data-visual-region="fleet-agent-grid"] th`
+- **P2 P24 line-height:** Line-height ratio is 1.14 — `[data-visual-region="fleet-agent-grid"] th`
+- **P2 P24 line-height:** Line-height ratio is 1.14 — `[data-visual-region="fleet-agent-grid"] th`
+- **P2 P24 line-height:** Line-height ratio is 1.14 — `[data-visual-region="fleet-agent-grid"] th`
+- **P2 P24 line-height:** Line-height ratio is 1.14 — `[data-visual-region="fleet-agent-grid"] th`
+- **P2 P24 line-height:** Line-height ratio is 1.14 — `[data-visual-region="fleet-agent-grid"] th`
+- **P2 P24 line-height:** Line-height ratio is 1.2 — `[data-visual-region="fleet-agent-detail"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P1 P24 text-clipping:** Text is clipped (169×20 vs 169×22) — `[data-visual-region="fleet-kpi-summary"] p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P24 text-clipping:** Text is clipped (169×20 vs 169×22) — `[data-visual-region="fleet-kpi-summary"] p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P24 text-clipping:** Text is clipped (169×20 vs 169×22) — `[data-visual-region="fleet-kpi-summary"] p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P24 text-clipping:** Text is clipped (169×20 vs 169×22) — `[data-visual-region="fleet-kpi-summary"] p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P24 text-clipping:** Text is clipped (169×20 vs 169×22) — `[data-visual-region="fleet-kpi-summary"] p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P25 page-header-height:** Page header is 113px high — `[data-visual-region="page-header"] header.euiPageHeader.css-1kmz19p-euiPageHeader-m-border`
+- **P1 P25 colored-title-bar:** Heading is rendered as a wide colored surface instead of plain Kibana title text — `[data-visual-region="task-dispatch-grid"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P25 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P25 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P25 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P25 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P25 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P25 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.euiSideNavItemButton-isOpen.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P25 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P25 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P25 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P25 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P25 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P25 line-height:** Line-height ratio is 1.33 — `p`
+- **P2 P25 line-height:** Line-height ratio is 1.2 — `[data-visual-region="page-header"] h1.euiTitle.css-4x7w6l-euiTitle-l`
+- **P2 P25 line-height:** Line-height ratio is 1.25 — `[data-visual-region="page-header"] p`
+- **P0 P25 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="page-header"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P0 P25 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="task-scope-bar"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P2 P25 line-height:** Line-height ratio is 1 — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P25 line-height:** Line-height ratio is 1 — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P25 line-height:** Line-height ratio is 1 — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P25 line-height:** Line-height ratio is 1 — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P25 line-height:** Line-height ratio is 1 — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P25 line-height:** Line-height ratio is 1.2 — `[data-visual-region="task-dispatch-grid"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P25 line-height:** Line-height ratio is 1.14 — `[data-visual-region="task-dispatch-grid"] th`
+- **P2 P25 line-height:** Line-height ratio is 1.14 — `[data-visual-region="task-dispatch-grid"] th`
+- **P2 P25 line-height:** Line-height ratio is 1.14 — `[data-visual-region="task-dispatch-grid"] th`
+- **P2 P25 line-height:** Line-height ratio is 1.14 — `[data-visual-region="task-dispatch-grid"] th`
+- **P2 P25 line-height:** Line-height ratio is 1.14 — `[data-visual-region="task-dispatch-grid"] th`
+- **P2 P25 line-height:** Line-height ratio is 1.14 — `[data-visual-region="task-dispatch-grid"] th`
+- **P2 P25 line-height:** Line-height ratio is 1.14 — `[data-visual-region="task-dispatch-grid"] th`
+- **P2 P25 line-height:** Line-height ratio is 1.2 — `[data-visual-region="task-target-attempt-detail"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P1 P25 text-clipping:** Text is clipped (174×20 vs 174×22) — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P25 text-clipping:** Text is clipped (174×20 vs 174×22) — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P25 text-clipping:** Text is clipped (174×20 vs 174×22) — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P25 text-clipping:** Text is clipped (174×20 vs 174×22) — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P25 text-clipping:** Text is clipped (174×20 vs 174×22) — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P26 page-header-height:** Page header is 113px high — `[data-visual-region="page-header"] header.euiPageHeader.css-1kmz19p-euiPageHeader-m-border`
+- **P2 P26 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P26 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P26 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P26 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P26 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P26 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.euiSideNavItemButton-isOpen.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P26 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P26 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P26 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P26 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P26 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P26 line-height:** Line-height ratio is 1.33 — `p`
+- **P2 P26 line-height:** Line-height ratio is 1.2 — `[data-visual-region="page-header"] h1.euiTitle.css-4x7w6l-euiTitle-l`
+- **P2 P26 line-height:** Line-height ratio is 1.25 — `[data-visual-region="page-header"] p`
+- **P0 P26 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="page-header"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P2 P26 line-height:** Line-height ratio is 1.2 — `[data-visual-region="policy-grid"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P26 line-height:** Line-height ratio is 1.14 — `[data-visual-region="policy-grid"] th`
+- **P2 P26 line-height:** Line-height ratio is 1.14 — `[data-visual-region="policy-grid"] th`
+- **P2 P26 line-height:** Line-height ratio is 1.14 — `[data-visual-region="policy-grid"] th`
+- **P2 P26 line-height:** Line-height ratio is 1.14 — `[data-visual-region="policy-grid"] th`
+- **P2 P26 line-height:** Line-height ratio is 1.14 — `[data-visual-region="policy-grid"] th`
+- **P2 P26 line-height:** Line-height ratio is 1.14 — `[data-visual-region="policy-grid"] th`
+- **P2 P26 line-height:** Line-height ratio is 1.2 — `[data-visual-region="effective-access-explorer"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P26 line-height:** Line-height ratio is 1.33 — `[data-visual-region="effective-access-explorer"] label#:r3:-label.euiFormLabel.euiFormRow__label.css-1j7t7ey-euiFormLabel`
+- **P2 P26 line-height:** Line-height ratio is 1.33 — `[data-visual-region="effective-access-explorer"] label#:r5:-label.euiFormLabel.euiFormRow__label.css-1j7t7ey-euiFormLabel`
+- **P2 P26 line-height:** Line-height ratio is 1.33 — `[data-visual-region="effective-access-explorer"] label#:r7:-label.euiFormLabel.euiFormRow__label.css-1j7t7ey-euiFormLabel`
+- **P0 P26 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="effective-access-explorer"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P1 P27 page-header-height:** Page header is 113px high — `[data-visual-region="page-header"] header.euiPageHeader.css-1kmz19p-euiPageHeader-m-border`
+- **P1 P27 colored-title-bar:** Heading is rendered as a wide colored surface instead of plain Kibana title text — `[data-visual-region="runtime-attention-table"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P27 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P27 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P27 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P27 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P27 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P27 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P27 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.euiSideNavItemButton-isOpen.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P27 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P27 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P27 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P27 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P27 line-height:** Line-height ratio is 1.33 — `p`
+- **P2 P27 line-height:** Line-height ratio is 1.2 — `[data-visual-region="page-header"] h1.euiTitle.css-4x7w6l-euiTitle-l`
+- **P2 P27 line-height:** Line-height ratio is 1.25 — `[data-visual-region="page-header"] p`
+- **P0 P27 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="page-header"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P0 P27 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="runtime-catalog-scope"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P2 P27 line-height:** Line-height ratio is 1 — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P27 line-height:** Line-height ratio is 1 — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P27 line-height:** Line-height ratio is 1 — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P27 line-height:** Line-height ratio is 1 — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P27 line-height:** Line-height ratio is 1 — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P27 line-height:** Line-height ratio is 1.2 — `[data-visual-region="catalog-readiness-by-type"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P27 line-height:** Line-height ratio is 1.2 — `[data-visual-region="runtime-attention-table"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P27 line-height:** Line-height ratio is 1.14 — `[data-visual-region="runtime-attention-table"] th`
+- **P2 P27 line-height:** Line-height ratio is 1.14 — `[data-visual-region="runtime-attention-table"] th`
+- **P2 P27 line-height:** Line-height ratio is 1.14 — `[data-visual-region="runtime-attention-table"] th`
+- **P2 P27 line-height:** Line-height ratio is 1.14 — `[data-visual-region="runtime-attention-table"] th`
+- **P2 P27 line-height:** Line-height ratio is 1.14 — `[data-visual-region="runtime-attention-table"] th`
+- **P2 P27 line-height:** Line-height ratio is 1.14 — `[data-visual-region="runtime-attention-table"] th`
+- **P2 P27 line-height:** Line-height ratio is 1.14 — `[data-visual-region="runtime-attention-table"] th`
+- **P2 P27 line-height:** Line-height ratio is 1.2 — `[data-visual-region="runtime-resource-preview-dependency"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P0 P27 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="runtime-resource-preview-dependency"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P1 P27 text-clipping:** Text is clipped (169×20 vs 169×22) — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P27 text-clipping:** Text is clipped (169×20 vs 169×22) — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P27 text-clipping:** Text is clipped (169×20 vs 169×22) — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P27 text-clipping:** Text is clipped (169×20 vs 169×22) — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P27 text-clipping:** Text is clipped (169×20 vs 169×22) — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P0 P27 text-overlap:** Visible text boxes overlap by 56.66×16px with [data-visual-region="runtime-resource-preview-dependency"] span.node.node-4 — `[data-visual-region="runtime-resource-preview-dependency"] span.center`
+- **P0 P27 text-overlap:** Visible text boxes overlap by 162.84×16px with [data-visual-region="runtime-resource-preview-dependency"] span.node.node-0 — `[data-visual-region="runtime-resource-preview-dependency"] span.node.node-4`
+- **P0 P27 text-overlap:** Visible text boxes overlap by 185.23×16px with [data-visual-region="runtime-resource-preview-dependency"] span.node.node-1 — `[data-visual-region="runtime-resource-preview-dependency"] span.node.node-4`
+- **P0 P27 text-overlap:** Visible text boxes overlap by 195.33×16px with [data-visual-region="runtime-resource-preview-dependency"] span.node.node-2 — `[data-visual-region="runtime-resource-preview-dependency"] span.node.node-4`
+- **P0 P27 text-overlap:** Visible text boxes overlap by 203.27×16px with [data-visual-region="runtime-resource-preview-dependency"] span.node.node-3 — `[data-visual-region="runtime-resource-preview-dependency"] span.node.node-4`
+- **P0 P27 text-overlap:** Visible text boxes overlap by 66.09×12px with [data-visual-region="runtime-resource-preview-dependency"] small — `[data-visual-region="runtime-resource-preview-dependency"] span.node.node-4`
+- **P0 P27 text-overlap:** Visible text boxes overlap by 139.36×16px with [data-visual-region="runtime-resource-preview-dependency"] span.node.node-5 — `[data-visual-region="runtime-resource-preview-dependency"] span.node.node-4`
+- **P1 P28 page-header-height:** Page header is 113px high — `[data-visual-region="page-header"] header.euiPageHeader.css-1kmz19p-euiPageHeader-m-border`
+- **P1 P28 colored-title-bar:** Heading is rendered as a wide colored surface instead of plain Kibana title text — `[data-visual-region="source-health-grid"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P28 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P28 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P28 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P28 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P28 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P28 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P28 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.euiSideNavItemButton-isOpen.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P28 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P28 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P28 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P28 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P28 line-height:** Line-height ratio is 1.33 — `p`
+- **P2 P28 line-height:** Line-height ratio is 1.2 — `[data-visual-region="page-header"] h1.euiTitle.css-4x7w6l-euiTitle-l`
+- **P2 P28 line-height:** Line-height ratio is 1.25 — `[data-visual-region="page-header"] p`
+- **P0 P28 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="page-header"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P0 P28 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="source-scope-bar"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P2 P28 line-height:** Line-height ratio is 1 — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P28 line-height:** Line-height ratio is 1 — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P28 line-height:** Line-height ratio is 1 — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P28 line-height:** Line-height ratio is 1 — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P28 line-height:** Line-height ratio is 1 — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P28 line-height:** Line-height ratio is 1.2 — `[data-visual-region="source-health-grid"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P28 line-height:** Line-height ratio is 1.14 — `[data-visual-region="source-health-grid"] th`
+- **P2 P28 line-height:** Line-height ratio is 1.14 — `[data-visual-region="source-health-grid"] th`
+- **P2 P28 line-height:** Line-height ratio is 1.14 — `[data-visual-region="source-health-grid"] th`
+- **P2 P28 line-height:** Line-height ratio is 1.14 — `[data-visual-region="source-health-grid"] th`
+- **P2 P28 line-height:** Line-height ratio is 1.14 — `[data-visual-region="source-health-grid"] th`
+- **P2 P28 line-height:** Line-height ratio is 1.14 — `[data-visual-region="source-health-grid"] th`
+- **P2 P28 line-height:** Line-height ratio is 1.14 — `[data-visual-region="source-health-grid"] th`
+- **P2 P28 line-height:** Line-height ratio is 1.14 — `[data-visual-region="source-health-grid"] th`
+- **P2 P28 line-height:** Line-height ratio is 1.2 — `[data-visual-region="source-ingest-lag-analysis"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P28 line-height:** Line-height ratio is 1.14 — `[data-visual-region="source-ingest-lag-analysis"] th`
+- **P2 P28 line-height:** Line-height ratio is 1.14 — `[data-visual-region="source-ingest-lag-analysis"] th`
+- **P2 P28 line-height:** Line-height ratio is 1.14 — `[data-visual-region="source-ingest-lag-analysis"] th`
+- **P2 P28 line-height:** Line-height ratio is 1.14 — `[data-visual-region="source-ingest-lag-analysis"] th`
+- **P2 P28 line-height:** Line-height ratio is 1.2 — `[data-visual-region="source-connection-mapping-workbench"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P1 P28 text-clipping:** Text is clipped (198×20 vs 198×22) — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P28 text-clipping:** Text is clipped (198×20 vs 198×22) — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P28 text-clipping:** Text is clipped (198×20 vs 198×22) — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P28 text-clipping:** Text is clipped (198×20 vs 198×22) — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P28 text-clipping:** Text is clipped (198×20 vs 198×22) — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P29 page-header-height:** Page header is 113px high — `[data-visual-region="page-header"] header.euiPageHeader.css-1kmz19p-euiPageHeader-m-border`
+- **P1 P29 colored-title-bar:** Heading is rendered as a wide colored surface instead of plain Kibana title text — `h2.euiTitle.css-8a1usq-euiTitle-xs`
+- **P2 P29 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P29 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P29 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P29 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P29 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P29 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P29 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.euiSideNavItemButton-isOpen.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P29 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P29 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P29 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P29 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P29 line-height:** Line-height ratio is 1.33 — `p`
+- **P2 P29 line-height:** Line-height ratio is 1.2 — `[data-visual-region="page-header"] h1.euiTitle.css-4x7w6l-euiTitle-l`
+- **P2 P29 line-height:** Line-height ratio is 1.25 — `[data-visual-region="page-header"] p`
+- **P0 P29 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="page-header"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P2 P29 line-height:** Line-height ratio is 1 — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P29 line-height:** Line-height ratio is 1 — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P29 line-height:** Line-height ratio is 1 — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P29 line-height:** Line-height ratio is 1 — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P29 line-height:** Line-height ratio is 1 — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P29 line-height:** Line-height ratio is 1.2 — `h2.euiTitle.css-16incrq-euiTitle-s`
+- **P0 P29 text-contrast:** Text contrast is 1.04:1 — `span.euiBadge.css-qq6lck-euiBadge-danger`
+- **P0 P29 text-contrast:** Text contrast is 1.04:1 — `span.euiBadge.css-qq6lck-euiBadge-danger`
+- **P0 P29 text-contrast:** Text contrast is 1.75:1 — `span.euiBadge.css-1mtvcwp-euiBadge-warning`
+- **P0 P29 text-contrast:** Text contrast is 1.04:1 — `span.euiBadge.css-qq6lck-euiBadge-danger`
+- **P0 P29 text-contrast:** Text contrast is 1.75:1 — `span.euiBadge.css-1mtvcwp-euiBadge-warning`
+- **P0 P29 text-contrast:** Text contrast is 1.04:1 — `span.euiBadge.css-qq6lck-euiBadge-danger`
+- **P2 P29 line-height:** Line-height ratio is 1.2 — `h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P29 line-height:** Line-height ratio is 1.14 — `button`
+- **P2 P29 line-height:** Line-height ratio is 1.14 — `button`
+- **P2 P29 line-height:** Line-height ratio is 1.14 — `button`
+- **P2 P29 line-height:** Line-height ratio is 1.14 — `button`
+- **P2 P29 line-height:** Line-height ratio is 1.33 — `label#:r7:-label.euiFormLabel.euiFormRow__label.css-1j7t7ey-euiFormLabel`
+- **P2 P29 line-height:** Line-height ratio is 1.14 — `dt`
+- **P2 P29 line-height:** Line-height ratio is 1.14 — `dt`
+- **P2 P29 line-height:** Line-height ratio is 1.14 — `dt`
+- **P2 P29 line-height:** Line-height ratio is 1.14 — `dt`
+- **P1 P29 text-clipping:** Text is clipped (169×20 vs 169×22) — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P29 text-clipping:** Text is clipped (169×20 vs 169×22) — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P29 text-clipping:** Text is clipped (169×20 vs 169×22) — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P29 text-clipping:** Text is clipped (169×20 vs 169×22) — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P29 text-clipping:** Text is clipped (169×20 vs 169×22) — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P0 P29 text-overlap:** Visible text boxes overlap by 176×11.83px with span — `h2.euiTitle.css-8a1usq-euiTitle-xs`
+- **P0 P29 text-overlap:** Visible text boxes overlap by 176×6.03px with small — `h2.euiTitle.css-8a1usq-euiTitle-xs`
+- **P1 P30 page-header-height:** Page header is 113px high — `[data-visual-region="page-header"] header.euiPageHeader.css-1kmz19p-euiPageHeader-m-border`
+- **P1 P30 colored-title-bar:** Heading is rendered as a wide colored surface instead of plain Kibana title text — `h3.euiTitle.css-8a1usq-euiTitle-xs`
+- **P1 P30 colored-title-bar:** Heading is rendered as a wide colored surface instead of plain Kibana title text — `h2.euiTitle.css-16incrq-euiTitle-s`
+- **P1 P30 colored-title-bar:** Heading is rendered as a wide colored surface instead of plain Kibana title text — `h3.euiTitle.css-8a1usq-euiTitle-xs`
+- **P2 P30 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P30 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P30 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P30 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P30 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P30 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P30 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.euiSideNavItemButton-isOpen.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P30 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P30 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P30 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P30 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P30 line-height:** Line-height ratio is 1.33 — `p`
+- **P2 P30 line-height:** Line-height ratio is 1.2 — `[data-visual-region="page-header"] h1.euiTitle.css-4x7w6l-euiTitle-l`
+- **P2 P30 line-height:** Line-height ratio is 1.25 — `[data-visual-region="page-header"] p`
+- **P0 P30 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="page-header"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P2 P30 line-height:** Line-height ratio is 1 — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P30 line-height:** Line-height ratio is 1 — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P30 line-height:** Line-height ratio is 1 — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P30 line-height:** Line-height ratio is 1 — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P30 line-height:** Line-height ratio is 1 — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P30 line-height:** Line-height ratio is 1.2 — `h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P30 line-height:** Line-height ratio is 1.2 — `h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P30 line-height:** Line-height ratio is 1.14 — `th`
+- **P2 P30 line-height:** Line-height ratio is 1.14 — `th`
+- **P2 P30 line-height:** Line-height ratio is 1.14 — `th`
+- **P2 P30 line-height:** Line-height ratio is 1.14 — `th`
+- **P2 P30 line-height:** Line-height ratio is 1.14 — `th`
+- **P2 P30 line-height:** Line-height ratio is 1.33 — `label#:r3:-label.euiFormLabel.euiFormRow__label.css-1j7t7ey-euiFormLabel`
+- **P2 P30 line-height:** Line-height ratio is 1.2 — `h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P30 line-height:** Line-height ratio is 1.25 — `p.euiTitle.euiCallOutHeader__title.css-q553nr-euiTitle-xs-euiCallOutHeader-success`
+- **P1 P30 text-clipping:** Text is clipped (169×20 vs 169×22) — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P30 text-clipping:** Text is clipped (169×20 vs 169×22) — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P30 text-clipping:** Text is clipped (169×20 vs 169×22) — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P30 text-clipping:** Text is clipped (169×20 vs 169×22) — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P30 text-clipping:** Text is clipped (169×20 vs 169×22) — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P0 P30 text-overlap:** Visible text boxes overlap by 81.3×20px with span — `button`
+- **P0 P30 text-overlap:** Visible text boxes overlap by 53.61×16px with span.euiBadge__text.css-1vg55k4-euiBadge__text — `button`
+- **P0 P30 text-overlap:** Visible text boxes overlap by 76.3×14px with small — `span`
+- **P0 P30 text-overlap:** Visible text boxes overlap by 53.61×12px with small — `span.euiBadge__text.css-1vg55k4-euiBadge__text`
+- **P0 P30 text-overlap:** Visible text boxes overlap by 188×47px with button.selected — `button`
+- **P0 P30 text-overlap:** Visible text boxes overlap by 165×16px with small — `button`
+- **P0 P30 text-overlap:** Visible text boxes overlap by 92.39×30px with span — `button.selected`
+- **P0 P30 text-overlap:** Visible text boxes overlap by 53.61×16px with span.euiBadge__text.css-1vg55k4-euiBadge__text — `button.selected`
+- **P0 P30 text-overlap:** Visible text boxes overlap by 165×16px with small — `button.selected`
+- **P0 P30 text-overlap:** Visible text boxes overlap by 92.39×3px with button.selected — `span`
+- **P0 P30 text-overlap:** Visible text boxes overlap by 92.39×2px with button — `span`
+- **P0 P30 text-overlap:** Visible text boxes overlap by 165×15px with small — `small`
+- **P0 P30 text-overlap:** Visible text boxes overlap by 188×47px with button — `button.selected`
+- **P0 P30 text-overlap:** Visible text boxes overlap by 188×38px with button — `button`
+- **P0 P30 text-overlap:** Visible text boxes overlap by 87.39×11px with span — `small`
+- **P0 P30 text-overlap:** Visible text boxes overlap by 53.61×9px with span.euiBadge__text.css-1vg55k4-euiBadge__text — `small`
+- **P0 P30 text-overlap:** Visible text boxes overlap by 165×4px with button — `small`
+- **P0 P30 text-overlap:** Visible text boxes overlap by 53.61×11px with button — `span.euiBadge__text.css-1vg55k4-euiBadge__text`
+- **P0 P30 text-overlap:** Visible text boxes overlap by 165×8px with button.selected — `small`
+- **P0 P30 text-overlap:** Visible text boxes overlap by 188×2px with h2.euiTitle.css-16incrq-euiTitle-s — `button.selected`
+- **P0 P30 text-overlap:** Visible text boxes overlap by 92.39×4px with h2.euiTitle.css-16incrq-euiTitle-s — `span`
+- **P0 P30 text-overlap:** Visible text boxes overlap by 188×24px with h2.euiTitle.css-16incrq-euiTitle-s — `button`
+- **P0 P30 text-overlap:** Visible text boxes overlap by 188×23px with button.selected — `h2.euiTitle.css-16incrq-euiTitle-s`
+- **P0 P30 text-overlap:** Visible text boxes overlap by 188×22px with button — `h2.euiTitle.css-16incrq-euiTitle-s`
+- **P0 P30 text-overlap:** Visible text boxes overlap by 165×16px with small — `h2.euiTitle.css-16incrq-euiTitle-s`
+- **P0 P30 text-overlap:** Visible text boxes overlap by 82.39×16px with span — `span`
+- **P0 P30 text-overlap:** Visible text boxes overlap by 34.36×14px with span — `span.euiBadge__text.css-1vg55k4-euiBadge__text`
+- **P0 P30 text-overlap:** Visible text boxes overlap by 172×4px with p.euiTitle.euiCallOutHeader__title.css-q553nr-euiTitle-xs-euiCallOutHeader-success — `button`
+- **P0 P30 text-overlap:** Visible text boxes overlap by 172×20px with p.euiTitle.euiCallOutHeader__title.css-q553nr-euiTitle-xs-euiCallOutHeader-success — `button.selected`
+- **P0 P30 text-overlap:** Visible text boxes overlap by 162×7px with p.euiTitle.euiCallOutHeader__title.css-q553nr-euiTitle-xs-euiCallOutHeader-success — `small`
+- **P0 P30 text-overlap:** Visible text boxes overlap by 162×16px with small — `p.euiTitle.euiCallOutHeader__title.css-q553nr-euiTitle-xs-euiCallOutHeader-success`
+- **P0 P30 text-overlap:** Visible text boxes overlap by 172×6px with button — `p.euiTitle.euiCallOutHeader__title.css-q553nr-euiTitle-xs-euiCallOutHeader-success`
+- **P0 P30 text-overlap:** Visible text boxes overlap by 188×4px with h3.euiTitle.css-8a1usq-euiTitle-xs — `button`
+- **P0 P30 text-overlap:** Visible text boxes overlap by 165×8px with h3.euiTitle.css-8a1usq-euiTitle-xs — `small`
+- **P0 P30 text-overlap:** Visible text boxes overlap by 188×9px with button — `h3.euiTitle.css-8a1usq-euiTitle-xs`
+- **P0 P30 text-overlap:** Visible text boxes overlap by 188×16px with strong — `button`
+- **P0 P30 text-overlap:** Visible text boxes overlap by 165×10px with small — `strong`
+- **P1 P31 page-header-height:** Page header is 113px high — `[data-visual-region="page-header"] header.euiPageHeader.css-1kmz19p-euiPageHeader-m-border`
+- **P2 P31 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P31 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P31 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P31 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P31 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P31 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P31 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.euiSideNavItemButton-isOpen.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P31 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P31 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P31 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P31 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P31 line-height:** Line-height ratio is 1.33 — `p`
+- **P2 P31 line-height:** Line-height ratio is 1.2 — `[data-visual-region="page-header"] h1.euiTitle.css-4x7w6l-euiTitle-l`
+- **P2 P31 line-height:** Line-height ratio is 1.25 — `[data-visual-region="page-header"] p`
+- **P0 P31 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="page-header"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P2 P31 line-height:** Line-height ratio is 1.14 — `[data-visual-region="runtime-object-command"] button`
+- **P2 P31 line-height:** Line-height ratio is 1.14 — `[data-visual-region="runtime-object-command"] button`
+- **P2 P31 line-height:** Line-height ratio is 1.14 — `[data-visual-region="runtime-object-command"] button`
+- **P0 P31 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="runtime-object-command"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P2 P31 line-height:** Line-height ratio is 1.2 — `[data-visual-region="runtime-object-registry"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P31 line-height:** Line-height ratio is 1.14 — `[data-visual-region="runtime-object-registry"] th`
+- **P2 P31 line-height:** Line-height ratio is 1.14 — `[data-visual-region="runtime-object-registry"] th`
+- **P2 P31 line-height:** Line-height ratio is 1.14 — `[data-visual-region="runtime-object-registry"] th`
+- **P2 P31 line-height:** Line-height ratio is 1.14 — `[data-visual-region="runtime-object-registry"] th`
+- **P2 P31 line-height:** Line-height ratio is 1.14 — `[data-visual-region="runtime-object-registry"] th`
+- **P2 P31 line-height:** Line-height ratio is 1.14 — `[data-visual-region="runtime-object-registry"] th`
+- **P2 P31 line-height:** Line-height ratio is 1.2 — `[data-visual-region="runtime-object-detail"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P0 P31 text-overlap:** Visible text boxes overlap by 28.78×8px with [data-visual-region="runtime-object-detail"] strong — `[data-visual-region="runtime-object-detail"] span.token.property`
+- **P0 P31 text-overlap:** Visible text boxes overlap by 7.2×8px with [data-visual-region="runtime-object-detail"] strong — `[data-visual-region="runtime-object-detail"] span.token.operator`
+- **P0 P31 text-overlap:** Visible text boxes overlap by 71.92×8px with [data-visual-region="runtime-object-detail"] strong — `[data-visual-region="runtime-object-detail"] span.token.string`
+- **P0 P31 text-overlap:** Visible text boxes overlap by 7.2×8px with [data-visual-region="runtime-object-detail"] strong — `[data-visual-region="runtime-object-detail"] span.token.punctuation`
+- **P0 P31 text-overlap:** Visible text boxes overlap by 43.16×6px with [data-visual-region="runtime-object-detail"] span.token.property — `[data-visual-region="runtime-object-detail"] strong`
+- **P0 P31 text-overlap:** Visible text boxes overlap by 7.2×6px with [data-visual-region="runtime-object-detail"] span.token.operator — `[data-visual-region="runtime-object-detail"] strong`
+- **P0 P31 text-overlap:** Visible text boxes overlap by 64.73×6px with [data-visual-region="runtime-object-detail"] span.token.string — `[data-visual-region="runtime-object-detail"] strong`
+- **P0 P31 text-overlap:** Visible text boxes overlap by 5.31×6px with [data-visual-region="runtime-object-detail"] span.token.punctuation — `[data-visual-region="runtime-object-detail"] strong`
+- **P0 P31 text-overlap:** Visible text boxes overlap by 112.86×5px with [data-visual-region="runtime-object-detail"] span.eui-textTruncate — `[data-visual-region="runtime-object-detail"] strong`
+- **P0 P31 text-overlap:** Visible text boxes overlap by 1.14×5px with [data-visual-region="runtime-object-detail"] span.eui-textTruncate.euiButtonEmpty__text — `[data-visual-region="runtime-object-detail"] strong`
+- **P0 P31 text-overlap:** Visible text boxes overlap by 43.16×13px with [data-visual-region="runtime-object-detail"] span.eui-textTruncate — `[data-visual-region="runtime-object-detail"] span.token.property`
+- **P0 P31 text-overlap:** Visible text boxes overlap by 7.2×13px with [data-visual-region="runtime-object-detail"] span.eui-textTruncate — `[data-visual-region="runtime-object-detail"] span.token.operator`
+- **P0 P31 text-overlap:** Visible text boxes overlap by 36.91×13px with [data-visual-region="runtime-object-detail"] span.eui-textTruncate — `[data-visual-region="runtime-object-detail"] span.token.string`
+- **P0 P31 text-overlap:** Visible text boxes overlap by 3.03×13px with [data-visual-region="runtime-object-detail"] span.eui-textTruncate.euiButtonEmpty__text — `[data-visual-region="runtime-object-detail"] span.token.punctuation`
+- **P0 P31 text-overlap:** Visible text boxes overlap by 71.92×5px with [data-visual-region="runtime-object-detail"] span.token.property — `[data-visual-region="runtime-object-detail"] span.eui-textTruncate`
+- **P0 P31 text-overlap:** Visible text boxes overlap by 7.2×5px with [data-visual-region="runtime-object-detail"] span.token.operator — `[data-visual-region="runtime-object-detail"] span.eui-textTruncate`
+- **P0 P31 text-overlap:** Visible text boxes overlap by 8.14×5px with [data-visual-region="runtime-object-detail"] span.token.string — `[data-visual-region="runtime-object-detail"] span.eui-textTruncate`
+- **P0 P31 text-overlap:** Visible text boxes overlap by 46.17×5px with [data-visual-region="runtime-object-detail"] span.token.string — `[data-visual-region="runtime-object-detail"] span.eui-textTruncate.euiButtonEmpty__text`
+- **P0 P31 text-overlap:** Visible text boxes overlap by 7.2×5px with [data-visual-region="runtime-object-detail"] span.token.punctuation — `[data-visual-region="runtime-object-detail"] span.eui-textTruncate.euiButtonEmpty__text`
+- **P0 P31 text-overlap:** Visible text boxes overlap by 115.08×14px with [data-visual-region="runtime-object-detail"] span.token.property — `[data-visual-region="runtime-object-detail"] span.token.string`
+- **P0 P31 text-overlap:** Visible text boxes overlap by 7.2×14px with [data-visual-region="runtime-object-detail"] span.token.operator — `[data-visual-region="runtime-object-detail"] span.token.string`
+- **P0 P31 text-overlap:** Visible text boxes overlap by 108.06×20px with [data-visual-region="runtime-object-detail"] span.eui-textTruncate.euiButtonEmpty__text — `[data-visual-region="runtime-object-detail"] span.token.string`
+- **P0 P31 text-overlap:** Visible text boxes overlap by 79.28×13px with [data-visual-region="runtime-object-detail"] span.eui-textTruncate.euiButtonEmpty__text — `[data-visual-region="runtime-object-detail"] span.token.property`
+- **P1 P32 page-header-height:** Page header is 113px high — `[data-visual-region="page-header"] header.euiPageHeader.css-1kmz19p-euiPageHeader-m-border`
+- **P2 P32 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P32 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P32 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P32 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P32 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P32 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P32 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.euiSideNavItemButton-isOpen.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P32 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P32 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P32 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P32 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P32 line-height:** Line-height ratio is 1.33 — `p`
+- **P2 P32 line-height:** Line-height ratio is 1.2 — `[data-visual-region="page-header"] h1.euiTitle.css-4x7w6l-euiTitle-l`
+- **P2 P32 line-height:** Line-height ratio is 1.25 — `[data-visual-region="page-header"] p`
+- **P0 P32 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="page-header"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P2 P32 line-height:** Line-height ratio is 1.2 — `h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P32 line-height:** Line-height ratio is 1.2 — `h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P32 line-height:** Line-height ratio is 1.14 — `button`
+- **P2 P32 line-height:** Line-height ratio is 1.14 — `button`
+- **P2 P32 line-height:** Line-height ratio is 1.14 — `button`
+- **P2 P32 line-height:** Line-height ratio is 1.14 — `button`
+- **P2 P32 line-height:** Line-height ratio is 1.33 — `label#:r3:-label.euiFormLabel.euiFormRow__label.css-1j7t7ey-euiFormLabel`
+- **P2 P32 line-height:** Line-height ratio is 1.33 — `label#:r5:-label.euiFormLabel.euiFormRow__label.css-1j7t7ey-euiFormLabel`
+- **P0 P32 text-overlap:** Visible text boxes overlap by 39×15px with span.euiBadge__text.css-1vg55k4-euiBadge__text — `button`
+- **P0 P32 text-overlap:** Visible text boxes overlap by 15.19×17px with small — `button`
+- **P0 P32 text-overlap:** Visible text boxes overlap by 71.67×11px with label#:r3:-label.euiFormLabel.euiFormRow__label.css-1j7t7ey-euiFormLabel — `strong`
+- **P0 P32 text-overlap:** Visible text boxes overlap by 5.2×3px with span.token.punctuation — `small`
+- **P0 P32 text-overlap:** Visible text boxes overlap by 21.36×13px with span.euiBadge__text.css-1vg55k4-euiBadge__text — `span.token.property`
+- **P0 P32 text-overlap:** Visible text boxes overlap by 71.92×6px with strong — `span.token.property`
+- **P0 P32 text-overlap:** Visible text boxes overlap by 7.2×6px with strong — `span.token.operator`
+- **P0 P32 text-overlap:** Visible text boxes overlap by 14.39×6px with strong — `span.token.number`
+- **P0 P32 text-overlap:** Visible text boxes overlap by 7.2×8px with span.token.punctuation — `strong`
+- **P0 P32 text-overlap:** Visible text boxes overlap by 64.73×13px with span.token.property — `small`
+- **P0 P32 text-overlap:** Visible text boxes overlap by 7.2×13px with span.token.operator — `small`
+- **P0 P32 text-overlap:** Visible text boxes overlap by 7.2×3px with span.euiBadge__text.css-1vg55k4-euiBadge__text — `span.token.punctuation`
+- **P0 P32 text-overlap:** Visible text boxes overlap by 35.75×11px with span.token.property — `span.euiBadge__text.css-1vg55k4-euiBadge__text`
+- **P0 P32 text-overlap:** Visible text boxes overlap by 64.73×12px with strong — `span.token.string`
+- **P0 P32 text-overlap:** Visible text boxes overlap by 5.2×7px with small — `span.token.punctuation`
+- **P0 P32 text-overlap:** Visible text boxes overlap by 32.41×2px with span.euiBadge__text.css-1vg55k4-euiBadge__text — `label#:r5:-label.euiFormLabel.euiFormRow__label.css-1j7t7ey-euiFormLabel`
+- **P0 P32 text-overlap:** Visible text boxes overlap by 5.2×6px with strong — `span.token.punctuation`
+- **P0 P32 text-overlap:** Visible text boxes overlap by 64.73×8px with span.token.property — `strong`
+- **P0 P32 text-overlap:** Visible text boxes overlap by 7.2×8px with span.token.operator — `strong`
+- **P0 P32 text-overlap:** Visible text boxes overlap by 57.55×8px with span.token.string — `strong`
+- **P0 P32 text-overlap:** Visible text boxes overlap by 50.34×13px with span.token.string — `small`
+- **P0 P32 text-overlap:** Visible text boxes overlap by 168×11px with p.euiTitle.euiCallOutHeader__title.css-18ptx09-euiTitle-xxs-euiCallOutHeader-primary — `strong`
+- **P0 P32 text-overlap:** Visible text boxes overlap by 168×4px with small — `p.euiTitle.euiCallOutHeader__title.css-18ptx09-euiTitle-xxs-euiCallOutHeader-primary`
+- **P1 P33 page-header-height:** Page header is 113px high — `[data-visual-region="page-header"] header.euiPageHeader.css-1kmz19p-euiPageHeader-m-border`
+- **P1 P33 colored-title-bar:** Heading is rendered as a wide colored surface instead of plain Kibana title text — `h2.euiTitle.css-16incrq-euiTitle-s`
+- **P1 P33 colored-title-bar:** Heading is rendered as a wide colored surface instead of plain Kibana title text — `h2.euiTitle.css-8a1usq-euiTitle-xs`
+- **P2 P33 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P33 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P33 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P33 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P33 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P33 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P33 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P33 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.euiSideNavItemButton-isOpen.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P33 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P33 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P33 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P33 line-height:** Line-height ratio is 1.33 — `p`
+- **P2 P33 line-height:** Line-height ratio is 1.2 — `[data-visual-region="page-header"] h1.euiTitle.css-4x7w6l-euiTitle-l`
+- **P2 P33 line-height:** Line-height ratio is 1.25 — `[data-visual-region="page-header"] p`
+- **P0 P33 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="page-header"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P2 P33 line-height:** Line-height ratio is 1 — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P33 line-height:** Line-height ratio is 1 — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P33 line-height:** Line-height ratio is 1 — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P33 line-height:** Line-height ratio is 1 — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P33 line-height:** Line-height ratio is 1 — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P33 line-height:** Line-height ratio is 1.2 — `h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P33 line-height:** Line-height ratio is 1.14 — `th`
+- **P2 P33 line-height:** Line-height ratio is 1.14 — `th`
+- **P2 P33 line-height:** Line-height ratio is 1.14 — `th`
+- **P2 P33 line-height:** Line-height ratio is 1.14 — `th`
+- **P2 P33 line-height:** Line-height ratio is 1.14 — `th`
+- **P2 P33 line-height:** Line-height ratio is 1.14 — `th`
+- **P2 P33 line-height:** Line-height ratio is 1.14 — `th`
+- **P2 P33 line-height:** Line-height ratio is 1.2 — `h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P33 line-height:** Line-height ratio is 1.14 — `dt`
+- **P2 P33 line-height:** Line-height ratio is 1.14 — `dt`
+- **P2 P33 line-height:** Line-height ratio is 1.14 — `dt`
+- **P2 P33 line-height:** Line-height ratio is 1.14 — `dt`
+- **P1 P33 text-clipping:** Text is clipped (169×20 vs 169×22) — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P33 text-clipping:** Text is clipped (169×20 vs 169×22) — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P33 text-clipping:** Text is clipped (169×20 vs 169×22) — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P33 text-clipping:** Text is clipped (169×20 vs 169×22) — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P33 text-clipping:** Text is clipped (169×20 vs 169×22) — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P34 page-header-height:** Page header is 113px high — `[data-visual-region="page-header"] header.euiPageHeader.css-1kmz19p-euiPageHeader-m-border`
+- **P1 P34 colored-title-bar:** Heading is rendered as a wide colored surface instead of plain Kibana title text — `h2.euiTitle.css-16incrq-euiTitle-s`
+- **P1 P34 colored-title-bar:** Heading is rendered as a wide colored surface instead of plain Kibana title text — `h3.euiTitle.css-8a1usq-euiTitle-xs`
+- **P2 P34 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P34 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P34 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P34 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P34 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P34 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P34 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P34 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.euiSideNavItemButton-isOpen.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P34 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P34 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P34 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P34 line-height:** Line-height ratio is 1.33 — `p`
+- **P2 P34 line-height:** Line-height ratio is 1.2 — `[data-visual-region="page-header"] h1.euiTitle.css-4x7w6l-euiTitle-l`
+- **P2 P34 line-height:** Line-height ratio is 1.25 — `[data-visual-region="page-header"] p`
+- **P0 P34 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="page-header"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P2 P34 line-height:** Line-height ratio is 1 — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P34 line-height:** Line-height ratio is 1 — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P34 line-height:** Line-height ratio is 1 — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P34 line-height:** Line-height ratio is 1 — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P34 line-height:** Line-height ratio is 1 — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P34 line-height:** Line-height ratio is 1.2 — `h2.euiTitle.css-16incrq-euiTitle-s`
+- **P0 P34 text-contrast:** Text contrast is 1.04:1 — `span.euiBadge.css-qq6lck-euiBadge-danger`
+- **P0 P34 text-contrast:** Text contrast is 1.17:1 — `span.euiBadge.css-1rijyqy-euiBadge-success`
+- **P0 P34 text-contrast:** Text contrast is 1.17:1 — `span.euiBadge.css-1rijyqy-euiBadge-success`
+- **P0 P34 text-contrast:** Text contrast is 1.17:1 — `span.euiBadge.css-1rijyqy-euiBadge-success`
+- **P0 P34 text-contrast:** Text contrast is 1.17:1 — `span.euiBadge.css-1rijyqy-euiBadge-success`
+- **P0 P34 text-contrast:** Text contrast is 1.04:1 — `span.euiBadge.css-qq6lck-euiBadge-danger`
+- **P0 P34 text-contrast:** Text contrast is 1.17:1 — `span.euiBadge.css-1rijyqy-euiBadge-success`
+- **P0 P34 text-contrast:** Text contrast is 1.17:1 — `span.euiBadge.css-1rijyqy-euiBadge-success`
+- **P0 P34 text-contrast:** Text contrast is 1.17:1 — `span.euiBadge.css-1rijyqy-euiBadge-success`
+- **P0 P34 text-contrast:** Text contrast is 1.04:1 — `span.euiBadge.css-qq6lck-euiBadge-danger`
+- **P0 P34 text-contrast:** Text contrast is 1.17:1 — `span.euiBadge.css-1rijyqy-euiBadge-success`
+- **P2 P34 line-height:** Line-height ratio is 1.2 — `h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P34 line-height:** Line-height ratio is 1.14 — `button.node.trigger`
+- **P2 P34 line-height:** Line-height ratio is 1.14 — `button.node.condition`
+- **P2 P34 line-height:** Line-height ratio is 1.14 — `button.node.action.action1`
+- **P2 P34 line-height:** Line-height ratio is 1.14 — `button.node.approval`
+- **P2 P34 line-height:** Line-height ratio is 1.14 — `button.node.action.action2`
+- **P2 P34 line-height:** Line-height ratio is 1.14 — `button.node.action.action3`
+- **P2 P34 line-height:** Line-height ratio is 1.2 — `h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P34 line-height:** Line-height ratio is 1.33 — `label#:r3:-label.euiFormLabel.euiFormRow__label.css-1j7t7ey-euiFormLabel`
+- **P2 P34 line-height:** Line-height ratio is 1.33 — `label#:r5:-label.euiFormLabel.euiFormRow__label.css-1j7t7ey-euiFormLabel`
+- **P1 P34 text-clipping:** Text is clipped (169×20 vs 169×22) — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P34 text-clipping:** Text is clipped (169×20 vs 169×22) — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P34 text-clipping:** Text is clipped (169×20 vs 169×22) — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P34 text-clipping:** Text is clipped (169×20 vs 169×22) — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P34 text-clipping:** Text is clipped (169×20 vs 169×22) — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P0 P34 text-overlap:** Visible text boxes overlap by 176×16px with small — `h2.euiTitle.css-16incrq-euiTitle-s`
+- **P0 P34 text-overlap:** Visible text boxes overlap by 36.86×5px with label#:r3:-label.euiFormLabel.euiFormRow__label.css-1j7t7ey-euiFormLabel — `span`
+- **P0 P34 text-overlap:** Visible text boxes overlap by 49.06×13px with small — `label#:r5:-label.euiFormLabel.euiFormRow__label.css-1j7t7ey-euiFormLabel`
+- **P0 P34 text-overlap:** Visible text boxes overlap by 4.2×14px with span.token.punctuation — `strong`
+- **P0 P34 text-overlap:** Visible text boxes overlap by 57.55×10px with span.token.property — `strong`
+- **P0 P34 text-overlap:** Visible text boxes overlap by 7.2×10px with span.token.operator — `strong`
+- **P0 P34 text-overlap:** Visible text boxes overlap by 64.73×14px with span.token.string — `small`
+- **P0 P34 text-overlap:** Visible text boxes overlap by 7.2×14px with span.token.punctuation — `small`
+- **P0 P34 text-overlap:** Visible text boxes overlap by 115.08×10px with span — `span.token.string`
+- **P0 P34 text-overlap:** Visible text boxes overlap by 7.2×4px with span.token.punctuation — `span`
+- **P0 P34 text-overlap:** Visible text boxes overlap by 6.88×11px with span.euiBadge__text.css-1vg55k4-euiBadge__text — `span.token.string`
+- **P0 P34 text-overlap:** Visible text boxes overlap by 6.88×3px with span.token.string — `span.euiBadge__text.css-1vg55k4-euiBadge__text`
+- **P0 P34 text-overlap:** Visible text boxes overlap by 79.13×4px with strong — `span.token.string`
+- **P0 P34 text-overlap:** Visible text boxes overlap by 50.34×14px with span.token.property — `small`
+- **P0 P34 text-overlap:** Visible text boxes overlap by 7.2×14px with span.token.operator — `small`
+- **P0 P34 text-overlap:** Visible text boxes overlap by 93.5×10px with span — `span.token.property`
+- **P0 P34 text-overlap:** Visible text boxes overlap by 7.2×10px with span — `span.token.operator`
+- **P0 P34 text-overlap:** Visible text boxes overlap by 7.2×10px with span — `span.token.number`
+- **P0 P34 text-overlap:** Visible text boxes overlap by 176×16px with span — `h3.euiTitle.css-8a1usq-euiTitle-xs`
+- **P0 P34 text-overlap:** Visible text boxes overlap by 50.78×4px with small — `strong`
+- **P0 P34 text-overlap:** Visible text boxes overlap by 23.66×2px with span.euiBadge__text.css-1vg55k4-euiBadge__text — `strong`
+- **P0 P34 text-overlap:** Visible text boxes overlap by 176×14px with strong — `strong`
+- **P0 P34 text-overlap:** Visible text boxes overlap by 176×6px with strong — `span`
+- **P1 P35 page-header-height:** Page header is 113px high — `[data-visual-region="page-header"] header.euiPageHeader.css-1kmz19p-euiPageHeader-m-border`
+- **P2 P35 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P35 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P35 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P35 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P35 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P35 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P35 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P35 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.euiSideNavItemButton-isOpen.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P35 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P35 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P35 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P35 line-height:** Line-height ratio is 1.33 — `p`
+- **P2 P35 line-height:** Line-height ratio is 1.2 — `[data-visual-region="page-header"] h1.euiTitle.css-4x7w6l-euiTitle-l`
+- **P2 P35 line-height:** Line-height ratio is 1.25 — `[data-visual-region="page-header"] p`
+- **P0 P35 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="page-header"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P2 P35 line-height:** Line-height ratio is 1 — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P35 line-height:** Line-height ratio is 1 — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P35 line-height:** Line-height ratio is 1 — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P35 line-height:** Line-height ratio is 1 — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P35 line-height:** Line-height ratio is 1.2 — `h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P35 line-height:** Line-height ratio is 1.14 — `button`
+- **P2 P35 line-height:** Line-height ratio is 1.14 — `button`
+- **P2 P35 line-height:** Line-height ratio is 1.14 — `button`
+- **P2 P35 line-height:** Line-height ratio is 1.14 — `button`
+- **P2 P35 line-height:** Line-height ratio is 1.14 — `button`
+- **P2 P35 line-height:** Line-height ratio is 1.14 — `button`
+- **P2 P35 line-height:** Line-height ratio is 1.2 — `h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P35 line-height:** Line-height ratio is 1.2 — `h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P35 line-height:** Line-height ratio is 1.33 — `label#:r3:-label.euiFormLabel.euiFormRow__label.css-1j7t7ey-euiFormLabel`
+- **P1 P35 text-clipping:** Text is clipped (234×20 vs 234×22) — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P35 text-clipping:** Text is clipped (234×20 vs 234×22) — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P35 text-clipping:** Text is clipped (234×20 vs 234×22) — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P35 text-clipping:** Text is clipped (234×20 vs 234×22) — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P36 page-header-height:** Page header is 113px high — `[data-visual-region="page-header"] header.euiPageHeader.css-1kmz19p-euiPageHeader-m-border`
+- **P2 P36 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P36 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P36 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P36 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P36 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P36 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P36 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P36 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P36 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.euiSideNavItemButton-isOpen.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P36 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P36 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P36 line-height:** Line-height ratio is 1.33 — `p`
+- **P2 P36 line-height:** Line-height ratio is 1.2 — `[data-visual-region="page-header"] h1.euiTitle.css-4x7w6l-euiTitle-l`
+- **P2 P36 line-height:** Line-height ratio is 1.25 — `[data-visual-region="page-header"] p`
+- **P0 P36 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="page-header"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P2 P36 line-height:** Line-height ratio is 1.14 — `[data-visual-region="project-command-and-mode"] button`
+- **P2 P36 line-height:** Line-height ratio is 1.14 — `[data-visual-region="project-command-and-mode"] button`
+- **P2 P36 line-height:** Line-height ratio is 1.14 — `[data-visual-region="project-command-and-mode"] button`
+- **P0 P36 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="project-command-and-mode"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P2 P36 line-height:** Line-height ratio is 1.2 — `[data-visual-region="project-rail"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P36 line-height:** Line-height ratio is 1.2 — `[data-visual-region="project-portfolio-workspace"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P36 line-height:** Line-height ratio is 1.25 — `[data-visual-region="project-portfolio-workspace"] p.euiTitle.euiCallOutHeader__title.css-1jvtbrd-euiTitle-xs-euiCallOutHeader-primary`
+- **P2 P36 line-height:** Line-height ratio is 1.14 — `[data-visual-region="project-portfolio-workspace"] button`
+- **P2 P36 line-height:** Line-height ratio is 1.14 — `[data-visual-region="project-portfolio-workspace"] button`
+- **P2 P36 line-height:** Line-height ratio is 1.14 — `[data-visual-region="project-portfolio-workspace"] button`
+- **P0 P36 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="project-portfolio-workspace"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P1 P37 page-header-height:** Page header is 113px high — `[data-visual-region="page-header"] header.euiPageHeader.css-1kmz19p-euiPageHeader-m-border`
+- **P1 P37 colored-title-bar:** Heading is rendered as a wide colored surface instead of plain Kibana title text — `h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P37 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P37 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P37 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P37 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P37 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P37 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P37 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P37 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P37 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P37 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.euiSideNavItemButton-isOpen.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P37 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P37 line-height:** Line-height ratio is 1.33 — `p`
+- **P2 P37 line-height:** Line-height ratio is 1.2 — `[data-visual-region="page-header"] h1.euiTitle.css-4x7w6l-euiTitle-l`
+- **P2 P37 line-height:** Line-height ratio is 1.25 — `[data-visual-region="page-header"] p`
+- **P0 P37 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="page-header"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P2 P37 line-height:** Line-height ratio is 1 — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P37 line-height:** Line-height ratio is 1 — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P37 line-height:** Line-height ratio is 1 — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P37 line-height:** Line-height ratio is 1 — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P37 line-height:** Line-height ratio is 1 — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P2 P37 line-height:** Line-height ratio is 1.2 — `h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P37 line-height:** Line-height ratio is 1.14 — `th`
+- **P2 P37 line-height:** Line-height ratio is 1.14 — `th`
+- **P2 P37 line-height:** Line-height ratio is 1.14 — `th`
+- **P2 P37 line-height:** Line-height ratio is 1.14 — `th`
+- **P2 P37 line-height:** Line-height ratio is 1.14 — `th`
+- **P2 P37 line-height:** Line-height ratio is 1.14 — `th`
+- **P2 P37 line-height:** Line-height ratio is 1.14 — `th`
+- **P2 P37 line-height:** Line-height ratio is 1.2 — `h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P37 line-height:** Line-height ratio is 1.14 — `dt`
+- **P2 P37 line-height:** Line-height ratio is 1.14 — `dt`
+- **P2 P37 line-height:** Line-height ratio is 1.14 — `dt`
+- **P2 P37 line-height:** Line-height ratio is 1.14 — `dt`
+- **P2 P37 line-height:** Line-height ratio is 1.25 — `p.euiTitle.euiCallOutHeader__title.css-1jvtbrd-euiTitle-xs-euiCallOutHeader-primary`
+- **P2 P37 line-height:** Line-height ratio is 1.2 — `h2.euiTitle.css-16incrq-euiTitle-s`
+- **P1 P37 text-clipping:** Text is clipped (169×20 vs 169×22) — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P37 text-clipping:** Text is clipped (169×20 vs 169×22) — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P37 text-clipping:** Text is clipped (169×20 vs 169×22) — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P37 text-clipping:** Text is clipped (169×20 vs 169×22) — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P1 P37 text-clipping:** Text is clipped (169×20 vs 169×22) — `p.euiTitle.euiStat__title.css-1sa62h5-euiTitle-s-euiStat__title-default`
+- **P0 P37 text-overlap:** Visible text boxes overlap by 48.48×6px with th — `span.euiBadge__text.css-1vg55k4-euiBadge__text`
+- **P0 P37 text-overlap:** Visible text boxes overlap by 9.08×20px with p — `th`
+- **P0 P37 text-overlap:** Visible text boxes overlap by 177.06×20px with th — `p`
+- **P0 P37 text-overlap:** Visible text boxes overlap by 120.92×20px with dt — `td`
+- **P0 P37 text-overlap:** Visible text boxes overlap by 44.14×20px with dd — `td`
+- **P0 P37 text-overlap:** Visible text boxes overlap by 120.92×11px with td — `dt`
+- **P0 P37 text-overlap:** Visible text boxes overlap by 44.14×11px with td — `dd`
+- **P0 P37 text-overlap:** Visible text boxes overlap by 170.14×20px with p.euiTitle.euiCallOutHeader__title.css-1jvtbrd-euiTitle-xs-euiCallOutHeader-primary — `td`
+- **P0 P37 text-overlap:** Visible text boxes overlap by 116.72×20px with span.eui-textTruncate — `td`
+- **P0 P37 text-overlap:** Visible text boxes overlap by 25.42×20px with span.eui-textTruncate.euiButtonEmpty__text — `td`
+- **P1 P38 page-header-height:** Page header is 113px high — `[data-visual-region="page-header"] header.euiPageHeader.css-1kmz19p-euiPageHeader-m-border`
+- **P2 P38 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P38 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P38 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P38 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P38 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P38 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P38 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P38 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P38 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P38 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.euiSideNavItemButton-isOpen.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P38 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P38 line-height:** Line-height ratio is 1.33 — `p`
+- **P2 P38 line-height:** Line-height ratio is 1.2 — `[data-visual-region="page-header"] h1.euiTitle.css-4x7w6l-euiTitle-l`
+- **P2 P38 line-height:** Line-height ratio is 1.25 — `[data-visual-region="page-header"] p`
+- **P0 P38 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="page-header"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P0 P38 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="role-command-bar"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P2 P38 line-height:** Line-height ratio is 1.2 — `[data-visual-region="role-catalog"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P38 line-height:** Line-height ratio is 1.2 — `[data-visual-region="selected-role-workspace"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P38 line-height:** Line-height ratio is 1.14 — `[data-visual-region="selected-role-workspace"] button`
+- **P2 P38 line-height:** Line-height ratio is 1.14 — `[data-visual-region="selected-role-workspace"] button`
+- **P2 P38 line-height:** Line-height ratio is 1.14 — `[data-visual-region="selected-role-workspace"] button`
+- **P2 P38 line-height:** Line-height ratio is 1.14 — `[data-visual-region="selected-role-workspace"] button`
+- **P2 P38 line-height:** Line-height ratio is 1.14 — `[data-visual-region="selected-role-workspace"] button`
+- **P2 P38 line-height:** Line-height ratio is 1.14 — `[data-visual-region="selected-role-workspace"] button`
+- **P2 P38 line-height:** Line-height ratio is 1.14 — `[data-visual-region="selected-role-workspace"] button`
+- **P2 P38 line-height:** Line-height ratio is 1.14 — `[data-visual-region="selected-role-workspace"] button`
+- **P2 P38 line-height:** Line-height ratio is 1.14 — `[data-visual-region="selected-role-workspace"] button`
+- **P2 P38 line-height:** Line-height ratio is 1.14 — `[data-visual-region="selected-role-workspace"] button`
+- **P2 P38 line-height:** Line-height ratio is 1.14 — `[data-visual-region="selected-role-workspace"] button`
+- **P2 P38 line-height:** Line-height ratio is 1.14 — `[data-visual-region="selected-role-workspace"] button`
+- **P2 P38 line-height:** Line-height ratio is 1.14 — `[data-visual-region="selected-role-workspace"] button`
+- **P2 P38 line-height:** Line-height ratio is 1.14 — `[data-visual-region="selected-role-workspace"] button`
+- **P2 P38 line-height:** Line-height ratio is 1.14 — `[data-visual-region="selected-role-workspace"] button`
+- **P2 P38 line-height:** Line-height ratio is 1.14 — `[data-visual-region="selected-role-workspace"] button`
+- **P2 P38 line-height:** Line-height ratio is 1.14 — `[data-visual-region="selected-role-workspace"] button`
+- **P2 P38 line-height:** Line-height ratio is 1.14 — `[data-visual-region="selected-role-workspace"] button`
+- **P2 P38 line-height:** Line-height ratio is 1.14 — `[data-visual-region="selected-role-workspace"] button`
+- **P0 P38 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="selected-role-workspace"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P1 P39 page-header-height:** Page header is 113px high — `[data-visual-region="page-header"] header.euiPageHeader.css-1kmz19p-euiPageHeader-m-border`
+- **P2 P39 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P39 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P39 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P39 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P39 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P39 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P39 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P39 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P39 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P39 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.euiSideNavItemButton-isOpen.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P39 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P39 line-height:** Line-height ratio is 1.33 — `p`
+- **P2 P39 line-height:** Line-height ratio is 1.2 — `[data-visual-region="page-header"] h1.euiTitle.css-4x7w6l-euiTitle-l`
+- **P2 P39 line-height:** Line-height ratio is 1.25 — `[data-visual-region="page-header"] p`
+- **P0 P39 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="page-header"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P2 P39 line-height:** Line-height ratio is 1.2 — `[data-visual-region="effective-access-query"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P39 line-height:** Line-height ratio is 1.33 — `[data-visual-region="effective-access-query"] label#:r3:-label.euiFormLabel.euiFormRow__label.css-1j7t7ey-euiFormLabel`
+- **P2 P39 line-height:** Line-height ratio is 1.33 — `[data-visual-region="effective-access-query"] label#:r5:-label.euiFormLabel.euiFormRow__label.css-1j7t7ey-euiFormLabel`
+- **P2 P39 line-height:** Line-height ratio is 1.33 — `[data-visual-region="effective-access-query"] label#:r7:-label.euiFormLabel.euiFormRow__label.css-1j7t7ey-euiFormLabel`
+- **P2 P39 line-height:** Line-height ratio is 1.33 — `[data-visual-region="effective-access-query"] label#:r9:-label.euiFormLabel.euiFormRow__label.css-1j7t7ey-euiFormLabel`
+- **P0 P39 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="effective-access-query"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P2 P39 line-height:** Line-height ratio is 1.14 — `[data-visual-region="permission-results-workspace"] button`
+- **P2 P39 line-height:** Line-height ratio is 1.14 — `[data-visual-region="permission-results-workspace"] button`
+- **P2 P39 line-height:** Line-height ratio is 1.14 — `[data-visual-region="permission-results-workspace"] th`
+- **P2 P39 line-height:** Line-height ratio is 1.14 — `[data-visual-region="permission-results-workspace"] th`
+- **P2 P39 line-height:** Line-height ratio is 1.14 — `[data-visual-region="permission-results-workspace"] th`
+- **P2 P39 line-height:** Line-height ratio is 1.14 — `[data-visual-region="permission-results-workspace"] th`
+- **P2 P39 line-height:** Line-height ratio is 1.14 — `[data-visual-region="permission-results-workspace"] th`
+- **P2 P39 line-height:** Line-height ratio is 1.14 — `[data-visual-region="permission-results-workspace"] th`
+- **P1 P40 page-header-height:** Page header is 113px high — `[data-visual-region="page-header"] header.euiPageHeader.css-1kmz19p-euiPageHeader-m-border`
+- **P2 P40 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P40 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P40 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P40 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P40 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P40 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P40 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P40 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P40 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P40 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P40 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.euiSideNavItemButton-isOpen.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P40 line-height:** Line-height ratio is 1.33 — `p`
+- **P2 P40 line-height:** Line-height ratio is 1.2 — `[data-visual-region="page-header"] h1.euiTitle.css-4x7w6l-euiTitle-l`
+- **P2 P40 line-height:** Line-height ratio is 1.25 — `[data-visual-region="page-header"] p`
+- **P0 P40 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="page-header"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P2 P40 line-height:** Line-height ratio is 1.33 — `label#:r3:-label.euiFormLabel.euiFormRow__label.css-1j7t7ey-euiFormLabel`
+- **P2 P40 line-height:** Line-height ratio is 1.33 — `label#:r5:-label.euiFormLabel.euiFormRow__label.css-1j7t7ey-euiFormLabel`
+- **P2 P40 line-height:** Line-height ratio is 1.2 — `h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P40 line-height:** Line-height ratio is 1.14 — `button`
+- **P2 P40 line-height:** Line-height ratio is 1.14 — `button`
+- **P2 P40 line-height:** Line-height ratio is 1.14 — `button`
+- **P2 P40 line-height:** Line-height ratio is 1.14 — `button`
+- **P2 P40 line-height:** Line-height ratio is 1.14 — `button`
+- **P2 P40 line-height:** Line-height ratio is 1.14 — `button`
+- **P2 P40 line-height:** Line-height ratio is 1.2 — `h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P40 line-height:** Line-height ratio is 1.14 — `th`
+- **P2 P40 line-height:** Line-height ratio is 1.14 — `th`
+- **P2 P40 line-height:** Line-height ratio is 1.14 — `th`
+- **P2 P40 line-height:** Line-height ratio is 1.14 — `th`
+- **P2 P40 line-height:** Line-height ratio is 1.14 — `th`
+- **P2 P40 line-height:** Line-height ratio is 1.14 — `th`
+- **P2 P40 line-height:** Line-height ratio is 1.2 — `h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P40 line-height:** Line-height ratio is 1.14 — `dt`
+- **P2 P40 line-height:** Line-height ratio is 1.14 — `dt`
+- **P2 P40 line-height:** Line-height ratio is 1.14 — `dt`
+- **P2 P40 line-height:** Line-height ratio is 1.14 — `dt`
+- **P0 P40 text-overlap:** Visible text boxes overlap by 78.59×14px with span.eui-textTruncate — `li`
+- **P0 P40 text-overlap:** Visible text boxes overlap by 78.59×6px with li — `span.eui-textTruncate`
+- **P1 P41 page-header-height:** Page header is 113px high — `[data-visual-region="page-header"] header.euiPageHeader.css-1kmz19p-euiPageHeader-m-border`
+- **P1 P41 colored-title-bar:** Heading is rendered as a wide colored surface instead of plain Kibana title text — `h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P41 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P41 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P41 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P41 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P41 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P41 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P41 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P41 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P41 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P41 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P41 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.euiSideNavItemButton-isOpen.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P41 line-height:** Line-height ratio is 1.33 — `p`
+- **P2 P41 line-height:** Line-height ratio is 1.2 — `[data-visual-region="page-header"] h1.euiTitle.css-4x7w6l-euiTitle-l`
+- **P2 P41 line-height:** Line-height ratio is 1.25 — `[data-visual-region="page-header"] p`
+- **P0 P41 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="page-header"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P2 P41 line-height:** Line-height ratio is 1.33 — `label#:r3:-label.euiFormLabel.euiFormRow__label.css-1j7t7ey-euiFormLabel`
+- **P2 P41 line-height:** Line-height ratio is 1.33 — `label#:r5:-label.euiFormLabel.euiFormRow__label.css-1j7t7ey-euiFormLabel`
+- **P2 P41 line-height:** Line-height ratio is 1.2 — `h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P41 line-height:** Line-height ratio is 1.2 — `h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P41 line-height:** Line-height ratio is 1.2 — `h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P41 line-height:** Line-height ratio is 1.14 — `th`
+- **P2 P41 line-height:** Line-height ratio is 1.14 — `th`
+- **P2 P41 line-height:** Line-height ratio is 1.14 — `th`
+- **P2 P41 line-height:** Line-height ratio is 1.14 — `th`
+- **P2 P41 line-height:** Line-height ratio is 1.14 — `th`
+- **P2 P41 line-height:** Line-height ratio is 1.14 — `th`
+- **P2 P41 line-height:** Line-height ratio is 1.2 — `h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P41 line-height:** Line-height ratio is 1.14 — `button`
+- **P2 P41 line-height:** Line-height ratio is 1.14 — `button`
+- **P2 P41 line-height:** Line-height ratio is 1.14 — `button`
+- **P2 P41 line-height:** Line-height ratio is 1.14 — `button`
+- **P0 P41 text-overlap:** Visible text boxes overlap by 38.88×24px with th — `h2.euiTitle.css-16incrq-euiTitle-s`
+- **P0 P41 text-overlap:** Visible text boxes overlap by 38.88×12px with p — `th`
+- **P0 P41 text-overlap:** Visible text boxes overlap by 71.77×28px with td — `p`
+- **P0 P41 text-overlap:** Visible text boxes overlap by 7.77×15.5px with span.euiBadge__text.css-1vg55k4-euiBadge__text — `p`
+- **P0 P41 text-overlap:** Visible text boxes overlap by 67.83×23px with button — `td`
+- **P0 P41 text-overlap:** Visible text boxes overlap by 67.83×13px with td — `button`
+- **P0 P41 text-overlap:** Visible text boxes overlap by 7.66×20px with strong — `td`
+- **P0 P41 text-overlap:** Visible text boxes overlap by 25.11×16px with span.euiBadge__text.css-1vg55k4-euiBadge__text — `td`
+- **P0 P41 text-overlap:** Visible text boxes overlap by 17.83×16px with span — `span`
+- **P0 P41 text-overlap:** Visible text boxes overlap by 59.16×20px with span.eui-textTruncate.euiButtonEmpty__text — `td`
+- **P1 P42 page-header-height:** Page header is 113px high — `[data-visual-region="page-header"] header.euiPageHeader.css-1kmz19p-euiPageHeader-m-border`
+- **P2 P42 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P42 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P42 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P42 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P42 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P42 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P42 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P42 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P42 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P42 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P42 line-height:** Line-height ratio is 1.3 — `button.euiSideNavItemButton.euiSideNavItemButton-isOpen.css-1fu1qso-euiSideNavItemButton-trunk`
+- **P2 P42 line-height:** Line-height ratio is 1.33 — `p`
+- **P2 P42 line-height:** Line-height ratio is 1.2 — `[data-visual-region="page-header"] h1.euiTitle.css-4x7w6l-euiTitle-l`
+- **P2 P42 line-height:** Line-height ratio is 1.25 — `[data-visual-region="page-header"] p`
+- **P0 P42 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="page-header"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P2 P42 line-height:** Line-height ratio is 1.33 — `[data-visual-region="theme-command"] label#:r3:-label.euiFormLabel.euiFormRow__label.css-1j7t7ey-euiFormLabel`
+- **P2 P42 line-height:** Line-height ratio is 1.33 — `[data-visual-region="theme-command"] label#:r5:-label.euiFormLabel.euiFormRow__label.css-1j7t7ey-euiFormLabel`
+- **P0 P42 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="theme-command"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P2 P42 line-height:** Line-height ratio is 1.2 — `[data-visual-region="theme-catalog"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P42 line-height:** Line-height ratio is 1.2 — `[data-visual-region="theme-preview"] h2.euiTitle.css-16incrq-euiTitle-s`
+- **P2 P42 line-height:** Line-height ratio is 1.14 — `[data-visual-region="theme-preview"] button`
+- **P2 P42 line-height:** Line-height ratio is 1.14 — `[data-visual-region="theme-preview"] button`
+- **P2 P42 line-height:** Line-height ratio is 1.14 — `[data-visual-region="theme-preview"] button`
+- **P2 P42 line-height:** Line-height ratio is 1.33 — `[data-visual-region="theme-preview"] label#:r7:-label.euiFormLabel.euiFormRow__label.css-1j7t7ey-euiFormLabel`
+- **P2 P42 line-height:** Line-height ratio is 1.33 — `[data-visual-region="theme-preview"] label#:r9:-label.euiFormLabel.euiFormRow__label.css-1j7t7ey-euiFormLabel`
+- **P2 P42 line-height:** Line-height ratio is 1.33 — `[data-visual-region="theme-preview"] label#:rb:-label.euiFormLabel.euiFormRow__label.css-1j7t7ey-euiFormLabel`
+- **P2 P42 line-height:** Line-height ratio is 1.25 — `[data-visual-region="theme-preview"] p.euiTitle.euiCallOutHeader__title.css-1fvls3y-euiTitle-xs-euiCallOutHeader-warning`
+- **P0 P42 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="theme-preview"] button.euiButton.p42FocusDemo.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
+- **P0 P42 text-contrast:** Text contrast is 1.72:1 — `[data-visual-region="theme-preview"] button.euiButton.css-6jvrl1-euiButtonDisplay-m-defaultMinWidth-fill-primary`
