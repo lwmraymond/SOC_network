@@ -1,0 +1,3 @@
+node=v22.16.0
+npm=10.9.2
+source=f351391910c627b01f36bbb819f7eb50ce395181
