@@ -90,8 +90,12 @@ async function waitReady(page, spec) {
 async function webpScreenshot(page, destination, options) {
   const temporary = `${destination}.png`;
   await page.screenshot({ path: temporary, type: 'png', animations: 'disabled', ...options });
+  const png = await readFile(temporary);
+  if (png.toString('ascii', 1, 4) !== 'PNG') throw new Error(`Unexpected screenshot format for ${destination}`);
+  const pixelSize = { width: png.readUInt32BE(16), height: png.readUInt32BE(20) };
   await run('cwebp', ['-quiet', '-mt', '-q', String(quality), temporary, '-o', destination]);
   await unlink(temporary);
+  return pixelSize;
 }
 
 async function capturePair(page, spec, readiness) {
@@ -100,13 +104,14 @@ async function capturePair(page, spec, readiness) {
   const fullPath = path.join(fullDir, filename);
   await page.evaluate(() => window.scrollTo(0, 0));
   await page.waitForTimeout(200);
-  await webpScreenshot(page, firstPath, { fullPage: false });
+  const firstPixelSize = await webpScreenshot(page, firstPath, { fullPage: false });
   const pageSize = await page.evaluate(() => ({
     width: Math.max(document.documentElement.scrollWidth, document.body.scrollWidth),
     height: Math.max(document.documentElement.scrollHeight, document.body.scrollHeight),
   }));
-  const clip = { x: 0, y: 0, width: Math.min(pageSize.width, 16_000), height: Math.min(pageSize.height, 32_000) };
-  await webpScreenshot(page, fullPath, { clip, captureBeyondViewport: true });
+  if (pageSize.width > 16_000 || pageSize.height > 32_000) throw new Error(`Full page exceeds evidence limit: ${pageSize.width}×${pageSize.height}`);
+  const fullPixelSize = await webpScreenshot(page, fullPath, { fullPage: true });
+  if (fullPixelSize.height < pageSize.height) throw new Error(`Full-page capture clipped at ${fullPixelSize.height}px; expected at least ${pageSize.height}px`);
   const common = {
     pageId: spec.id,
     route: spec.route,
@@ -127,8 +132,8 @@ async function capturePair(page, spec, readiness) {
     reviewerNote: 'Pending individual human visual review; this record cannot support a score until the note is replaced.',
   };
   return Promise.all([
-    { ...common, kind: 'first-viewport', path: path.relative(output, firstPath).split(path.sep).join('/'), pixelSize: viewport },
-    { ...common, kind: 'full-page', path: path.relative(output, fullPath).split(path.sep).join('/'), pixelSize: { width: clip.width, height: clip.height } },
+    { ...common, kind: 'first-viewport', path: path.relative(output, firstPath).split(path.sep).join('/'), pixelSize: firstPixelSize },
+    { ...common, kind: 'full-page', path: path.relative(output, fullPath).split(path.sep).join('/'), pixelSize: fullPixelSize },
   ].map(async (record) => ({ ...record, byteSize: (await stat(path.join(output, record.path))).size, sha256: await sha256(path.join(output, record.path)) })));
 }
 
@@ -141,9 +146,17 @@ async function validate(images, pages) {
     for (const page of pages) if (!records.some(({ pageId }) => pageId === page.id)) errors.push(`${kind}: missing ${page.id}`);
     for (const record of records) {
       if (!record.validity.valid) errors.push(`${kind}: invalid ${record.pageId}`);
+      if (record.pixelSize.width !== viewport.width) errors.push(`${kind}: ${record.pageId} width ${record.pixelSize.width}`);
+      if (kind === 'first-viewport' && record.pixelSize.height !== viewport.height) errors.push(`${kind}: ${record.pageId} height ${record.pixelSize.height}`);
+      if (kind === 'full-page' && record.pixelSize.height < viewport.height) errors.push(`${kind}: ${record.pageId} height ${record.pixelSize.height}`);
       try { if ((await stat(path.join(output, record.path))).size < 2_000) errors.push(`${kind}: ${record.pageId} file too small`); }
       catch (error) { errors.push(`${kind}: ${record.pageId} missing (${error.message})`); }
     }
+  }
+  for (const page of pages) {
+    const first = images.find((image) => image.pageId === page.id && image.kind === 'first-viewport');
+    const full = images.find((image) => image.pageId === page.id && image.kind === 'full-page');
+    if (first && full && full.pixelSize.height > viewport.height && first.sha256 === full.sha256) errors.push(`full-page: ${page.id} is byte-identical to first viewport`);
   }
   return {
     valid: errors.length === 0,
