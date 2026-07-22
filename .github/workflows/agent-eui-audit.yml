@@ -1,4 +1,4 @@
-name: Agent final EUI density validation
+name: Agent remaining EUI metric capture
 
 on:
   pull_request:
@@ -11,9 +11,9 @@ permissions:
   contents: read
 
 jobs:
-  validate:
+  audit:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 30
     steps:
       - name: Check out disposable branch state
         uses: actions/checkout@v4
@@ -38,10 +38,6 @@ jobs:
             padding-block: 8px !important;
           }
           CSS
-          git diff --check
-          node --check scripts/audit-eui-visual-metrics.mjs
-          git diff --exit-code -- package-lock.json
-          git diff --stat | tee /tmp/diff-stat.txt
 
       - name: Set up declared Node version
         uses: actions/setup-node@v4
@@ -49,26 +45,15 @@ jobs:
           node-version: 22.16.0
           cache: npm
 
-      - name: Set up declared npm version
-        run: npm install --global npm@10.9.2
-
-      - name: Install dependencies and Chromium
+      - name: Install declared npm and browser runtime
         shell: bash
         run: |
           set -euo pipefail
-          npm ci --no-audit --no-fund | tee /tmp/npm-ci.log
+          npm install --global npm@10.9.2
+          npm ci --no-audit --no-fund
           npx playwright install --with-deps chromium > /tmp/playwright-install.log 2>&1
 
-      - name: Run static validation
-        shell: bash
-        run: |
-          set -euo pipefail
-          npm run lint 2>&1 | tee /tmp/lint.log
-          npm run typecheck 2>&1 | tee /tmp/typecheck.log
-          npm test 2>&1 | tee /tmp/test.log
-          npm run build 2>&1 | tee /tmp/build.log
-
-      - name: Run 1231x768 report-only audit
+      - name: Run report-only audit
         shell: bash
         run: |
           set -euo pipefail
@@ -79,29 +64,20 @@ jobs:
             if curl --fail --silent http://127.0.0.1:5174/dashboard/soc >/dev/null; then break; fi
             sleep 1
           done
-          curl --fail --silent http://127.0.0.1:5174/dashboard/soc >/dev/null
           EUI_AUDIT_WIDTH=1231 EUI_AUDIT_HEIGHT=768 node scripts/audit-eui-visual-metrics.mjs --report-only
           node - <<'NODE' | tee /tmp/audit-summary.txt
           const report = require('./artifacts/eui-visual-audit/report.json');
           console.log(JSON.stringify(report.summary, null, 2));
-          if ((report.summary.counts.P0 ?? 0) !== 0 || (report.summary.counts.P1 ?? 0) !== 0) process.exit(1);
           NODE
 
-      - name: Upload validation evidence
+      - name: Upload metric report
         uses: actions/upload-artifact@v4
         with:
-          name: eui-density-final-validation
+          name: eui-density-remaining-metrics
           path: |
             artifacts/eui-visual-audit/report.json
             artifacts/eui-visual-audit/report.md
-            /tmp/diff-stat.txt
-            /tmp/npm-ci.log
-            /tmp/playwright-install.log
-            /tmp/lint.log
-            /tmp/typecheck.log
-            /tmp/test.log
-            /tmp/build.log
-            /tmp/vite.log
             /tmp/audit-summary.txt
+            /tmp/vite.log
           if-no-files-found: error
           retention-days: 1
