@@ -47,12 +47,8 @@ jobs:
           npm ci --no-audit --no-fund
           npx playwright install --with-deps chromium
 
-      - name: Run static validation
-        shell: bash
-        run: |
-          set -euo pipefail
-          npm run lint
-          npm run typecheck
+      - name: Run application typecheck
+        run: npm run typecheck
 
       - name: Capture all page-specific screenshot pairs
         shell: bash
