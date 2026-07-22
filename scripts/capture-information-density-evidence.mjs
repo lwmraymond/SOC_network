@@ -55,7 +55,7 @@ async function waitReady(page, spec) {
   }, { rootSelector: spec.rootSelector, canonicalPath: target.pathname, minimumText }, { timeout: 30_000 });
 
   const samples = [];
-  for (let index = 0; index < 3; index += 1) {
+  for (let index = 0; index < 4; index += 1) {
     samples.push(await page.evaluate((selector) => {
       const root = document.querySelector(selector);
       return {
@@ -64,16 +64,16 @@ async function waitReady(page, spec) {
         documentHeight: document.documentElement.scrollHeight,
       };
     }, spec.rootSelector));
-    if (index < 2) await page.waitForTimeout(600);
+    if (index < 3) await page.waitForTimeout(600);
   }
-  const stable = samples.slice(1).every((sample, index) => {
-    const previous = samples[index];
-    return Math.abs(sample.textLength - previous.textLength) / Math.max(1, previous.textLength) <= 0.01
-      && Math.abs(sample.rootHeight - previous.rootHeight) / Math.max(1, previous.rootHeight) <= 0.01;
-  });
+  const previous = samples.at(-2);
+  const latest = samples.at(-1);
+  const stable = Math.abs(latest.textLength - previous.textLength) / Math.max(1, previous.textLength) <= 0.01
+    && Math.abs(latest.rootHeight - previous.rootHeight) / Math.max(1, previous.rootHeight) <= 0.01
+    && Math.abs(latest.documentHeight - previous.documentHeight) / Math.max(1, previous.documentHeight) <= 0.01;
   if (!stable) throw new Error(`Unstable page after readiness: ${JSON.stringify(samples)}`);
 
-  return page.evaluate(({ selector, canonicalPath, minimumText }) => {
+  return page.evaluate(({ selector, canonicalPath, minimumText, stableSamples }) => {
     const root = document.querySelector(selector);
     const text = (root?.innerText ?? '').replace(/\s+/g, ' ').trim();
     return {
@@ -86,9 +86,9 @@ async function waitReady(page, spec) {
       rootScrollHeight: root?.scrollHeight ?? 0,
       documentScrollWidth: document.documentElement.scrollWidth,
       documentScrollHeight: document.documentElement.scrollHeight,
-      stableSamples: samples,
+      stableSamples,
     };
-  }, { selector: spec.rootSelector, canonicalPath: target.pathname, minimumText });
+  }, { selector: spec.rootSelector, canonicalPath: target.pathname, minimumText, stableSamples: samples });
 }
 
 async function capture(page, spec, readiness) {
