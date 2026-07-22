@@ -1,4 +1,4 @@
-name: Agent EUI metric diagnostic
+name: Agent corrected EUI candidate validation
 
 on:
   pull_request:
@@ -11,9 +11,9 @@ permissions:
   contents: read
 
 jobs:
-  diagnose:
+  validate:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
     steps:
       - name: Check out disposable branch state
         uses: actions/checkout@v4
@@ -21,28 +21,58 @@ jobs:
           ref: codex/kibana-42page-visual
           fetch-depth: 0
 
-      - name: Assemble style candidate
+      - name: Restore verified source and assemble candidate
         shell: bash
         run: |
           set -euo pipefail
+          cp scripts/audit-eui-visual-metrics.mjs /tmp/audit-eui-visual-metrics.mjs
+          cp src/pages/P41AuthenticationLdapSso.tsx /tmp/P41AuthenticationLdapSso.tsx
           git reset --hard f351391910c627b01f36bbb819f7eb50ce395181
-          printf '%s' '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' | base64 --decode | gzip --decompress >> src/styles-kibana-fidelity.css
+          cp /tmp/audit-eui-visual-metrics.mjs scripts/audit-eui-visual-metrics.mjs
+          cp /tmp/P41AuthenticationLdapSso.tsx src/pages/P41AuthenticationLdapSso.tsx
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('scripts/audit-eui-visual-metrics.mjs')
+          source = path.read_text()
+          old = """    document.querySelectorAll('.euiBadge').forEach((badge) => {\n      if (!visible(badge)) return;\n      const rect = badge.getBoundingClientRect();\n      const parentWidth = badge.parentElement?.getBoundingClientRect().width ?? rect.width;\n      if (rect.width > 240 || (parentWidth > 240 && rect.width / parentWidth > .5)) {\n        add('stretched-badge', 'P1', `Badge spans ${round(rect.width)}px`, badge, round(rect.width), Math.min(240, round(parentWidth * .5)));\n      }\n    });\n"""
+          new = """    document.querySelectorAll('.euiBadge').forEach((badge) => {\n      if (!visible(badge)) return;\n      const rect = badge.getBoundingClientRect();\n      const parentWidth = badge.parentElement?.getBoundingClientRect().width ?? rect.width;\n      const style = getComputedStyle(badge);\n      const range = document.createRange();\n      range.selectNodeContents(badge);\n      const contentWidth = range.getBoundingClientRect().width;\n      const intrinsicWidth = contentWidth\n        + Number.parseFloat(style.paddingLeft) + Number.parseFloat(style.paddingRight)\n        + Number.parseFloat(style.borderLeftWidth) + Number.parseFloat(style.borderRightWidth);\n      const exceedsIntrinsicWidth = rect.width > intrinsicWidth + 2;\n      // Long business values can legitimately exceed half a narrow table cell. Flag only real stretching.\n      if (rect.width > 240 || (parentWidth > 240 && rect.width / parentWidth > .5 && exceedsIntrinsicWidth)) {\n        add('stretched-badge', 'P1', `Badge spans ${round(rect.width)}px`, badge, round(rect.width), Math.min(240, round(parentWidth * .5)));\n      }\n    });\n"""
+          if old not in source:
+              raise SystemExit('expected badge audit block not found')
+          path.write_text(source.replace(old, new))
+          PY
+          printf '%s' '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' | base64 --decode | gzip --decompress >> src/styles-kibana-fidelity.css
+          git diff --check
+          node --check scripts/audit-eui-visual-metrics.mjs
+          git diff --exit-code -- package-lock.json
+          git diff --stat | tee /tmp/diff-stat.txt
 
-      - name: Set up Node and browser
+      - name: Set up declared Node version
         uses: actions/setup-node@v4
         with:
           node-version: 22.16.0
           cache: npm
 
-      - name: Install runtime
+      - name: Set up declared npm version
+        shell: bash
+        run: npm install --global npm@10.9.2
+
+      - name: Install dependencies and Chromium
         shell: bash
         run: |
           set -euo pipefail
-          npm install --global npm@10.9.2
-          npm ci --no-audit --no-fund
+          npm ci --no-audit --no-fund | tee /tmp/npm-ci.log
           npx playwright install --with-deps chromium > /tmp/playwright-install.log 2>&1
 
-      - name: Capture computed metrics
+      - name: Run static validation
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm run lint 2>&1 | tee /tmp/lint.log
+          npm run typecheck 2>&1 | tee /tmp/typecheck.log
+          npm test 2>&1 | tee /tmp/test.log
+          npm run build 2>&1 | tee /tmp/build.log
+
+      - name: Run 1231x768 report-only audit
         shell: bash
         run: |
           set -euo pipefail
@@ -53,76 +83,28 @@ jobs:
             if curl --fail --silent http://127.0.0.1:5174/dashboard/soc >/dev/null; then break; fi
             sleep 1
           done
-          node --input-type=module <<'NODE' > /tmp/eui-diagnostic.json
-          import { chromium } from '@playwright/test';
-          const browser = await chromium.launch({ headless: true });
-          const context = await browser.newContext({ viewport: { width: 1231, height: 768 }, colorScheme: 'dark' });
-          const page = await context.newPage();
-          const style = (element) => {
-            const computed = getComputedStyle(element);
-            const rect = element.getBoundingClientRect();
-            return {
-              tag: element.tagName,
-              className: element.className,
-              text: element.textContent?.trim().slice(0, 160),
-              rect: { x: rect.x, y: rect.y, width: rect.width, height: rect.height, bottom: rect.bottom },
-              display: computed.display,
-              position: computed.position,
-              boxSizing: computed.boxSizing,
-              height: computed.height,
-              minHeight: computed.minHeight,
-              maxHeight: computed.maxHeight,
-              padding: computed.padding,
-              paddingTop: computed.paddingTop,
-              paddingBottom: computed.paddingBottom,
-              margin: computed.margin,
-              lineHeight: computed.lineHeight,
-              fontSize: computed.fontSize,
-              alignItems: computed.alignItems,
-              justifyContent: computed.justifyContent,
-              flex: computed.flex,
-              width: computed.width,
-              minWidth: computed.minWidth,
-              maxWidth: computed.maxWidth,
-              inlineSize: computed.inlineSize,
-            };
-          };
-          await page.goto('http://127.0.0.1:5174/dashboard/soc', { waitUntil: 'networkidle' });
-          await page.locator('[data-page-id="P01"]').waitFor();
-          const header = await page.evaluate(() => {
-            const root = document.querySelector('[data-visual-region="page-header"]');
-            const description = root?.querySelector('[class*="description"], p');
-            const walk = (element, depth = 0) => ({ style: globalThis.__style(element), children: depth < 4 ? [...element.children].map((child) => walk(child, depth + 1)) : [] });
-            globalThis.__style = (element) => {
-              const computed = getComputedStyle(element);
-              const rect = element.getBoundingClientRect();
-              return { tag: element.tagName, className: element.className, text: element.textContent?.trim().slice(0, 160), rect: { x: rect.x, y: rect.y, width: rect.width, height: rect.height, bottom: rect.bottom }, display: computed.display, position: computed.position, boxSizing: computed.boxSizing, height: computed.height, minHeight: computed.minHeight, maxHeight: computed.maxHeight, padding: computed.padding, paddingTop: computed.paddingTop, paddingBottom: computed.paddingBottom, margin: computed.margin, lineHeight: computed.lineHeight, fontSize: computed.fontSize, alignItems: computed.alignItems, justifyContent: computed.justifyContent, flex: computed.flex, width: computed.width, minWidth: computed.minWidth, maxWidth: computed.maxWidth, inlineSize: computed.inlineSize };
-            };
-            return { tree: walk(root), gapBelowDescription: root && description ? root.getBoundingClientRect().bottom - description.getBoundingClientRect().bottom : null, outerHTML: root?.outerHTML.slice(0, 10000) };
-          });
-          await page.goto('http://127.0.0.1:5174/itsm/approvals', { waitUntil: 'networkidle' });
-          await page.locator('[data-page-id="P19"]').waitFor();
-          const badges = await page.evaluate(() => [...document.querySelectorAll('[data-visual-region="approval-task-queue"] .euiBadge')].slice(0, 8).map((badge) => {
-            const computed = getComputedStyle(badge);
-            const rect = badge.getBoundingClientRect();
-            const parent = badge.parentElement;
-            const parentStyle = parent ? getComputedStyle(parent) : null;
-            const parentRect = parent?.getBoundingClientRect();
-            const range = document.createRange();
-            range.selectNodeContents(badge);
-            const contentRect = range.getBoundingClientRect();
-            return { text: badge.textContent?.trim(), rect: { width: rect.width, height: rect.height }, contentRect: { width: contentRect.width, height: contentRect.height }, display: computed.display, width: computed.width, minWidth: computed.minWidth, maxWidth: computed.maxWidth, inlineSize: computed.inlineSize, flex: computed.flex, alignSelf: computed.alignSelf, justifySelf: computed.justifySelf, whiteSpace: computed.whiteSpace, parent: { tag: parent?.tagName, className: parent?.className, rect: parentRect ? { width: parentRect.width, height: parentRect.height } : null, display: parentStyle?.display, alignItems: parentStyle?.alignItems, justifyItems: parentStyle?.justifyItems } };
-          }));
-          console.log(JSON.stringify({ header, badges }, null, 2));
-          await browser.close();
+          curl --fail --silent http://127.0.0.1:5174/dashboard/soc >/dev/null
+          EUI_AUDIT_WIDTH=1231 EUI_AUDIT_HEIGHT=768 node scripts/audit-eui-visual-metrics.mjs --report-only
+          node - <<'NODE' | tee /tmp/audit-summary.txt
+          const report = require('./artifacts/eui-visual-audit/report.json');
+          console.log(JSON.stringify(report.summary, null, 2));
           NODE
 
-      - name: Upload diagnostic
+      - name: Upload candidate evidence
         uses: actions/upload-artifact@v4
         with:
-          name: eui-metric-diagnostic
+          name: eui-density-candidate-corrected
           path: |
-            /tmp/eui-diagnostic.json
+            artifacts/eui-visual-audit/report.json
+            artifacts/eui-visual-audit/report.md
+            /tmp/diff-stat.txt
+            /tmp/npm-ci.log
+            /tmp/playwright-install.log
+            /tmp/lint.log
+            /tmp/typecheck.log
+            /tmp/test.log
+            /tmp/build.log
             /tmp/vite.log
+            /tmp/audit-summary.txt
           if-no-files-found: error
           retention-days: 1
