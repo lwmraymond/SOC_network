@@ -29,7 +29,10 @@ jobs:
           set -euxo pipefail
           : > /tmp/information-density.b64
           for segment in 00 01 02 03 04 05 06 07; do
-            curl --fail --silent --show-error --location "https://raw.githubusercontent.com/lwmraymond/SOC_network/${HEAD_SHA}/.density-audit-temp/payload-${segment}" >> /tmp/information-density.b64
+            curl --fail --silent --show-error --location "https://raw.githubusercontent.com/lwmraymond/SOC_network/${HEAD_SHA}/.density-audit-temp/payload-${segment}" > "/tmp/payload-${segment}"
+            wc -c "/tmp/payload-${segment}"
+            sha256sum "/tmp/payload-${segment}"
+            cat "/tmp/payload-${segment}" >> /tmp/information-density.b64
           done
           wc -c /tmp/information-density.b64
           sha256sum /tmp/information-density.b64
