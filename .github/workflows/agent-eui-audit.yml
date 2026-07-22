@@ -1,0 +1,72 @@
+name: Agent temporary EUI metrics audit
+
+on:
+  push:
+    branches:
+      - codex/kibana-42page-visual
+    paths:
+      - .github/workflows/agent-eui-audit.yml
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Check out audit bootstrap
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify immutable source head
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD^)" = "f351391910c627b01f36bbb819f7eb50ce395181"
+
+      - name: Set up declared Node version
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.16.0
+          cache: npm
+
+      - name: Set up declared npm version
+        shell: bash
+        run: npm install --global npm@10.9.2
+
+      - name: Install dependencies and Chromium
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm ci
+          npx playwright install --with-deps chromium
+
+      - name: Run 1231x768 report-only visual metrics audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          VITE_ENABLE_FIXTURES=true npm run dev -- --host 127.0.0.1 --port 5174 > /tmp/eui-audit-vite.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          for attempt in $(seq 1 60); do
+            if curl --fail --silent http://127.0.0.1:5174/dashboard/soc >/dev/null; then
+              break
+            fi
+            sleep 1
+          done
+          curl --fail --silent http://127.0.0.1:5174/dashboard/soc >/dev/null
+          EUI_AUDIT_WIDTH=1231 EUI_AUDIT_HEIGHT=768 node scripts/audit-eui-visual-metrics.mjs --report-only
+          cp /tmp/eui-audit-vite.log artifacts/eui-visual-audit/vite.log
+          printf 'node=%s\nnpm=%s\nsource=%s\n' "$(node --version)" "$(npm --version)" "$(git rev-parse HEAD^)" > artifacts/eui-visual-audit/environment.txt
+
+      - name: Publish disposable audit evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f artifacts/eui-visual-audit/report.json artifacts/eui-visual-audit/report.md artifacts/eui-visual-audit/vite.log artifacts/eui-visual-audit/environment.txt
+          git commit -m "chore: record temporary EUI audit baseline"
+          git push origin HEAD:codex/kibana-42page-visual
