@@ -1,4 +1,4 @@
-name: Agent temporary EUI metrics audit
+name: Agent temporary EUI candidate validation
 
 on:
   pull_request:
@@ -8,24 +8,29 @@ on:
       - reopened
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  audit:
+  validate:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
     steps:
-      - name: Check out audit branch
+      - name: Check out disposable branch state
         uses: actions/checkout@v4
         with:
           ref: codex/kibana-42page-visual
           fetch-depth: 0
 
-      - name: Verify immutable source ancestry
+      - name: Restore verified source and apply candidate
         shell: bash
         run: |
           set -euo pipefail
-          git merge-base --is-ancestor f351391910c627b01f36bbb819f7eb50ce395181 HEAD
+          git reset --hard f351391910c627b01f36bbb819f7eb50ce395181
+          printf '%s' 'H4sICB15YGoCA2V1aS1jYW5kaWRhdGUucGF0Y2gA7TzbcuO2ku/+CsRJjsQxSYuSfJMsJzOTmU3qOIk3nqqclNeVgURIYoYiuSRlW1H0uh+wn7hfst0NgDdRsjzx7MPWpCY2CTQajb6jAdr1xmNmWRMvZfwwGcVelCaHfO56qSXmnnXnJXPuWzORxt4osWd/JGy4E9ieF7jigQ3PnC5vn9h29+z4yDnpMKfVOu529yzL2nG+vYODg13n/PZbZh2dmY7DDuBXp8WgYRzGrDkKgyRlN55rsjicp+KWhWP5lBhsucfkfxIqFhMvDNiACV/MRJDaIz9MRJI2GzcuT7meV4LdNoxv7IlIX6ZAxRDwNRvrQA2jr6eIRTqPA/b+q6Wa5hv2vgbtYF8DrPZv2XvWY43G6qulpijlk5/4TNhpeBnei/g1T0TTgH7PveJxCg8jnydA8+q9mnjV37PyFcJU3tAXsMSmwmiwwQXw4SCH8YJUxIkYpQgVw2+TjXwvkj//JX/9VhymB/pijGMIDFb3I0+n9ow/EA4bO+VYejRgYVl7v4wn9ibTdUReIBFRr8JEzxkqeqvgSsNIYfptjSToU3jgKcMCzxUcwzBNw9kaGk2Q7FaY5EuGTL5m+JQOLJnkhloK0aGxPPRU56InO+49N532ctJbahyzCNAw2VTgexlE0WwxWtpKUaB/l5ThFyXqskJUDINAtBKC1r8K54HrBZPXvgctiKJpKE3Tg5J0QZoG0K/DWQQW4l5jUzZRBq/YQhyj5bIL1mL/+IdskcvTTYTVdr0k8vmCfTEYsEYQBqKR99GyPN9LVffUc10REMBP89lQxE0JF0Z8BEAGYs4k5IuUBBkJF0jPTEHZgRRcj2kZ9JgbjubEE/3wJnMdyJhfcTUk4Vy7tHBKKsJWABXPhcnG3E+EkRFEToyomscxYMzF0NdN/UKferIjHufEGLmlPiochSAngDFvzJpltg9ytv/11zrbB0W2A0A9288HrGVo2Qdz369MqReFQhQ1C9FL4cEIfHQYKz3WHNiopGsIpJ8ZsJsGn6dhw2QNCDmh7+OTWgU8IVTj1vaCkT93RaJXcyfisR/e/2sT4t/+JuLfyoiJMUQv8FV54jp9VW1miTsVF15AvKqwXo5WxgiCcvR02KoMEpvr5beq+Ds1MI9IB49GpFdh6AseNAs+KuvXMVX5psmQ4+g77s9FnfOijgRA6AEcZDqaNg9v/sO1bw8OJxDEZzxqShU12DffsJvbasyWGCBUBRP0TQPWgSBwI1tvWremArhx8sd2/ti5RazOLcSEG3Ac6h9MgjnLScd0WuzgrG06p0/MWVBQX3A/mvJMCmX85UVgn2Oy9i2tt0lJGrGrOY7DIL2hhlv2gslXoBqSLz76kHfQWwefmg5EFg1nGOyQSTpsoHzE06Z8q5V3xEFJL/kC9HRDFpKlExroBkXc3BhGbKRrEqOtvw79MDZuy85TzZuIuRsiI28avd5QQJdA6+v1+BiMpnH7FCeppjYV1npnCThS7b+qMao+fm0MT4Zihh3Nk2mT2CGBqks3NtqgRJDnAcX8JkOyLhGrXiK3Wex+nvi0tryNcaluyVbNSu1Y3KEvbBrw5M5HogmKAPCm7KfljWCGMPEgdac28IuE0WQ3J2ArxybrgME4t0YlH9QuVXPiWSN1hlwyYy0cq0XmYPk6xz5PfwTbLpjYsyyerauMP4f0F2lAjZEDazzvaMqDQPgV76w6gzCecd/7kwIXdYMbaR8d9bOQkgNAqLFb3Vb3CPxuofmQOW37rA2OtdksNB8A8NEReiVHPrx4wdp2t49rQJ/rtBzzlB047VPz9KP2iRv9wlRwzDfyTV8pfVa9mzOT0qDwPng1gVFbrL2ScEtNygdtIq+icpvRoi9rEh3o9i+QrZgH6HmyRiPL1XX2fueJ+yiMZf4LAcPuHhX86+EhewlYUDUKvsdLQLZgXSz1UmDvkMc2e+vzCQsDfyHjBjIFBDxcsHQqND+ZlybCH9saO1JdIXpH8rIsi7tus0FqLVyLyLGAHAwXVw7+/F7PnABeCI8AxngCpMMEgqmBLJnHYw4m4oFwYAAqFDh9L2D/9IY80OtMxUPaMPViSPsCt5mTa+imOqJzpVkpMzWUjrcd8wR0vHuK+cXHKDkYuDeb47bX5/FEgOV1wNC69lG/mIDEPPVCsjiHnesxhmQgrszCKBjzBJcoYc8pe2pctRpY2yB+vn8HkExDIle/Wio24BBj1XPemywLusUuM5uzYj6+F4jvhaokyMCKep+It34IGYo0qByorPQK3kveAnL0kDkc6tIYKL0GV4OpoONgS2G2w7z7HBxQp6j4Rc9Ha8731JSWQvbfiHpgBU1bzL13qB+G6Xtm6pqwjXRT03XNBMb6ps+Hwm9UI1OS8sDlsYtmz0fppVLTQYGkAfrMKs24juN+wTzfgXlpZEw8RL4HuQhaoYhnYG6A49A5BgWPUCFxCgAFVmDjTKQcy1qk2CWjLKw7S3aewOMvNqxuB/aXDRuhLbmJIZNuowpe5o1KUQtqWIvfWK0rZT2gKQnZaKvHHfMMbPWsg/XLp9gqYmDFuIw8fxU+0HbnxrazqoT9n3MRL66B2hEkDS99v9mYOua0bU47ZrRFw8zhPE3DwER1fMXdiTAT8NtmkkLuP2kYt1q89tjzIYtulrLHL9bKqFEszFHoCvOGypQvBvuA9zU0vPLD0Yf924ZhaB7VYlS7wbwNZI/LzCaaer77E+BLbu0knAlMC1yZduCDjT/eLSJBFYoOjqZm5Nprma3baezNmkaBjgR0X2BJrdtqGdpJyD1UkbTmsqALwOXeY9UyU5Wbe7tWm0Haub3vQkDd3vmjZl2TMtjrjCbFBxtn08qdKSDwP06bzbEXJ0BQIkA/XRpCLbYuhsE+UvblLZBhFGCoqFwGorJnKR3FYonPo3+KBSp+IO7ZtcgzqiwxJ7Q/0OnEgLX6xffzAuVyn1/qPqBax3LPLZ2ZxKPDiE9EcnjVdV7OISUJUm+EviO4dHl0nYR2mjzgCcZOgOrcZHTc7QzP2rZ9yrsd4XYr5ya7oVInJ7sBUx2C0gX6iQ5oHowQisG4X8P4Axg92IByO5Ll4FDm4pfQ98EjYYKvcvtEoHoLL0qb76/iMA1TNDfw3BNIiGIFTmNdkstXy4ScknBtz10xnkJL5PlhuvoakinIc75a4i5iAlo8XtkMUN5BihWzMMafGHVAiyE9CUYLFsDK7gTjI9gaYWI2w1wLVkLjXfu90SfyJBE/RyJoqlorbW728s3VuevdMfJQeNYy2EcevlbbJeQKaoHAHNjjQPgV9LJIMnifkRHhACuJxMgbeyNrlA8d7ANHrUitwgJ1h1xxsrDAqWMYtRSH9i+kozmnNOVi+d5W+JeqcNAb++Khjz8s10OjQJOGvHM+C/oTHvXa3eihD5mRJU8PWiuNgL1YDsMHK/H+hOl6Q2KjBS0EAGucAUuzSSax5/bxB9A3g5ZUWHKOpAe48aShfdqKHkxnDNs/1eIcYQvWOyELhJ9EjgNtfdidTQILPUbSg6SZZnynGPCEKVul6eSbnOQ4eighvcCodYXbjGWVFa+noBu7TBqLSEC62DVL86kJ27CqCFIKZCUwnBVwMw550cgXSy15wOSTfhbFko1GBrFTQCcl0nPgNQl9z4Wdcdy08NTzFfXQDs380u24XBwbCtyKIROaJ0jDOgWUTvZAmSEXx/BoqIrXUtWneo3/+a//bvQzOvkQJoYso/+nRQ6p5/TlWYdFUsSjjKPW131I1YMEWYVvzMIm2vf0MoIx0bueD10wdUX18dlJ68Q1CjTKRMIsNGDukQlmiGlBX5fCrfsYuM6Dxf0UrG9VHTSDbQqwFgnsAKGFLK/n2O0jgs+c2RMU7rhNOm53C2rX6WCbfap1j+ytqODg8eJUaiOHGPwrUL7U6+ihXeR9S6kM4Oa/LujGKdqRli9QBOEtET39kI+GnbBZeHGXRZXqZwZOB067ahVt3Gg1PTqeBboxbviqDThcmL9OYgVRIGOepBiANSm7OWQw+TPC2nPI1D5yabUySJhMczPenQE2x8nNsTpbO5uNzEAWRPp5LaNXbJar9wJQWi/t309BQSzSQbBM1OgqFTc89rilw+IATwVvl7kiFDlJi7uCjJXHC/NLyBOGw67Rx32HdS81/7glndL3gvuF8LFF68G/MfifuH6qHIocnfu0dRX7mx5LTYBFEPBMJen/MYfQOF5Y2l0R66yhSO+FCEpU/sijCMiqLHIdYNs6LDrg7awvpp7VBZGXIS+R+xDUr6ewIvPL8dH4ZMyN1bcz4Xq8CS7E0laPdm4si3HLLHuqjWJaraM7aWfYVDA3C9LfjCmPiVvDYLsSBmuijQouWgZ4tlFDZ7eb07llWlrk+9X5ocyD5D7kc1L0OSn6nBR9Too+J0Wfk6LPSdH/y6So0/6cFO2cFFGN8/yNiupMyQ8PHgb7s3025YnUuYu1slbGj/0LHP82jGe/hPeMKv+D/WvB49GU6WKVySA/iUI6hY3ZTGqNGugJ31XgdJI/WNJ5w4qFwWuqvg2WTXGHisrk+5s7XbZORPrvCCv77RTPGlNbXhdYscOL88OcsjoqsZwvqZCnG5oArDvuOD+iqJkeT3R1vZEODf5ijZe+zxBz0gDiwghzg2SwvCm0m42fKKOBh8vvXl7Br+uXP17Cr59/+O51Q12+ym9DNJeSYJPqzz11EWJl1K/9FflC5RJ/EePB0o1BtbCWKeIVG3tABizZ90YfYMV6fd9pmCa6TWN18dJ1M7HSHBIvzAcaImclXVK6tYxlRRfPS5CK1xDbfp6n8vx6sJ+XeXmpxMzUsH15ID7Yv+dxQDqjEa5oKoXuQp2K1Wip9gFSzo+q+Rt1dMoS6kxg2LR98QazPW+USDWNwfhneEHFC84PoZcooVG1ZoJwQDdNINxfcHAiRan5SMw+VwbPPojFYKm7sLItxYcnaIobee8Y1o8uE0/FFYvoaHyKteD7xuoiByWqf0YiJOsI4cW5TBgLcKT86CCo/ZyykUJ3AOvCbmo+P1REXxirNQX4G/xWlxxAbuAI9dTJ05l9iQiei9eQgaby9K9xhacMjR2Yrh/+T/lODevHTeTyE+sD8dYaA1a8cG2PkkQd92wG0MdLrRPHaR/btnBG7njUWj9e2oIiP1baAkSf4nSPzA47wF/t9hEeKU3TmS9PGMFHgKQbLo8/NG7ZMHQX5h6TwZCBiMUY1MSS19ZcaxbS/ovJd3UCZUPwuZ4KcHYvTIbykf6HDmKw5R7SBMxnZQOeStG1a8iPpvzOg1yRNuHsC2+G1xc43suj3JT2epY7p/N/mNRuObOkBMYDyHUehQJPtto72Ds4fMFe0kdLaN7CxQgRTiC5nS7o5MoVOOUC1jaGbRkexiY2e3G4d1BZktyxT8Q7lQn8/rtMCU2ALC11E6C8gILbKP2pCFYoiiRjv078GG7hWXsNgpa0I2ls6uxO3dRRBMqtDGtVKaPcHZ1Lj+Gestpd3NSyTvtv0a0vJjRcIb87w4+4bndfS/348vpoq7Z1lU7nkVXuJp1pO7tGtLaCQh8YSHHu4zLqysQV/qOiV2ftbJm1s2nW7tZZW+uzrs27dnGqOnkdQBmF760Nkk1lMNddA4OMalkjxI+VXM9Lmm5qyiTXJHXDPPASX9cXthV6na52HV1VsW+mS14PolmwaAHbuwfwntfYWk/atgHr1DkfTx3OcA0R/vff01rtq/TLufUU1ZCAfVlhJPtMZZtROnb7KTQWPMQWSgtQFYtBMW7nUq2ZpLpAVp2z2BG1Tt7GkK1kjWVedY6VkFTMsKjC1aNi7TPKU03ubiLVrSPVXY92uK+uI9dp1dDb/nirtasXReRGLXM7cptlVN7fzKJ0kTe+48N1M8rengP7EzzVFiWW6LN4h3tPK5KloA0Bc+sISVSpoqfqTB+GgQYzqvaXl5p2H6MAv4REuOWM1zDiQdCUu2j0WKfZzaLl3cjaRdM+hBanyz/MC4jRWMmrTq++9h17qZV9P1SGyOtFjKrj2FYssrORwK8AqV2XCfF+fI9R+V3OUqi3quvIjy0uE5tusJI5XbTaJOxHBtXJm35ZM++hiecX8WRoFsSpRhrs6OjrYrtEYeygGruhd05L6OkzBWOjErnj8XDcfkYlWmeZ3p4+ic/ZoCfzWY0EPp9+Cj5n6J3jp/B5PB63hp1PymcXC4Px09isxzyZy3Lgp2Kyxu6cPI3H7ql79El5/EiAeGTQk7mchYBPw+YM/dP47J6Ks/H4k/JZlbGexGY9ZnskVu2yxLUDAwuHfhv4kePGErjxEXw5fMGuWqfMc7H4nC4wjfmQ4Ldi+JmYFzM8UMQP5NP70MLIKzdKxe+y6At1+S2ZLsHgFd4IsNb9jZbGiAMp8vQ3SURqeQEeH4TxwsIzG+BhJQFbz0mzFLq4/1gP5nSbZYfA/cz0wg4JP9NZ1m6C6tP5xxILFFK7wz4IESX0+V46jYU+1WKopEMRjKaIAtL4Gf+A4kC4BMIyHSdwz2cJrASkJXjgL0qSAtQXcucLHPs3UMGo8P4DMBN2T/lFArz9vyqOredaSFfRLUWBhRQ08JtCmXlXsjo6WS3kcFl2VhT7sd4i4REsVoLKpbdTPGPXuxJ1iKz+Okn5sJ1Vj5YLbq1iiSUb3GJ41FW45cDUn+b523yy9bG98iwFytZ8qZWEY0VK0fDBVEXKOqpwtu6Bn4NMWauQd28YfeYkr3EYFTnL2xxasJk+lSqYpeqBvKLD9B2dZ6FV0ol/kGZty/YMio2rpw+1a/WkxvafY07kdd2kM/yA2eiz3Iuc4EdMscTTIx/higi/w8WvQGY8YqA14H3U18IgNPzoBCvu+qaQy/Cj+YX8+qvkRU6YneP6EVBtsPH6o3mmrgR0zPwqHpN34zKb1w6gojyrLTSgYtpyW2cyW37SRnRl99Nwb5d6o2rsJLOpL23lV9Vqomrmw+pG1mh9tiNFVDt4tEedV+k+TAFItqx7uErupXVmZytcY7lit2QzCVvKGGhnh8xytm6vH6ti1Dvh/I8H6OrMvQ4arcc0hJQiM6GKq2KFm2cUch63se8EaA59KgiOxhPFZGoaxt6fQB33VcVNM7iYT4kHkAN9ncvdPzjykr73z863OieX0iovWHYflYp5hTs+xb764N05odt22wb26CM+eckTkOS5jPz7S2VEeCFRIcveYVAxnlfIqBZjcm17UBmdZKk+3izAy1tJUsE2e59NjgYvoyHq1d7/Ahf4FL7HUQAA' | base64 --decode | gzip --decompress > /tmp/eui-candidate.patch
+          git apply --index /tmp/eui-candidate.patch
+          git diff --cached --check
+          git diff --cached --exit-code -- package-lock.json
+          git diff --cached --stat | tee /tmp/diff-stat.txt
 
       - name: Set up declared Node version
         uses: actions/setup-node@v4
@@ -41,42 +46,51 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          npm ci
-          npx playwright install --with-deps chromium
+          npm ci --no-audit --no-fund | tee /tmp/npm-ci.log
+          npx playwright install --with-deps chromium > /tmp/playwright-install.log 2>&1
 
-      - name: Run 1231x768 report-only visual metrics audit
+      - name: Run static validation
         shell: bash
         run: |
           set -euo pipefail
-          VITE_ENABLE_FIXTURES=true npm run dev -- --host 127.0.0.1 --port 5174 > /tmp/eui-audit-vite.log 2>&1 &
+          npm run lint 2>&1 | tee /tmp/lint.log
+          npm run typecheck 2>&1 | tee /tmp/typecheck.log
+          npm test 2>&1 | tee /tmp/test.log
+          npm run build 2>&1 | tee /tmp/build.log
+
+      - name: Run 1231x768 report-only audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          VITE_ENABLE_FIXTURES=true npm run dev -- --host 127.0.0.1 --port 5174 > /tmp/vite.log 2>&1 &
           server_pid=$!
           trap 'kill "$server_pid" 2>/dev/null || true' EXIT
           for attempt in $(seq 1 60); do
-            if curl --fail --silent http://127.0.0.1:5174/dashboard/soc >/dev/null; then
-              break
-            fi
+            if curl --fail --silent http://127.0.0.1:5174/dashboard/soc >/dev/null; then break; fi
             sleep 1
           done
           curl --fail --silent http://127.0.0.1:5174/dashboard/soc >/dev/null
           EUI_AUDIT_WIDTH=1231 EUI_AUDIT_HEIGHT=768 node scripts/audit-eui-visual-metrics.mjs --report-only
-          cp /tmp/eui-audit-vite.log artifacts/eui-visual-audit/vite.log
-          printf 'node=%s\nnpm=%s\nhead=%s\n' "$(node --version)" "$(npm --version)" "$(git rev-parse HEAD)" > artifacts/eui-visual-audit/environment.txt
-          git archive --format=tar.gz --output=artifacts/eui-visual-audit/source-f351391.tar.gz f351391910c627b01f36bbb819f7eb50ce395181
+          node - <<'NODE' | tee /tmp/audit-summary.txt
+          const report = require('./artifacts/eui-visual-audit/report.json');
+          console.log(JSON.stringify(report.summary, null, 2));
+          NODE
 
-      - name: Upload disposable audit bundle
+      - name: Upload candidate evidence
         uses: actions/upload-artifact@v4
         with:
-          name: eui-audit-baseline
-          path: artifacts/eui-visual-audit
+          name: eui-density-candidate
+          path: |
+            artifacts/eui-visual-audit/report.json
+            artifacts/eui-visual-audit/report.md
+            /tmp/diff-stat.txt
+            /tmp/npm-ci.log
+            /tmp/playwright-install.log
+            /tmp/lint.log
+            /tmp/typecheck.log
+            /tmp/test.log
+            /tmp/build.log
+            /tmp/vite.log
+            /tmp/audit-summary.txt
           if-no-files-found: error
           retention-days: 1
-
-      - name: Publish disposable audit evidence
-        shell: bash
-        run: |
-          set -euo pipefail
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -f artifacts/eui-visual-audit/report.json artifacts/eui-visual-audit/report.md artifacts/eui-visual-audit/vite.log artifacts/eui-visual-audit/environment.txt
-          git commit -m "chore: refresh temporary EUI audit baseline"
-          git push origin HEAD:codex/kibana-42page-visual
