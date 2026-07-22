@@ -1,0 +1,4819 @@
+{
+  "metricVersion": "information-density-screenshot-manifest-v1.0.0",
+  "generatedAt": "2026-07-22T13:10:37.405Z",
+  "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+  "baseUrl": "http://127.0.0.1:5174",
+  "viewport": {
+    "width": 1231,
+    "height": 768
+  },
+  "colorScheme": "dark",
+  "imageFormat": "webp",
+  "imageQuality": 78,
+  "pages": [
+    {
+      "id": "P01",
+      "route": "/dashboard/soc",
+      "title": "Security Operations Overview",
+      "rootSelector": "[data-page-id=\"P01\"]"
+    },
+    {
+      "id": "P02",
+      "route": "/dashboard/executive",
+      "title": "Executive Wallboard",
+      "rootSelector": "[data-page-id=\"P02\"]"
+    },
+    {
+      "id": "P03",
+      "route": "/dashboard/platform-health",
+      "title": "Platform Health",
+      "rootSelector": "[data-page-id=\"P03\"]"
+    },
+    {
+      "id": "P04",
+      "route": "/analyzer/cases",
+      "title": "Incidents & Cases",
+      "rootSelector": "[data-page-id=\"P04\"]"
+    },
+    {
+      "id": "P05",
+      "route": "/analyzer/alerts",
+      "title": "Alert Queue",
+      "rootSelector": "[data-page-id=\"P05\"]"
+    },
+    {
+      "id": "P06",
+      "route": "/analyzer/response-actions",
+      "title": "Response Actions",
+      "rootSelector": "[data-page-id=\"P06\"]"
+    },
+    {
+      "id": "P07",
+      "route": "/analyzer/search",
+      "title": "Event Search & Hunt",
+      "rootSelector": ".p07Composition"
+    },
+    {
+      "id": "P08",
+      "route": "/devices/inventory",
+      "title": "Asset Inventory",
+      "rootSelector": "[data-page-id=\"P08\"]"
+    },
+    {
+      "id": "P09",
+      "route": "/devices/vulnerabilities",
+      "title": "Vulnerability Exposure",
+      "rootSelector": "[data-page-id=\"P09\"]"
+    },
+    {
+      "id": "P10",
+      "route": "/devices/vulnerability-matches",
+      "title": "Vulnerability Matches",
+      "rootSelector": "[data-page-id=\"P10\"]"
+    },
+    {
+      "id": "P11",
+      "route": "/devices/remediation",
+      "title": "Remediation Queue",
+      "rootSelector": "[data-page-id=\"P11\"]"
+    },
+    {
+      "id": "P12",
+      "route": "/devices/assets/asset-demo",
+      "title": "Asset 360",
+      "rootSelector": "[data-page-id=\"P12\"]"
+    },
+    {
+      "id": "P13",
+      "route": "/itsm/overview",
+      "title": "ITSM Overview",
+      "rootSelector": "[data-page-id=\"P13\"]"
+    },
+    {
+      "id": "P14",
+      "route": "/itsm/queues",
+      "title": "Work Queues",
+      "rootSelector": "[data-page-id=\"P14\"]"
+    },
+    {
+      "id": "P15",
+      "route": "/itsm/requests",
+      "title": "Requests & Service Catalog",
+      "rootSelector": "[data-page-id=\"P15\"]"
+    },
+    {
+      "id": "P16",
+      "route": "/itsm/incidents",
+      "title": "Incident Management",
+      "rootSelector": "[data-page-id=\"P16\"]"
+    },
+    {
+      "id": "P17",
+      "route": "/itsm/problems",
+      "title": "Problem Management",
+      "rootSelector": "[data-page-id=\"P17\"]"
+    },
+    {
+      "id": "P18",
+      "route": "/itsm/changes",
+      "title": "Change Management",
+      "rootSelector": "[data-page-id=\"P18\"]"
+    },
+    {
+      "id": "P19",
+      "route": "/itsm/approvals",
+      "title": "Approvals & Tasks",
+      "rootSelector": "[data-page-id=\"P19\"]"
+    },
+    {
+      "id": "P20",
+      "route": "/itsm/analytics",
+      "title": "ITSM Analytics",
+      "rootSelector": "[data-page-id=\"P20\"]"
+    },
+    {
+      "id": "P21",
+      "route": "/itsm/reports",
+      "title": "Reports & Exports",
+      "rootSelector": "[data-page-id=\"P21\"]"
+    },
+    {
+      "id": "P22",
+      "route": "/itsm/settings",
+      "title": "ITSM Settings",
+      "rootSelector": "[data-page-id=\"P22\"]"
+    },
+    {
+      "id": "P23",
+      "route": "/copilot",
+      "title": "Copilot Workspace",
+      "rootSelector": "[data-page-id=\"P23\"]"
+    },
+    {
+      "id": "P24",
+      "route": "/agents",
+      "title": "Agent Fleet",
+      "rootSelector": "[data-page-id=\"P24\"]"
+    },
+    {
+      "id": "P25",
+      "route": "/agents/tasks",
+      "title": "Task Dispatch",
+      "rootSelector": "[data-page-id=\"P25\"]"
+    },
+    {
+      "id": "P26",
+      "route": "/agents/runtime-access",
+      "title": "Agent Runtime Access",
+      "rootSelector": "[data-page-id=\"P26\"]"
+    },
+    {
+      "id": "P27",
+      "route": "/runtime",
+      "title": "Runtime Catalog Overview",
+      "rootSelector": "[data-page-id=\"P27\"]"
+    },
+    {
+      "id": "P28",
+      "route": "/runtime/data-sources",
+      "title": "Data Sources & Integrations",
+      "rootSelector": "[data-page-id=\"P28\"]"
+    },
+    {
+      "id": "P29",
+      "route": "/runtime/rules",
+      "title": "Detection Rules",
+      "rootSelector": "[data-page-id=\"P29\"]"
+    },
+    {
+      "id": "P30",
+      "route": "/runtime/events",
+      "title": "Event Schemas & Contracts",
+      "rootSelector": "[data-page-id=\"P30\"]"
+    },
+    {
+      "id": "P31",
+      "route": "/runtime/objects",
+      "title": "Runtime Objects",
+      "rootSelector": "[data-page-id=\"P31\"]"
+    },
+    {
+      "id": "P32",
+      "route": "/runtime/script-workbench",
+      "title": "Script Workbench",
+      "rootSelector": "[data-page-id=\"P32\"]"
+    },
+    {
+      "id": "P33",
+      "route": "/knowledge/sources",
+      "title": "Knowledge Sources",
+      "rootSelector": "[data-page-id=\"P33\"]"
+    },
+    {
+      "id": "P34",
+      "route": "/knowledge/playbooks",
+      "title": "Playbooks & Automation Templates",
+      "rootSelector": "[data-page-id=\"P34\"]"
+    },
+    {
+      "id": "P35",
+      "route": "/knowledge/detection-notes",
+      "title": "Detection Notes",
+      "rootSelector": "[data-page-id=\"P35\"]"
+    },
+    {
+      "id": "P36",
+      "route": "/projects/responses",
+      "title": "Response Projects",
+      "rootSelector": "[data-page-id=\"P36\"]"
+    },
+    {
+      "id": "P37",
+      "route": "/admin/users",
+      "title": "Users",
+      "rootSelector": "[data-page-id=\"P37\"]"
+    },
+    {
+      "id": "P38",
+      "route": "/admin/roles",
+      "title": "Roles",
+      "rootSelector": "[data-page-id=\"P38\"]"
+    },
+    {
+      "id": "P39",
+      "route": "/admin/permissions",
+      "title": "Permissions",
+      "rootSelector": "[data-page-id=\"P39\"]"
+    },
+    {
+      "id": "P40",
+      "route": "/settings",
+      "title": "Platform Settings Directory",
+      "rootSelector": "[data-page-id=\"P40\"]"
+    },
+    {
+      "id": "P41",
+      "route": "/settings/authentication",
+      "title": "Authentication / LDAP / SSO",
+      "rootSelector": "[data-page-id=\"P41\"]"
+    },
+    {
+      "id": "P42",
+      "route": "/settings/theme",
+      "title": "Theme & Accessibility",
+      "rootSelector": "[data-page-id=\"P42\"]"
+    }
+  ],
+  "images": [
+    {
+      "pageId": "P01",
+      "route": "/dashboard/soc",
+      "finalUrl": "http://127.0.0.1:5174/dashboard/soc",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:08:14.371Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P01\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 1711,
+            "rootHeight": 1679,
+            "documentHeight": 1767
+          },
+          {
+            "textLength": 1711,
+            "rootHeight": 1679,
+            "documentHeight": 1767
+          },
+          {
+            "textLength": 1711,
+            "rootHeight": 1679,
+            "documentHeight": 1767
+          },
+          {
+            "textLength": 1711,
+            "rootHeight": 1679,
+            "documentHeight": 1767
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "Readable KPI and queue structure, but an oversized title band delays operational content. No human-confirmed hard cap.",
+      "kind": "first-viewport",
+      "path": "screenshots/first-viewport/P01-dashboard-soc.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 768
+      },
+      "byteSize": 51004,
+      "sha256": "f6c885022ded7b9f771c5fa096b02aa83101d87f35f74eb91fbe200e036c6075"
+    },
+    {
+      "pageId": "P01",
+      "route": "/dashboard/soc",
+      "finalUrl": "http://127.0.0.1:5174/dashboard/soc",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:08:14.371Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P01\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 1711,
+            "rootHeight": 1679,
+            "documentHeight": 1767
+          },
+          {
+            "textLength": 1711,
+            "rootHeight": 1679,
+            "documentHeight": 1767
+          },
+          {
+            "textLength": 1711,
+            "rootHeight": 1679,
+            "documentHeight": 1767
+          },
+          {
+            "textLength": 1711,
+            "rootHeight": 1679,
+            "documentHeight": 1767
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "Readable KPI and queue structure, but an oversized title band delays operational content. No human-confirmed hard cap.",
+      "kind": "full-page",
+      "path": "screenshots/full-page/P01-dashboard-soc.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 1767
+      },
+      "byteSize": 92296,
+      "sha256": "90765ced724902ad14b3c94d0e4800b6273365f8e15116707a7c1ccbe1e36fea"
+    },
+    {
+      "pageId": "P02",
+      "route": "/dashboard/executive",
+      "finalUrl": "http://127.0.0.1:5174/dashboard/executive",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:08:17.889Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P02\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 1913,
+            "rootHeight": 1642,
+            "documentHeight": 1730
+          },
+          {
+            "textLength": 1913,
+            "rootHeight": 1642,
+            "documentHeight": 1730
+          },
+          {
+            "textLength": 1913,
+            "rootHeight": 1642,
+            "documentHeight": 1730
+          },
+          {
+            "textLength": 1913,
+            "rootHeight": 1642,
+            "documentHeight": 1730
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "A large narrative hero dominates the first viewport and pushes analytical evidence down. No human-confirmed hard cap.",
+      "kind": "first-viewport",
+      "path": "screenshots/first-viewport/P02-dashboard-executive.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 768
+      },
+      "byteSize": 63122,
+      "sha256": "4de749326b16f0208e4911507b628bbe0cb602dde41253d7f876f849646f9c04"
+    },
+    {
+      "pageId": "P02",
+      "route": "/dashboard/executive",
+      "finalUrl": "http://127.0.0.1:5174/dashboard/executive",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:08:17.889Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P02\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 1913,
+            "rootHeight": 1642,
+            "documentHeight": 1730
+          },
+          {
+            "textLength": 1913,
+            "rootHeight": 1642,
+            "documentHeight": 1730
+          },
+          {
+            "textLength": 1913,
+            "rootHeight": 1642,
+            "documentHeight": 1730
+          },
+          {
+            "textLength": 1913,
+            "rootHeight": 1642,
+            "documentHeight": 1730
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "A large narrative hero dominates the first viewport and pushes analytical evidence down. No human-confirmed hard cap.",
+      "kind": "full-page",
+      "path": "screenshots/full-page/P02-dashboard-executive.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 1730
+      },
+      "byteSize": 104130,
+      "sha256": "38a60c281358ec0b949f433230ef15924ed8edd64e62d29f3145eba3100b5514"
+    },
+    {
+      "pageId": "P03",
+      "route": "/dashboard/platform-health",
+      "finalUrl": "http://127.0.0.1:5174/dashboard/platform-health",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:08:21.402Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P03\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 2217,
+            "rootHeight": 1645,
+            "documentHeight": 1733
+          },
+          {
+            "textLength": 2217,
+            "rootHeight": 1645,
+            "documentHeight": 1733
+          },
+          {
+            "textLength": 2217,
+            "rootHeight": 1645,
+            "documentHeight": 1733
+          },
+          {
+            "textLength": 2217,
+            "rootHeight": 1645,
+            "documentHeight": 1733
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "Dependency and recovery content is dense but readable; the control row is close to its right boundary. No human-confirmed hard cap.",
+      "kind": "first-viewport",
+      "path": "screenshots/first-viewport/P03-dashboard-platform-health.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 768
+      },
+      "byteSize": 55486,
+      "sha256": "f606481c2b9aefb200c0fac5eac778e3c8b595315ce7f3e395d76018b4ff2b82"
+    },
+    {
+      "pageId": "P03",
+      "route": "/dashboard/platform-health",
+      "finalUrl": "http://127.0.0.1:5174/dashboard/platform-health",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:08:21.402Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P03\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 2217,
+            "rootHeight": 1645,
+            "documentHeight": 1733
+          },
+          {
+            "textLength": 2217,
+            "rootHeight": 1645,
+            "documentHeight": 1733
+          },
+          {
+            "textLength": 2217,
+            "rootHeight": 1645,
+            "documentHeight": 1733
+          },
+          {
+            "textLength": 2217,
+            "rootHeight": 1645,
+            "documentHeight": 1733
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "Dependency and recovery content is dense but readable; the control row is close to its right boundary. No human-confirmed hard cap.",
+      "kind": "full-page",
+      "path": "screenshots/full-page/P03-dashboard-platform-health.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 1733
+      },
+      "byteSize": 111696,
+      "sha256": "db680633e146a83b742de50fac105d9aacac93949ed3137c808c57c7de25dcec"
+    },
+    {
+      "pageId": "P04",
+      "route": "/analyzer/cases",
+      "finalUrl": "http://127.0.0.1:5174/analyzer/cases",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:08:24.869Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P04\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 2030,
+            "rootHeight": 1410,
+            "documentHeight": 1498
+          },
+          {
+            "textLength": 2030,
+            "rootHeight": 1410,
+            "documentHeight": 1498
+          },
+          {
+            "textLength": 2030,
+            "rootHeight": 1410,
+            "documentHeight": 1498
+          },
+          {
+            "textLength": 2030,
+            "rootHeight": 1410,
+            "documentHeight": 1498
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "The three-column layout overflows horizontally and unequal column heights create a large blank full-page region. Hard cap: Right decision column is clipped in the first viewport.",
+      "kind": "first-viewport",
+      "path": "screenshots/first-viewport/P04-analyzer-cases.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 768
+      },
+      "byteSize": 64166,
+      "sha256": "d219c35ceeb5b1a0077ea1add5bb3460dda39201d6ad4b548fde5df9670cb9d6"
+    },
+    {
+      "pageId": "P04",
+      "route": "/analyzer/cases",
+      "finalUrl": "http://127.0.0.1:5174/analyzer/cases",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:08:24.869Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P04\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 2030,
+            "rootHeight": 1410,
+            "documentHeight": 1498
+          },
+          {
+            "textLength": 2030,
+            "rootHeight": 1410,
+            "documentHeight": 1498
+          },
+          {
+            "textLength": 2030,
+            "rootHeight": 1410,
+            "documentHeight": 1498
+          },
+          {
+            "textLength": 2030,
+            "rootHeight": 1410,
+            "documentHeight": 1498
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "The three-column layout overflows horizontally and unequal column heights create a large blank full-page region. Hard cap: Right decision column is clipped in the first viewport.",
+      "kind": "full-page",
+      "path": "screenshots/full-page/P04-analyzer-cases.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 1498
+      },
+      "byteSize": 96578,
+      "sha256": "ce83b82d4c0a4ea24459152d349a6bb0b9c89852bcc7ff93b339a7596a025594"
+    },
+    {
+      "pageId": "P05",
+      "route": "/analyzer/alerts",
+      "finalUrl": "http://127.0.0.1:5174/analyzer/alerts",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:08:28.495Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P05\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 2396,
+            "rootHeight": 2136,
+            "documentHeight": 2224
+          },
+          {
+            "textLength": 2396,
+            "rootHeight": 2136,
+            "documentHeight": 2224
+          },
+          {
+            "textLength": 2396,
+            "rootHeight": 2136,
+            "documentHeight": 2224
+          },
+          {
+            "textLength": 2396,
+            "rootHeight": 2136,
+            "documentHeight": 2224
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "Queue hierarchy, row spacing and the downstream detail sequence are consistently readable. No human-confirmed hard cap.",
+      "kind": "first-viewport",
+      "path": "screenshots/first-viewport/P05-analyzer-alerts.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 768
+      },
+      "byteSize": 42982,
+      "sha256": "ad2296c71611153789223af17aa7ab979bceb39bc6987b3441019df66512cd92"
+    },
+    {
+      "pageId": "P05",
+      "route": "/analyzer/alerts",
+      "finalUrl": "http://127.0.0.1:5174/analyzer/alerts",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:08:28.495Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P05\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 2396,
+            "rootHeight": 2136,
+            "documentHeight": 2224
+          },
+          {
+            "textLength": 2396,
+            "rootHeight": 2136,
+            "documentHeight": 2224
+          },
+          {
+            "textLength": 2396,
+            "rootHeight": 2136,
+            "documentHeight": 2224
+          },
+          {
+            "textLength": 2396,
+            "rootHeight": 2136,
+            "documentHeight": 2224
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "Queue hierarchy, row spacing and the downstream detail sequence are consistently readable. No human-confirmed hard cap.",
+      "kind": "full-page",
+      "path": "screenshots/full-page/P05-analyzer-alerts.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 2224
+      },
+      "byteSize": 105938,
+      "sha256": "0db9d5e252949803b230625b4b1e513fd3cca6984cfd6d33f784c719d72df0e2"
+    },
+    {
+      "pageId": "P06",
+      "route": "/analyzer/response-actions",
+      "finalUrl": "http://127.0.0.1:5174/analyzer/response-actions",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:08:31.967Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P06\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 1847,
+            "rootHeight": 1086,
+            "documentHeight": 1174
+          },
+          {
+            "textLength": 1847,
+            "rootHeight": 1086,
+            "documentHeight": 1174
+          },
+          {
+            "textLength": 1847,
+            "rootHeight": 1086,
+            "documentHeight": 1174
+          },
+          {
+            "textLength": 1847,
+            "rootHeight": 1086,
+            "documentHeight": 1174
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "The right state column is clipped and narrow cards force awkward title/value wrapping. Hard cap: Authoritative-state content is clipped at the right edge.",
+      "kind": "first-viewport",
+      "path": "screenshots/first-viewport/P06-analyzer-response-actions.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 768
+      },
+      "byteSize": 65088,
+      "sha256": "6a156e284a819f995ba169d050d9823275f67ae1f4268d19eb3e2e75176848e5"
+    },
+    {
+      "pageId": "P06",
+      "route": "/analyzer/response-actions",
+      "finalUrl": "http://127.0.0.1:5174/analyzer/response-actions",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:08:31.967Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P06\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 1847,
+            "rootHeight": 1086,
+            "documentHeight": 1174
+          },
+          {
+            "textLength": 1847,
+            "rootHeight": 1086,
+            "documentHeight": 1174
+          },
+          {
+            "textLength": 1847,
+            "rootHeight": 1086,
+            "documentHeight": 1174
+          },
+          {
+            "textLength": 1847,
+            "rootHeight": 1086,
+            "documentHeight": 1174
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "The right state column is clipped and narrow cards force awkward title/value wrapping. Hard cap: Authoritative-state content is clipped at the right edge.",
+      "kind": "full-page",
+      "path": "screenshots/full-page/P06-analyzer-response-actions.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 1174
+      },
+      "byteSize": 88158,
+      "sha256": "a1dddb1b12de5722e8c47eb717c9678f106b97760af30aab1e39ba65cc9f0450"
+    },
+    {
+      "pageId": "P07",
+      "route": "/analyzer/search",
+      "finalUrl": "http://127.0.0.1:5174/analyzer/search",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:08:35.428Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": ".p07Composition",
+        "minimumVisibleTextCharacters": 300,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 1647,
+            "rootHeight": 1514,
+            "documentHeight": 1856
+          },
+          {
+            "textLength": 1668,
+            "rootHeight": 1514,
+            "documentHeight": 1856
+          },
+          {
+            "textLength": 1668,
+            "rootHeight": 1514,
+            "documentHeight": 1856
+          },
+          {
+            "textLength": 1668,
+            "rootHeight": 1514,
+            "documentHeight": 1856
+          }
+        ],
+        "fixtureReady": "not-applicable"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "Dates and action identifiers wrap excessively, inflating row height and slowing comparison. No human-confirmed hard cap.",
+      "kind": "first-viewport",
+      "path": "screenshots/first-viewport/P07-analyzer-search.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 768
+      },
+      "byteSize": 39396,
+      "sha256": "2145b646fe36922a2da850a2528901a6bf4ca9d68074786887523f86bc796c96"
+    },
+    {
+      "pageId": "P07",
+      "route": "/analyzer/search",
+      "finalUrl": "http://127.0.0.1:5174/analyzer/search",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:08:35.428Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": ".p07Composition",
+        "minimumVisibleTextCharacters": 300,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 1647,
+            "rootHeight": 1514,
+            "documentHeight": 1856
+          },
+          {
+            "textLength": 1668,
+            "rootHeight": 1514,
+            "documentHeight": 1856
+          },
+          {
+            "textLength": 1668,
+            "rootHeight": 1514,
+            "documentHeight": 1856
+          },
+          {
+            "textLength": 1668,
+            "rootHeight": 1514,
+            "documentHeight": 1856
+          }
+        ],
+        "fixtureReady": "not-applicable"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "Dates and action identifiers wrap excessively, inflating row height and slowing comparison. No human-confirmed hard cap.",
+      "kind": "full-page",
+      "path": "screenshots/full-page/P07-analyzer-search.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 1856
+      },
+      "byteSize": 78674,
+      "sha256": "aab887ceb216094700ab95fa29357dd645607d9c5ed4bb217faba6a0bf751592"
+    },
+    {
+      "pageId": "P08",
+      "route": "/devices/inventory",
+      "finalUrl": "http://127.0.0.1:5174/devices/inventory",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:08:39.137Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P08\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 5074,
+            "rootHeight": 2703,
+            "documentHeight": 2791
+          },
+          {
+            "textLength": 5100,
+            "rootHeight": 2703,
+            "documentHeight": 2791
+          },
+          {
+            "textLength": 5100,
+            "rootHeight": 2703,
+            "documentHeight": 2791
+          },
+          {
+            "textLength": 5100,
+            "rootHeight": 2703,
+            "documentHeight": 2791
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "Multiple inventory columns overlap, so rows cannot be parsed reliably. Hard cap: Site, owner and lifecycle table text visibly collides or concatenates.",
+      "kind": "first-viewport",
+      "path": "screenshots/first-viewport/P08-devices-inventory.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 768
+      },
+      "byteSize": 50942,
+      "sha256": "6ed60fc039b1716eaa2b8ea8f74b190d5da899b2f15b840f0efab2925eafd43d"
+    },
+    {
+      "pageId": "P08",
+      "route": "/devices/inventory",
+      "finalUrl": "http://127.0.0.1:5174/devices/inventory",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:08:39.137Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P08\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 5074,
+            "rootHeight": 2703,
+            "documentHeight": 2791
+          },
+          {
+            "textLength": 5100,
+            "rootHeight": 2703,
+            "documentHeight": 2791
+          },
+          {
+            "textLength": 5100,
+            "rootHeight": 2703,
+            "documentHeight": 2791
+          },
+          {
+            "textLength": 5100,
+            "rootHeight": 2703,
+            "documentHeight": 2791
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "Multiple inventory columns overlap, so rows cannot be parsed reliably. Hard cap: Site, owner and lifecycle table text visibly collides or concatenates.",
+      "kind": "full-page",
+      "path": "screenshots/full-page/P08-devices-inventory.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 2791
+      },
+      "byteSize": 157622,
+      "sha256": "cfe00e413b30751f052ed2797200191f9e9da1b941659d52c98f2957c5801f18"
+    },
+    {
+      "pageId": "P09",
+      "route": "/devices/vulnerabilities",
+      "finalUrl": "http://127.0.0.1:5174/devices/vulnerabilities",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:08:42.694Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P09\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 2377,
+            "rootHeight": 2022,
+            "documentHeight": 2110
+          },
+          {
+            "textLength": 2377,
+            "rootHeight": 2022,
+            "documentHeight": 2110
+          },
+          {
+            "textLength": 2377,
+            "rootHeight": 2022,
+            "documentHeight": 2110
+          },
+          {
+            "textLength": 2377,
+            "rootHeight": 2022,
+            "documentHeight": 2110
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "The exposure-trend panel is mostly blank; exact evidence appears far below its heading. No human-confirmed hard cap.",
+      "kind": "first-viewport",
+      "path": "screenshots/first-viewport/P09-devices-vulnerabilities.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 768
+      },
+      "byteSize": 52154,
+      "sha256": "bd7b7a420d683267748d99065acf9464ff3366e67bf8ee30bbe4474b18a75120"
+    },
+    {
+      "pageId": "P09",
+      "route": "/devices/vulnerabilities",
+      "finalUrl": "http://127.0.0.1:5174/devices/vulnerabilities",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:08:42.694Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P09\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 2377,
+            "rootHeight": 2022,
+            "documentHeight": 2110
+          },
+          {
+            "textLength": 2377,
+            "rootHeight": 2022,
+            "documentHeight": 2110
+          },
+          {
+            "textLength": 2377,
+            "rootHeight": 2022,
+            "documentHeight": 2110
+          },
+          {
+            "textLength": 2377,
+            "rootHeight": 2022,
+            "documentHeight": 2110
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "The exposure-trend panel is mostly blank; exact evidence appears far below its heading. No human-confirmed hard cap.",
+      "kind": "full-page",
+      "path": "screenshots/full-page/P09-devices-vulnerabilities.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 2110
+      },
+      "byteSize": 108378,
+      "sha256": "06fb1c57fe7563d4498ca3ccaa607a35ae0458da9c45492011fddf7757f4077e"
+    },
+    {
+      "pageId": "P10",
+      "route": "/devices/vulnerability-matches",
+      "finalUrl": "http://127.0.0.1:5174/devices/vulnerability-matches",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:08:46.169Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P10\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 2012,
+            "rootHeight": 1701,
+            "documentHeight": 1789
+          },
+          {
+            "textLength": 2012,
+            "rootHeight": 1701,
+            "documentHeight": 1789
+          },
+          {
+            "textLength": 2012,
+            "rootHeight": 1701,
+            "documentHeight": 1789
+          },
+          {
+            "textLength": 2012,
+            "rootHeight": 1701,
+            "documentHeight": 1789
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "The match table is structured and readable; yellow review controls need contrast verification. No human-confirmed hard cap.",
+      "kind": "first-viewport",
+      "path": "screenshots/first-viewport/P10-devices-vulnerability-matches.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 768
+      },
+      "byteSize": 48470,
+      "sha256": "a066051bd8eb3319e30d732f05e9e3fa8efef08e91b452572efe9a657534dc0e"
+    },
+    {
+      "pageId": "P10",
+      "route": "/devices/vulnerability-matches",
+      "finalUrl": "http://127.0.0.1:5174/devices/vulnerability-matches",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:08:46.169Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P10\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 2012,
+            "rootHeight": 1701,
+            "documentHeight": 1789
+          },
+          {
+            "textLength": 2012,
+            "rootHeight": 1701,
+            "documentHeight": 1789
+          },
+          {
+            "textLength": 2012,
+            "rootHeight": 1701,
+            "documentHeight": 1789
+          },
+          {
+            "textLength": 2012,
+            "rootHeight": 1701,
+            "documentHeight": 1789
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "The match table is structured and readable; yellow review controls need contrast verification. No human-confirmed hard cap.",
+      "kind": "full-page",
+      "path": "screenshots/full-page/P10-devices-vulnerability-matches.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 1789
+      },
+      "byteSize": 93160,
+      "sha256": "2d416245b1b524b0e2d90b714b00c412e4386724e6bd3fbeec3980961aea537c"
+    },
+    {
+      "pageId": "P11",
+      "route": "/devices/remediation",
+      "finalUrl": "http://127.0.0.1:5174/devices/remediation",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:08:49.666Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P11\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 1645,
+            "rootHeight": 1629,
+            "documentHeight": 1717
+          },
+          {
+            "textLength": 1645,
+            "rootHeight": 1629,
+            "documentHeight": 1717
+          },
+          {
+            "textLength": 1645,
+            "rootHeight": 1629,
+            "documentHeight": 1717
+          },
+          {
+            "textLength": 1645,
+            "rootHeight": 1629,
+            "documentHeight": 1717
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "Summary, queue rows and status geometry remain coherent throughout the long page. No human-confirmed hard cap.",
+      "kind": "first-viewport",
+      "path": "screenshots/first-viewport/P11-devices-remediation.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 768
+      },
+      "byteSize": 44286,
+      "sha256": "3864a893ceebf2a32edca63e39f1e7a2bcb2992f8c7b73d516e6aecaef5a5cbb"
+    },
+    {
+      "pageId": "P11",
+      "route": "/devices/remediation",
+      "finalUrl": "http://127.0.0.1:5174/devices/remediation",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:08:49.666Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P11\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 1645,
+            "rootHeight": 1629,
+            "documentHeight": 1717
+          },
+          {
+            "textLength": 1645,
+            "rootHeight": 1629,
+            "documentHeight": 1717
+          },
+          {
+            "textLength": 1645,
+            "rootHeight": 1629,
+            "documentHeight": 1717
+          },
+          {
+            "textLength": 1645,
+            "rootHeight": 1629,
+            "documentHeight": 1717
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "Summary, queue rows and status geometry remain coherent throughout the long page. No human-confirmed hard cap.",
+      "kind": "full-page",
+      "path": "screenshots/full-page/P11-devices-remediation.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 1717
+      },
+      "byteSize": 83660,
+      "sha256": "93f99b45391c8f4c27d09e0de8498b2b6d37dc4969bed940ce15c78ae83b4283"
+    },
+    {
+      "pageId": "P12",
+      "route": "/devices/assets/asset-demo",
+      "finalUrl": "http://127.0.0.1:5174/devices/assets/asset-demo",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:08:53.057Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P12\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 805,
+            "rootHeight": 927,
+            "documentHeight": 1015
+          },
+          {
+            "textLength": 805,
+            "rootHeight": 927,
+            "documentHeight": 1015
+          },
+          {
+            "textLength": 805,
+            "rootHeight": 927,
+            "documentHeight": 1015
+          },
+          {
+            "textLength": 805,
+            "rootHeight": 927,
+            "documentHeight": 1015
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "Entity header, tabs and evidence cards form a clear scan path with stable spacing. No human-confirmed hard cap.",
+      "kind": "first-viewport",
+      "path": "screenshots/first-viewport/P12-devices-assets-asset-demo.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 768
+      },
+      "byteSize": 41078,
+      "sha256": "8883b0ba5196b6b8dfbb5c3135f9a258503527d282fc96c83bce0e29f4129a57"
+    },
+    {
+      "pageId": "P12",
+      "route": "/devices/assets/asset-demo",
+      "finalUrl": "http://127.0.0.1:5174/devices/assets/asset-demo",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:08:53.057Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P12\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 805,
+            "rootHeight": 927,
+            "documentHeight": 1015
+          },
+          {
+            "textLength": 805,
+            "rootHeight": 927,
+            "documentHeight": 1015
+          },
+          {
+            "textLength": 805,
+            "rootHeight": 927,
+            "documentHeight": 1015
+          },
+          {
+            "textLength": 805,
+            "rootHeight": 927,
+            "documentHeight": 1015
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "Entity header, tabs and evidence cards form a clear scan path with stable spacing. No human-confirmed hard cap.",
+      "kind": "full-page",
+      "path": "screenshots/full-page/P12-devices-assets-asset-demo.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 1015
+      },
+      "byteSize": 51724,
+      "sha256": "96b7e2608eea697b4cdb94768248cf87a21e1e52b5d367a335f1084b0ec4a2e3"
+    },
+    {
+      "pageId": "P13",
+      "route": "/itsm/overview",
+      "finalUrl": "http://127.0.0.1:5174/itsm/overview",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:08:56.606Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P13\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 2435,
+            "rootHeight": 1995,
+            "documentHeight": 2083
+          },
+          {
+            "textLength": 2435,
+            "rootHeight": 1995,
+            "documentHeight": 2083
+          },
+          {
+            "textLength": 2435,
+            "rootHeight": 1995,
+            "documentHeight": 2083
+          },
+          {
+            "textLength": 2435,
+            "rootHeight": 1995,
+            "documentHeight": 2083
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "The overview is balanced and readable; review-state contrast and header height remain minor concerns. No human-confirmed hard cap.",
+      "kind": "first-viewport",
+      "path": "screenshots/first-viewport/P13-itsm-overview.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 768
+      },
+      "byteSize": 42340,
+      "sha256": "4f65dc2540900dd55ea3080d35a5700f737eb3e9a0a1a6758d814aa3543eefc6"
+    },
+    {
+      "pageId": "P13",
+      "route": "/itsm/overview",
+      "finalUrl": "http://127.0.0.1:5174/itsm/overview",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:08:56.606Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P13\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 2435,
+            "rootHeight": 1995,
+            "documentHeight": 2083
+          },
+          {
+            "textLength": 2435,
+            "rootHeight": 1995,
+            "documentHeight": 2083
+          },
+          {
+            "textLength": 2435,
+            "rootHeight": 1995,
+            "documentHeight": 2083
+          },
+          {
+            "textLength": 2435,
+            "rootHeight": 1995,
+            "documentHeight": 2083
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "The overview is balanced and readable; review-state contrast and header height remain minor concerns. No human-confirmed hard cap.",
+      "kind": "full-page",
+      "path": "screenshots/full-page/P13-itsm-overview.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 2083
+      },
+      "byteSize": 106518,
+      "sha256": "9acb0fd466c507f33958f2088510913f2bd70c658be2516e0625eb2a2615d200"
+    },
+    {
+      "pageId": "P14",
+      "route": "/itsm/queues",
+      "finalUrl": "http://127.0.0.1:5174/itsm/queues",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:09:00.065Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P14\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 2135,
+            "rootHeight": 1437,
+            "documentHeight": 1525
+          },
+          {
+            "textLength": 2135,
+            "rootHeight": 1437,
+            "documentHeight": 1525
+          },
+          {
+            "textLength": 2135,
+            "rootHeight": 1437,
+            "documentHeight": 1525
+          },
+          {
+            "textLength": 2135,
+            "rootHeight": 1437,
+            "documentHeight": 1525
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "A mostly empty saved-views panel precedes a dense long queue, producing a sparse/dense discontinuity. No human-confirmed hard cap.",
+      "kind": "first-viewport",
+      "path": "screenshots/first-viewport/P14-itsm-queues.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 768
+      },
+      "byteSize": 48838,
+      "sha256": "ee2201db9d09c552c7ed0e280f73fc309bec7f746dfe3239339623b9692c8c14"
+    },
+    {
+      "pageId": "P14",
+      "route": "/itsm/queues",
+      "finalUrl": "http://127.0.0.1:5174/itsm/queues",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:09:00.065Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P14\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 2135,
+            "rootHeight": 1437,
+            "documentHeight": 1525
+          },
+          {
+            "textLength": 2135,
+            "rootHeight": 1437,
+            "documentHeight": 1525
+          },
+          {
+            "textLength": 2135,
+            "rootHeight": 1437,
+            "documentHeight": 1525
+          },
+          {
+            "textLength": 2135,
+            "rootHeight": 1437,
+            "documentHeight": 1525
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "A mostly empty saved-views panel precedes a dense long queue, producing a sparse/dense discontinuity. No human-confirmed hard cap.",
+      "kind": "full-page",
+      "path": "screenshots/full-page/P14-itsm-queues.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 1525
+      },
+      "byteSize": 96754,
+      "sha256": "d7db149cc7eab724e0aacd6dba7b27c5db38f3fef5f5d9d0b5cf7182bc16db96"
+    },
+    {
+      "pageId": "P15",
+      "route": "/itsm/requests",
+      "finalUrl": "http://127.0.0.1:5174/itsm/requests",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:09:03.458Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P15\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 938,
+            "rootHeight": 1112,
+            "documentHeight": 1200
+          },
+          {
+            "textLength": 938,
+            "rootHeight": 1112,
+            "documentHeight": 1200
+          },
+          {
+            "textLength": 938,
+            "rootHeight": 1112,
+            "documentHeight": 1200
+          },
+          {
+            "textLength": 938,
+            "rootHeight": 1112,
+            "documentHeight": 1200
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "Catalog and request detail form a readable two-column workflow; only the active sidebar label wraps. No human-confirmed hard cap.",
+      "kind": "first-viewport",
+      "path": "screenshots/first-viewport/P15-itsm-requests.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 768
+      },
+      "byteSize": 48442,
+      "sha256": "0825606f34cb5d7fd1343884756e91f76b4358f1b8695117d34d2c436bce4d4d"
+    },
+    {
+      "pageId": "P15",
+      "route": "/itsm/requests",
+      "finalUrl": "http://127.0.0.1:5174/itsm/requests",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:09:03.458Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P15\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 938,
+            "rootHeight": 1112,
+            "documentHeight": 1200
+          },
+          {
+            "textLength": 938,
+            "rootHeight": 1112,
+            "documentHeight": 1200
+          },
+          {
+            "textLength": 938,
+            "rootHeight": 1112,
+            "documentHeight": 1200
+          },
+          {
+            "textLength": 938,
+            "rootHeight": 1112,
+            "documentHeight": 1200
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "Catalog and request detail form a readable two-column workflow; only the active sidebar label wraps. No human-confirmed hard cap.",
+      "kind": "full-page",
+      "path": "screenshots/full-page/P15-itsm-requests.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 1200
+      },
+      "byteSize": 60204,
+      "sha256": "289e3b5f2b97c957fa22fdd950049b4fd9c5b537b856ccebc38867dd29235706"
+    },
+    {
+      "pageId": "P16",
+      "route": "/itsm/incidents",
+      "finalUrl": "http://127.0.0.1:5174/itsm/incidents",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:09:06.859Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P16\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 1071,
+            "rootHeight": 1178,
+            "documentHeight": 1266
+          },
+          {
+            "textLength": 1071,
+            "rootHeight": 1178,
+            "documentHeight": 1266
+          },
+          {
+            "textLength": 1071,
+            "rootHeight": 1178,
+            "documentHeight": 1266
+          },
+          {
+            "textLength": 1071,
+            "rootHeight": 1178,
+            "documentHeight": 1266
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "The main queue appears empty while the detail surface merges labels and values into unreadable lines. Hard cap: Primary incident queue renders headers without rows and detail labels concatenate with values.",
+      "kind": "first-viewport",
+      "path": "screenshots/first-viewport/P16-itsm-incidents.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 768
+      },
+      "byteSize": 49972,
+      "sha256": "2691fb3b6acf74892e6306c3f2451a4fd0f18c0f3a62141c015982501691d407"
+    },
+    {
+      "pageId": "P16",
+      "route": "/itsm/incidents",
+      "finalUrl": "http://127.0.0.1:5174/itsm/incidents",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:09:06.859Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P16\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 1071,
+            "rootHeight": 1178,
+            "documentHeight": 1266
+          },
+          {
+            "textLength": 1071,
+            "rootHeight": 1178,
+            "documentHeight": 1266
+          },
+          {
+            "textLength": 1071,
+            "rootHeight": 1178,
+            "documentHeight": 1266
+          },
+          {
+            "textLength": 1071,
+            "rootHeight": 1178,
+            "documentHeight": 1266
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "The main queue appears empty while the detail surface merges labels and values into unreadable lines. Hard cap: Primary incident queue renders headers without rows and detail labels concatenate with values.",
+      "kind": "full-page",
+      "path": "screenshots/full-page/P16-itsm-incidents.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 1266
+      },
+      "byteSize": 69770,
+      "sha256": "410835d24c77c29208976d918ad94058f00dc7ffb8cf641d45abb3c97d6b7156"
+    },
+    {
+      "pageId": "P17",
+      "route": "/itsm/problems",
+      "finalUrl": "http://127.0.0.1:5174/itsm/problems",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:09:10.346Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P17\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 1764,
+            "rootHeight": 1906,
+            "documentHeight": 1994
+          },
+          {
+            "textLength": 1764,
+            "rootHeight": 1906,
+            "documentHeight": 1994
+          },
+          {
+            "textLength": 1764,
+            "rootHeight": 1906,
+            "documentHeight": 1994
+          },
+          {
+            "textLength": 1764,
+            "rootHeight": 1906,
+            "documentHeight": 1994
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "Recurrence cards are cramped while the overall multi-column page contains large unused regions. No human-confirmed hard cap.",
+      "kind": "first-viewport",
+      "path": "screenshots/first-viewport/P17-itsm-problems.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 768
+      },
+      "byteSize": 56038,
+      "sha256": "f4346b452afbc92faaf2b6be74426689c237cd6e2595d1e1b75f9bdb4e1c86b4"
+    },
+    {
+      "pageId": "P17",
+      "route": "/itsm/problems",
+      "finalUrl": "http://127.0.0.1:5174/itsm/problems",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:09:10.346Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P17\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 1764,
+            "rootHeight": 1906,
+            "documentHeight": 1994
+          },
+          {
+            "textLength": 1764,
+            "rootHeight": 1906,
+            "documentHeight": 1994
+          },
+          {
+            "textLength": 1764,
+            "rootHeight": 1906,
+            "documentHeight": 1994
+          },
+          {
+            "textLength": 1764,
+            "rootHeight": 1906,
+            "documentHeight": 1994
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "Recurrence cards are cramped while the overall multi-column page contains large unused regions. No human-confirmed hard cap.",
+      "kind": "full-page",
+      "path": "screenshots/full-page/P17-itsm-problems.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 1994
+      },
+      "byteSize": 95858,
+      "sha256": "c4ad573bf7c6e29c6b32b04c18ed32400e9def502ce4bb7b0e65a4d6eab0ed12"
+    },
+    {
+      "pageId": "P18",
+      "route": "/itsm/changes",
+      "finalUrl": "http://127.0.0.1:5174/itsm/changes",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:09:13.719Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P18\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 868,
+            "rootHeight": 978,
+            "documentHeight": 1066
+          },
+          {
+            "textLength": 868,
+            "rootHeight": 978,
+            "documentHeight": 1066
+          },
+          {
+            "textLength": 868,
+            "rootHeight": 978,
+            "documentHeight": 1066
+          },
+          {
+            "textLength": 868,
+            "rootHeight": 978,
+            "documentHeight": 1066
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "The calendar is dense but usable; coral review actions have weak visual contrast. No human-confirmed hard cap.",
+      "kind": "first-viewport",
+      "path": "screenshots/first-viewport/P18-itsm-changes.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 768
+      },
+      "byteSize": 50092,
+      "sha256": "c592db79fa68a8925bcdf494bdb2223484ad766129c6a0ce21e6e91ad9e40d35"
+    },
+    {
+      "pageId": "P18",
+      "route": "/itsm/changes",
+      "finalUrl": "http://127.0.0.1:5174/itsm/changes",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:09:13.719Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P18\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 868,
+            "rootHeight": 978,
+            "documentHeight": 1066
+          },
+          {
+            "textLength": 868,
+            "rootHeight": 978,
+            "documentHeight": 1066
+          },
+          {
+            "textLength": 868,
+            "rootHeight": 978,
+            "documentHeight": 1066
+          },
+          {
+            "textLength": 868,
+            "rootHeight": 978,
+            "documentHeight": 1066
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "The calendar is dense but usable; coral review actions have weak visual contrast. No human-confirmed hard cap.",
+      "kind": "full-page",
+      "path": "screenshots/full-page/P18-itsm-changes.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 1066
+      },
+      "byteSize": 59846,
+      "sha256": "6682cb7a416c82f14816e26c62a2ff2bbc462433c432f1bc9f7d28e042b0e83f"
+    },
+    {
+      "pageId": "P19",
+      "route": "/itsm/approvals",
+      "finalUrl": "http://127.0.0.1:5174/itsm/approvals",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:09:17.197Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P19\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 2018,
+            "rootHeight": 1784,
+            "documentHeight": 1872
+          },
+          {
+            "textLength": 2018,
+            "rootHeight": 1784,
+            "documentHeight": 1872
+          },
+          {
+            "textLength": 2018,
+            "rootHeight": 1784,
+            "documentHeight": 1872
+          },
+          {
+            "textLength": 2018,
+            "rootHeight": 1784,
+            "documentHeight": 1872
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "Queue rows, detail and actions remain clear across the full page. No human-confirmed hard cap.",
+      "kind": "first-viewport",
+      "path": "screenshots/first-viewport/P19-itsm-approvals.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 768
+      },
+      "byteSize": 46324,
+      "sha256": "08c9e78c26706dbf54f5760561cdf59b872ec4b51694a751cd9b0eaa426af3a4"
+    },
+    {
+      "pageId": "P19",
+      "route": "/itsm/approvals",
+      "finalUrl": "http://127.0.0.1:5174/itsm/approvals",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:09:17.197Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P19\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 2018,
+            "rootHeight": 1784,
+            "documentHeight": 1872
+          },
+          {
+            "textLength": 2018,
+            "rootHeight": 1784,
+            "documentHeight": 1872
+          },
+          {
+            "textLength": 2018,
+            "rootHeight": 1784,
+            "documentHeight": 1872
+          },
+          {
+            "textLength": 2018,
+            "rootHeight": 1784,
+            "documentHeight": 1872
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "Queue rows, detail and actions remain clear across the full page. No human-confirmed hard cap.",
+      "kind": "full-page",
+      "path": "screenshots/full-page/P19-itsm-approvals.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 1872
+      },
+      "byteSize": 101020,
+      "sha256": "7cf61bad52e397b940ef58a18d7aad02e10ffc2fde88c6a88dc3dee91d753501"
+    },
+    {
+      "pageId": "P20",
+      "route": "/itsm/analytics",
+      "finalUrl": "http://127.0.0.1:5174/itsm/analytics",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:09:20.713Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P20\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 1872,
+            "rootHeight": 2337,
+            "documentHeight": 2425
+          },
+          {
+            "textLength": 1872,
+            "rootHeight": 2337,
+            "documentHeight": 2425
+          },
+          {
+            "textLength": 1872,
+            "rootHeight": 2337,
+            "documentHeight": 2425
+          },
+          {
+            "textLength": 1872,
+            "rootHeight": 2337,
+            "documentHeight": 2425
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "Controls, chart and exact-value table are well grouped; chart labels are the only small-text concern. No human-confirmed hard cap.",
+      "kind": "first-viewport",
+      "path": "screenshots/first-viewport/P20-itsm-analytics.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 768
+      },
+      "byteSize": 48368,
+      "sha256": "568b34a4435333e8f2e7a7b3c19039692b0bd39375542b1b1680dbb822e5a7dc"
+    },
+    {
+      "pageId": "P20",
+      "route": "/itsm/analytics",
+      "finalUrl": "http://127.0.0.1:5174/itsm/analytics",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:09:20.713Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P20\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 1872,
+            "rootHeight": 2337,
+            "documentHeight": 2425
+          },
+          {
+            "textLength": 1872,
+            "rootHeight": 2337,
+            "documentHeight": 2425
+          },
+          {
+            "textLength": 1872,
+            "rootHeight": 2337,
+            "documentHeight": 2425
+          },
+          {
+            "textLength": 1872,
+            "rootHeight": 2337,
+            "documentHeight": 2425
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "Controls, chart and exact-value table are well grouped; chart labels are the only small-text concern. No human-confirmed hard cap.",
+      "kind": "full-page",
+      "path": "screenshots/full-page/P20-itsm-analytics.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 2425
+      },
+      "byteSize": 99168,
+      "sha256": "d1503db980420dafff1f36bd4289e753b044ef44e03aea79560d6f90bca4996a"
+    },
+    {
+      "pageId": "P21",
+      "route": "/itsm/reports",
+      "finalUrl": "http://127.0.0.1:5174/itsm/reports",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:09:24.196Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P21\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 1846,
+            "rootHeight": 1811,
+            "documentHeight": 1899
+          },
+          {
+            "textLength": 1846,
+            "rootHeight": 1811,
+            "documentHeight": 1899
+          },
+          {
+            "textLength": 1846,
+            "rootHeight": 1811,
+            "documentHeight": 1899
+          },
+          {
+            "textLength": 1846,
+            "rootHeight": 1811,
+            "documentHeight": 1899
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "The export table is readable, but a narrow template rail causes repeated title wrapping. No human-confirmed hard cap.",
+      "kind": "first-viewport",
+      "path": "screenshots/first-viewport/P21-itsm-reports.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 768
+      },
+      "byteSize": 51116,
+      "sha256": "746a70dd2a2d346daa9502eb35ca266e7e18193a94c79210c3295186dd557385"
+    },
+    {
+      "pageId": "P21",
+      "route": "/itsm/reports",
+      "finalUrl": "http://127.0.0.1:5174/itsm/reports",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:09:24.196Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P21\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 1846,
+            "rootHeight": 1811,
+            "documentHeight": 1899
+          },
+          {
+            "textLength": 1846,
+            "rootHeight": 1811,
+            "documentHeight": 1899
+          },
+          {
+            "textLength": 1846,
+            "rootHeight": 1811,
+            "documentHeight": 1899
+          },
+          {
+            "textLength": 1846,
+            "rootHeight": 1811,
+            "documentHeight": 1899
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "The export table is readable, but a narrow template rail causes repeated title wrapping. No human-confirmed hard cap.",
+      "kind": "full-page",
+      "path": "screenshots/full-page/P21-itsm-reports.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 1899
+      },
+      "byteSize": 90946,
+      "sha256": "5ac529fbec0052a85467a69c56c598f83887e10e70d27c8daf6b357c86e85c69"
+    },
+    {
+      "pageId": "P22",
+      "route": "/itsm/settings",
+      "finalUrl": "http://127.0.0.1:5174/itsm/settings",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:09:27.579Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P22\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 1148,
+            "rootHeight": 1013,
+            "documentHeight": 1101
+          },
+          {
+            "textLength": 1148,
+            "rootHeight": 1013,
+            "documentHeight": 1101
+          },
+          {
+            "textLength": 1148,
+            "rootHeight": 1013,
+            "documentHeight": 1101
+          },
+          {
+            "textLength": 1148,
+            "rootHeight": 1013,
+            "documentHeight": 1101
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "The configuration rail truncates its search placeholder; the main diff/detail surfaces remain structured. No human-confirmed hard cap.",
+      "kind": "first-viewport",
+      "path": "screenshots/first-viewport/P22-itsm-settings.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 768
+      },
+      "byteSize": 53814,
+      "sha256": "4018be20ba3dec3b2afc2c83a7489b15a3910b5ec55f27287c2ed065d766d0fc"
+    },
+    {
+      "pageId": "P22",
+      "route": "/itsm/settings",
+      "finalUrl": "http://127.0.0.1:5174/itsm/settings",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:09:27.579Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P22\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 1148,
+            "rootHeight": 1013,
+            "documentHeight": 1101
+          },
+          {
+            "textLength": 1148,
+            "rootHeight": 1013,
+            "documentHeight": 1101
+          },
+          {
+            "textLength": 1148,
+            "rootHeight": 1013,
+            "documentHeight": 1101
+          },
+          {
+            "textLength": 1148,
+            "rootHeight": 1013,
+            "documentHeight": 1101
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "The configuration rail truncates its search placeholder; the main diff/detail surfaces remain structured. No human-confirmed hard cap.",
+      "kind": "full-page",
+      "path": "screenshots/full-page/P22-itsm-settings.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 1101
+      },
+      "byteSize": 71650,
+      "sha256": "c63d4b94a05228ccbc54ab8e8478c6ddd67b4f7c546d76c586a1da9279b99d62"
+    },
+    {
+      "pageId": "P23",
+      "route": "/copilot",
+      "finalUrl": "http://127.0.0.1:5174/copilot",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:09:30.984Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P23\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 1666,
+            "rootHeight": 1076,
+            "documentHeight": 1164
+          },
+          {
+            "textLength": 1666,
+            "rootHeight": 1076,
+            "documentHeight": 1164
+          },
+          {
+            "textLength": 1666,
+            "rootHeight": 1076,
+            "documentHeight": 1164
+          },
+          {
+            "textLength": 1666,
+            "rootHeight": 1076,
+            "documentHeight": 1164
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "All three Copilot columns are locally crowded, with broken session labels and isolated numeric fragments. Hard cap: Session labels and message fragments visibly concatenate or break into unreadable pieces.",
+      "kind": "first-viewport",
+      "path": "screenshots/first-viewport/P23-copilot.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 768
+      },
+      "byteSize": 66754,
+      "sha256": "40b5290f926f11ac447e70e74afe7a2d1a07ebccaf7ed1b2b28bf385b9753cf5"
+    },
+    {
+      "pageId": "P23",
+      "route": "/copilot",
+      "finalUrl": "http://127.0.0.1:5174/copilot",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:09:30.984Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P23\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 1666,
+            "rootHeight": 1076,
+            "documentHeight": 1164
+          },
+          {
+            "textLength": 1666,
+            "rootHeight": 1076,
+            "documentHeight": 1164
+          },
+          {
+            "textLength": 1666,
+            "rootHeight": 1076,
+            "documentHeight": 1164
+          },
+          {
+            "textLength": 1666,
+            "rootHeight": 1076,
+            "documentHeight": 1164
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "All three Copilot columns are locally crowded, with broken session labels and isolated numeric fragments. Hard cap: Session labels and message fragments visibly concatenate or break into unreadable pieces.",
+      "kind": "full-page",
+      "path": "screenshots/full-page/P23-copilot.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 1164
+      },
+      "byteSize": 86726,
+      "sha256": "87013fc406613cd250c1c1e44ca197cbad44da7ff0b5142e9899911f7aa2f1af"
+    },
+    {
+      "pageId": "P24",
+      "route": "/agents",
+      "finalUrl": "http://127.0.0.1:5174/agents",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:09:34.482Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P24\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 1760,
+            "rootHeight": 2071,
+            "documentHeight": 2159
+          },
+          {
+            "textLength": 1760,
+            "rootHeight": 2071,
+            "documentHeight": 2159
+          },
+          {
+            "textLength": 1760,
+            "rootHeight": 2071,
+            "documentHeight": 2159
+          },
+          {
+            "textLength": 1760,
+            "rootHeight": 2071,
+            "documentHeight": 2159
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "A narrow fleet grid makes IDs, versions and capacity values difficult to compare and greatly inflates page height. Hard cap: Agent identifiers and comparison fields break across many single-word or single-token lines.",
+      "kind": "first-viewport",
+      "path": "screenshots/first-viewport/P24-agents.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 768
+      },
+      "byteSize": 49666,
+      "sha256": "6f2cc2da5d0f598739345f5642c98a0eccfd4402876ee29a2338722de9d24aab"
+    },
+    {
+      "pageId": "P24",
+      "route": "/agents",
+      "finalUrl": "http://127.0.0.1:5174/agents",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:09:34.482Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P24\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 1760,
+            "rootHeight": 2071,
+            "documentHeight": 2159
+          },
+          {
+            "textLength": 1760,
+            "rootHeight": 2071,
+            "documentHeight": 2159
+          },
+          {
+            "textLength": 1760,
+            "rootHeight": 2071,
+            "documentHeight": 2159
+          },
+          {
+            "textLength": 1760,
+            "rootHeight": 2071,
+            "documentHeight": 2159
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "A narrow fleet grid makes IDs, versions and capacity values difficult to compare and greatly inflates page height. Hard cap: Agent identifiers and comparison fields break across many single-word or single-token lines.",
+      "kind": "full-page",
+      "path": "screenshots/full-page/P24-agents.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 2159
+      },
+      "byteSize": 87018,
+      "sha256": "e949c0800e6479d0a7fe8964029bcb0f58ba75a6ba148f521fe11074d1a40480"
+    },
+    {
+      "pageId": "P25",
+      "route": "/agents/tasks",
+      "finalUrl": "http://127.0.0.1:5174/agents/tasks",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:09:37.890Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P25\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 1203,
+            "rootHeight": 1205,
+            "documentHeight": 1293
+          },
+          {
+            "textLength": 1203,
+            "rootHeight": 1205,
+            "documentHeight": 1293
+          },
+          {
+            "textLength": 1203,
+            "rootHeight": 1205,
+            "documentHeight": 1293
+          },
+          {
+            "textLength": 1203,
+            "rootHeight": 1205,
+            "documentHeight": 1293
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "Task names break vertically, state steps concatenate, receipts crowd, and the right side is clipped. Hard cap: Document-level overflow, clipped controls and multiple text collisions are visible.",
+      "kind": "first-viewport",
+      "path": "screenshots/first-viewport/P25-agents-tasks.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 768
+      },
+      "byteSize": 51290,
+      "sha256": "c464bd9f5d6684368fce4617829e8fd69c010a88b975e8393b3b6bf7e38a86de"
+    },
+    {
+      "pageId": "P25",
+      "route": "/agents/tasks",
+      "finalUrl": "http://127.0.0.1:5174/agents/tasks",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:09:37.890Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P25\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 1203,
+            "rootHeight": 1205,
+            "documentHeight": 1293
+          },
+          {
+            "textLength": 1203,
+            "rootHeight": 1205,
+            "documentHeight": 1293
+          },
+          {
+            "textLength": 1203,
+            "rootHeight": 1205,
+            "documentHeight": 1293
+          },
+          {
+            "textLength": 1203,
+            "rootHeight": 1205,
+            "documentHeight": 1293
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "Task names break vertically, state steps concatenate, receipts crowd, and the right side is clipped. Hard cap: Document-level overflow, clipped controls and multiple text collisions are visible.",
+      "kind": "full-page",
+      "path": "screenshots/full-page/P25-agents-tasks.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 1293
+      },
+      "byteSize": 68182,
+      "sha256": "0aad5c057290eb3f3a1248328d35128acd4c077fe37bec5b4b40d8ae79237ef7"
+    },
+    {
+      "pageId": "P26",
+      "route": "/agents/runtime-access",
+      "finalUrl": "http://127.0.0.1:5174/agents/runtime-access",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:09:41.290Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P26\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 1446,
+            "rootHeight": 1000,
+            "documentHeight": 1088
+          },
+          {
+            "textLength": 1446,
+            "rootHeight": 1000,
+            "documentHeight": 1088
+          },
+          {
+            "textLength": 1446,
+            "rootHeight": 1000,
+            "documentHeight": 1088
+          },
+          {
+            "textLength": 1446,
+            "rootHeight": 1000,
+            "documentHeight": 1088
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "Runtime-policy risk values truncate to fragments such as Criti, preventing reliable scanning. Hard cap: The essential Risk heading and values are clipped.",
+      "kind": "first-viewport",
+      "path": "screenshots/first-viewport/P26-agents-runtime-access.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 768
+      },
+      "byteSize": 51970,
+      "sha256": "3611b2436cef0ee5664770fcd9f873daa6c10fb3f5d9297585a3497fc8d53935"
+    },
+    {
+      "pageId": "P26",
+      "route": "/agents/runtime-access",
+      "finalUrl": "http://127.0.0.1:5174/agents/runtime-access",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:09:41.290Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P26\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 1446,
+            "rootHeight": 1000,
+            "documentHeight": 1088
+          },
+          {
+            "textLength": 1446,
+            "rootHeight": 1000,
+            "documentHeight": 1088
+          },
+          {
+            "textLength": 1446,
+            "rootHeight": 1000,
+            "documentHeight": 1088
+          },
+          {
+            "textLength": 1446,
+            "rootHeight": 1000,
+            "documentHeight": 1088
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "Runtime-policy risk values truncate to fragments such as Criti, preventing reliable scanning. Hard cap: The essential Risk heading and values are clipped.",
+      "kind": "full-page",
+      "path": "screenshots/full-page/P26-agents-runtime-access.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 1088
+      },
+      "byteSize": 68540,
+      "sha256": "1ab080a62fa8ba5a2178876d722a0c62b5cd88769cf6b89db60907e2d10fa54e"
+    },
+    {
+      "pageId": "P27",
+      "route": "/runtime",
+      "finalUrl": "http://127.0.0.1:5174/runtime",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:09:44.723Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P27\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 1913,
+            "rootHeight": 1428,
+            "documentHeight": 1516
+          },
+          {
+            "textLength": 1913,
+            "rootHeight": 1428,
+            "documentHeight": 1516
+          },
+          {
+            "textLength": 1913,
+            "rootHeight": 1428,
+            "documentHeight": 1516
+          },
+          {
+            "textLength": 1913,
+            "rootHeight": 1428,
+            "documentHeight": 1516
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "The overview is readable, but detail metadata and dependency tags concatenate into one line. No human-confirmed hard cap.",
+      "kind": "first-viewport",
+      "path": "screenshots/first-viewport/P27-runtime.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 768
+      },
+      "byteSize": 55714,
+      "sha256": "8c5322242afce53af1c1871f94d15757af306ce126ecd7054a2c75c673d9b175"
+    },
+    {
+      "pageId": "P27",
+      "route": "/runtime",
+      "finalUrl": "http://127.0.0.1:5174/runtime",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:09:44.723Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P27\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 1913,
+            "rootHeight": 1428,
+            "documentHeight": 1516
+          },
+          {
+            "textLength": 1913,
+            "rootHeight": 1428,
+            "documentHeight": 1516
+          },
+          {
+            "textLength": 1913,
+            "rootHeight": 1428,
+            "documentHeight": 1516
+          },
+          {
+            "textLength": 1913,
+            "rootHeight": 1428,
+            "documentHeight": 1516
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "The overview is readable, but detail metadata and dependency tags concatenate into one line. No human-confirmed hard cap.",
+      "kind": "full-page",
+      "path": "screenshots/full-page/P27-runtime.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 1516
+      },
+      "byteSize": 88756,
+      "sha256": "35cc6ebe3e11e3ccccbf90d61e2247f508b9040fea11ad0d97fb029a11062ff3"
+    },
+    {
+      "pageId": "P28",
+      "route": "/runtime/data-sources",
+      "finalUrl": "http://127.0.0.1:5174/runtime/data-sources",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:09:48.211Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P28\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 2370,
+            "rootHeight": 1766,
+            "documentHeight": 1854
+          },
+          {
+            "textLength": 2370,
+            "rootHeight": 1766,
+            "documentHeight": 1854
+          },
+          {
+            "textLength": 2370,
+            "rootHeight": 1766,
+            "documentHeight": 1854
+          },
+          {
+            "textLength": 2370,
+            "rootHeight": 1766,
+            "documentHeight": 1854
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "The integration layout exceeds the viewport and compresses all remaining columns. Hard cap: Document-level horizontal overflow clips the CTA, third panel and detail content.",
+      "kind": "first-viewport",
+      "path": "screenshots/first-viewport/P28-runtime-data-sources.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 768
+      },
+      "byteSize": 55886,
+      "sha256": "7a77b0241f6617655d8a9dc6375ce74f64903dd1c2d0cd623106ac37b47dbf51"
+    },
+    {
+      "pageId": "P28",
+      "route": "/runtime/data-sources",
+      "finalUrl": "http://127.0.0.1:5174/runtime/data-sources",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:09:48.211Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P28\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 2370,
+            "rootHeight": 1766,
+            "documentHeight": 1854
+          },
+          {
+            "textLength": 2370,
+            "rootHeight": 1766,
+            "documentHeight": 1854
+          },
+          {
+            "textLength": 2370,
+            "rootHeight": 1766,
+            "documentHeight": 1854
+          },
+          {
+            "textLength": 2370,
+            "rootHeight": 1766,
+            "documentHeight": 1854
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "The integration layout exceeds the viewport and compresses all remaining columns. Hard cap: Document-level horizontal overflow clips the CTA, third panel and detail content.",
+      "kind": "full-page",
+      "path": "screenshots/full-page/P28-runtime-data-sources.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 1854
+      },
+      "byteSize": 105998,
+      "sha256": "8b1ebc2966ce5d9b5e85209c9b34e085a43c8a025458e8f841390ff0da2aaab1"
+    },
+    {
+      "pageId": "P29",
+      "route": "/runtime/rules",
+      "finalUrl": "http://127.0.0.1:5174/runtime/rules",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:09:51.674Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P29\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 1778,
+            "rootHeight": 1575,
+            "documentHeight": 1663
+          },
+          {
+            "textLength": 1778,
+            "rootHeight": 1575,
+            "documentHeight": 1663
+          },
+          {
+            "textLength": 1778,
+            "rootHeight": 1575,
+            "documentHeight": 1663
+          },
+          {
+            "textLength": 1778,
+            "rootHeight": 1575,
+            "documentHeight": 1663
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "Rule list, editor and coverage detail create a clear authoring scan path. No human-confirmed hard cap.",
+      "kind": "first-viewport",
+      "path": "screenshots/first-viewport/P29-runtime-rules.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 768
+      },
+      "byteSize": 53950,
+      "sha256": "6e94c1f127684fd3d1bf2a01d707b854b4638f5d630a1d2e42f45ca1dcfce59c"
+    },
+    {
+      "pageId": "P29",
+      "route": "/runtime/rules",
+      "finalUrl": "http://127.0.0.1:5174/runtime/rules",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:09:51.674Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P29\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 1778,
+            "rootHeight": 1575,
+            "documentHeight": 1663
+          },
+          {
+            "textLength": 1778,
+            "rootHeight": 1575,
+            "documentHeight": 1663
+          },
+          {
+            "textLength": 1778,
+            "rootHeight": 1575,
+            "documentHeight": 1663
+          },
+          {
+            "textLength": 1778,
+            "rootHeight": 1575,
+            "documentHeight": 1663
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "Rule list, editor and coverage detail create a clear authoring scan path. No human-confirmed hard cap.",
+      "kind": "full-page",
+      "path": "screenshots/full-page/P29-runtime-rules.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 1663
+      },
+      "byteSize": 90694,
+      "sha256": "b3aebb7f16b59f48cac04fa65e1466d9d45060390d57c2daea9233ea11f71d83"
+    },
+    {
+      "pageId": "P30",
+      "route": "/runtime/events",
+      "finalUrl": "http://127.0.0.1:5174/runtime/events",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:09:55.166Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P30\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 1629,
+            "rootHeight": 1886,
+            "documentHeight": 1974
+          },
+          {
+            "textLength": 1629,
+            "rootHeight": 1886,
+            "documentHeight": 1974
+          },
+          {
+            "textLength": 1629,
+            "rootHeight": 1886,
+            "documentHeight": 1974
+          },
+          {
+            "textLength": 1629,
+            "rootHeight": 1886,
+            "documentHeight": 1974
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "Schema tree, detail, code and compatibility sections remain readable and well grouped. No human-confirmed hard cap.",
+      "kind": "first-viewport",
+      "path": "screenshots/first-viewport/P30-runtime-events.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 768
+      },
+      "byteSize": 54194,
+      "sha256": "d6293a4a354195808eebcd5290dce432bd5503ab77052d593980ce0281c25f20"
+    },
+    {
+      "pageId": "P30",
+      "route": "/runtime/events",
+      "finalUrl": "http://127.0.0.1:5174/runtime/events",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:09:55.166Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P30\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 1629,
+            "rootHeight": 1886,
+            "documentHeight": 1974
+          },
+          {
+            "textLength": 1629,
+            "rootHeight": 1886,
+            "documentHeight": 1974
+          },
+          {
+            "textLength": 1629,
+            "rootHeight": 1886,
+            "documentHeight": 1974
+          },
+          {
+            "textLength": 1629,
+            "rootHeight": 1886,
+            "documentHeight": 1974
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "Schema tree, detail, code and compatibility sections remain readable and well grouped. No human-confirmed hard cap.",
+      "kind": "full-page",
+      "path": "screenshots/full-page/P30-runtime-events.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 1974
+      },
+      "byteSize": 96278,
+      "sha256": "a31c8405fb3f20881e9ca0a7972a9dbbb1fe69497df140e256c1552ea01c9422"
+    },
+    {
+      "pageId": "P31",
+      "route": "/runtime/objects",
+      "finalUrl": "http://127.0.0.1:5174/runtime/objects",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:09:58.664Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P31\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 2152,
+            "rootHeight": 1486,
+            "documentHeight": 1574
+          },
+          {
+            "textLength": 2152,
+            "rootHeight": 1486,
+            "documentHeight": 1574
+          },
+          {
+            "textLength": 2152,
+            "rootHeight": 1486,
+            "documentHeight": 1574
+          },
+          {
+            "textLength": 2152,
+            "rootHeight": 1486,
+            "documentHeight": 1574
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "The object table loses its final column even though the adjacent detail card remains clear. Hard cap: The table's rightmost essential column is clipped.",
+      "kind": "first-viewport",
+      "path": "screenshots/first-viewport/P31-runtime-objects.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 768
+      },
+      "byteSize": 56100,
+      "sha256": "e00af501f31887bbe1edc8b96f29be01bab30294b1d6a917b95c8ac2505d4ac3"
+    },
+    {
+      "pageId": "P31",
+      "route": "/runtime/objects",
+      "finalUrl": "http://127.0.0.1:5174/runtime/objects",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:09:58.664Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P31\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 2152,
+            "rootHeight": 1486,
+            "documentHeight": 1574
+          },
+          {
+            "textLength": 2152,
+            "rootHeight": 1486,
+            "documentHeight": 1574
+          },
+          {
+            "textLength": 2152,
+            "rootHeight": 1486,
+            "documentHeight": 1574
+          },
+          {
+            "textLength": 2152,
+            "rootHeight": 1486,
+            "documentHeight": 1574
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "The object table loses its final column even though the adjacent detail card remains clear. Hard cap: The table's rightmost essential column is clipped.",
+      "kind": "full-page",
+      "path": "screenshots/full-page/P31-runtime-objects.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 1574
+      },
+      "byteSize": 86742,
+      "sha256": "78d5fe11f0951184927a5746e89852187c38ba022aa2987540f0d3d9a46244c8"
+    },
+    {
+      "pageId": "P32",
+      "route": "/runtime/script-workbench",
+      "finalUrl": "http://127.0.0.1:5174/runtime/script-workbench",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:10:02.690Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P32\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 1725,
+            "rootHeight": 1492,
+            "documentHeight": 1580
+          },
+          {
+            "textLength": 1725,
+            "rootHeight": 1492,
+            "documentHeight": 1580
+          },
+          {
+            "textLength": 1725,
+            "rootHeight": 1492,
+            "documentHeight": 1580
+          },
+          {
+            "textLength": 1725,
+            "rootHeight": 1492,
+            "documentHeight": 1580
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "Library, editor, inputs and outputs form a strong workbench despite the expected tall code surface. No human-confirmed hard cap.",
+      "kind": "first-viewport",
+      "path": "screenshots/first-viewport/P32-runtime-script-workbench.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 768
+      },
+      "byteSize": 49890,
+      "sha256": "38a6cc70d2ff39e60b3fe245652dc2cff177fce988f9d0e1ef7227924a4bf929"
+    },
+    {
+      "pageId": "P32",
+      "route": "/runtime/script-workbench",
+      "finalUrl": "http://127.0.0.1:5174/runtime/script-workbench",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:10:02.690Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P32\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 1725,
+            "rootHeight": 1492,
+            "documentHeight": 1580
+          },
+          {
+            "textLength": 1725,
+            "rootHeight": 1492,
+            "documentHeight": 1580
+          },
+          {
+            "textLength": 1725,
+            "rootHeight": 1492,
+            "documentHeight": 1580
+          },
+          {
+            "textLength": 1725,
+            "rootHeight": 1492,
+            "documentHeight": 1580
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "Library, editor, inputs and outputs form a strong workbench despite the expected tall code surface. No human-confirmed hard cap.",
+      "kind": "full-page",
+      "path": "screenshots/full-page/P32-runtime-script-workbench.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 1580
+      },
+      "byteSize": 71400,
+      "sha256": "ec0f5ccd8944c3db6d9e565c3863a13a62fb29aaf8ff1bc5e29322e3de7cf54c"
+    },
+    {
+      "pageId": "P33",
+      "route": "/knowledge/sources",
+      "finalUrl": "http://127.0.0.1:5174/knowledge/sources",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:10:06.157Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P33\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 1301,
+            "rootHeight": 1616,
+            "documentHeight": 1704
+          },
+          {
+            "textLength": 1301,
+            "rootHeight": 1616,
+            "documentHeight": 1704
+          },
+          {
+            "textLength": 1301,
+            "rootHeight": 1616,
+            "documentHeight": 1704
+          },
+          {
+            "textLength": 1301,
+            "rootHeight": 1616,
+            "documentHeight": 1704
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "Some source and freshness fields wrap, but the table and coverage detail remain understandable. No human-confirmed hard cap.",
+      "kind": "first-viewport",
+      "path": "screenshots/first-viewport/P33-knowledge-sources.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 768
+      },
+      "byteSize": 50698,
+      "sha256": "02c60393c546c00cf5f8af28c767d18fdae2a9c9816fdd341449e75cc26b1dda"
+    },
+    {
+      "pageId": "P33",
+      "route": "/knowledge/sources",
+      "finalUrl": "http://127.0.0.1:5174/knowledge/sources",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:10:06.157Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P33\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 1301,
+            "rootHeight": 1616,
+            "documentHeight": 1704
+          },
+          {
+            "textLength": 1301,
+            "rootHeight": 1616,
+            "documentHeight": 1704
+          },
+          {
+            "textLength": 1301,
+            "rootHeight": 1616,
+            "documentHeight": 1704
+          },
+          {
+            "textLength": 1301,
+            "rootHeight": 1616,
+            "documentHeight": 1704
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "Some source and freshness fields wrap, but the table and coverage detail remain understandable. No human-confirmed hard cap.",
+      "kind": "full-page",
+      "path": "screenshots/full-page/P33-knowledge-sources.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 1704
+      },
+      "byteSize": 80700,
+      "sha256": "4add5cbcbcb6b2645064ba47ac08bd6a4a5a60d45028ca8f3cbb7dd900682865"
+    },
+    {
+      "pageId": "P34",
+      "route": "/knowledge/playbooks",
+      "finalUrl": "http://127.0.0.1:5174/knowledge/playbooks",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:10:09.646Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P34\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 1832,
+            "rootHeight": 1860,
+            "documentHeight": 1948
+          },
+          {
+            "textLength": 1832,
+            "rootHeight": 1860,
+            "documentHeight": 1948
+          },
+          {
+            "textLength": 1832,
+            "rootHeight": 1860,
+            "documentHeight": 1948
+          },
+          {
+            "textLength": 1832,
+            "rootHeight": 1860,
+            "documentHeight": 1948
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "The graph/workbench is well grouped and the narrow list remains usable. No human-confirmed hard cap.",
+      "kind": "first-viewport",
+      "path": "screenshots/first-viewport/P34-knowledge-playbooks.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 768
+      },
+      "byteSize": 52094,
+      "sha256": "b84d27509fecd1377b083518a6fcf252e73af2e402b70cc77e91c851ba40d56d"
+    },
+    {
+      "pageId": "P34",
+      "route": "/knowledge/playbooks",
+      "finalUrl": "http://127.0.0.1:5174/knowledge/playbooks",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:10:09.646Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P34\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 1832,
+            "rootHeight": 1860,
+            "documentHeight": 1948
+          },
+          {
+            "textLength": 1832,
+            "rootHeight": 1860,
+            "documentHeight": 1948
+          },
+          {
+            "textLength": 1832,
+            "rootHeight": 1860,
+            "documentHeight": 1948
+          },
+          {
+            "textLength": 1832,
+            "rootHeight": 1860,
+            "documentHeight": 1948
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "The graph/workbench is well grouped and the narrow list remains usable. No human-confirmed hard cap.",
+      "kind": "full-page",
+      "path": "screenshots/full-page/P34-knowledge-playbooks.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 1948
+      },
+      "byteSize": 89004,
+      "sha256": "5a1292bde0009e8b66f31893d7b170321e9f298da458fb8c36842e042a3aac16"
+    },
+    {
+      "pageId": "P35",
+      "route": "/knowledge/detection-notes",
+      "finalUrl": "http://127.0.0.1:5174/knowledge/detection-notes",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:10:13.273Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P35\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 3736,
+            "rootHeight": 2910,
+            "documentHeight": 2998
+          },
+          {
+            "textLength": 3736,
+            "rootHeight": 2910,
+            "documentHeight": 2998
+          },
+          {
+            "textLength": 3736,
+            "rootHeight": 2910,
+            "documentHeight": 2998
+          },
+          {
+            "textLength": 3736,
+            "rootHeight": 2910,
+            "documentHeight": 2998
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "The right side extends off-screen and the full page has a massive blank canvas beside a long note list. Hard cap: Right detail and create control are clipped by document-level overflow.",
+      "kind": "first-viewport",
+      "path": "screenshots/first-viewport/P35-knowledge-detection-notes.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 768
+      },
+      "byteSize": 59942,
+      "sha256": "3b26659e2f3d0a28d9cf53340c625924f655d8a26e61470fbe5a8458c402857c"
+    },
+    {
+      "pageId": "P35",
+      "route": "/knowledge/detection-notes",
+      "finalUrl": "http://127.0.0.1:5174/knowledge/detection-notes",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:10:13.273Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P35\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 3736,
+            "rootHeight": 2910,
+            "documentHeight": 2998
+          },
+          {
+            "textLength": 3736,
+            "rootHeight": 2910,
+            "documentHeight": 2998
+          },
+          {
+            "textLength": 3736,
+            "rootHeight": 2910,
+            "documentHeight": 2998
+          },
+          {
+            "textLength": 3736,
+            "rootHeight": 2910,
+            "documentHeight": 2998
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "The right side extends off-screen and the full page has a massive blank canvas beside a long note list. Hard cap: Right detail and create control are clipped by document-level overflow.",
+      "kind": "full-page",
+      "path": "screenshots/full-page/P35-knowledge-detection-notes.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 2998
+      },
+      "byteSize": 166276,
+      "sha256": "440813108e4518e23fe42a20411d30ab2fd0d683a4b3cdcfbb629abf4599978c"
+    },
+    {
+      "pageId": "P36",
+      "route": "/projects/responses",
+      "finalUrl": "http://127.0.0.1:5174/projects/responses",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:10:16.670Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P36\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 2074,
+            "rootHeight": 1011,
+            "documentHeight": 1099
+          },
+          {
+            "textLength": 2074,
+            "rootHeight": 1011,
+            "documentHeight": 1099
+          },
+          {
+            "textLength": 2074,
+            "rootHeight": 1011,
+            "documentHeight": 1099
+          },
+          {
+            "textLength": 2074,
+            "rootHeight": 1011,
+            "documentHeight": 1099
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "The master/detail composition is readable with only moderate column-height imbalance. No human-confirmed hard cap.",
+      "kind": "first-viewport",
+      "path": "screenshots/first-viewport/P36-projects-responses.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 768
+      },
+      "byteSize": 56560,
+      "sha256": "46a016a47238039e9443b0b67da8860a145be2a332f0a04e66b71dc6978bcb1d"
+    },
+    {
+      "pageId": "P36",
+      "route": "/projects/responses",
+      "finalUrl": "http://127.0.0.1:5174/projects/responses",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:10:16.670Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P36\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 2074,
+            "rootHeight": 1011,
+            "documentHeight": 1099
+          },
+          {
+            "textLength": 2074,
+            "rootHeight": 1011,
+            "documentHeight": 1099
+          },
+          {
+            "textLength": 2074,
+            "rootHeight": 1011,
+            "documentHeight": 1099
+          },
+          {
+            "textLength": 2074,
+            "rootHeight": 1011,
+            "documentHeight": 1099
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "The master/detail composition is readable with only moderate column-height imbalance. No human-confirmed hard cap.",
+      "kind": "full-page",
+      "path": "screenshots/full-page/P36-projects-responses.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 1099
+      },
+      "byteSize": 69462,
+      "sha256": "68b8d7c5a096d14f1d04157e2d806525894f670a9607f7c7bf7a9671dc076448"
+    },
+    {
+      "pageId": "P37",
+      "route": "/admin/users",
+      "finalUrl": "http://127.0.0.1:5174/admin/users",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:10:20.167Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P37\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 3220,
+            "rootHeight": 1975,
+            "documentHeight": 2063
+          },
+          {
+            "textLength": 3220,
+            "rootHeight": 1975,
+            "documentHeight": 2063
+          },
+          {
+            "textLength": 3220,
+            "rootHeight": 1975,
+            "documentHeight": 2063
+          },
+          {
+            "textLength": 3220,
+            "rootHeight": 1975,
+            "documentHeight": 2063
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "The user table is readable, but a short fixed detail panel leaves most of the full page blank beside 16 rows. No human-confirmed hard cap.",
+      "kind": "first-viewport",
+      "path": "screenshots/first-viewport/P37-admin-users.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 768
+      },
+      "byteSize": 50910,
+      "sha256": "198a44d8b465b2d1d3b0b07ed6cb92987937e28d9850dacb33807c5c4eed278c"
+    },
+    {
+      "pageId": "P37",
+      "route": "/admin/users",
+      "finalUrl": "http://127.0.0.1:5174/admin/users",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:10:20.167Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P37\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 3220,
+            "rootHeight": 1975,
+            "documentHeight": 2063
+          },
+          {
+            "textLength": 3220,
+            "rootHeight": 1975,
+            "documentHeight": 2063
+          },
+          {
+            "textLength": 3220,
+            "rootHeight": 1975,
+            "documentHeight": 2063
+          },
+          {
+            "textLength": 3220,
+            "rootHeight": 1975,
+            "documentHeight": 2063
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "The user table is readable, but a short fixed detail panel leaves most of the full page blank beside 16 rows. No human-confirmed hard cap.",
+      "kind": "full-page",
+      "path": "screenshots/full-page/P37-admin-users.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 2063
+      },
+      "byteSize": 106808,
+      "sha256": "b655ece2658a8048e47bbdd5c0338dee3e5cd6c2043f9e83250aac137c08a755"
+    },
+    {
+      "pageId": "P38",
+      "route": "/admin/roles",
+      "finalUrl": "http://127.0.0.1:5174/admin/roles",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:10:23.537Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P38\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 1610,
+            "rootHeight": 1024,
+            "documentHeight": 1112
+          },
+          {
+            "textLength": 1610,
+            "rootHeight": 1024,
+            "documentHeight": 1112
+          },
+          {
+            "textLength": 1610,
+            "rootHeight": 1024,
+            "documentHeight": 1112
+          },
+          {
+            "textLength": 1610,
+            "rootHeight": 1024,
+            "documentHeight": 1112
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "Role catalog and capability matrix fit the viewport with clear compact controls. No human-confirmed hard cap.",
+      "kind": "first-viewport",
+      "path": "screenshots/first-viewport/P38-admin-roles.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 768
+      },
+      "byteSize": 44798,
+      "sha256": "caf70b5d2c7be7f5fe7bca8da2d7922f36a1988a3ea5d709a52be3bba513bac9"
+    },
+    {
+      "pageId": "P38",
+      "route": "/admin/roles",
+      "finalUrl": "http://127.0.0.1:5174/admin/roles",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:10:23.537Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P38\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 1610,
+            "rootHeight": 1024,
+            "documentHeight": 1112
+          },
+          {
+            "textLength": 1610,
+            "rootHeight": 1024,
+            "documentHeight": 1112
+          },
+          {
+            "textLength": 1610,
+            "rootHeight": 1024,
+            "documentHeight": 1112
+          },
+          {
+            "textLength": 1610,
+            "rootHeight": 1024,
+            "documentHeight": 1112
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "Role catalog and capability matrix fit the viewport with clear compact controls. No human-confirmed hard cap.",
+      "kind": "full-page",
+      "path": "screenshots/full-page/P38-admin-roles.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 1112
+      },
+      "byteSize": 55622,
+      "sha256": "a6826a9760d841014573a34cc83ef4426f7148149335cb565d11f5f30e2bc753"
+    },
+    {
+      "pageId": "P39",
+      "route": "/admin/permissions",
+      "finalUrl": "http://127.0.0.1:5174/admin/permissions",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:10:27.040Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P39\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 2854,
+            "rootHeight": 1913,
+            "documentHeight": 2001
+          },
+          {
+            "textLength": 2854,
+            "rootHeight": 1913,
+            "documentHeight": 2001
+          },
+          {
+            "textLength": 2854,
+            "rootHeight": 1913,
+            "documentHeight": 2001
+          },
+          {
+            "textLength": 2854,
+            "rootHeight": 1913,
+            "documentHeight": 2001
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "The query form and long results table are consistently spaced and easy to scan. No human-confirmed hard cap.",
+      "kind": "first-viewport",
+      "path": "screenshots/first-viewport/P39-admin-permissions.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 768
+      },
+      "byteSize": 41942,
+      "sha256": "08fc508d4ae7b8c5ae72f517571b1965e610e09054988bbf30d1c165a756ba1e"
+    },
+    {
+      "pageId": "P39",
+      "route": "/admin/permissions",
+      "finalUrl": "http://127.0.0.1:5174/admin/permissions",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:10:27.040Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P39\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 2854,
+            "rootHeight": 1913,
+            "documentHeight": 2001
+          },
+          {
+            "textLength": 2854,
+            "rootHeight": 1913,
+            "documentHeight": 2001
+          },
+          {
+            "textLength": 2854,
+            "rootHeight": 1913,
+            "documentHeight": 2001
+          },
+          {
+            "textLength": 2854,
+            "rootHeight": 1913,
+            "documentHeight": 2001
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "The query form and long results table are consistently spaced and easy to scan. No human-confirmed hard cap.",
+      "kind": "full-page",
+      "path": "screenshots/full-page/P39-admin-permissions.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 2001
+      },
+      "byteSize": 120332,
+      "sha256": "be0fe0cb2bfb5ae88656ba33059afd2586ce6e9f7e9b204a7b4372dc10fabe72"
+    },
+    {
+      "pageId": "P40",
+      "route": "/settings",
+      "finalUrl": "http://127.0.0.1:5174/settings",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:10:30.487Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P40\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 931,
+            "rootHeight": 1028,
+            "documentHeight": 1116
+          },
+          {
+            "textLength": 931,
+            "rootHeight": 1028,
+            "documentHeight": 1116
+          },
+          {
+            "textLength": 931,
+            "rootHeight": 1028,
+            "documentHeight": 1116
+          },
+          {
+            "textLength": 931,
+            "rootHeight": 1028,
+            "documentHeight": 1116
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "Clear hierarchy, but a single setting occupies a large surface and produces low useful density. No human-confirmed hard cap.",
+      "kind": "first-viewport",
+      "path": "screenshots/first-viewport/P40-settings.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 768
+      },
+      "byteSize": 46438,
+      "sha256": "4e5460f215ab0aa3216a1a6013850f815d34476050bf73d00105f9ea278d1204"
+    },
+    {
+      "pageId": "P40",
+      "route": "/settings",
+      "finalUrl": "http://127.0.0.1:5174/settings",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:10:30.487Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P40\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 931,
+            "rootHeight": 1028,
+            "documentHeight": 1116
+          },
+          {
+            "textLength": 931,
+            "rootHeight": 1028,
+            "documentHeight": 1116
+          },
+          {
+            "textLength": 931,
+            "rootHeight": 1028,
+            "documentHeight": 1116
+          },
+          {
+            "textLength": 931,
+            "rootHeight": 1028,
+            "documentHeight": 1116
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "Clear hierarchy, but a single setting occupies a large surface and produces low useful density. No human-confirmed hard cap.",
+      "kind": "full-page",
+      "path": "screenshots/full-page/P40-settings.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 1116
+      },
+      "byteSize": 60094,
+      "sha256": "7e46b8b5bb7a1c1168e85881bf4303c15134f600626523bd9c26735eb90c71f8"
+    },
+    {
+      "pageId": "P41",
+      "route": "/settings/authentication",
+      "finalUrl": "http://127.0.0.1:5174/settings/authentication",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:10:33.946Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P41\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 1429,
+            "rootHeight": 1409,
+            "documentHeight": 1497
+          },
+          {
+            "textLength": 1429,
+            "rootHeight": 1409,
+            "documentHeight": 1497
+          },
+          {
+            "textLength": 1429,
+            "rootHeight": 1409,
+            "documentHeight": 1497
+          },
+          {
+            "textLength": 1429,
+            "rootHeight": 1409,
+            "documentHeight": 1497
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "Realm chains, provider table and health detail are grouped into a clear operational sequence. No human-confirmed hard cap.",
+      "kind": "first-viewport",
+      "path": "screenshots/first-viewport/P41-settings-authentication.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 768
+      },
+      "byteSize": 44338,
+      "sha256": "89b886a24c4150ff236bdfe25ae59533811248941ed5a6f4f50a103d48cb6811"
+    },
+    {
+      "pageId": "P41",
+      "route": "/settings/authentication",
+      "finalUrl": "http://127.0.0.1:5174/settings/authentication",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:10:33.946Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P41\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 1429,
+            "rootHeight": 1409,
+            "documentHeight": 1497
+          },
+          {
+            "textLength": 1429,
+            "rootHeight": 1409,
+            "documentHeight": 1497
+          },
+          {
+            "textLength": 1429,
+            "rootHeight": 1409,
+            "documentHeight": 1497
+          },
+          {
+            "textLength": 1429,
+            "rootHeight": 1409,
+            "documentHeight": 1497
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "Realm chains, provider table and health detail are grouped into a clear operational sequence. No human-confirmed hard cap.",
+      "kind": "full-page",
+      "path": "screenshots/full-page/P41-settings-authentication.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 1497
+      },
+      "byteSize": 76674,
+      "sha256": "4baa297b7998d2adfb242bcac81cf8038a63d99ce6fc7f8da43372d1aef4f77b"
+    },
+    {
+      "pageId": "P42",
+      "route": "/settings/theme",
+      "finalUrl": "http://127.0.0.1:5174/settings/theme",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:10:37.367Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P42\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 1300,
+            "rootHeight": 1077,
+            "documentHeight": 1165
+          },
+          {
+            "textLength": 1300,
+            "rootHeight": 1077,
+            "documentHeight": 1165
+          },
+          {
+            "textLength": 1300,
+            "rootHeight": 1077,
+            "documentHeight": 1165
+          },
+          {
+            "textLength": 1300,
+            "rootHeight": 1077,
+            "documentHeight": 1165
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "Theme catalog and preview/validation area are coherent; compact metadata remains readable. No human-confirmed hard cap.",
+      "kind": "first-viewport",
+      "path": "screenshots/first-viewport/P42-settings-theme.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 768
+      },
+      "byteSize": 54042,
+      "sha256": "313444b83ed5148ef69a1f233d31de3d9c118c083a56ba60a71abe56ffe1afa5"
+    },
+    {
+      "pageId": "P42",
+      "route": "/settings/theme",
+      "finalUrl": "http://127.0.0.1:5174/settings/theme",
+      "viewport": {
+        "width": 1231,
+        "height": 768
+      },
+      "colorScheme": "dark",
+      "captureTime": "2026-07-22T13:10:37.367Z",
+      "sourceSha": "fa466957dbdc997f965e93d1b7ba709b33d5c197",
+      "readinessCheck": {
+        "rootSelector": "[data-page-id=\"P42\"]",
+        "minimumVisibleTextCharacters": 220,
+        "minimumMeaningfulSurfaces": 2,
+        "fontsReady": true,
+        "stableSamples": [
+          {
+            "textLength": 1300,
+            "rootHeight": 1077,
+            "documentHeight": 1165
+          },
+          {
+            "textLength": 1300,
+            "rootHeight": 1077,
+            "documentHeight": 1165
+          },
+          {
+            "textLength": 1300,
+            "rootHeight": 1077,
+            "documentHeight": 1165
+          },
+          {
+            "textLength": 1300,
+            "rootHeight": 1077,
+            "documentHeight": 1165
+          }
+        ],
+        "fixtureReady": "true"
+      },
+      "validity": {
+        "valid": true,
+        "reasons": []
+      },
+      "reviewerNote": "Theme catalog and preview/validation area are coherent; compact metadata remains readable. No human-confirmed hard cap.",
+      "kind": "full-page",
+      "path": "screenshots/full-page/P42-settings-theme.webp",
+      "pixelSize": {
+        "width": 1231,
+        "height": 1165
+      },
+      "byteSize": 70570,
+      "sha256": "3b090508c239b928b030261391df71132987773e7aa4788ba1528c1c9015414f"
+    }
+  ],
+  "failures": [],
+  "validation": {
+    "valid": true,
+    "errors": [],
+    "firstViewportCount": 42,
+    "fullPageCount": 42
+  },
+  "review": {
+    "completed": true,
+    "reviewedAt": "2026-07-22T13:50:00Z",
+    "method": "Individual inspection of every 1231x768 first-viewport and full-page screenshot pair; contact sheets were not used as scoring evidence.",
+    "pageCount": 42,
+    "imageCount": 84
+  }
+}
