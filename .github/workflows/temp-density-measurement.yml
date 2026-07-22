@@ -25,14 +25,24 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: codex/p01-p42-density-measurement-20260722
-          fetch-depth: 0
+          fetch-depth: 1
+          show-progress: false
 
       - name: Materialize and verify density collector
         shell: bash
         run: |
-          set -euo pipefail
+          set -euxo pipefail
           mkdir -p scripts
-          cat .density-audit-temp/payload-* | base64 --decode | gzip --decompress > scripts/audit-information-density.mjs
+          cat .density-audit-temp/payload-* > /tmp/information-density.b64
+          wc -c /tmp/information-density.b64
+          sha256sum /tmp/information-density.b64
+          base64 --decode /tmp/information-density.b64 > /tmp/information-density.mjs.gz
+          wc -c /tmp/information-density.mjs.gz
+          sha256sum /tmp/information-density.mjs.gz
+          gzip --test /tmp/information-density.mjs.gz
+          gzip --decompress --stdout /tmp/information-density.mjs.gz > scripts/audit-information-density.mjs
+          wc -c scripts/audit-information-density.mjs
+          sha256sum scripts/audit-information-density.mjs
           test "$(wc -c < scripts/audit-information-density.mjs | tr -d ' ')" = "71277"
           test "$(sha256sum scripts/audit-information-density.mjs | cut -d' ' -f1)" = "94213d25b758698a49a372fc61bdc6bb822c75bd47d12c6dc6ab877f6c7d7fc9"
           node --check scripts/audit-information-density.mjs
@@ -77,6 +87,7 @@ jobs:
           done
           node scripts/audit-information-density.mjs
           node scripts/audit-information-density.mjs --validate-only docs/design/audit-2026-07-22/p01-p42-information-density.metrics.json
+          git fetch --depth=1 origin fa466957dbdc997f965e93d1b7ba709b33d5c197
           git rev-parse 'fa466957dbdc997f965e93d1b7ba709b33d5c197^{tree}' > docs/design/audit-2026-07-22/source-tree-sha.txt
           node - <<'NODE'
           const fs = require('node:fs');
