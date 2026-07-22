@@ -179,13 +179,16 @@ async function collect(page, spec, viewport) {
         if (lineRects.length) textNodes.push({ node, parent, lineRects });
       }
       const text = textNodes.map(({ node }) => node.textContent.trim()).join(' ').replace(/\s+/g, ' ').trim();
-      const meaningful = [];
+      const meaningful = textNodes.flatMap(({ lineRects }) => lineRects);
       for (const { element, rect } of rects) {
         const style = getComputedStyle(element);
-        const leafText = [...element.childNodes].some((node) => node.nodeType === Node.TEXT_NODE && node.textContent.trim());
-        const semantic = element.matches('button,a,input,select,textarea,table,th,td,svg,canvas,[role="grid"],[role="button"],[data-visual-region],.euiBadge');
-        const border = [style.borderTopWidth, style.borderRightWidth, style.borderBottomWidth, style.borderLeftWidth].some((width) => Number.parseFloat(width) > 0);
-        if ((leafText || semantic || border) && rect.width * rect.height <= area * .55) meaningful.push(rect);
+        const semanticSurface = element.matches('button,a,input,select,textarea,table,th,td,svg,canvas,[role="grid"],[role="button"],.euiBadge');
+        if (semanticSurface && rect.width * rect.height <= area * .55) meaningful.push(rect);
+        const borders = [style.borderTopWidth, style.borderRightWidth, style.borderBottomWidth, style.borderLeftWidth].map(Number.parseFloat);
+        if (borders[0] > 0) meaningful.push({ left: rect.left, right: rect.right, top: rect.top, bottom: Math.min(rect.bottom, rect.top + borders[0]), width: rect.width, height: borders[0] });
+        if (borders[1] > 0) meaningful.push({ left: Math.max(rect.left, rect.right - borders[1]), right: rect.right, top: rect.top, bottom: rect.bottom, width: borders[1], height: rect.height });
+        if (borders[2] > 0) meaningful.push({ left: rect.left, right: rect.right, top: Math.max(rect.top, rect.bottom - borders[2]), bottom: rect.bottom, width: rect.width, height: borders[2] });
+        if (borders[3] > 0) meaningful.push({ left: rect.left, right: Math.min(rect.right, rect.left + borders[3]), top: rect.top, bottom: rect.bottom, width: borders[3], height: rect.height });
       }
       const cell = 8;
       const columns = Math.ceil((clip.right - clip.left) / cell); const rows = Math.ceil((clip.bottom - clip.top) / cell);
@@ -272,10 +275,11 @@ async function collect(page, spec, viewport) {
         return areaRatio > .08 && (bg[3] > .35 || /warning|danger|primary/i.test(element.className));
       });
       const coloredTitles = headings.filter((heading) => { const style = getComputedStyle(heading); const rect = heading.getBoundingClientRect(); return rgba(style.backgroundColor)[3] > .05 && rect.width > (clip.right - clip.left) * .45; }).length;
-      const workSurfaceElements = [...root.querySelectorAll('[data-visual-region],table,[role="grid"],article,form')].filter((element) => {
+      const workSurfaceElements = [...root.querySelectorAll('[data-visual-region],table,[role="grid"],article,form,.euiPanel,.pageFrameContent > *')].filter((element) => {
         const region = element.closest('[data-visual-region]')?.getAttribute('data-visual-region') ?? '';
         return !/page-header|workflow-header|context|scope|filter|toolbar|command/i.test(region)
-          && !element.closest('.pageContextPanel');
+          && !element.closest('.pageContextPanel')
+          && !element.matches('.pageContextPanel');
       });
       const firstSurface = workSurfaceElements.map((element) => visibleRect(element, clip)).filter(Boolean).sort((a, b) => a.top - b.top)[0];
       const scaffolding = [...root.querySelectorAll('[data-visual-region="page-header"],[data-visual-region="workflow-header"],.pageContextPanel,[class*="filter" i],[class*="toolbar" i]')].map((element) => visibleRect(element, clip)).filter(Boolean).reduce((sum, rect) => sum + rect.width * rect.height, 0) / area;
