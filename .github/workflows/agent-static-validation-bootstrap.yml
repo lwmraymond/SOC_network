@@ -1,4 +1,4 @@
-name: Agent P36 DOM metrics
+name: Agent final static correctness validation
 
 on:
   pull_request:
@@ -13,9 +13,9 @@ permissions:
   contents: write
 
 jobs:
-  diagnose:
+  validate:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 45
     steps:
       - name: Check out disposable validation ref
         uses: actions/checkout@v4
@@ -23,127 +23,132 @@ jobs:
           ref: agent/gpt56-pro-elastic-eui-round2-validation-20260722
           fetch-depth: 0
 
+      - name: Verify candidate ancestry and regenerated lockfile
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected=40fe79035828a870a720d3ca858d8fd1bb9cc2ed
+          git merge-base --is-ancestor "$expected" HEAD
+          test "$(node -p "Object.keys(require('./package-lock.json').packages).length")" -ge 500
+          test "$(cat .agent-validation/lockfile_regeneration.status)" = "0"
+          test "$(git diff --name-only "$expected" -- package.json)" = ""
+
       - name: Set up declared Node and npm versions
         uses: actions/setup-node@v4
         with:
           node-version: 22.16.0
           registry-url: https://registry.npmjs.org
 
-      - name: Install dependencies and Chromium
+      - name: Install declared npm version
         shell: bash
         run: |
           set -euo pipefail
           npm install --global npm@10.9.2
-          rm -rf node_modules
-          npm ci
-          npx playwright install --with-deps chromium
+          test "$(node --version)" = "v22.16.0"
+          test "$(npm --version)" = "10.9.2"
 
-      - name: Capture computed P36 layout metrics
+      - name: Contain the existing P36 scroll rail
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p .agent-validation/diagnostic
-          VITE_ENABLE_FIXTURES=true npm run dev -- --host 127.0.0.1 --port 4173 > .agent-validation/diagnostic/vite.log 2>&1 &
-          server_pid=$!
-          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
-          for attempt in $(seq 1 60); do
-            if curl --fail --silent http://127.0.0.1:4173/projects/responses >/dev/null; then
-              break
-            fi
-            sleep 1
-          done
-          curl --fail --silent http://127.0.0.1:4173/projects/responses >/dev/null
-          node --input-type=module <<'JS'
-          import fs from 'node:fs';
-          import { chromium } from '@playwright/test';
+          python3 - <<'PY'
+          from pathlib import Path
 
-          const browser = await chromium.launch();
-          const page = await browser.newPage({ viewport: { width: 1280, height: 720 } });
-          await page.goto('http://127.0.0.1:4173/projects/responses');
-          await page.locator('[data-page-id="P36"][data-fixture-ready="true"]').waitFor();
-          await page.locator('.p36Projects').waitFor();
-          await page.waitForTimeout(250);
-          const metrics = await page.evaluate(() => {
-            const read = (selector) => {
-              const element = document.querySelector(selector);
-              if (!(element instanceof HTMLElement)) return null;
-              const rect = element.getBoundingClientRect();
-              const style = getComputedStyle(element);
-              return {
-                selector,
-                tag: element.tagName,
-                className: element.className,
-                top: rect.top,
-                bottom: rect.bottom,
-                height: rect.height,
-                width: rect.width,
-                clientHeight: element.clientHeight,
-                scrollHeight: element.scrollHeight,
-                offsetHeight: element.offsetHeight,
-                display: style.display,
-                position: style.position,
-                maxHeight: style.maxHeight,
-                minHeight: style.minHeight,
-                overflowY: style.overflowY,
-                marginTop: style.marginTop,
-                marginBottom: style.marginBottom,
-                paddingTop: style.paddingTop,
-                paddingBottom: style.paddingBottom,
-                gap: style.gap,
-                rowGap: style.rowGap,
-              };
-            };
-            const selectors = [
-              'body',
-              '.appShell',
-              '.sidebar',
-              '.content',
-              '.prototypePage',
-              '[data-visual-region="page-header"]',
-              '.prototypePage > section',
-              '.pageContextPanel',
-              '.pageFrameContent',
-              '.p36Projects',
-              '.p36ScopePanel',
-              '.p36Workspace',
-              '.p36PortfolioRail',
-              '.p36ProjectList',
-              '.p36PrimaryWorkspace',
-              '.p36PortfolioSummary',
-            ];
-            return {
-              viewport: { width: innerWidth, height: innerHeight },
-              document: {
-                scrollHeight: document.documentElement.scrollHeight,
-                clientHeight: document.documentElement.clientHeight,
-                bodyScrollHeight: document.body.scrollHeight,
-              },
-              media: {
-                constrained: matchMedia('(max-height:720px) and (min-width:821px)').matches,
-                narrow: matchMedia('(max-width:820px)').matches,
-              },
-              pageMode: document.querySelector('.pageFrameContent')?.getAttribute('data-page-mode'),
-              elements: Object.fromEntries(selectors.map((selector) => [selector, read(selector)])),
-              projectChildren: Array.from(document.querySelector('.p36Projects')?.children ?? []).map((element) => {
-                const rect = element.getBoundingClientRect();
-                return { tag: element.tagName, className: element.className, top: rect.top, bottom: rect.bottom, height: rect.height };
-              }),
-              workspaceChildren: Array.from(document.querySelector('.p36Workspace')?.children ?? []).map((element) => {
-                const rect = element.getBoundingClientRect();
-                return { tag: element.tagName, className: element.className, top: rect.top, bottom: rect.bottom, height: rect.height };
-              }),
-            };
-          });
-          fs.writeFileSync('.agent-validation/diagnostic/p36-metrics.json', `${JSON.stringify(metrics, null, 2)}\n`);
-          await browser.close();
-          JS
+          path = Path('src/components/page-specific/P36ResponseProjectsWorkspace.css')
+          text = path.read_text()
+          obsolete = "@media(max-height:720px) and (min-width:821px){.pageFrameContent[data-page-mode='focused'] .p36ProjectList{max-height:420px}}"
+          text = text.replace(f"\n{obsolete}\n", "\n").replace(obsolete, "")
+          needle = ".p36PortfolioRail,.p36PrimaryWorkspace{min-width:0}"
+          replacement = f"{needle}.p36PortfolioRail{{overflow:hidden}}"
+          if replacement not in text:
+              count = text.count(needle)
+              if count != 1:
+                  raise SystemExit(f'expected one P36 rail rule, found {count}')
+              text = text.replace(needle, replacement, 1)
+          path.write_text(f"{text.rstrip()}\n")
+          PY
 
-      - name: Commit diagnostic evidence to disposable ref
+      - name: Run final validation matrix
+        id: validation
+        shell: bash
+        run: |
+          set -u -o pipefail
+          rm -rf .agent-validation/final2
+          mkdir -p .agent-validation/final2
+
+          run_logged() {
+            name="$1"
+            command="$2"
+            printf '%s\n' "$command" > ".agent-validation/final2/${name}.command"
+            set +e
+            bash -o pipefail -c "$command" 2>&1 | tee ".agent-validation/final2/${name}.log"
+            code=${PIPESTATUS[0]}
+            set -e
+            printf '%s\n' "$code" > ".agent-validation/final2/${name}.status"
+          }
+
+          set -e
+          rm -rf node_modules
+          run_logged npm_ci "npm ci"
+          run_logged dependency_tree "test -x node_modules/.bin/vite && test -x node_modules/.bin/tsc && test -x node_modules/.bin/playwright && node -e \"console.log(require.resolve('rollup/package.json'))\""
+          run_logged lint "npm run lint"
+          run_logged typecheck "npm run typecheck"
+          run_logged unit "npm test"
+          run_logged build "npm run build"
+          run_logged playwright_install "npx playwright install --with-deps chromium"
+          run_logged smoke "npx playwright test tests/e2e/all-pages.smoke.spec.ts --workers=1"
+          run_logged routes "npm run e2e:routes"
+
+          node <<'NODE'
+          const fs = require('node:fs');
+          const path = require('node:path');
+          const dir = '.agent-validation/final2';
+          const names = ['npm_ci','dependency_tree','lint','typecheck','unit','build','playwright_install','smoke','routes'];
+          const results = Object.fromEntries(names.map((name) => [name, {
+            command: fs.readFileSync(path.join(dir, `${name}.command`), 'utf8').trim(),
+            status: Number(fs.readFileSync(path.join(dir, `${name}.status`), 'utf8').trim()),
+          }]));
+          const lock = JSON.parse(fs.readFileSync('package-lock.json', 'utf8'));
+          const summary = {
+            expectedHead: '40fe79035828a870a720d3ca858d8fd1bb9cc2ed',
+            node: process.version,
+            npm: '10.9.2',
+            lockfileVersion: lock.lockfileVersion,
+            lockfilePackageEntries: Object.keys(lock.packages ?? {}).length,
+            lockfileRegenerationStatus: Number(fs.readFileSync('.agent-validation/lockfile_regeneration.status', 'utf8').trim()),
+            results,
+          };
+          fs.writeFileSync(path.join(dir, 'results.json'), `${JSON.stringify(summary, null, 2)}\n`);
+          NODE
+
+          git diff --stat 40fe79035828a870a720d3ca858d8fd1bb9cc2ed -- \
+            package-lock.json \
+            src/pages/P42ThemeAccessibility.tsx \
+            src/components/page-specific/P19ApprovalsTasksWorkspace.tsx \
+            src/components/page-specific/P31RuntimeObjectsWorkspace.tsx \
+            src/components/page-specific/P36ResponseProjectsWorkspace.tsx \
+            src/components/page-specific/P36ResponseProjectsWorkspace.css \
+            src/p07/EventSearchPage.tsx > .agent-validation/final2/candidate.diffstat
+
+      - name: Commit final candidate evidence to disposable ref
+        if: always()
         shell: bash
         run: |
           set -euo pipefail
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add .agent-validation/diagnostic
-          git commit -m "test: capture P36 computed layout metrics"
+          git add \
+            src/components/page-specific/P36ResponseProjectsWorkspace.css \
+            .agent-validation/final2
+          git commit -m "test: validate contained P36 scroll rail"
           git push origin HEAD:agent/gpt56-pro-elastic-eui-round2-validation-20260722
+
+      - name: Fail run when any required validation failed
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(cat .agent-validation/lockfile_regeneration.status)" = "0"
+          for name in npm_ci dependency_tree lint typecheck unit build playwright_install smoke routes; do
+            test "$(cat ".agent-validation/final2/${name}.status")" = "0"
+          done
