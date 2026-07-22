@@ -61,6 +61,15 @@ jobs:
           EUI_AUDIT_WIDTH=1231 EUI_AUDIT_HEIGHT=768 node scripts/audit-eui-visual-metrics.mjs --report-only
           cp /tmp/eui-audit-vite.log artifacts/eui-visual-audit/vite.log
           printf 'node=%s\nnpm=%s\nhead=%s\n' "$(node --version)" "$(npm --version)" "$(git rev-parse HEAD)" > artifacts/eui-visual-audit/environment.txt
+          git archive --format=tar.gz --output=artifacts/eui-visual-audit/source-f351391.tar.gz f351391910c627b01f36bbb819f7eb50ce395181
+
+      - name: Upload disposable audit bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: eui-audit-baseline
+          path: artifacts/eui-visual-audit
+          if-no-files-found: error
+          retention-days: 1
 
       - name: Publish disposable audit evidence
         shell: bash
@@ -69,5 +78,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -f artifacts/eui-visual-audit/report.json artifacts/eui-visual-audit/report.md artifacts/eui-visual-audit/vite.log artifacts/eui-visual-audit/environment.txt
-          git commit -m "chore: record temporary EUI audit baseline"
+          git commit -m "chore: refresh temporary EUI audit baseline"
           git push origin HEAD:codex/kibana-42page-visual
