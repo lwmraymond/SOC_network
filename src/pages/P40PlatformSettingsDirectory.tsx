@@ -32,7 +32,7 @@ import { PageFrame } from '../components/PageFrame';
 import { usePrototypePage } from '../components/usePrototypePage';
 
 const spec = pageSpecById.P40;
-type Category = 'General' | 'Data & indices' | 'Security operations' | 'Alerting' | 'Observability' | 'Advanced';
+type Category = 'All categories' | 'General' | 'Data & indices' | 'Security operations' | 'Alerting' | 'Observability' | 'Advanced';
 type Scope = 'Project' | 'Deployment' | 'Space';
 type Source = 'Default' | 'Custom' | 'Managed';
 type ChangeEvent = { target: { value: string } };
@@ -46,12 +46,12 @@ const settings: Setting[] = [
   { key: 'xpack.encryptedSavedObjects.encryptionKey', title: 'Encrypted saved objects key reference', description: 'Secure key reference required by encrypted saved objects and dependent alerting features.', category: 'Advanced', scope: 'Deployment', source: 'Managed', effective: 'secure-ref://platform/eso-primary', defaultValue: 'Not configured', draft: 'secure-ref://platform/eso-rotation-2026q3', apply: 'Rolling restart', owner: 'Security engineering', risk: 'High', dependencies: ['Alerting','Actions','Cases connectors'], secure: 'Validate the replacement secure reference before applying standard settings.' },
   { key: 'task_manager.max_workers', title: 'Task manager workers', description: 'Maximum workers available for background tasks on each applicable instance.', category: 'Observability', scope: 'Deployment', source: 'Custom', effective: '10', defaultValue: '10', draft: '14', apply: 'Configuration plan', owner: 'Platform SRE', risk: 'High', dependencies: ['Alerting throughput','Reporting','Maintenance windows'] },
 ];
-const categories: Category[] = ['General','Data & indices','Security operations','Alerting','Observability','Advanced'];
+const categories: Category[] = ['All categories','General','Data & indices','Security operations','Alerting','Observability','Advanced'];
 const sourceColor = (source: Source): 'warning' | 'success' | 'hollow' => source === 'Custom' ? 'warning' : source === 'Managed' ? 'success' : 'hollow';
 
 function P40Workspace() {
   const [query, setQuery] = useState('');
-  const [category, setCategory] = useState<Category>('Security operations');
+  const [category, setCategory] = useState<Category>('All categories');
   const [scope, setScope] = useState<Scope | 'All scopes'>('All scopes');
   const [modifiedOnly, setModifiedOnly] = useState(false);
   const [selectedKey, setSelectedKey] = useState(settings[0].key);
@@ -65,7 +65,7 @@ function P40Workspace() {
   const visible = useMemo(() => settings.filter((setting) => {
     const term = query.trim().toLowerCase();
     return (!term || `${setting.key} ${setting.title} ${setting.description} ${setting.owner}`.toLowerCase().includes(term))
-      && setting.category === category
+      && (category === 'All categories' || setting.category === category)
       && (scope === 'All scopes' || setting.scope === scope)
       && (!modifiedOnly || setting.source === 'Custom');
   }), [category, modifiedOnly, query, scope]);
@@ -80,7 +80,7 @@ function P40Workspace() {
     <EuiPanel paddingSize="m" hasBorder><div className="p40Command"><EuiFormRow label="Search settings"><EuiFieldSearch value={query} onChange={(event: ChangeEvent) => setQuery(event.target.value)} placeholder="Setting key, title, owner or dependency" /></EuiFormRow><EuiFormRow label="Scope"><EuiSelect value={scope} onChange={(event: ChangeEvent) => setScope(event.target.value as Scope | 'All scopes')} options={['All scopes','Project','Deployment','Space'].map((value) => ({ value, text: value }))} /></EuiFormRow><EuiSwitch checked={modifiedOnly} onChange={() => setModifiedOnly((value) => !value)} label="Custom overrides only" /></div></EuiPanel>
     {receipt && <EuiCallOut title="Prototype settings receipt" color="warning">{receipt}</EuiCallOut>}
     <div className="p40Grid">
-      <EuiPanel paddingSize="m" hasBorder><EuiTitle size="s"><h2>Settings categories</h2></EuiTitle><EuiSpacer size="s" /><div className="p40Categories">{categories.map((item) => <button type="button" aria-pressed={category === item} key={item} onClick={() => setCategory(item)}><span>{item}</span><span>{settings.filter((setting) => setting.category === item).length}</span></button>)}</div></EuiPanel>
+      <EuiPanel paddingSize="m" hasBorder><EuiTitle size="s"><h2>Settings categories</h2></EuiTitle><EuiSpacer size="s" /><div className="p40Categories">{categories.map((item) => <button type="button" aria-pressed={category === item} key={item} onClick={() => setCategory(item)}><span>{item}</span><span>{item === 'All categories' ? settings.length : settings.filter((setting) => setting.category === item).length}</span></button>)}</div></EuiPanel>
       <EuiPanel paddingSize="m" hasBorder><EuiFlexGroup alignItems="center"><EuiFlexItem><EuiTitle size="s"><h2>{category}</h2></EuiTitle></EuiFlexItem><EuiFlexItem grow={false}><EuiBadge color="hollow">{visible.length} settings</EuiBadge></EuiFlexItem></EuiFlexGroup><div className="p40TableWrap"><table className="p40Table"><thead><tr><th>Setting</th><th>Scope</th><th>Source</th><th>Effective value</th><th>Apply mode</th><th>Risk</th></tr></thead><tbody>{visible.map((setting) => <tr key={setting.key}><td><EuiButtonEmpty size="xs" onClick={() => selectSetting(setting)}>{setting.title}</EuiButtonEmpty><small>{setting.key}</small></td><td>{setting.scope}</td><td><EuiBadge color={sourceColor(setting.source)}>{setting.source}</EuiBadge></td><td>{setting.effective}</td><td>{setting.apply}</td><td>{setting.risk}</td></tr>)}</tbody></table></div>{visible.length === 0 && <EuiCallOut title="No settings match">Choose another category or clear one filter.</EuiCallOut>}</EuiPanel>
       <EuiPanel paddingSize="m" hasBorder className="p40Inspector"><EuiFlexGroup alignItems="center"><EuiFlexItem><EuiTitle size="s"><h2>{selected.title}</h2></EuiTitle><p>{selected.key}</p></EuiFlexItem><EuiFlexItem grow={false}><EuiBadge color={sourceColor(selected.source)}>{selected.source}</EuiBadge></EuiFlexItem></EuiFlexGroup><p>{selected.description}</p><dl className="p40Definition"><div><dt>Owner</dt><dd>{selected.owner}</dd></div><div><dt>Scope</dt><dd>{selected.scope}</dd></div><div><dt>Apply mode</dt><dd>{selected.apply}</dd></div><div><dt>Risk</dt><dd>{selected.risk}</dd></div></dl><EuiAccordion id={`p40-deps-${selected.key}`} buttonContent="Dependencies and precedence" paddingSize="s"><ul>{selected.dependencies.map((item) => <li key={item}>{item}</li>)}</ul><p>Managed value → custom override → default fallback.</p></EuiAccordion><EuiSpacer /><EuiButton buttonRef={editOpener} fill isDisabled={selected.source === 'Managed'} onClick={() => setEditOpen(true)}>Edit override</EuiButton>{selected.source === 'Managed' && <EuiCallOut title="Managed setting" size="s">This value must be changed in its controlling policy.</EuiCallOut>}</EuiPanel>
     </div>

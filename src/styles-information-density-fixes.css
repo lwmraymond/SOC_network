@@ -1,0 +1,564 @@
+/*
+ * P01-P42 information-density remediation.
+ * Breakpoints account for the 224px application navigation: at a 1231px
+ * viewport, page content is roughly 1007px wide. Overflow belongs to the
+ * local table/workbench that creates it, never to the document.
+ */
+
+.prototypePage,
+.workflowPage,
+.prototypePage .euiPageTemplate,
+.workflowPage .euiPageTemplate,
+.prototypePage .euiPageTemplate__section,
+.workflowPage .euiPageTemplate__section,
+.pageComposition,
+.workflowComposition,
+.p07Frame,
+.p07Composition {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.prototypePage .euiPageTemplate__header,
+.workflowPage .euiPageTemplate__header {
+  min-height: 68px;
+  padding: 9px 20px 8px;
+}
+
+.prototypePage [data-visual-region='page-header'] > .euiPageHeaderContent,
+.workflowPage [data-visual-region='workflow-header'] > .euiPageHeaderContent {
+  padding-block: 6px !important;
+}
+
+.prototypePage [data-visual-region='page-header'] [class*='euiPageHeaderContent__leftSideItems'] > .euiSpacer,
+.workflowPage [data-visual-region='workflow-header'] [class*='euiPageHeaderContent__leftSideItems'] > .euiSpacer {
+  block-size: 2px !important;
+  height: 2px !important;
+}
+
+.prototypePage [data-visual-region='page-header'] h1,
+.workflowPage [data-visual-region='workflow-header'] h1 {
+  margin: 0;
+  font-size: 22px !important;
+  line-height: 28px !important;
+}
+
+.prototypePage .euiPageTemplate__header [class*='description'],
+.workflowPage .euiPageTemplate__header [class*='description'] {
+  margin-top: 2px;
+  line-height: 18px;
+}
+
+.prototypePage .euiPageTemplate__section,
+.workflowPage .euiPageTemplate__section {
+  padding: 12px 20px 28px;
+  overflow-x: clip;
+}
+
+.pageComposition,
+.workflowComposition {
+  gap: 12px;
+}
+
+.pageComposition > .euiSpacer,
+.workflowComposition > .euiSpacer {
+  height: 4px;
+}
+
+.pageComposition :is(.euiFlexGroup, .euiFlexItem, .euiPanel),
+.workflowComposition :is(.euiFlexGroup, .euiFlexItem, .euiPanel),
+.p07Composition :is(.euiFlexGroup, .euiFlexItem, .euiPanel) {
+  min-width: 0;
+}
+
+.pageComposition [data-visual-region],
+.workflowComposition [data-visual-region] {
+  max-width: 100%;
+}
+
+.pageComposition :is(table, dl),
+.workflowComposition :is(table, dl) {
+  max-width: 100%;
+}
+
+.pageComposition :is(td, th, dd, p, small),
+.workflowComposition :is(td, th, dd, p, small) {
+  overflow-wrap: break-word;
+}
+
+.pageComposition :is(.euiBadge, time, code),
+.workflowComposition :is(.euiBadge, time, code) {
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+body .prototypePage :is(p, li, dd, td),
+body .workflowPage :is(p, li, dd, td) {
+  line-height: 20px !important;
+}
+
+body :is(.prototypePage, .workflowPage) p:not(.euiStat__title) {
+  font-size: 14px !important;
+}
+
+.prototypePage [data-visual-region='page-header'] [class*='euiPageHeaderContent__leftSideItems'] > .euiText p,
+.workflowPage [data-visual-region='workflow-header'] [class*='euiPageHeaderContent__leftSideItems'] > .euiText p {
+  font-size: 13px !important;
+  line-height: 18px !important;
+}
+
+.p07Frame .p07Composition p {
+  font-size: 14px !important;
+  line-height: 20px !important;
+}
+
+body .prototypePage th,
+body .workflowPage th,
+body .p07Frame th {
+  line-height: 16px;
+}
+
+.prototypePage .euiStat__title,
+.workflowPage .euiStat__title {
+  height: auto;
+  min-height: 36px;
+  overflow: visible;
+  line-height: 32px !important;
+}
+
+/* EUI semantic fills need a foreground paired to their bright status surface. */
+.prototypePage .euiButton[class*='fill-'],
+.workflowPage .euiButton[class*='fill-'],
+.p07Frame .euiButton[class*='fill-'] {
+  color: #07101f !important;
+}
+
+:is(.prototypePage, .workflowPage, .p07Frame) .euiBadge[class*='euiBadge-danger'],
+:is(.prototypePage, .workflowPage, .p07Frame) .euiBadge[class*='euiBadge-success'],
+:is(.prototypePage, .workflowPage, .p07Frame) .euiBadge[class*='euiBadge-warning'] {
+  color: #07101f;
+}
+
+/* P02: the executive narrative remains useful, but no longer consumes a viewport. */
+.page-p02 [data-visual-region='executive-posture-hero'] {
+  min-height: 0;
+  padding-block: 14px;
+}
+
+.page-p02 [data-visual-region='executive-posture-hero'] :is(p, blockquote) {
+  margin-block: 6px;
+}
+
+/* P04/P06: queue + workbench first, decision/recovery rail below at audit widths. */
+@media (max-width: 1450px) {
+  .page-p04 > .euiFlexGroup:has([data-visual-region='analyst-case-queue']),
+  .page-p06 > .euiFlexGroup:has([data-visual-region='governed-action-queue']) {
+    display: grid;
+    grid-template-columns: minmax(300px, .85fr) minmax(0, 1.7fr);
+    align-items: start;
+  }
+
+  .page-p04 > .euiFlexGroup:has([data-visual-region='analyst-case-queue']) > .euiFlexItem,
+  .page-p06 > .euiFlexGroup:has([data-visual-region='governed-action-queue']) > .euiFlexItem {
+    min-width: 0 !important;
+  }
+
+  .page-p04 > .euiFlexGroup:has([data-visual-region='analyst-case-queue']) > .euiFlexItem:last-child,
+  .page-p06 > .euiFlexGroup:has([data-visual-region='governed-action-queue']) > .euiFlexItem:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+/* P07: identifiers and timestamps are comparison fields, not prose. */
+.p07ResultsPanel {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.p07ResultsPanel table {
+  min-width: 900px;
+  table-layout: fixed;
+}
+
+.p07ResultsPanel :is(th, td):first-child { width: 168px; }
+.p07ResultsPanel :is(th, td):last-child { width: 150px; }
+.p07ResultsPanel :is(td:first-child, td:last-child) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* P08: the wide canonical inventory owns horizontal scrolling. */
+.page-p08 [data-visual-region='canonical-asset-inventory-grid'] {
+  overflow-x: auto;
+  scrollbar-gutter: stable;
+}
+
+.page-p08 [data-visual-region='canonical-asset-inventory-grid'] table {
+  width: max-content;
+  min-width: 1120px;
+}
+
+.page-p08 [data-visual-region='canonical-asset-inventory-grid'] :is(th, td) {
+  min-width: 92px;
+  overflow-wrap: normal;
+  word-break: normal;
+  white-space: nowrap;
+}
+
+.page-p08 [data-visual-region='canonical-asset-inventory-grid'] :is(th, td):first-child {
+  min-width: 190px;
+}
+
+.page-p08 [data-visual-region='canonical-asset-inventory-grid'] td:first-child .euiButtonEmpty,
+.page-p08 [data-visual-region='canonical-asset-inventory-grid'] td:first-child .euiButtonEmpty__content {
+  block-size: auto;
+  height: auto;
+  min-height: 36px;
+}
+
+@media (max-width: 1450px) {
+  .p08InventoryLayout {
+    grid-template-columns: minmax(260px, .72fr) minmax(0, 1.28fr);
+  }
+
+  .p08InventoryLayout > .euiFlexItem:nth-child(1) { grid-column: 1; grid-row: 2; }
+  .p08InventoryLayout > .euiFlexItem:nth-child(2) { grid-column: 1 / -1; grid-row: 1; }
+  .p08InventoryLayout > .euiFlexItem:nth-child(3) { grid-column: 2; grid-row: 2; }
+
+  .p08ScopeControls {
+    grid-template-columns: minmax(260px, 1fr) repeat(2, minmax(145px, .5fr));
+  }
+}
+
+/* P09: keep the evidence adjacent to its heading. */
+.page-p09 [data-visual-region='exposure-risk-trend'] > div[role='img'] {
+  height: 118px !important;
+  margin-top: 8px;
+}
+
+/* P14: compact saved views into a stable rail rather than an empty tall card. */
+.page-p14 [data-visual-region='saved-view-rail'] {
+  align-self: start;
+}
+
+.page-p14 [data-visual-region='saved-view-rail'] > button {
+  min-height: 36px;
+  padding-block: 7px;
+}
+
+/* P16: queue data has a local scroller; command/readiness use explicit grids. */
+.page-p16 [data-visual-region='incident-queue'] {
+  overflow-x: auto;
+  scrollbar-gutter: stable;
+}
+
+.page-p16 [data-visual-region='incident-queue'] table { min-width: 760px; }
+
+.page-p16 [data-visual-region='incident-readiness'] > div {
+  display: grid;
+  grid-template-columns: minmax(115px, .8fr) minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.page-p16 .restorationStep {
+  grid-template-columns: 26px minmax(145px, 1fr) minmax(110px, 1fr) auto;
+  column-gap: 10px;
+}
+
+@media (max-width: 1450px) {
+  .page-p16 > .euiFlexGroup:has([data-visual-region='incident-queue']) {
+    grid-template-columns: minmax(0, 1.7fr) minmax(260px, .7fr);
+  }
+
+  .page-p16 > .euiFlexGroup:has([data-visual-region='incident-queue']) > .euiFlexItem:first-child {
+    grid-column: 1 / -1;
+  }
+}
+
+/* P17/P21: rails need enough width for semantic labels. */
+@media (max-width: 1450px) {
+  .page-p17 > .euiFlexGroup:has([data-visual-region='recurrence-cluster-candidates']),
+  .page-p21 > .euiFlexGroup:has([data-visual-region='report-template-catalog']) {
+    grid-template-columns: minmax(270px, .72fr) minmax(0, 1.6fr);
+  }
+
+  .page-p17 > .euiFlexGroup:has([data-visual-region='recurrence-cluster-candidates']) > .euiFlexItem:last-child,
+  .page-p21 > .euiFlexGroup:has([data-visual-region='report-template-catalog']) > .euiFlexItem:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+/* P18: semantic review actions keep readable foreground contrast. */
+.page-p18 :is(button, .euiButton)[class*='danger'],
+.page-p18 :is(button, .euiButton)[class*='warning'] {
+  color: var(--kbn-heading);
+}
+
+/* P22: widen navigation and let the main resource table own overflow. */
+@media (max-width: 1450px) {
+  .page-p22 > .euiFlexGroup {
+    grid-template-columns: 260px minmax(0, 1fr);
+  }
+}
+
+.page-p22 [data-visual-region='settings-resource-table'] {
+  overflow-x: auto;
+  scrollbar-gutter: stable;
+}
+
+.page-p22 [data-visual-region='settings-resource-table'] table { min-width: 760px; }
+
+/* P23: session and conversation remain side by side; evidence gets full width. */
+@media (max-width: 1450px) {
+  .page-p23 > .euiFlexGroup {
+    display: grid;
+    grid-template-columns: minmax(255px, .7fr) minmax(0, 1.8fr);
+    align-items: start;
+  }
+
+  .page-p23 > .euiFlexGroup > .euiFlexItem { min-width: 0; }
+  .page-p23 > .euiFlexGroup > .euiFlexItem:last-child { grid-column: 1 / -1; }
+}
+
+.page-p23 [data-visual-region='copilot-session-rail'] > button {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 4px 8px;
+  width: 100%;
+  min-height: 56px;
+  padding: 9px 10px;
+  text-align: left;
+}
+
+.page-p23 [data-visual-region='copilot-session-rail'] > button :is(strong, small) {
+  grid-column: 1 / -1;
+}
+
+.page-p23 [data-visual-region='copilot-session-rail'] > button strong {
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+/* P24/P25/P28: wide operational tables occupy a full row; details follow. */
+@media (max-width: 1450px) {
+  .page-p24 > .euiFlexGroup:has([data-visual-region='fleet-agent-grid']),
+  .page-p25 > .euiFlexGroup:has([data-visual-region='task-dispatch-grid']),
+  .page-p28 > .euiFlexGroup:has([data-visual-region='source-health-grid']) {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
+
+  .page-p24 > .euiFlexGroup:has([data-visual-region='fleet-agent-grid']) > .euiFlexItem:first-child,
+  .page-p25 > .euiFlexGroup:has([data-visual-region='task-dispatch-grid']) > .euiFlexItem:first-child,
+  .page-p28 > .euiFlexGroup:has([data-visual-region='source-health-grid']) > .euiFlexItem:first-child {
+    grid-column: 1 / -1;
+  }
+}
+
+.page-p24 [data-visual-region='fleet-agent-grid'],
+.page-p25 [data-visual-region='task-dispatch-grid'],
+.page-p28 [data-visual-region='source-health-grid'] {
+  overflow-x: auto;
+  scrollbar-gutter: stable;
+}
+
+.page-p24 [data-visual-region='fleet-agent-grid'] table { min-width: 920px; }
+.page-p25 [data-visual-region='task-dispatch-grid'] table { min-width: 960px; }
+.page-p28 [data-visual-region='source-health-grid'] table { min-width: 1040px; }
+
+.page-p24 [data-visual-region='fleet-agent-grid'] td:first-child,
+.page-p25 [data-visual-region='task-dispatch-grid'] td:first-child,
+.page-p28 [data-visual-region='source-health-grid'] td:first-child {
+  min-width: 150px;
+}
+
+.page-p25 .taskStatePipeline {
+  grid-template-columns: repeat(3, minmax(110px, 1fr));
+  gap: 8px;
+}
+
+/* P26/P31: viewport breakpoints must include application chrome width. */
+@media (max-width: 1450px) {
+  .p26RuntimeAccess .p26Workspace,
+  .p31Objects .p31Registry {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.p26TableWrap,
+.p31TableWrap {
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-gutter: stable;
+}
+
+.p26TableWrap table :is(th, td):last-child { min-width: 92px; }
+
+:is(.p26TableWrap, .p31TableWrap) :is(th, td) {
+  overflow-wrap: normal;
+  word-break: normal;
+  white-space: nowrap;
+}
+
+/* P27: separate metadata and badges instead of concatenated inline text. */
+.page-p27 [data-visual-region='runtime-resource-preview-dependency'] :is(dl > div, .p27ReadinessRow header) {
+  gap: 8px 12px;
+}
+
+.page-p27 [data-visual-region='runtime-resource-preview-dependency'] dd {
+  min-width: 0;
+  margin: 0;
+}
+
+/* P33: source table takes a full row; detail and coverage become balanced peers. */
+@media (max-width: 1450px) {
+  .p33Knowledge .p33Workspace {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .p33Knowledge .p33Workspace > .p33Grid { grid-column: 1 / -1; }
+  .p33Knowledge :is(.p33Detail, .p33Coverage) { position: static; }
+}
+
+.p33Grid {
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-gutter: stable;
+}
+
+.p33Grid table { min-width: 820px; }
+.p33Grid :is(th, td):first-child { min-width: 180px; }
+.p33Grid :is(th, td):nth-child(4) { min-width: 110px; }
+
+.p33Grid :is(th, td) {
+  overflow-wrap: normal;
+  word-break: normal;
+  white-space: nowrap;
+}
+
+/* P35: two useful columns first; editor follows at full width. */
+@media (max-width: 1450px) {
+  .page-p35.p35Notes .p35Workspace {
+    grid-template-columns: 230px minmax(0, 1fr);
+  }
+
+  .page-p35.p35Notes .p35Editor {
+    position: static;
+    grid-column: 1 / -1;
+    max-height: none;
+  }
+
+  .page-p35.p35Notes .p35Taxonomy { top: 48px; }
+
+  .page-p35.p35Notes .p35Results {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .page-p35.p35Notes .p35Results > .euiTitle {
+    grid-column: 1 / -1;
+  }
+}
+
+.page-p35.p35Notes .p35Editor .euiFormRow,
+.page-p35.p35Notes .p35Editor .euiTextArea {
+  width: 100%;
+  max-width: none;
+}
+
+/* P37: avoid a short detail rail beside a long table. */
+@media (max-width: 1450px) {
+  .p37Users .p37Layout {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .p37Users .p37Table { grid-column: 1 / -1; }
+  .p37Users .p37Security { grid-column: auto; }
+}
+
+.p37TableWrap {
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-gutter: stable;
+}
+
+.p37TableWrap :is(th, td) {
+  overflow-wrap: normal;
+  word-break: normal;
+  white-space: nowrap;
+}
+
+/* P40: show more than one setting per default view and remove empty inspector height. */
+.prototypePage .p40Directory { gap: 12px; }
+.prototypePage .p40Directory .p40Grid { gap: 12px; }
+.prototypePage .p40Directory .p40Inspector { align-self: start; }
+
+@media (max-width: 1450px) {
+  .prototypePage .p40Directory .p40Grid {
+    grid-template-columns: 220px minmax(0, 1fr);
+  }
+
+  .prototypePage .p40Directory .p40Inspector { grid-column: 1 / -1; }
+}
+
+/* Wide data grids use stable rows and expose their extra width locally. */
+:is(
+  .page-p24 [data-visual-region='fleet-agent-grid'],
+  .page-p25 [data-visual-region='task-dispatch-grid'],
+  .page-p28 [data-visual-region='source-health-grid']
+) :is(th, td) {
+  overflow-wrap: normal;
+  word-break: normal;
+  white-space: nowrap;
+}
+
+/* Small viewport fallback: preserve reading order and local overflow ownership. */
+@media (max-width: 900px) {
+  .page-p04 > .euiFlexGroup:has([data-visual-region='analyst-case-queue']),
+  .page-p06 > .euiFlexGroup:has([data-visual-region='governed-action-queue']),
+  .p08InventoryLayout,
+  .page-p14 > .euiFlexGroup,
+  .page-p16 > .euiFlexGroup:has([data-visual-region='incident-queue']),
+  .page-p17 > .euiFlexGroup:has([data-visual-region='recurrence-cluster-candidates']),
+  .page-p21 > .euiFlexGroup:has([data-visual-region='report-template-catalog']),
+  .page-p22 > .euiFlexGroup,
+  .page-p23 > .euiFlexGroup,
+  .page-p24 > .euiFlexGroup:has([data-visual-region='fleet-agent-grid']),
+  .page-p25 > .euiFlexGroup:has([data-visual-region='task-dispatch-grid']),
+  .page-p28 > .euiFlexGroup:has([data-visual-region='source-health-grid']),
+  .p33Workspace,
+  .p35Workspace,
+  .p37Layout,
+  .p40Directory .p40Grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .page-p04 > .euiFlexGroup:has([data-visual-region='analyst-case-queue']) > .euiFlexItem,
+  .page-p06 > .euiFlexGroup:has([data-visual-region='governed-action-queue']) > .euiFlexItem,
+  .p08InventoryLayout > .euiFlexItem,
+  .page-p14 > .euiFlexGroup > .euiFlexItem,
+  .page-p16 > .euiFlexGroup:has([data-visual-region='incident-queue']) > .euiFlexItem,
+  .page-p17 > .euiFlexGroup:has([data-visual-region='recurrence-cluster-candidates']) > .euiFlexItem,
+  .page-p21 > .euiFlexGroup:has([data-visual-region='report-template-catalog']) > .euiFlexItem,
+  .page-p22 > .euiFlexGroup > .euiFlexItem,
+  .page-p23 > .euiFlexGroup > .euiFlexItem,
+  .page-p24 > .euiFlexGroup:has([data-visual-region='fleet-agent-grid']) > .euiFlexItem,
+  .page-p25 > .euiFlexGroup:has([data-visual-region='task-dispatch-grid']) > .euiFlexItem,
+  .page-p28 > .euiFlexGroup:has([data-visual-region='source-health-grid']) > .euiFlexItem,
+  .p33Workspace > *,
+  .p35Workspace > *,
+  .p37Layout > *,
+  .p40Directory .p40Grid > * {
+    grid-column: 1 !important;
+    grid-row: auto !important;
+  }
+
+  .p08ScopeControls { grid-template-columns: minmax(0, 1fr); }
+  .page-p25 .taskStatePipeline { grid-template-columns: minmax(0, 1fr); }
+  .page-p16 [data-visual-region='incident-readiness'] > div,
+  .page-p16 .restorationStep { grid-template-columns: minmax(0, 1fr); }
+}

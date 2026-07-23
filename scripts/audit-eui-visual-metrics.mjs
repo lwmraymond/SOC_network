@@ -160,7 +160,11 @@ for (const [id, route] of routes) {
       if (!visible(badge)) return;
       const rect = badge.getBoundingClientRect();
       const parentWidth = badge.parentElement?.getBoundingClientRect().width ?? rect.width;
-      if (rect.width > 240 || (parentWidth > 240 && rect.width / parentWidth > .5)) {
+      const range = document.createRange();
+      range.selectNodeContents(badge);
+      const contentWidth = range.getBoundingClientRect().width;
+      const exceedsIntrinsicWidth = rect.width > contentWidth + 24;
+      if (rect.width > 240 || (parentWidth > 240 && rect.width / parentWidth > .5 && exceedsIntrinsicWidth)) {
         add('stretched-badge', 'P1', `Badge spans ${round(rect.width)}px`, badge, round(rect.width), Math.min(240, round(parentWidth * .5)));
       }
     });
@@ -269,7 +273,6 @@ const markdown = [
   ...results.map((result) => `| ${result.id} | ${result.counts.P0 ?? 0} | ${result.counts.P1 ?? 0} | ${result.counts.P2 ?? 0} | ${result.headerHeight ?? '—'}px | ${[...new Set(result.issues.map((issue) => issue.rule))].join(', ') || 'pass'} |`),
   '', '## Findings', '',
   ...results.flatMap((result) => result.issues.map((issue) => `- **${issue.severity} ${result.id} ${issue.rule}:** ${issue.message}${issue.selector ? ` — \`${issue.selector}\`` : ''}`)),
-  '',
 ].join('\n');
 await writeFile(path.join(outputDir, 'report.md'), markdown);
 

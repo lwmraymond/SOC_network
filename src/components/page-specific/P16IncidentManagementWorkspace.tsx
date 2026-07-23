@@ -14,12 +14,19 @@ type Incident = {
 };
 type ChangeEvent = { target: { value: string } };
 const text = (value: PrototypeValue | undefined, fallback: string) => value === undefined ? fallback : String(value);
+const normalizePriority = (value: PrototypeValue | undefined, index: number) => {
+  const candidate = text(value, index < 2 ? 'P1' : index < 6 ? 'P2' : 'P3').trim().toUpperCase();
+  if (['P1', 'CRITICAL', 'SEV1'].includes(candidate)) return 'P1';
+  if (['P2', 'HIGH', 'SEV2'].includes(candidate)) return 'P2';
+  if (['P3', 'MEDIUM', 'SEV3'].includes(candidate)) return 'P3';
+  return index < 2 ? 'P1' : index < 6 ? 'P2' : 'P3';
+};
 const buildIncidents = (rows: PrototypeRow[]): Incident[] => rows.slice(0, 12).map((row, index) => ({
   id: text(row.incident_id, `INC-${7000 + index}`),
   summary: text(row.summary ?? row.title, ['Identity login outage','Endpoint policy failure','Customer API latency','Network path degradation'][index % 4]),
   service: text(row.service_ci, ['Identity','Endpoint','Customer API','Network'][index % 4]),
   ci: text(row.ci_ref, `CI-${420 + index}`),
-  priority: text(row.priority, index < 2 ? 'P1' : index < 6 ? 'P2' : 'P3'),
+  priority: normalizePriority(row.priority, index),
   impact: text(row.impact, index < 2 ? 'Enterprise' : index < 6 ? 'Multiple teams' : 'Limited'),
   owner: text(row.assignment_group ?? row.owner, ['Major incident','Identity ops','Platform','Network ops'][index % 4]),
   status: text(row.status, ['Investigating','Restoring','Monitoring','Awaiting owner'][index % 4]),
