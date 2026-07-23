@@ -126,6 +126,13 @@ body .p07Frame th {
   line-height: 32px !important;
 }
 
+/* EUI Stat's description/value pair needs a visible rhythm at dashboard density. */
+.prototypePage .euiStat,
+.workflowPage .euiStat {
+  display: grid;
+  row-gap: 6px;
+}
+
 /* EUI semantic fills need a foreground paired to their bright status surface. */
 .prototypePage .euiButton[class*='fill-'],
 .workflowPage .euiButton[class*='fill-'],
@@ -342,6 +349,76 @@ body .p07Frame th {
   overflow-wrap: normal;
   word-break: normal;
 }
+
+/* P01: independent row grids use fixed terminal tracks so evidence stays column-aligned. */
+.page-p01 .socAttentionBoard li {
+  grid-template-columns: 34px minmax(0, 1fr) minmax(190px, .55fr) 72px;
+}
+
+.page-p01 .socAttentionBoard li > .euiBadge { justify-self: end; }
+
+.page-p01 .evidenceMeter {
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: 5px 16px;
+  width: 100%;
+}
+
+.page-p01 .evidenceMeter small { line-height: 16px; }
+
+.page-p01 [data-visual-region='soc-decision-summary'] .euiPanel {
+  display: flex;
+  min-height: 88px;
+  align-items: center;
+}
+
+.page-p01 [data-visual-region='soc-decision-summary'] .euiStat {
+  display: grid;
+  width: 100%;
+  row-gap: 6px;
+  align-content: center;
+}
+
+/* P03: dependency stages are equal-height grid cells; arrows do not affect card geometry. */
+.page-p03 .p03DependencyPath {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+  align-items: stretch;
+}
+
+.page-p03 .p03DependencyStage {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto minmax(34px, auto) auto 20px;
+  min-width: 0;
+  min-height: 112px;
+  align-content: start;
+  border: 1px solid var(--kbn-border-strong) !important;
+  background: var(--kbn-panel-raised) !important;
+  box-shadow: none !important;
+}
+
+/* P23: context is grouped by task instead of forming one long mixed inspector. */
+.page-p23 .p23ContextGrid {
+  display: grid;
+  grid-template-columns: minmax(220px, .85fr) minmax(240px, 1fr) minmax(300px, 1.15fr);
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.page-p23 .p23ContextGrid > section {
+  min-width: 0;
+  padding-left: 16px;
+  border-left: 1px solid var(--kbn-border);
+}
+
+.page-p23 .p23ContextGrid > section:first-child {
+  padding-left: 0;
+  border-left: 0;
+}
+
+.page-p23 .p23ContextGrid h3 { margin-bottom: 10px; }
+.page-p23 .p23ContextGrid .euiCheckbox { margin-block: 12px; }
 
 /* P24/P25/P28: wide operational tables occupy a full row; details follow. */
 @media (max-width: 1450px) {
@@ -561,4 +638,7 @@ body .p07Frame th {
   .page-p25 .taskStatePipeline { grid-template-columns: minmax(0, 1fr); }
   .page-p16 [data-visual-region='incident-readiness'] > div,
   .page-p16 .restorationStep { grid-template-columns: minmax(0, 1fr); }
+  .page-p03 .p03DependencyPath,
+  .page-p23 .p23ContextGrid { grid-template-columns: minmax(0, 1fr); }
+  .page-p23 .p23ContextGrid > section { padding: 16px 0 0; border: 0; border-top: 1px solid var(--kbn-border); }
 }

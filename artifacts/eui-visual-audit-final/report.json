@@ -1,0 +1,435 @@
+{
+  "summary": {
+    "generatedAt": "2026-07-23T02:29:11.164Z",
+    "baseUrl": "http://127.0.0.1:5176",
+    "viewport": {
+      "width": 1231,
+      "height": 768
+    },
+    "pages": 42,
+    "counts": {},
+    "failingPages": []
+  },
+  "results": [
+    {
+      "id": "P01",
+      "route": "/dashboard/soc",
+      "issueCount": 0,
+      "counts": {},
+      "headerHeight": 61,
+      "documentWidth": 1231,
+      "viewportWidth": 1231,
+      "issues": []
+    },
+    {
+      "id": "P02",
+      "route": "/dashboard/executive",
+      "issueCount": 0,
+      "counts": {},
+      "headerHeight": 61,
+      "documentWidth": 1231,
+      "viewportWidth": 1231,
+      "issues": []
+    },
+    {
+      "id": "P03",
+      "route": "/dashboard/platform-health",
+      "issueCount": 0,
+      "counts": {},
+      "headerHeight": 61,
+      "documentWidth": 1231,
+      "viewportWidth": 1231,
+      "issues": []
+    },
+    {
+      "id": "P04",
+      "route": "/analyzer/cases",
+      "issueCount": 0,
+      "counts": {},
+      "headerHeight": 61,
+      "documentWidth": 1231,
+      "viewportWidth": 1231,
+      "issues": []
+    },
+    {
+      "id": "P05",
+      "route": "/analyzer/alerts",
+      "issueCount": 0,
+      "counts": {},
+      "headerHeight": 61,
+      "documentWidth": 1231,
+      "viewportWidth": 1231,
+      "issues": []
+    },
+    {
+      "id": "P06",
+      "route": "/analyzer/response-actions",
+      "issueCount": 0,
+      "counts": {},
+      "headerHeight": 61,
+      "documentWidth": 1231,
+      "viewportWidth": 1231,
+      "issues": []
+    },
+    {
+      "id": "P07",
+      "route": "/analyzer/search",
+      "issueCount": 0,
+      "counts": {},
+      "headerHeight": null,
+      "documentWidth": 1231,
+      "viewportWidth": 1231,
+      "issues": []
+    },
+    {
+      "id": "P08",
+      "route": "/devices/inventory",
+      "issueCount": 0,
+      "counts": {},
+      "headerHeight": 61,
+      "documentWidth": 1231,
+      "viewportWidth": 1231,
+      "issues": []
+    },
+    {
+      "id": "P09",
+      "route": "/devices/vulnerabilities",
+      "issueCount": 0,
+      "counts": {},
+      "headerHeight": 61,
+      "documentWidth": 1231,
+      "viewportWidth": 1231,
+      "issues": []
+    },
+    {
+      "id": "P10",
+      "route": "/devices/vulnerability-matches",
+      "issueCount": 0,
+      "counts": {},
+      "headerHeight": 61,
+      "documentWidth": 1231,
+      "viewportWidth": 1231,
+      "issues": []
+    },
+    {
+      "id": "P11",
+      "route": "/devices/remediation",
+      "issueCount": 0,
+      "counts": {},
+      "headerHeight": 61,
+      "documentWidth": 1231,
+      "viewportWidth": 1231,
+      "issues": []
+    },
+    {
+      "id": "P12",
+      "route": "/devices/assets/asset-demo",
+      "issueCount": 0,
+      "counts": {},
+      "headerHeight": 61,
+      "documentWidth": 1231,
+      "viewportWidth": 1231,
+      "issues": []
+    },
+    {
+      "id": "P13",
+      "route": "/itsm/overview",
+      "issueCount": 0,
+      "counts": {},
+      "headerHeight": 61,
+      "documentWidth": 1231,
+      "viewportWidth": 1231,
+      "issues": []
+    },
+    {
+      "id": "P14",
+      "route": "/itsm/queues",
+      "issueCount": 0,
+      "counts": {},
+      "headerHeight": 61,
+      "documentWidth": 1231,
+      "viewportWidth": 1231,
+      "issues": []
+    },
+    {
+      "id": "P15",
+      "route": "/itsm/requests",
+      "issueCount": 0,
+      "counts": {},
+      "headerHeight": 61,
+      "documentWidth": 1231,
+      "viewportWidth": 1231,
+      "issues": []
+    },
+    {
+      "id": "P16",
+      "route": "/itsm/incidents",
+      "issueCount": 0,
+      "counts": {},
+      "headerHeight": 61,
+      "documentWidth": 1231,
+      "viewportWidth": 1231,
+      "issues": []
+    },
+    {
+      "id": "P17",
+      "route": "/itsm/problems",
+      "issueCount": 0,
+      "counts": {},
+      "headerHeight": 61,
+      "documentWidth": 1231,
+      "viewportWidth": 1231,
+      "issues": []
+    },
+    {
+      "id": "P18",
+      "route": "/itsm/changes",
+      "issueCount": 0,
+      "counts": {},
+      "headerHeight": 61,
+      "documentWidth": 1231,
+      "viewportWidth": 1231,
+      "issues": []
+    },
+    {
+      "id": "P19",
+      "route": "/itsm/approvals",
+      "issueCount": 0,
+      "counts": {},
+      "headerHeight": 61,
+      "documentWidth": 1231,
+      "viewportWidth": 1231,
+      "issues": []
+    },
+    {
+      "id": "P20",
+      "route": "/itsm/analytics",
+      "issueCount": 0,
+      "counts": {},
+      "headerHeight": 61,
+      "documentWidth": 1231,
+      "viewportWidth": 1231,
+      "issues": []
+    },
+    {
+      "id": "P21",
+      "route": "/itsm/reports",
+      "issueCount": 0,
+      "counts": {},
+      "headerHeight": 61,
+      "documentWidth": 1231,
+      "viewportWidth": 1231,
+      "issues": []
+    },
+    {
+      "id": "P22",
+      "route": "/itsm/settings",
+      "issueCount": 0,
+      "counts": {},
+      "headerHeight": 61,
+      "documentWidth": 1231,
+      "viewportWidth": 1231,
+      "issues": []
+    },
+    {
+      "id": "P23",
+      "route": "/copilot",
+      "issueCount": 0,
+      "counts": {},
+      "headerHeight": 61,
+      "documentWidth": 1231,
+      "viewportWidth": 1231,
+      "issues": []
+    },
+    {
+      "id": "P24",
+      "route": "/agents",
+      "issueCount": 0,
+      "counts": {},
+      "headerHeight": 61,
+      "documentWidth": 1231,
+      "viewportWidth": 1231,
+      "issues": []
+    },
+    {
+      "id": "P25",
+      "route": "/agents/tasks",
+      "issueCount": 0,
+      "counts": {},
+      "headerHeight": 61,
+      "documentWidth": 1231,
+      "viewportWidth": 1231,
+      "issues": []
+    },
+    {
+      "id": "P26",
+      "route": "/agents/runtime-access",
+      "issueCount": 0,
+      "counts": {},
+      "headerHeight": 61,
+      "documentWidth": 1231,
+      "viewportWidth": 1231,
+      "issues": []
+    },
+    {
+      "id": "P27",
+      "route": "/runtime?audit=1",
+      "issueCount": 0,
+      "counts": {},
+      "headerHeight": 61,
+      "documentWidth": 1231,
+      "viewportWidth": 1231,
+      "issues": []
+    },
+    {
+      "id": "P28",
+      "route": "/runtime/data-sources",
+      "issueCount": 0,
+      "counts": {},
+      "headerHeight": 61,
+      "documentWidth": 1231,
+      "viewportWidth": 1231,
+      "issues": []
+    },
+    {
+      "id": "P29",
+      "route": "/runtime/rules",
+      "issueCount": 0,
+      "counts": {},
+      "headerHeight": 61,
+      "documentWidth": 1231,
+      "viewportWidth": 1231,
+      "issues": []
+    },
+    {
+      "id": "P30",
+      "route": "/runtime/events",
+      "issueCount": 0,
+      "counts": {},
+      "headerHeight": 61,
+      "documentWidth": 1231,
+      "viewportWidth": 1231,
+      "issues": []
+    },
+    {
+      "id": "P31",
+      "route": "/runtime/objects",
+      "issueCount": 0,
+      "counts": {},
+      "headerHeight": 61,
+      "documentWidth": 1231,
+      "viewportWidth": 1231,
+      "issues": []
+    },
+    {
+      "id": "P32",
+      "route": "/runtime/script-workbench",
+      "issueCount": 0,
+      "counts": {},
+      "headerHeight": 61,
+      "documentWidth": 1231,
+      "viewportWidth": 1231,
+      "issues": []
+    },
+    {
+      "id": "P33",
+      "route": "/knowledge/sources",
+      "issueCount": 0,
+      "counts": {},
+      "headerHeight": 61,
+      "documentWidth": 1231,
+      "viewportWidth": 1231,
+      "issues": []
+    },
+    {
+      "id": "P34",
+      "route": "/knowledge/playbooks",
+      "issueCount": 0,
+      "counts": {},
+      "headerHeight": 61,
+      "documentWidth": 1231,
+      "viewportWidth": 1231,
+      "issues": []
+    },
+    {
+      "id": "P35",
+      "route": "/knowledge/detection-notes",
+      "issueCount": 0,
+      "counts": {},
+      "headerHeight": 61,
+      "documentWidth": 1231,
+      "viewportWidth": 1231,
+      "issues": []
+    },
+    {
+      "id": "P36",
+      "route": "/projects/responses",
+      "issueCount": 0,
+      "counts": {},
+      "headerHeight": 61,
+      "documentWidth": 1231,
+      "viewportWidth": 1231,
+      "issues": []
+    },
+    {
+      "id": "P37",
+      "route": "/admin/users",
+      "issueCount": 0,
+      "counts": {},
+      "headerHeight": 61,
+      "documentWidth": 1231,
+      "viewportWidth": 1231,
+      "issues": []
+    },
+    {
+      "id": "P38",
+      "route": "/admin/roles",
+      "issueCount": 0,
+      "counts": {},
+      "headerHeight": 61,
+      "documentWidth": 1231,
+      "viewportWidth": 1231,
+      "issues": []
+    },
+    {
+      "id": "P39",
+      "route": "/admin/permissions",
+      "issueCount": 0,
+      "counts": {},
+      "headerHeight": 61,
+      "documentWidth": 1231,
+      "viewportWidth": 1231,
+      "issues": []
+    },
+    {
+      "id": "P40",
+      "route": "/settings?audit=1",
+      "issueCount": 0,
+      "counts": {},
+      "headerHeight": 61,
+      "documentWidth": 1231,
+      "viewportWidth": 1231,
+      "issues": []
+    },
+    {
+      "id": "P41",
+      "route": "/settings/authentication",
+      "issueCount": 0,
+      "counts": {},
+      "headerHeight": 61,
+      "documentWidth": 1231,
+      "viewportWidth": 1231,
+      "issues": []
+    },
+    {
+      "id": "P42",
+      "route": "/settings/theme",
+      "issueCount": 0,
+      "counts": {},
+      "headerHeight": 61,
+      "documentWidth": 1231,
+      "viewportWidth": 1231,
+      "issues": []
+    }
+  ]
+}

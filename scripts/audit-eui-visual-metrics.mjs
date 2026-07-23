@@ -232,6 +232,42 @@ for (const [id, route] of routes) {
       if (isRepeatedLayout && height < 36) add('repeated-item-height', 'P2', `Repeated item is only ${round(height)}px high`, item, round(height), 36);
     });
 
+    // Independent grid rows can silently calculate different `auto` tracks. Compare
+    // repeated child boundaries so visually equivalent columns remain aligned.
+    document.querySelectorAll('[data-visual-region] :is(ol,ul)').forEach((list) => {
+      const rows = [...list.children].filter((row) => visible(row) && getComputedStyle(row).display === 'grid');
+      if (rows.length < 3) return;
+      const columnCount = Math.min(...rows.map((row) => row.children.length));
+      for (let index = 0; index < columnCount; index += 1) {
+        const rects = rows.map((row) => row.children[index].getBoundingClientRect());
+        const lefts = rects.map((rect) => round(rect.left));
+        const rights = rects.map((rect) => round(rect.right));
+        // Variable-width terminal badges align by their right edge; normal data
+        // tracks align by their left edge. A track is wrong only if both drift.
+        const drift = round(Math.min(Math.max(...lefts) - Math.min(...lefts), Math.max(...rights) - Math.min(...rights)));
+        if (drift > 2) add('repeated-column-misalignment', 'P1', `Repeated column ${index + 1} drifts by ${drift}px`, rows[0].children[index], drift, 2);
+      }
+    });
+
+    document.querySelectorAll('.euiStat').forEach((stat) => {
+      if (!visible(stat)) return;
+      const title = stat.querySelector('.euiStat__title');
+      const description = stat.querySelector('.euiStat__description');
+      if (!title || !description || !visible(title) || !visible(description)) return;
+      const first = title.getBoundingClientRect();
+      const second = description.getBoundingClientRect();
+      const gap = round(Math.max(first.top, second.top) - Math.min(first.bottom, second.bottom));
+      if (gap < 4) add('stat-label-gap', 'P1', `Stat label and value have only ${gap}px separation`, stat, gap, 4);
+    });
+
+    document.querySelectorAll('.p03DependencyPath').forEach((group) => {
+      const cards = [...group.children].filter((card) => visible(card));
+      if (cards.length < 3) return;
+      const heights = cards.map((card) => round(card.getBoundingClientRect().height));
+      const drift = round(Math.max(...heights) - Math.min(...heights));
+      if (drift > 2) add('peer-card-height-drift', 'P1', `Peer cards differ in height by ${drift}px`, group, drift, 2);
+    });
+
     const documentOverflow = Math.max(document.documentElement.scrollWidth, document.body.scrollWidth) - document.documentElement.clientWidth;
     if (documentOverflow > 1) add('document-overflow', 'P0', `Document overflows horizontally by ${documentOverflow}px`, root, documentOverflow, 1);
 
