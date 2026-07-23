@@ -73,6 +73,11 @@ const groupIcons: Record<PageGroup, 'inspect' | 'search' | 'document'> = {
   'Platform Settings': 'document',
 };
 
+const dashboardViews = [
+  { id: 'P01-network-soc', pageId: 'P01', title: 'Network SOC', route: '/dashboard/network-soc' },
+  { id: 'P03-system-overview', pageId: 'P03', title: 'System Overview', route: '/dashboard/system-overview' },
+] as const;
+
 function Suspended({ children }: { children: ReactNode }) {
   return <Suspense fallback={<div className="routeLoading" role="status"><EuiLoadingSpinner size="xl" /><span>Loading work surface…</span></div>}>{children}</Suspense>;
 }
@@ -83,7 +88,13 @@ function AppShell() {
   const [globalSearch, setGlobalSearch] = useState('');
   const [navOpen, setNavOpen] = useState(true);
   const { mode, toggleMode } = usePlatformTheme();
-  const currentPage = useMemo(() => pageSpecs.find((page) => Boolean(matchPath({ path: page.route, end: true }, location.pathname))), [location.pathname]);
+  const currentPage = useMemo(() => {
+    const canonical = pageSpecs.find((page) => Boolean(matchPath({ path: page.route, end: true }, location.pathname)));
+    if (canonical) return canonical;
+    const dashboardView = dashboardViews.find((view) => view.route === location.pathname);
+    const source = dashboardView && pageSpecs.find((page) => page.id === dashboardView.pageId);
+    return dashboardView && source ? { ...source, title: dashboardView.title, route: dashboardView.route } : undefined;
+  }, [location.pathname]);
   const sideNavItems = useMemo(() => [{
     id: 'workspaces',
     name: 'Workspaces',
@@ -91,21 +102,33 @@ function AppShell() {
       id: group,
       name: group,
       icon: <EuiIcon type={groupIcons[group]} size="s" />,
-      items: pageSpecs.filter((page) => page.group === group).map((page) => {
+      items: [
+        ...pageSpecs.filter((page) => page.group === group).map((page) => {
         const href = routeForNavigation(page.route);
         return {
           id: page.id,
           name: page.title,
           href,
-          isSelected: currentPage?.id === page.id,
+          isSelected: location.pathname === href,
           onClick: (event: React.MouseEvent<HTMLElement>) => {
             event.preventDefault();
             navigate(href);
           },
         };
-      }),
+        }),
+        ...(group === 'Dashboard' ? dashboardViews.map((view) => ({
+          id: view.id,
+          name: view.title,
+          href: view.route,
+          isSelected: location.pathname === view.route,
+          onClick: (event: React.MouseEvent<HTMLElement>) => {
+            event.preventDefault();
+            navigate(view.route);
+          },
+        })) : []),
+      ],
     })),
-  }], [currentPage?.id, navigate]);
+  }], [location.pathname, navigate]);
   useEffect(() => {
     document.title = `${currentPage?.title ?? 'SOC / ITSM Interactive Design'} · SOC Operations`;
   }, [currentPage?.title]);
@@ -135,8 +158,10 @@ function AppShell() {
     <div className="content" id="main-content">
       <Routes>
         <Route path="/dashboard/soc" element={<Suspended><P01 /></Suspended>} />
+        <Route path="/dashboard/network-soc" element={<Suspended><P01 /></Suspended>} />
         <Route path="/dashboard/executive" element={<Suspended><P02 /></Suspended>} />
         <Route path="/dashboard/platform-health" element={<Suspended><P03 /></Suspended>} />
+        <Route path="/dashboard/system-overview" element={<Suspended><P03 /></Suspended>} />
         <Route path="/analyzer/cases" element={<Suspended><P04 /></Suspended>} />
         <Route path="/analyzer/alerts" element={<Suspended><P05 /></Suspended>} />
         <Route path="/analyzer/response-actions" element={<Suspended><P06 /></Suspended>} />

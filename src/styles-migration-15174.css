@@ -1,0 +1,127 @@
+.itsmCreateTicketModal { width: min(980px, calc(100vw - 48px)); }
+.itsmCreateStages { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.itsmCreateStages > div { display: grid; grid-template-columns: 28px 1fr; gap: 8px; align-items: center; min-height: 40px; padding: 8px 12px; border: 1px solid var(--euiColorLightShade, #d3dae6); border-radius: 6px; }
+.itsmCreateStages span { display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: var(--euiColorLightestShade, #f5f7fa); }
+.itsmCreateStages .isCurrent { border-color: var(--euiColorPrimary, #006bb4); background: color-mix(in srgb, var(--euiColorPrimary, #006bb4) 8%, transparent); }
+.itsmCreateStages .isComplete span { background: var(--euiColorSuccess, #00bfb3); color: #fff; }
+.itsmCreateDraft { display: grid; grid-template-columns: minmax(0, 2fr) minmax(240px, .8fr); gap: 16px; align-items: start; }
+.itsmCreateFormGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 16px; }
+.itsmCreateWide { grid-column: 1 / -1; }
+.itsmCreateDefinitionList { display: grid; gap: 12px; margin: 0; }
+.itsmCreateDefinitionList > div { padding-bottom: 10px; border-bottom: 1px solid var(--euiColorLightShade, #d3dae6); }
+.itsmCreateDefinitionList dt { color: var(--euiColorDarkShade, #69707d); font-size: 11px; text-transform: uppercase; }
+.itsmCreateDefinitionList dd { margin: 4px 0 0; line-height: 1.45; }
+.itsmCreateDefinitionListColumns { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.itsmCreateReviewGrid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 16px; }
+.itsmPreflightList { display: grid; gap: 10px; }
+.itsmPreflightList > div { display: grid; grid-template-columns: 80px 1fr; gap: 12px; align-items: center; min-height: 34px; }
+
+.networkSocWorkspace,
+.systemOverviewWorkspace { min-width: 0; }
+.wideOperationsPage > main > header,
+.wideOperationsPage > main > section { width: min(100%, 1800px); margin-inline: auto; }
+.networkSocMetricGrid,
+.systemOverviewMetrics { display: grid; grid-template-columns: repeat(5, minmax(150px, 1fr)); gap: 12px; }
+.networkSocMetricGrid .euiPanel,
+.systemOverviewMetrics .euiPanel { min-height: 92px; }
+.networkSocCockpit { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(300px, .8fr); gap: 16px; grid-template-areas: "queue selected" "timeline timeline" "owners handoff"; }
+.networkSocDecisionQueue { grid-area: queue; }
+.networkSocSelected { grid-area: selected; }
+.networkSocTimeline { grid-area: timeline; }
+.networkSocOwnerLoad { grid-area: owners; }
+.networkSocHandoff { grid-area: handoff; }
+.networkSocQueueRows { display: grid; }
+.networkSocQueueRows > button { display: grid; grid-template-columns: 52px minmax(0, 1.6fr) minmax(140px, .8fr) 56px; gap: 12px; align-items: center; min-height: 66px; padding: 10px 8px; border: 0; border-top: 1px solid var(--euiColorLightShade, #d3dae6); background: transparent; color: inherit; text-align: left; cursor: pointer; }
+.networkSocQueueRows > button:hover,
+.networkSocQueueRows > button.isSelected { background: color-mix(in srgb, var(--euiColorPrimary, #006bb4) 9%, transparent); }
+.networkSocQueueRows small,
+.networkSocEvidenceList small,
+.networkSocOwnerLoad small,
+.networkSocHandoff small { display: block; margin-top: 3px; color: var(--euiColorDarkShade, #69707d); line-height: 1.35; }
+.networkSocEvidenceList { display: grid; gap: 10px; }
+.networkSocEvidenceList > div { padding: 10px; border: 1px solid var(--euiColorLightShade, #d3dae6); border-radius: 6px; }
+.networkSocBars { display: grid; grid-template-columns: repeat(16, minmax(24px, 1fr)); gap: 8px; height: 210px; margin-top: 18px; padding-top: 8px; border-bottom: 1px solid var(--euiColorLightShade, #d3dae6); }
+.networkSocBars > div { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; align-items: end; position: relative; height: 180px; }
+.networkSocBars span { min-height: 3px; border-radius: 3px 3px 0 0; }
+.networkSocBars .current,
+.networkSocLegend .current { background: var(--euiColorPrimary, #006bb4); }
+.networkSocBars .prior,
+.networkSocLegend .prior { background: var(--euiColorMediumShade, #98a2b3); }
+.networkSocBars small { position: absolute; top: 184px; left: 50%; transform: translateX(-50%); white-space: nowrap; color: var(--euiColorDarkShade, #69707d); font-size: 10px; }
+.networkSocLegend { display: flex; justify-content: flex-end; gap: 18px; margin-top: 20px; }
+.networkSocLegend span { display: flex; gap: 6px; align-items: center; font-size: 12px; }
+.networkSocLegend i { width: 12px; height: 8px; border-radius: 2px; }
+.networkSocOwnerLoad > div { display: grid; grid-template-columns: minmax(130px, .7fr) 1fr; gap: 16px; align-items: center; padding: 10px 0; border-top: 1px solid var(--euiColorLightShade, #d3dae6); }
+.networkSocHandoff > div { display: grid; grid-template-columns: 100px 1fr; gap: 12px; align-items: center; padding: 10px 0; border-top: 1px solid var(--euiColorLightShade, #d3dae6); }
+
+.systemOverviewGrid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(300px, .7fr); grid-template-areas: "modules queue" "events events" "topology sync"; gap: 16px; }
+.systemModuleConsumption { grid-area: modules; }
+.systemQueuePressure { grid-area: queue; }
+.systemEventStream { grid-area: events; }
+.systemTopology { grid-area: topology; }
+.systemTicketSync { grid-area: sync; }
+.systemModuleTable { display: grid; min-width: 0; }
+.systemModuleHeader,
+.systemModuleTable > button { display: grid; grid-template-columns: minmax(150px, 1fr) 120px minmax(120px, .8fr) minmax(150px, 1fr); gap: 14px; align-items: center; min-height: 54px; padding: 8px; }
+.systemModuleHeader { color: var(--euiColorDarkShade, #69707d); font-size: 11px; text-transform: uppercase; }
+.systemModuleTable > button { border: 0; border-top: 1px solid var(--euiColorLightShade, #d3dae6); background: transparent; color: inherit; text-align: left; cursor: pointer; }
+.systemModuleTable > button:hover { background: color-mix(in srgb, var(--euiColorPrimary, #006bb4) 7%, transparent); }
+.systemModuleTable > button > span { display: grid; grid-template-columns: 1fr 38px; gap: 8px; align-items: center; }
+.systemModuleTable small,
+.systemQueueRow small,
+.systemEventStream small { display: block; color: var(--euiColorDarkShade, #69707d); line-height: 1.35; }
+.systemQueueRow { display: grid; grid-template-columns: minmax(140px, .8fr) 1fr; gap: 16px; align-items: center; padding: 10px 0; border-top: 1px solid var(--euiColorLightShade, #d3dae6); }
+.systemEventStream > button { display: grid; grid-template-columns: 80px 1fr; gap: 12px; align-items: center; width: 100%; min-height: 58px; padding: 9px; border: 0; border-top: 1px solid var(--euiColorLightShade, #d3dae6); background: transparent; color: inherit; text-align: left; cursor: pointer; }
+.systemEventStream > button:hover { background: color-mix(in srgb, var(--euiColorPrimary, #006bb4) 7%, transparent); }
+.systemTopologyPath { display: grid; grid-template-columns: repeat(5, minmax(110px, 1fr)); gap: 10px; }
+.systemTopologyPath > div { position: relative; display: grid; gap: 6px; min-height: 112px; padding: 12px; border: 1px solid var(--euiColorLightShade, #d3dae6); border-radius: 6px; }
+.systemTopologyPath > div:not(:last-child)::after { content: "→"; position: absolute; right: -10px; top: 42px; z-index: 2; }
+.systemTopologyPath small { color: var(--euiColorDarkShade, #69707d); text-transform: uppercase; }
+.systemTicketSync dl { display: grid; gap: 0; margin: 0; }
+.systemTicketSync dl > div { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-top: 1px solid var(--euiColorLightShade, #d3dae6); }
+.systemTicketSync dd { margin: 0; }
+
+@media (max-width: 1500px) {
+  .networkSocMetricGrid,
+  .systemOverviewMetrics { grid-template-columns: repeat(3, minmax(150px, 1fr)); }
+  .networkSocCockpit,
+  .systemOverviewGrid { grid-template-columns: minmax(0, 1fr); grid-template-areas: "queue" "selected" "timeline" "owners" "handoff"; }
+  .systemOverviewGrid { grid-template-areas: "modules" "queue" "events" "topology" "sync"; }
+}
+
+@media (min-width: 2200px) {
+  .wideOperationsPage > main > header,
+  .wideOperationsPage > main > section { width: min(100%, 2240px); }
+}
+
+@media (min-width: 3200px) {
+  .wideOperationsPage > main > header,
+  .wideOperationsPage > main > section { width: min(100%, 3040px); }
+  .networkSocCockpit {
+    grid-template-columns: minmax(0, 3fr) minmax(300px, 1fr) minmax(300px, 1fr);
+    grid-template-areas:
+      "queue selected owners"
+      "timeline timeline handoff";
+  }
+  .systemOverviewGrid {
+    grid-template-columns: minmax(0, 2fr) minmax(360px, .7fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .itsmCreateDraft,
+  .itsmCreateReviewGrid,
+  .itsmCreateFormGrid,
+  .itsmCreateDefinitionListColumns { grid-template-columns: 1fr; }
+  .itsmCreateWide { grid-column: auto; }
+  .networkSocMetricGrid,
+  .systemOverviewMetrics { grid-template-columns: repeat(2, minmax(140px, 1fr)); }
+  .networkSocQueueRows > button { grid-template-columns: 48px 1fr; }
+  .networkSocQueueRows > button > span:nth-child(n + 3) { display: none; }
+  .networkSocBars { overflow-x: auto; grid-template-columns: repeat(16, 36px); }
+  .systemModuleTable { overflow-x: auto; }
+  .systemModuleHeader,
+  .systemModuleTable > button { min-width: 720px; }
+  .systemTopologyPath { grid-template-columns: 1fr; }
+  .systemTopologyPath > div:not(:last-child)::after { content: "↓"; right: 50%; top: auto; bottom: -14px; }
+}

@@ -46,8 +46,9 @@ export function PageFrame({ spec, fixture, adapterError, viewState, setViewState
   const empty = viewState === 'empty' || viewState === 'filtered-empty';
   const fatal = viewState === 'error' || viewState === 'denied' || viewState === 'offline';
   const stateMessage = !['ready','loading','empty','filtered-empty'].includes(viewState) ? stateCopy[viewState as keyof typeof stateCopy] : undefined;
+  const wideOperationsView = spec.route === '/dashboard/network-soc' || spec.route === '/dashboard/system-overview';
   return (
-    <EuiPageTemplate restrictWidth={1800} className="prototypePage" data-page-id={spec.id} data-fixture-ready={fixture ? 'true' : 'false'} data-page-mode={pageMode}>
+    <EuiPageTemplate restrictWidth={wideOperationsView ? false : 1800} className={`prototypePage${wideOperationsView ? ' wideOperationsPage' : ''}`} data-page-id={spec.id} data-fixture-ready={fixture ? 'true' : 'false'} data-page-mode={pageMode}>
       <EuiPageTemplate.Header
         data-visual-region="page-header"
         pageTitle={spec.title}

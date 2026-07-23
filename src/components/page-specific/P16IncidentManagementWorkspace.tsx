@@ -6,6 +6,7 @@ import {
   EuiSpacer, EuiStat, EuiText, EuiTitle,
 } from '@elastic/eui';
 import type { PrototypePageFixture, PrototypeRow, PrototypeValue } from '../../types/prototype';
+import { ItsmCreateTicketModal } from '../itsm/ItsmCreateTicketModal';
 
 type Incident = {
   id: string; summary: string; service: string; ci: string; priority: string; impact: string;
@@ -45,6 +46,7 @@ export function P16IncidentManagementWorkspace({ fixture }: { fixture: Prototype
   const [selectedId, setSelectedId] = useState<string | undefined>(undefined);
   const [detailOpen, setDetailOpen] = useState(false);
   const [majorOpen, setMajorOpen] = useState(false);
+  const [createOpen, setCreateOpen] = useState(false);
   const [receipt, setReceipt] = useState<string | undefined>(undefined);
   const incidents = useMemo(() => buildIncidents(fixture.rows), [fixture.rows]);
   const visible = useMemo(() => incidents.filter((item) => {
@@ -69,7 +71,7 @@ export function P16IncidentManagementWorkspace({ fixture }: { fixture: Prototype
       <EuiFlexItem grow={2}><EuiFieldSearch compressed value={query} onChange={(event: ChangeEvent) => setQuery(event.target.value)} placeholder="Incident, service, CI, owner, requester or SOC case" /></EuiFlexItem>
       <EuiFlexItem grow={false}><EuiSelect compressed value={priority} onChange={(event: ChangeEvent) => setPriority(event.target.value)} options={['P1/P2 active','All priorities','P1','P2','P3'].map((value)=>({value,text:value}))}/></EuiFlexItem>
       <EuiFlexItem grow={false}><EuiSelect compressed value={service} onChange={(event: ChangeEvent) => setService(event.target.value)} options={['All services','Identity','Endpoint','Customer API','Network'].map((value)=>({value,text:value}))}/></EuiFlexItem>
-      <EuiFlexItem grow={false}><EuiButton fill onClick={() => setReceipt('Create Incident wizard opened in prototype mode; no production record was created.')}>Create incident</EuiButton></EuiFlexItem>
+      <EuiFlexItem grow={false}><EuiButton fill onClick={() => setCreateOpen(true)}>Create incident</EuiButton></EuiFlexItem>
     </EuiFlexGroup></EuiPanel>
     <EuiSpacer size="m" />
     {receipt && <><EuiCallOut title="Prototype incident receipt" color="warning">{receipt}</EuiCallOut><EuiSpacer size="m" /></>}
@@ -90,5 +92,6 @@ export function P16IncidentManagementWorkspace({ fixture }: { fixture: Prototype
     </EuiFlexGroup>
     {detailOpen && <EuiFlyout onClose={()=>setDetailOpen(false)} ownFocus size="m" aria-labelledby="p16-detail-title"><EuiFlyoutHeader><EuiTitle><h2 id="p16-detail-title">Incident command detail</h2></EuiTitle></EuiFlyoutHeader><EuiFlyoutBody><EuiCallOut title="Restore is not resolve">Resolution remains blocked until service recovery, monitoring and authoritative validation are complete.</EuiCallOut><EuiSpacer/><dl><div><dt>Impact</dt><dd>{selected.impact}</dd></div><div><dt>Owner</dt><dd>{selected.owner}</dd></div><div><dt>Next SLA</dt><dd>{selected.sla}</dd></div><div><dt>Last update</dt><dd>{selected.updated}</dd></div></dl></EuiFlyoutBody><EuiFlyoutFooter><EuiButton onClick={()=>setDetailOpen(false)}>Close</EuiButton></EuiFlyoutFooter></EuiFlyout>}
     {majorOpen && <EuiModal onClose={()=>setMajorOpen(false)} aria-labelledby="p16-major-title"><EuiModalHeader><EuiModalHeaderTitle id="p16-major-title">Major incident impact review</EuiModalHeaderTitle></EuiModalHeader><EuiModalBody><EuiCallOut title="High-risk prototype decision" color="warning">Declaring a major incident changes communication and command obligations; this demo only creates a queued decision receipt.</EuiCallOut><ul><li>Service: {selected.service}</li><li>Impact: {selected.impact}</li><li>Owner: {selected.owner}</li><li>Communication: {selected.communication}</li></ul></EuiModalBody><EuiModalFooter><EuiButtonEmpty onClick={()=>setMajorOpen(false)}>Cancel</EuiButtonEmpty><EuiButton fill color="danger" onClick={()=>{queueAction('Major incident declaration');setMajorOpen(false);}}>Queue declaration</EuiButton></EuiModalFooter></EuiModal>}
+    <ItsmCreateTicketModal open={createOpen} onClose={()=>setCreateOpen(false)} initialType="Incident" onCreated={setReceipt} />
   </div>;
 }
