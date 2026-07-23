@@ -156,6 +156,67 @@ body .p07Frame th {
   margin-block: 6px;
 }
 
+.page-p02 .p02PostureLayout { align-items: stretch; }
+.page-p02 .p02DecisionRail { display: flex; align-items: stretch; }
+.page-p02 .p02DecisionRail .euiCallOut { width: 100%; }
+.page-p02 .p02KpiStrip { margin-top: 2px; }
+
+/* P19: timestamps are metadata, while due state remains a separate semantic badge. */
+.page-p19 [data-visual-region='approval-tabs-scope'] > .euiFlexGroup > .euiFlexItem {
+  min-width: 0;
+}
+
+.page-p19 .approvalTabs button { white-space: nowrap; }
+
+.page-p19 .p19QueueTableWrap {
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-gutter: stable;
+}
+
+.page-p19 .p19QueueTableWrap table { min-width: 760px; }
+
+.page-p19 .p19DueCell {
+  display: grid;
+  justify-items: start;
+  gap: 5px;
+  min-width: 154px;
+}
+
+.page-p19 .p19DueCell time {
+  color: var(--kbn-muted);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* P20: one legend describes both series; plot labels stay outside the marks. */
+.page-p20 .analyticsChartLegend {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  margin: 0 4px 8px;
+  color: var(--kbn-muted);
+  font-size: 11px;
+}
+
+.page-p20 .analyticsChartLegend > span {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.page-p20 .analyticsChartLegend i {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  background: var(--accent);
+}
+
+.page-p20 .analyticsChartLegend i.prior {
+  background: color-mix(in srgb,var(--accent) 35%,var(--border));
+}
+
 /* P04/P06: queue + workbench first, decision/recovery rail below at audit widths. */
 @media (max-width: 1450px) {
   .page-p04 > .euiFlexGroup:has([data-visual-region='analyst-case-queue']),

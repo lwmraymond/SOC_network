@@ -89,28 +89,23 @@ export function P02ExecutiveWallboard({ fixture }: { fixture: PrototypePageFixtu
       <EuiSpacer size="m" />
 
       <section aria-labelledby="p02-executive-posture" data-visual-region="executive-posture-hero">
-        <EuiPanel paddingSize="l" hasBorder>
-          <EuiFlexGroup alignItems="flexStart" gutterSize="l" responsive={false}>
+        <EuiPanel paddingSize="m" hasBorder>
+          <EuiFlexGroup className="p02PostureLayout" alignItems="flexStart" gutterSize="l" responsive={false}>
             <EuiFlexItem grow={3}>
               <EuiBadge color={riskValue > 70 ? 'warning' : 'success'}>Executive posture · {period}</EuiBadge>
               <EuiSpacer size="s" />
-              <EuiTitle size="l"><h2 id="p02-executive-posture">Risk is stabilizing, but identity and network services remain above appetite.</h2></EuiTitle>
+              <EuiTitle size="m"><h2 id="p02-executive-posture">Risk is easing; identity and network remain above appetite.</h2></EuiTitle>
               <EuiSpacer size="s" />
-              <EuiText color="subdued"><p>{businessUnit}. Compared with {comparison.toLowerCase()}, critical-case pressure is down while two cross-functional commitments remain overdue.</p></EuiText>
+              <EuiText size="s" color="subdued"><p>{businessUnit} · critical-case pressure is down; two cross-functional commitments remain overdue.</p></EuiText>
               <EuiSpacer size="m" />
-              <EuiFlexGroup gutterSize="m" wrap responsive={false}>
+              <EuiFlexGroup className="p02KpiStrip" gutterSize="m" wrap responsive={false}>
                 <EuiFlexItem style={{ minWidth: 190 }}><EuiStat title={`${riskValue}`} description="Business risk index" titleColor={riskValue > 70 ? 'warning' : 'primary'} /></EuiFlexItem>
                 <EuiFlexItem style={{ minWidth: 190 }}><EuiStat title={`${responseValue}m`} description="Median response outcome" titleColor={responseValue > 60 ? 'warning' : 'success'} /></EuiFlexItem>
                 <EuiFlexItem style={{ minWidth: 190 }}><EuiStat title={`${coverageValue}%`} description="Critical-source confidence" titleColor={coverageValue < 90 ? 'warning' : 'success'} /></EuiFlexItem>
               </EuiFlexGroup>
             </EuiFlexItem>
-            <EuiFlexItem grow={1} style={{ minWidth: 260 }}>
-              <EuiCallOut title="Decision needed" color="warning">Confirm additional identity-response coverage and accept or remediate the remaining network exposure before the next board review.</EuiCallOut>
-              <EuiSpacer size="m" />
-              <EuiText size="s"><p><strong>Data confidence</strong></p></EuiText>
-              <EuiProgress value={coverageValue} max={100} color={coverageValue < 90 ? 'warning' : 'success'} size="m" />
-              <EuiSpacer size="s" />
-              <EuiText size="xs" color="subdued"><p>Late data is excluded from the trend and exact-data table. Fixture output is not a production statement.</p></EuiText>
+            <EuiFlexItem className="p02DecisionRail" grow={1} style={{ minWidth: 260 }}>
+              <EuiCallOut title="Decision needed" color="warning">Add identity-response coverage, then remediate or accept the remaining network exposure before the next review.</EuiCallOut>
             </EuiFlexItem>
           </EuiFlexGroup>
         </EuiPanel>

@@ -268,6 +268,31 @@ for (const [id, route] of routes) {
       if (drift > 2) add('peer-card-height-drift', 'P1', `Peer cards differ in height by ${drift}px`, group, drift, 2);
     });
 
+    document.querySelectorAll('input,select,button,table').forEach((element) => {
+      if (!visible(element)) return;
+      const rect = element.getBoundingClientRect();
+      const ownsLocalOverflow = [...function *ancestors() {
+        for (let current = element.parentElement; current; current = current.parentElement) yield current;
+      }()].some((ancestor) => ['auto', 'scroll'].includes(getComputedStyle(ancestor).overflowX));
+      if (!ownsLocalOverflow && (rect.left < -1 || rect.right > document.documentElement.clientWidth + 1)) {
+        add('viewport-clipped-control', 'P1', 'Interactive control or table extends beyond the visible viewport without local scrolling', element, round(rect.right), document.documentElement.clientWidth);
+      }
+    });
+
+    document.querySelectorAll('.analyticsComparisonChart').forEach((chart) => {
+      const marks = [...chart.querySelectorAll(':scope > div > span, :scope > div > i')];
+      const labels = [...chart.querySelectorAll(':scope > div > small, :scope > div > b')];
+      labels.forEach((label) => {
+        const labelRect = label.getBoundingClientRect();
+        const overlapsMark = marks.some((mark) => {
+          const markRect = mark.getBoundingClientRect();
+          return Math.min(labelRect.right, markRect.right) - Math.max(labelRect.left, markRect.left) > 1
+            && Math.min(labelRect.bottom, markRect.bottom) - Math.max(labelRect.top, markRect.top) > 1;
+        });
+        if (overlapsMark) add('chart-label-mark-overlap', 'P1', 'Chart label overlaps a plotted mark', label, 'overlap', 'none');
+      });
+    });
+
     const documentOverflow = Math.max(document.documentElement.scrollWidth, document.body.scrollWidth) - document.documentElement.clientWidth;
     if (documentOverflow > 1) add('document-overflow', 'P0', `Document overflows horizontally by ${documentOverflow}px`, root, documentOverflow, 1);
 
