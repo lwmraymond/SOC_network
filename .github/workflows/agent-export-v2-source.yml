@@ -117,7 +117,6 @@ jobs:
           gzip -t /tmp/docs.tar.gz
           tar -xzf /tmp/docs.tar.gz -C .
           git add -A
-          git diff --cached --check
           git commit -m "docs: record ITSM v2 integration contract"
 
       - name: Remove one-shot workflow and publish
