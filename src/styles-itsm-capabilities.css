@@ -1,0 +1,339 @@
+.itsmCapabilityPage {
+  width: min(100%, 2880px);
+  margin-inline: auto;
+}
+
+.itsmCapabilityPage .euiPageTemplate__section {
+  min-width: 0;
+}
+
+.itsmCapabilityContext {
+  position: sticky;
+  top: 88px;
+  z-index: 2;
+}
+
+.itsmCenteredState {
+  min-height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: var(--kbn-muted, inherit);
+}
+
+.itsmTicketHeader,
+.itsmCapabilityContext,
+.itsmCapabilityPage .euiPanel {
+  border-radius: 8px;
+}
+
+.itsmTicketColumns {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1.2fr) minmax(260px, .8fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.itsmConversationLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(360px, .9fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.itsmComposer {
+  position: sticky;
+  top: 152px;
+}
+
+.itsmDefinitionGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px 24px;
+  margin: 0;
+}
+
+.itsmDefinitionGrid > div {
+  min-width: 0;
+}
+
+.itsmDefinitionGrid dt {
+  margin-bottom: 4px;
+  color: var(--kbn-muted, inherit);
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.itsmDefinitionGrid dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.itsmCapabilityRow,
+.itsmClockRow {
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid var(--kbn-border, rgba(128, 128, 128, .24));
+}
+
+.itsmClockRow > div {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+}
+
+.itsmClockRow span,
+.itsmCapabilityRow span {
+  overflow-wrap: anywhere;
+}
+
+.itsmHeaderClock {
+  min-width: 176px;
+  padding: 12px 16px;
+  border: 1px solid var(--kbn-border, rgba(128, 128, 128, .24));
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: right;
+}
+
+.itsmHeaderClock span {
+  color: var(--kbn-muted, inherit);
+  font-size: 12px;
+}
+
+.itsmHeaderClock strong {
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.itsmThread {
+  display: grid;
+  gap: 16px;
+}
+
+.itsmComment {
+  padding: 16px;
+  border: 1px solid var(--kbn-border, rgba(128, 128, 128, .24));
+  border-radius: 8px;
+}
+
+.itsmComment.internal {
+  border-inline-start: 4px solid var(--kbn-warning, #f5a700);
+}
+
+.itsmComment > div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.itsmComment p {
+  margin: 12px 0;
+  line-height: 20px;
+  white-space: pre-wrap;
+}
+
+.itsmComment small,
+.itsmResourceCard small,
+.itsmResourceButton small,
+.itsmAuditList small,
+.itsmCapabilityPage table small {
+  display: block;
+  color: var(--kbn-muted, inherit);
+  font-size: 11px;
+  line-height: 16px;
+  overflow-wrap: anywhere;
+}
+
+.itsmAuditList {
+  display: grid;
+  gap: 8px;
+}
+
+.itsmAuditList article {
+  min-height: 56px;
+  display: grid;
+  grid-template-columns: minmax(180px, .6fr) minmax(0, 1.4fr) minmax(240px, .8fr);
+  gap: 16px;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--kbn-border, rgba(128, 128, 128, .24));
+}
+
+.itsmAdminGrid {
+  display: grid;
+  grid-template-columns: minmax(280px, .72fr) minmax(0, 2fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.itsmAutomationGrid {
+  display: grid;
+  grid-template-columns: minmax(260px, .65fr) minmax(0, 2fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.itsmTwoColumn {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  align-items: start;
+}
+
+.itsmCardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.itsmFormGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 24px;
+}
+
+.itsmResourceButton {
+  width: 100%;
+  min-height: 56px;
+  margin-top: 8px;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.itsmResourceButton:hover,
+.itsmResourceButton.selected {
+  border-color: var(--kbn-primary, currentColor);
+  background: var(--kbn-panel-muted, rgba(128, 128, 128, .08));
+}
+
+.itsmResourceButton > span:first-child {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.itsmResourceCard {
+  min-height: 80px;
+  margin-top: 12px;
+  padding: 12px;
+  display: grid;
+  gap: 4px;
+  border: 1px solid var(--kbn-border, rgba(128, 128, 128, .24));
+  border-radius: 8px;
+}
+
+.itsmRuleCanvas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.itsmRuleCanvas article {
+  min-height: 112px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border: 1px solid var(--kbn-border, rgba(128, 128, 128, .24));
+  border-radius: 8px;
+}
+
+.itsmRuleCanvas article b {
+  text-transform: uppercase;
+  font-size: 11px;
+  line-height: 16px;
+  letter-spacing: .04em;
+}
+
+.itsmRuleCanvas article small {
+  overflow-wrap: anywhere;
+}
+
+.itsmCapabilityPage table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: auto;
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.itsmCapabilityPage th,
+.itsmCapabilityPage td {
+  min-height: 40px;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--kbn-border, rgba(128, 128, 128, .24));
+  text-align: left;
+  vertical-align: top;
+  overflow-wrap: anywhere;
+}
+
+.itsmCapabilityPage th {
+  color: var(--kbn-muted, inherit);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+}
+
+@media (max-width: 1680px) {
+  .itsmTicketColumns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .itsmTicketColumns > :last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 1280px) {
+  .itsmConversationLayout,
+  .itsmAdminGrid,
+  .itsmAutomationGrid,
+  .itsmTwoColumn {
+    grid-template-columns: 1fr;
+  }
+
+  .itsmComposer,
+  .itsmCapabilityContext {
+    position: static;
+  }
+}
+
+@media (max-width: 900px) {
+  .itsmTicketColumns,
+  .itsmDefinitionGrid,
+  .itsmFormGrid,
+  .itsmAuditList article {
+    grid-template-columns: 1fr;
+  }
+
+  .itsmHeaderClock {
+    width: 100%;
+    text-align: left;
+  }
+
+  .itsmCapabilityPage table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
