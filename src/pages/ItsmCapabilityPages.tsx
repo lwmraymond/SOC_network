@@ -7,7 +7,6 @@ import {
   EuiCodeBlock,
   EuiComboBox,
   EuiFieldNumber,
-  EuiFieldSearch,
   EuiFieldText,
   EuiFlexGroup,
   EuiFlexItem,
@@ -115,7 +114,7 @@ type GovernedActionProps<T> = {
 
 function GovernedAction<T>({ label, fill, color = 'primary', preview, execute, rehydrate }: GovernedActionProps<T>) {
   const [open, setOpen] = useState(false);
-  const mutation = useItsmMutation<{}, T>({
+  const mutation = useItsmMutation<Record<string, never>, T>({
     preview: (_input, signal) => preview(signal),
     execute: (_input, signal) => execute(signal),
     rehydrate: (_input, receipt, signal) => rehydrate(receipt, signal),

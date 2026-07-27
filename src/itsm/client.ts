@@ -14,8 +14,6 @@ import type {
   InboundRoutingRule,
   IngestionEvent,
   ItsmApiAdapter,
-  ListQuery,
-  MutationContext,
   NormalizedApiError,
   NotificationDelivery,
   NotificationPolicy,
@@ -44,7 +42,7 @@ let fixtureSequence = 1000;
 const versioned = (id: string, version = '1'): VersionedResource => ({
   id,
   version,
-  etag: `W/\"${id}-${version}\"`,
+  etag: `W/"${id}-${version}"`,
   createdAt: '2026-07-01T00:00:00.000Z',
   updatedAt: NOW,
 });
@@ -264,30 +262,30 @@ const fixtureAdapterPartial: Partial<ItsmApiAdapter> = {
   async getCapabilities(): Promise<CapabilitySnapshot> {
     return { subjectId: 'development-reviewer', permissions, adapter: 'development-fixture', authoritative: false, checkedAt: NOW };
   },
-  async listTickets(_query: ListQuery) { return page(fixtureTickets); },
+  async listTickets() { return page(fixtureTickets); },
   async getTicket(ticketId: string) { return bundleFor(ticketId); },
   async previewCreateTicket(input: TicketCreateInput) { return preview('ticket.create', `Create ${input.kind} titled ${input.title}`, [{ type: input.kind, id: 'new', effect: 'create' }]); },
-  async createTicket(input: TicketCreateInput, _context: MutationContext) {
+  async createTicket(input: TicketCreateInput) {
     const created = { ...fixtureTickets.find((item) => item.kind === input.kind), id: `fixture-${fixtureSequence++}`, key: `FIX-${fixtureSequence}`, title: input.title, description: input.description, priority: input.priority } as Ticket;
     return result('ticket.create', created);
   },
-  async previewUpdateTicket(ticketId: string, _patch: TicketPatch) { return preview('ticket.update', `Update ${ticketId}`, [{ type: 'ticket', id: ticketId, effect: 'update' }]); },
-  async updateTicket(ticketId: string, patch: TicketPatch, _context: MutationContext) { return result('ticket.update', { ...bundleFor(ticketId).ticket, ...patch } as Ticket); },
+  async previewUpdateTicket(ticketId: string) { return preview('ticket.update', `Update ${ticketId}`, [{ type: 'ticket', id: ticketId, effect: 'update' }]); },
+  async updateTicket(ticketId: string, patch: TicketPatch) { return result('ticket.update', { ...bundleFor(ticketId).ticket, ...patch } as Ticket); },
   async refreshTicket(ticketId: string) { return bundleFor(ticketId); },
 
   async listComments(ticketId: string) { return page(fixtureComments.filter((item) => item.ticketId === bundleFor(ticketId).ticket.id)); },
   async previewCreateComment(ticketId: string, input: CommentCreateInput) { return preview('ticket.comment.create', `Add ${input.visibility} comment to ${ticketId}`, [{ type: 'ticket-comment', id: 'new', effect: input.visibility }]); },
-  async createComment(ticketId: string, input: CommentCreateInput, _context: MutationContext) {
+  async createComment(ticketId: string, input: CommentCreateInput) {
     const comment: TicketComment = { ...versioned(`fixture-comment-${fixtureSequence++}`), ticketId: bundleFor(ticketId).ticket.id, ...input, authorId: 'development-reviewer', authorDisplayName: 'Development reviewer', source: 'web' };
     return result('ticket.comment.create', comment);
   },
-  async createAttachmentPlaceholder(ticketId: string, filename: string, _context: MutationContext) {
+  async createAttachmentPlaceholder(ticketId: string, filename: string) {
     return result('ticket.attachment.placeholder', { ...versioned(`fixture-attachment-${fixtureSequence++}`), ticketId: bundleFor(ticketId).ticket.id, filename, contentType: 'application/octet-stream', sizeBytes: 0, uploadState: 'placeholder' });
   },
   async listRelations(ticketId: string) { return page(fixtureRelations.filter((item) => item.ticketId === bundleFor(ticketId).ticket.id)); },
-  async createRelation(ticketId: string, relation, _context: MutationContext) { return result('ticket.relation.create', { ...versioned(`fixture-relation-${fixtureSequence++}`), ticketId: bundleFor(ticketId).ticket.id, ...relation }); },
+  async createRelation(ticketId: string, relation) { return result('ticket.relation.create', { ...versioned(`fixture-relation-${fixtureSequence++}`), ticketId: bundleFor(ticketId).ticket.id, ...relation }); },
   async listApprovals(ticketId: string) { return page(fixtureApprovals.filter((item) => item.ticketId === bundleFor(ticketId).ticket.id)); },
-  async decideApproval(ticketId: string, approvalId: string, decision: 'approved' | 'rejected', rationale: string, _context: MutationContext) {
+  async decideApproval(ticketId: string, approvalId: string, decision: 'approved' | 'rejected', rationale: string) {
     const current = fixtureApprovals.find((item) => item.id === approvalId) ?? fixtureApprovals[0];
     return result('ticket.approval.decide', { ...current, ticketId: bundleFor(ticketId).ticket.id, decision, rationale, decidedAt: NOW });
   },
@@ -298,32 +296,32 @@ const fixtureAdapterPartial: Partial<ItsmApiAdapter> = {
   async listSlaClocks() { return page(fixtureSlaClocks); },
   async listEscalationRules() { return page(fixtureEscalations); },
   async previewSlaPolicy(policy: SlaPolicy) { return preview('sla.policy.save', `Validate ${policy.name}`, [{ type: 'sla-policy', id: policy.id, effect: 'new clocks only' }]); },
-  async saveSlaPolicy(policy: SlaPolicy, _context: MutationContext) { return result('sla.policy.save', policy); },
+  async saveSlaPolicy(policy: SlaPolicy) { return result('sla.policy.save', policy); },
 
   async listAutomationTemplates() { return page(fixtureAutomationTemplates); },
   async listAutomationRules() { return page(fixtureAutomationRules); },
   async listAutomationVersions() { return page(fixtureAutomationVersions); },
   async listAutomationRuns() { return page(fixtureAutomationRuns); },
   async previewAutomationRule(rule: AutomationRule) { return preview('automation.rule.save', `Validate ${rule.name}`, [{ type: 'automation-rule', id: rule.id, effect: 'draft revision' }]); },
-  async saveAutomationRule(rule: AutomationRule, _context: MutationContext) { return result('automation.rule.save', rule); },
-  async publishAutomationRule(ruleId: string, versionId: string, _context: MutationContext) { return nextReceipt(`automation.rule.publish:${ruleId}:${versionId}`); },
-  async dryRunAutomationRule(ruleId: string, _input: Record<string, unknown>, _context: MutationContext) { return { ...fixtureAutomationRuns[1], id: `fixture-run-${fixtureSequence++}`, ruleId, dryRun: true, state: 'succeeded', authoritative: false } as AutomationRun; },
-  async retryAutomationRun(runId: string, _context: MutationContext) { return nextReceipt(`automation.run.retry:${runId}`); },
-  async cancelAutomationRun(runId: string, _context: MutationContext) { return nextReceipt(`automation.run.cancel:${runId}`); },
+  async saveAutomationRule(rule: AutomationRule) { return result('automation.rule.save', rule); },
+  async publishAutomationRule(ruleId: string, versionId: string) { return nextReceipt(`automation.rule.publish:${ruleId}:${versionId}`); },
+  async dryRunAutomationRule(ruleId: string) { return { ...fixtureAutomationRuns[1], id: `fixture-run-${fixtureSequence++}`, ruleId, dryRun: true, state: 'succeeded', authoritative: false } as AutomationRun; },
+  async retryAutomationRun(runId: string) { return nextReceipt(`automation.run.retry:${runId}`); },
+  async cancelAutomationRun(runId: string) { return nextReceipt(`automation.run.cancel:${runId}`); },
 
   async listNotificationProviders() { return page(fixtureNotificationProviders); },
   async listNotificationRecipients() { return page(fixtureNotificationRecipients); },
   async listNotificationTemplates() { return page(fixtureNotificationTemplates); },
   async listNotificationPolicies() { return page(fixtureNotificationPolicies); },
   async listNotificationDeliveries() { return page(fixtureDeliveries); },
-  async saveNotificationProvider(provider: NotificationProvider, _context: MutationContext) { return result('notification.provider.save', provider); },
-  async testNotificationProvider(providerId: string, _context: MutationContext) { return nextReceipt(`notification.provider.test:${providerId}`); },
+  async saveNotificationProvider(provider: NotificationProvider) { return result('notification.provider.save', provider); },
+  async testNotificationProvider(providerId: string) { return nextReceipt(`notification.provider.test:${providerId}`); },
 
   async listInboundMailboxes() { return page(fixtureMailboxes); },
   async listInboundRoutingRules() { return page(fixtureRoutingRules); },
   async listIngestionEvents() { return page(fixtureIngestionEvents); },
-  async saveInboundMailbox(mailbox: InboundMailbox, _context: MutationContext) { return result('inbound.mailbox.save', mailbox); },
-  async testInboundMailbox(mailboxId: string, _context: MutationContext) { return nextReceipt(`inbound.mailbox.test:${mailboxId}`); },
+  async saveInboundMailbox(mailbox: InboundMailbox) { return result('inbound.mailbox.save', mailbox); },
+  async testInboundMailbox(mailboxId: string) { return nextReceipt(`inbound.mailbox.test:${mailboxId}`); },
 };
 
 const fixtureAdapter = new Proxy(fixtureAdapterPartial, {
