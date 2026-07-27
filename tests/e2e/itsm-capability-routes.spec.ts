@@ -23,6 +23,25 @@ const viewports = [
   { width: 3840, height: 2160 },
 ] as const;
 
+async function expectCapabilityContextInFlow(page: import('@playwright/test').Page) {
+  const metrics = await page.locator('.itsmCapabilityContext').evaluate((element) => {
+    const contextRect = element.getBoundingClientRect();
+    const badgeWidth = element.querySelector('.euiBadge')?.getBoundingClientRect().width ?? 0;
+    let next = element.nextElementSibling;
+    while (next && (next.getBoundingClientRect().height === 0 || next.classList.contains('euiSpacer'))) next = next.nextElementSibling;
+    return {
+      position: getComputedStyle(element).position,
+      contextBottom: contextRect.bottom,
+      nextTop: next?.getBoundingClientRect().top ?? contextRect.bottom,
+      badgeWidth,
+    };
+  });
+  expect(metrics.position).toBe('static');
+  expect(metrics.nextTop).toBeGreaterThanOrEqual(metrics.contextBottom - 1);
+  expect(metrics.badgeWidth).toBeGreaterThan(0);
+  expect(metrics.badgeWidth).toBeLessThan(320);
+}
+
 test.describe('ITSM capability framework', () => {
   test('renders four differentiated ticket types through the shared workspace', async ({ context }) => {
     for (const item of ticketCases) {
@@ -37,6 +56,7 @@ test.describe('ITSM capability framework', () => {
       if ('specificText' in item) await expect(page.getByText(item.specificText, { exact: true })).toBeVisible();
       await expect(page.getByRole('tab', { name: 'Conversation' })).toBeVisible();
       await expect(page.getByText('Production adapter unavailable')).toHaveCount(0);
+      await expectCapabilityContextInFlow(page);
       await expectNoDocumentOverflow(page);
       await expectNoRuntimeErrors(runtimeErrors);
       await page.close();
@@ -56,6 +76,11 @@ test.describe('ITSM capability framework', () => {
         await expect(page.getByRole('heading', { level: 1, name: item.heading })).toBeVisible();
         await page.evaluate(async () => document.fonts.ready);
         if ('afterLoad' in item) await item.afterLoad(page);
+        await expectCapabilityContextInFlow(page);
+        if (item.name === 'ticket-conversation') {
+          const panelTops = await page.locator('.itsmConversationLayout > .euiPanel').evaluateAll((elements) => elements.map((element) => Math.round(element.getBoundingClientRect().top)));
+          expect(new Set(panelTops).size).toBe(1);
+        }
         await expectNoDocumentOverflow(page);
         await page.screenshot({ path: join(directory, `${item.name}.png`), fullPage: true, animations: 'disabled' });
         await expectNoRuntimeErrors(runtimeErrors);
