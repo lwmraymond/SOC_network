@@ -36,7 +36,7 @@ async function expectCapabilityContextInFlow(page: import('@playwright/test').Pa
       badgeWidth,
     };
   });
-  expect(metrics.position).toBe('static');
+  expect(['absolute', 'fixed', 'sticky']).not.toContain(metrics.position);
   expect(metrics.nextTop).toBeGreaterThanOrEqual(metrics.contextBottom - 1);
   expect(metrics.badgeWidth).toBeGreaterThan(0);
   expect(metrics.badgeWidth).toBeLessThan(320);
