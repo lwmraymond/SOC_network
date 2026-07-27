@@ -1,4 +1,4 @@
-name: Export ITSM v2 source snapshot
+name: Export ITSM integration source snapshots
 
 on:
   push:
@@ -19,17 +19,28 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
+      - name: Check out successor branch
+        uses: actions/checkout@v4
         with:
+          path: v2
           fetch-depth: 0
-      - name: Package working tree
+      - name: Check out PR 11 implementation snapshot
+        uses: actions/checkout@v4
+        with:
+          ref: 1c567e74e5f40d4aeeca2690489a7ab7671cd1a4
+          path: v1
+          fetch-depth: 0
+      - name: Package working trees
         shell: bash
         run: |
           set -euo pipefail
-          git archive --format=tar.gz --output=soc-network-v2-source.tar.gz HEAD
+          git -C v2 archive --format=tar.gz --output=../soc-network-v2-source.tar.gz HEAD
+          git -C v1 archive --format=tar.gz --output=../soc-network-v1-source.tar.gz HEAD
       - uses: actions/upload-artifact@v4
         with:
-          name: soc-network-v2-source
-          path: soc-network-v2-source.tar.gz
+          name: soc-network-integration-sources
+          path: |
+            soc-network-v2-source.tar.gz
+            soc-network-v1-source.tar.gz
           retention-days: 1
           if-no-files-found: error
