@@ -1,6 +1,9 @@
 name: ITSM Capability Framework Validation
 
 on:
+  push:
+    branches:
+      - agent/itsm-ticket-capability-framework
   pull_request:
     branches:
       - codex/kibana-42page-visual
