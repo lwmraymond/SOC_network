@@ -9,6 +9,8 @@ import './styles-round2.css';
 import './styles-kibana-fidelity.css';
 import './styles-information-density-fixes.css';
 import './styles-migration-15174.css';
+import './styles-itsm-capabilities.css';
+import './styles-itsm-audit-fixes.css';
 import { App } from './App';
 import { AppErrorBoundary } from './AppErrorBoundary';
 import { PlatformThemeProvider } from './theme';

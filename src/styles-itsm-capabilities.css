@@ -1,0 +1,484 @@
+.itsmCapabilityPage {
+  width: min(100%, 1800px);
+  margin-inline: auto;
+  color: var(--text);
+}
+
+.theme-light .content:has(.itsmCapabilityPage),
+.theme-light .content .itsmCapabilityPage,
+.theme-light .itsmCapabilityPage .euiPageHeader,
+.theme-light .itsmCapabilityPage .euiPageHeaderContent,
+.theme-light .itsmCapabilityPage .euiPageHeaderContent > div {
+  background: var(--canvas);
+}
+
+.itsmCapabilityPage .euiPageTemplate__section,
+.itsmCapabilityPage .euiPageHeaderContent,
+.itsmCapabilityPage .euiFlexItem {
+  min-width: 0;
+}
+
+.itsmCapabilityPage .euiPageHeader,
+.itsmCapabilityPage .euiPageHeaderContent,
+.itsmCapabilityPage .euiPageHeaderContent > div {
+  background: transparent;
+}
+
+.itsmCapabilityPage .euiPageHeaderContent {
+  min-height: 0;
+  padding-block: 8px;
+}
+
+.itsmCapabilityContext,
+.itsmComposer {
+  position: static;
+}
+
+.itsmCapabilityContext .euiFlexItem:first-child {
+  flex-grow: 0;
+}
+
+.itsmCapabilityPage .euiPanel,
+.itsmTicketHeader,
+.itsmCapabilityContext {
+  border-radius: 8px;
+}
+
+.itsmCenteredState {
+  min-height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: var(--muted);
+}
+
+.itsmManagementContent {
+  display: grid;
+  align-content: start;
+}
+
+.itsmKpiStrip > .euiFlexItem {
+  min-width: 180px;
+}
+
+.itsmKpiStrip .euiPanel {
+  height: 100%;
+  min-height: 104px;
+}
+
+.itsmTicketColumns {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1.2fr) minmax(260px, .8fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.itsmConversationLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(360px, .9fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.itsmDefinitionGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px 24px;
+  margin: 0;
+}
+
+.itsmDefinitionGrid > div {
+  min-width: 0;
+}
+
+.itsmDefinitionGrid dt {
+  margin-bottom: 4px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.itsmDefinitionGrid dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.itsmCapabilityRow,
+.itsmClockRow,
+.itsmHealthRow {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-block: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.itsmClockRow > div,
+.itsmHealthRow > span:first-child {
+  min-width: 0;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+}
+
+.itsmHealthRow > .euiProgress {
+  flex: 0 1 180px;
+  min-width: 80px;
+}
+
+.itsmClockRow span,
+.itsmCapabilityRow span,
+.itsmHealthRow span,
+.itsmHealthRow small {
+  overflow-wrap: anywhere;
+}
+
+.itsmHealthRow small {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 16px;
+}
+
+.itsmHeaderClock {
+  min-width: 176px;
+  padding: 12px 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: right;
+  background: var(--canvas-muted);
+}
+
+.itsmHeaderClock span {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.itsmHeaderClock strong {
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.itsmThread {
+  display: grid;
+  gap: 16px;
+}
+
+.itsmComment {
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--canvas-raised);
+}
+
+.itsmComment.internal {
+  border-inline-start: 4px solid var(--warning);
+  background: color-mix(in srgb, var(--warning) 5%, var(--canvas-raised));
+}
+
+.itsmComment > div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.itsmComment p {
+  margin: 12px 0;
+  line-height: 20px;
+  white-space: pre-wrap;
+}
+
+.itsmComment small,
+.itsmResourceCard small,
+.itsmResourceButton small,
+.itsmAuditList small,
+.itsmCapabilityPage table small {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 16px;
+  overflow-wrap: anywhere;
+}
+
+.itsmAuditList {
+  display: grid;
+  gap: 8px;
+}
+
+.itsmAuditList article {
+  min-height: 56px;
+  display: grid;
+  grid-template-columns: minmax(180px, .6fr) minmax(0, 1.4fr) minmax(240px, .8fr);
+  gap: 16px;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.itsmAdminGrid,
+.itsmAutomationGrid {
+  display: grid;
+  grid-template-columns: minmax(280px, .72fr) minmax(0, 2fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.itsmPrimaryAdminGrid > .euiPanel {
+  min-height: 400px;
+}
+
+.itsmTwoColumn {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  align-items: start;
+}
+
+.itsmCardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.itsmFormGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 24px;
+}
+
+.itsmResourceButton {
+  width: 100%;
+  min-height: 64px;
+  margin-top: 8px;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.itsmResourceButton:hover,
+.itsmResourceButton.selected {
+  border-color: var(--accent);
+  background: var(--canvas-muted);
+}
+
+.itsmResourceButton.selected {
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+
+.itsmResourceButton > span:first-child {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.itsmResourceCard {
+  min-height: 96px;
+  margin-top: 12px;
+  padding: 16px;
+  display: grid;
+  gap: 8px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--canvas-muted);
+}
+
+.itsmRuleCanvas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.itsmRuleCanvas article {
+  min-height: 128px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border: 1px solid var(--border);
+  border-inline-start: 4px solid var(--accent);
+  border-radius: 8px;
+  background: var(--canvas-muted);
+}
+
+.itsmRuleCanvas article b {
+  text-transform: uppercase;
+  font-size: 11px;
+  line-height: 16px;
+  letter-spacing: .04em;
+}
+
+.itsmRuleCanvas article small {
+  overflow-wrap: anywhere;
+}
+
+.itsmManagementSecondary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  align-items: stretch;
+}
+
+.itsmManagementSecondary > .euiPanel {
+  min-height: 272px;
+}
+
+.itsmCapabilityPage table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: auto;
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.itsmCapabilityPage th,
+.itsmCapabilityPage td {
+  min-height: 40px;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+  overflow-wrap: anywhere;
+}
+
+.itsmCapabilityPage th {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+}
+
+.itsmSettingsAdminLinks {
+  background: var(--canvas-raised);
+}
+
+.itsmSettingsAdminLinks small {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 16px;
+}
+
+.itsmInlinePreview {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--accent);
+  font: inherit;
+  cursor: pointer;
+}
+
+@media (min-width: 2200px) {
+  .itsmCapabilityPage {
+    width: min(100%, 2240px);
+  }
+
+  .itsmKpiStrip > .euiFlexItem {
+    min-width: 240px;
+  }
+
+  .itsmPrimaryAdminGrid > .euiPanel {
+    min-height: 440px;
+  }
+}
+
+@media (min-width: 3400px) {
+  .itsmCapabilityPage {
+    width: min(100%, 3040px);
+  }
+
+  .itsmKpiStrip > .euiFlexItem {
+    min-width: 300px;
+  }
+
+  .itsmPrimaryAdminGrid > .euiPanel {
+    min-height: 480px;
+  }
+
+  .itsmManagementSecondary > .euiPanel {
+    min-height: 320px;
+  }
+}
+
+@media (max-width: 1680px) {
+  .itsmTicketColumns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .itsmTicketColumns > :last-child {
+    grid-column: 1 / -1;
+  }
+
+  .itsmManagementSecondary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .itsmManagementSecondary > :last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 1280px) {
+  .itsmConversationLayout,
+  .itsmAdminGrid,
+  .itsmAutomationGrid,
+  .itsmTwoColumn,
+  .itsmManagementSecondary {
+    grid-template-columns: 1fr;
+  }
+
+  .itsmManagementSecondary > :last-child {
+    grid-column: auto;
+  }
+
+  .itsmPrimaryAdminGrid > .euiPanel,
+  .itsmManagementSecondary > .euiPanel {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .itsmTicketColumns,
+  .itsmDefinitionGrid,
+  .itsmFormGrid,
+  .itsmAuditList article {
+    grid-template-columns: 1fr;
+  }
+
+  .itsmHeaderClock {
+    width: 100%;
+    text-align: left;
+  }
+
+  .itsmCapabilityPage table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .itsmHealthRow {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .itsmHealthRow > .euiProgress {
+    flex-basis: 100%;
+  }
+}

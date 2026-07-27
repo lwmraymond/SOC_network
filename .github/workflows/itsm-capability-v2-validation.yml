@@ -1,0 +1,108 @@
+name: ITSM Capability Framework v2 Validation
+
+on:
+  push:
+    branches:
+      - agent/itsm-ticket-capability-framework-v2
+  pull_request:
+    branches:
+      - codex/p01-p42-density-fixes-20260723
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Use declared npm version
+        run: npm install --global npm@10.9.2
+      - name: Install locked dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Lint
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/validation
+          npm run lint 2>&1 | tee artifacts/validation/lint.log
+      - name: TypeScript
+        shell: bash
+        run: npm run typecheck 2>&1 | tee artifacts/validation/typecheck.log
+      - name: Unit and contract tests
+        shell: bash
+        run: npm run test 2>&1 | tee artifacts/validation/test.log
+      - name: Production build and fixture boundary
+        shell: bash
+        env:
+          NODE_OPTIONS: --max-old-space-size=4096
+        run: npm run build 2>&1 | tee artifacts/validation/build.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: itsm-v2-quality-diagnostics
+          retention-days: 30
+          path: artifacts/validation
+          if-no-files-found: warn
+
+  browser:
+    runs-on: ubuntu-latest
+    needs: quality
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Use declared npm version
+        run: npm install --global npm@10.9.2
+      - name: Install locked dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Canonical routes, integration flows and visual evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          npx playwright test \
+            tests/e2e/all-pages.smoke.spec.ts \
+            tests/e2e/itsm-capability-v2.spec.ts \
+            --workers=1 2>&1 | tee /tmp/itsm-v2-playwright.log
+      - name: Build deterministic screenshot manifests
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/validation
+          cp /tmp/itsm-v2-playwright.log artifacts/validation/playwright.log 2>/dev/null || true
+          root=artifacts/itsm-capability-screenshots
+          if [ -d "$root" ]; then
+            find "$root" -type f -name '*.png' -print0 | sort -z | xargs -0 sha256sum > "$root/manifest.sha256"
+            count=$(find "$root" -type f -name '*.png' | wc -l | tr -d ' ')
+            printf 'png_count=%s\n' "$count" | tee "$root/manifest.summary"
+            test "$count" = "48"
+            for theme in light dark; do
+              find "$root/$theme" -type f -name '*.png' -print0 | sort -z | xargs -0 sha256sum > "$root/$theme/manifest.sha256"
+            done
+          else
+            echo 'Screenshot root missing' >&2
+            exit 1
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: itsm-v2-validation-evidence
+          retention-days: 30
+          path: |
+            artifacts/itsm-capability-screenshots
+            artifacts/validation/playwright.log
+            playwright-report
+            test-results
+          if-no-files-found: warn

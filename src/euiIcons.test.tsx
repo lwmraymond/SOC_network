@@ -5,6 +5,7 @@ import { registeredEuiIcons } from './euiIcons';
 describe('EUI icon bootstrap', () => {
   it('registers every icon required by the shell and P07 overlays', () => {
     expect(Object.keys(registeredEuiIcons).sort()).toEqual([
+      'apps',
       'arrowDown',
       'arrowLeft',
       'arrowRight',

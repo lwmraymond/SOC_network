@@ -146,6 +146,8 @@ html[data-theme='dark'] body,
 
 .sidebarIntro strong { color: var(--kbn-heading); font-size: 14px; font-weight: 600; }
 .sidebarIntro .euiText p, .sidebarFooter p { color: var(--kbn-muted); }
+.sidebarIntro .euiBadge { color: #344054; }
+.theme-dark .sidebarIntro .euiBadge { color: var(--kbn-text); }
 .sidebar .euiSideNavItemButton {
   min-height: 32px;
   padding-block: 5px;

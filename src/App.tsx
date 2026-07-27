@@ -58,6 +58,10 @@ const P39 = lazy(() => import('./pages/P39Permissions'));
 const P40 = lazy(() => import('./pages/P40PlatformSettingsDirectory'));
 const P41 = lazy(() => import('./pages/P41AuthenticationLdapSso'));
 const P42 = lazy(() => import('./pages/P42ThemeAccessibility'));
+const ItsmTicketDetail = lazy(() => import('./pages/itsm/ItsmTicketDetailPage'));
+const ItsmSlaManagement = lazy(() => import('./pages/itsm/ItsmSlaManagementPage'));
+const ItsmAutomationManagement = lazy(() => import('./pages/itsm/ItsmAutomationManagementPage'));
+const ItsmMessagingManagement = lazy(() => import('./pages/itsm/ItsmMessagingManagementPage'));
 
 const groupIcons: Record<PageGroup, 'inspect' | 'search' | 'document'> = {
   Dashboard: 'inspect',
@@ -78,6 +82,12 @@ const dashboardViews = [
   { id: 'P03-system-overview', pageId: 'P03', title: 'System Overview', route: '/dashboard/system-overview' },
 ] as const;
 
+const itsmAdminViews = [
+  { id: 'ITSM-SLA', title: 'SLA Administration', route: '/itsm/sla' },
+  { id: 'ITSM-AUTOMATION', title: 'Automation Administration', route: '/itsm/automation' },
+  { id: 'ITSM-MESSAGING', title: 'Notifications & Inbound Mail', route: '/itsm/notifications' },
+] as const;
+
 function Suspended({ children }: { children: ReactNode }) {
   return <Suspense fallback={<div className="routeLoading" role="status"><EuiLoadingSpinner size="xl" /><span>Loading work surface…</span></div>}>{children}</Suspense>;
 }
@@ -92,8 +102,14 @@ function AppShell() {
     const canonical = pageSpecs.find((page) => Boolean(matchPath({ path: page.route, end: true }, location.pathname)));
     if (canonical) return canonical;
     const dashboardView = dashboardViews.find((view) => view.route === location.pathname);
-    const source = dashboardView && pageSpecs.find((page) => page.id === dashboardView.pageId);
-    return dashboardView && source ? { ...source, title: dashboardView.title, route: dashboardView.route } : undefined;
+    const dashboardSource = dashboardView && pageSpecs.find((page) => page.id === dashboardView.pageId);
+    if (dashboardView && dashboardSource) return { ...dashboardSource, title: dashboardView.title, route: dashboardView.route };
+    const adminView = itsmAdminViews.find((view) => view.route === location.pathname);
+    if (adminView) return { ...pageSpecs.find((page) => page.id === 'P22')!, id: adminView.id, title: adminView.title, route: adminView.route };
+    if (matchPath({ path: '/itsm/tickets/:ticketId', end: true }, location.pathname)) {
+      return { ...pageSpecs.find((page) => page.id === 'P14')!, id: 'ITSM-DETAIL', title: 'Ticket Detail Workspace', route: location.pathname };
+    }
+    return undefined;
   }, [location.pathname]);
   const sideNavItems = useMemo(() => [{
     id: 'workspaces',
@@ -117,6 +133,16 @@ function AppShell() {
         };
         }),
         ...(group === 'Dashboard' ? dashboardViews.map((view) => ({
+          id: view.id,
+          name: view.title,
+          href: view.route,
+          isSelected: location.pathname === view.route,
+          onClick: (event: React.MouseEvent<HTMLElement>) => {
+            event.preventDefault();
+            navigate(view.route);
+          },
+        })) : []),
+        ...(group === 'Ticket System / ITSM' ? itsmAdminViews.map((view) => ({
           id: view.id,
           name: view.title,
           href: view.route,
@@ -181,6 +207,10 @@ function AppShell() {
         <Route path="/itsm/analytics" element={<Suspended><P20 /></Suspended>} />
         <Route path="/itsm/reports" element={<Suspended><P21 /></Suspended>} />
         <Route path="/itsm/settings" element={<Suspended><P22 /></Suspended>} />
+        <Route path="/itsm/tickets/:ticketId" element={<Suspended><ItsmTicketDetail /></Suspended>} />
+        <Route path="/itsm/sla" element={<Suspended><ItsmSlaManagement /></Suspended>} />
+        <Route path="/itsm/automation" element={<Suspended><ItsmAutomationManagement /></Suspended>} />
+        <Route path="/itsm/notifications" element={<Suspended><ItsmMessagingManagement /></Suspended>} />
         <Route path="/copilot" element={<Suspended><P23 /></Suspended>} />
         <Route path="/agents" element={<Suspended><P24 /></Suspended>} />
         <Route path="/agents/tasks" element={<Suspended><P25 /></Suspended>} />
