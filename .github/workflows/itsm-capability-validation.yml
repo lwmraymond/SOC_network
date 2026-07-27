@@ -27,15 +27,61 @@ jobs:
       - name: Install locked dependencies
         run: npm ci --no-audit --no-fund
       - name: Lint
-        run: npm run lint
+        continue-on-error: true
+        shell: bash
+        run: |
+          mkdir -p artifacts/validation
+          set +e
+          npm run lint -- --format json --output-file artifacts/validation/lint.json
+          status=$?
+          echo "$status" > artifacts/validation/lint.status
+          exit "$status"
       - name: TypeScript
-        run: npm run typecheck
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          npm run typecheck 2>&1 | tee artifacts/validation/typecheck.log
+          status=${PIPESTATUS[0]}
+          echo "$status" > artifacts/validation/typecheck.status
+          exit "$status"
       - name: Unit and contract tests
-        run: npm run test
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          npm run test 2>&1 | tee artifacts/validation/test.log
+          status=${PIPESTATUS[0]}
+          echo "$status" > artifacts/validation/test.status
+          exit "$status"
       - name: Production build and fixture boundary
+        continue-on-error: true
+        shell: bash
         env:
           NODE_OPTIONS: --max-old-space-size=4096
-        run: npm run build
+        run: |
+          set +e
+          npm run build 2>&1 | tee artifacts/validation/build.log
+          status=${PIPESTATUS[0]}
+          echo "$status" > artifacts/validation/build.status
+          exit "$status"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: itsm-capability-quality-diagnostics
+          retention-days: 30
+          path: artifacts/validation
+          if-no-files-found: error
+      - name: Enforce quality gate
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          for gate in lint typecheck test build; do
+            status_file="artifacts/validation/${gate}.status"
+            test -f "$status_file"
+            test "$(cat "$status_file")" = "0"
+          done
 
   browser:
     runs-on: ubuntu-latest
