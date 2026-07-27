@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import {
   EuiBadge, EuiButton, EuiButtonEmpty, EuiCallOut, EuiFieldSearch, EuiFlexGroup, EuiFlexItem,
   EuiFlyout, EuiFlyoutBody, EuiFlyoutFooter, EuiFlyoutHeader, EuiModal, EuiModalBody,
@@ -6,6 +7,7 @@ import {
   EuiSpacer, EuiText, EuiTextArea, EuiTitle,
 } from '@elastic/eui';
 import type { PrototypePageFixture, PrototypeRow, PrototypeValue } from '../../types/prototype';
+import { ticketDetailHref, ticketKeyForDetail } from '../../itsm/navigation';
 
 type Problem = {
   id: string; title: string; service: string; phase: string; recurrence: number; incidents: number;
@@ -24,6 +26,8 @@ const buildProblems = (rows: PrototypeRow[]): Problem[] => rows.slice(0, 10).map
 }));
 
 export function P17ProblemManagementWorkspace({ fixture }: { fixture: PrototypePageFixture }) {
+  const location = useLocation();
+  const navigate = useNavigate();
   const [query,setQuery]=useState('');
   const [phase,setPhase]=useState('All phases');
   const [selectedId,setSelectedId]=useState<string|undefined>(undefined);
@@ -36,14 +40,15 @@ export function P17ProblemManagementWorkspace({ fixture }: { fixture: PrototypeP
   const visible=useMemo(()=>problems.filter((item)=>(!query.trim()||`${item.id} ${item.title} ${item.service} ${item.rootCause} ${item.knownError}`.toLowerCase().includes(query.trim().toLowerCase()))&&(phase==='All phases'||item.phase===phase)),[phase,problems,query]);
   const selected=visible.find((item)=>item.id===selectedId)??visible[0]??problems[0];
   if(!selected)return null;
+  const openDetail=()=>navigate(ticketDetailHref(ticketKeyForDetail('problem', selected.id), `${location.pathname}${location.search}`, 'Problem Management'));
   const queue=(label:string)=>setReceipt(`${label} queued for ${selected.id}. Problem, Known Error and Change state remain authoritative elsewhere.`);
   const tabs:Tab[]=['Incidents','RCA','Workaround','Permanent fix','Review','Audit'];
   return <div className="pageComposition page-p17 differentiatedPage" data-page-specific-composition="P17-problem-known-error-workbench">
     <EuiPanel paddingSize="m" hasBorder data-visual-region="problem-scope-bar"><EuiFlexGroup gutterSize="s" alignItems="center" wrap><EuiFlexItem grow={2}><EuiFieldSearch compressed value={query} onChange={(event:ChangeEvent)=>setQuery(event.target.value)} placeholder="Problem, known error, symptom, root cause, service or incident" /></EuiFlexItem><EuiFlexItem grow={false}><EuiSelect compressed value={phase} onChange={(event:ChangeEvent)=>setPhase(event.target.value)} options={['All phases','Investigation','RCA review','Known error','Permanent fix'].map((value)=>({value,text:value}))}/></EuiFlexItem><EuiFlexItem grow={false}><EuiButton fill onClick={()=>queue('Create problem from cluster')}>Create problem</EuiButton></EuiFlexItem></EuiFlexGroup></EuiPanel>
     <EuiSpacer size="m" />{receipt&&<><EuiCallOut title="Prototype problem receipt" color="warning">{receipt}</EuiCallOut><EuiSpacer size="m" /></>}
-    <EuiFlexGroup gutterSize="m" alignItems="stretch" responsive={false}>
+    <EuiFlexGroup gutterSize="m" alignItems="flexStart" responsive={false}>
       <EuiFlexItem grow={3}><EuiPanel paddingSize="m" hasBorder data-visual-region="recurrence-cluster-candidates"><EuiTitle size="s"><h2>Recurrence clusters</h2></EuiTitle><EuiText size="s" color="subdued"><p>Algorithmic suggestions remain candidates until a problem manager accepts the evidence.</p></EuiText><EuiSpacer size="s" />{visible.map((item)=><button type="button" key={item.id} className={selected.id===item.id?'selected':''} onClick={()=>{setSelectedId(item.id);setTab('RCA');}}><div><EuiBadge color={item.confidence>=80?'warning':'hollow'}>{item.confidence}% cluster</EuiBadge><strong>{item.title}</strong><small>{item.service} · {item.incidents} incidents</small></div><div><b>{item.recurrence}×</b><span>{item.phase}</span></div></button>)}</EuiPanel></EuiFlexItem>
-      <EuiFlexItem grow={6}><EuiPanel paddingSize="m" hasBorder data-visual-region="problem-evidence-workbench"><EuiFlexGroup alignItems="center"><EuiFlexItem><EuiTitle size="s"><h2>{selected.title}</h2></EuiTitle><p>{selected.id} · {selected.service} · owner {selected.owner}</p></EuiFlexItem><EuiFlexItem grow={false}><EuiBadge color="warning">{selected.phase}</EuiBadge></EuiFlexItem></EuiFlexGroup><EuiSpacer size="s"/><div className="problemTabs" role="tablist">{tabs.map((item)=><button type="button" role="tab" aria-selected={tab===item} key={item} onClick={()=>setTab(item)}>{item}</button>)}</div><EuiSpacer size="m"/>
+      <EuiFlexItem grow={6}><EuiPanel paddingSize="m" hasBorder data-visual-region="problem-evidence-workbench"><EuiFlexGroup alignItems="center"><EuiFlexItem><EuiTitle size="s"><h2>{selected.title}</h2></EuiTitle><p>{selected.id} · {selected.service} · owner {selected.owner}</p></EuiFlexItem><EuiFlexItem grow={false}><EuiBadge color="warning">{selected.phase}</EuiBadge><EuiButtonEmpty size="xs" onClick={openDetail}>Open shared detail</EuiButtonEmpty></EuiFlexItem></EuiFlexGroup><EuiSpacer size="s"/><div className="problemTabs" role="tablist">{tabs.map((item)=><button type="button" role="tab" aria-selected={tab===item} key={item} onClick={()=>setTab(item)}>{item}</button>)}</div><EuiSpacer size="m"/>
         {tab==='Incidents'&&<table><thead><tr><th>Incident</th><th>Observed symptom</th><th>Service</th><th>Resolved</th></tr></thead><tbody>{fixture.rows.slice(0,6).map((row,index)=><tr key={row.id}><td>INC-{7200+index}</td><td>{text(row.title,'Authentication timeout')}</td><td>{selected.service}</td><td>{index%2?'Yes':'Monitoring'}</td></tr>)}</tbody></table>}
         {tab==='RCA'&&<div className="rcaCanvas"><section><EuiTitle size="xs"><h3>Leading hypothesis</h3></EuiTitle><strong>{selected.rootCause}</strong><p>{selected.confidence}% evidence confidence · 3 supporting signals · 1 contradiction.</p><EuiProgress value={selected.confidence} max={100} size="s" color="warning" /></section><section><EuiTitle size="xs"><h3>Evidence chain</h3></EuiTitle>{['Incident recurrence fingerprint','Provider timeout telemetry','Cache-state divergence','Change correlation'].map((item,index)=><div key={item}><b>{index+1}</b><span>{item}</span><EuiBadge color={index<3?'success':'warning'}>{index<3?'Supports':'Review'}</EuiBadge></div>)}</section><EuiButtonEmpty onClick={()=>setEvidenceOpen(true)}>Open RCA evidence</EuiButtonEmpty></div>}
         {tab==='Workaround'&&<div><EuiCallOut title="Applicability boundary">A workaround must state scope, limitations, validation and expiry. Publication does not resolve the underlying Problem.</EuiCallOut><EuiSpacer/><EuiTextArea value={workaround} onChange={(event:ChangeEvent)=>setWorkaround(event.target.value)} rows={6}/><EuiSpacer/><EuiButton fill onClick={()=>setPublishOpen(true)}>Review known error publication</EuiButton></div>}

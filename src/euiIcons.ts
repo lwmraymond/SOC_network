@@ -1,4 +1,5 @@
 import { appendIconComponentCache } from '@elastic/eui/es/components/icon/icon.js';
+import { icon as apps } from '@elastic/eui/es/components/icon/assets/apps.js';
 import { icon as arrowDown } from '@elastic/eui/es/components/icon/assets/arrow_down.js';
 import { icon as arrowLeft } from '@elastic/eui/es/components/icon/assets/arrow_left.js';
 import { icon as arrowRight } from '@elastic/eui/es/components/icon/assets/arrow_right.js';
@@ -24,6 +25,7 @@ import { icon as sortable } from '@elastic/eui/es/components/icon/assets/sortabl
 import { icon as warning } from '@elastic/eui/es/components/icon/assets/warning.js';
 
 export const registeredEuiIcons = {
+  apps,
   arrowDown,
   arrowLeft,
   arrowRight,
