@@ -58,6 +58,10 @@ const P39 = lazy(() => import('./pages/P39Permissions'));
 const P40 = lazy(() => import('./pages/P40PlatformSettingsDirectory'));
 const P41 = lazy(() => import('./pages/P41AuthenticationLdapSso'));
 const P42 = lazy(() => import('./pages/P42ThemeAccessibility'));
+const ItsmTicketDetail = lazy(() => import('./pages/ItsmCapabilityPages').then((module) => ({ default: module.ItsmTicketDetailPage })));
+const ItsmSlaManagement = lazy(() => import('./pages/ItsmCapabilityPages').then((module) => ({ default: module.ItsmSlaManagementPage })));
+const ItsmAutomationManagement = lazy(() => import('./pages/ItsmCapabilityPages').then((module) => ({ default: module.ItsmAutomationManagementPage })));
+const ItsmMessagingManagement = lazy(() => import('./pages/ItsmCapabilityPages').then((module) => ({ default: module.ItsmMessagingManagementPage })));
 
 const groupIcons: Record<PageGroup, 'inspect' | 'search' | 'document'> = {
   Dashboard: 'inspect',
@@ -73,6 +77,13 @@ const groupIcons: Record<PageGroup, 'inspect' | 'search' | 'document'> = {
   'Platform Settings': 'document',
 };
 
+const itsmCapabilityNav: { id: string; title: string; route: string; href: string; group: PageGroup }[] = [
+  { id: 'ITSM-TICKET', title: 'Ticket Detail Workspace', route: '/itsm/tickets/:ticketId', href: '/itsm/tickets/INC-7001', group: 'Ticket System / ITSM' },
+  { id: 'ITSM-SLA', title: 'SLA Administration', route: '/itsm/sla', href: '/itsm/sla', group: 'Ticket System / ITSM' },
+  { id: 'ITSM-AUTOMATION', title: 'Automation Administration', route: '/itsm/automation', href: '/itsm/automation', group: 'Ticket System / ITSM' },
+  { id: 'ITSM-MESSAGING', title: 'Notifications & Inbound Mail', route: '/itsm/notifications', href: '/itsm/notifications', group: 'Ticket System / ITSM' },
+];
+
 function Suspended({ children }: { children: ReactNode }) {
   return <Suspense fallback={<div className="routeLoading" role="status"><EuiLoadingSpinner size="xl" /><span>Loading work surface…</span></div>}>{children}</Suspense>;
 }
@@ -84,14 +95,13 @@ function AppShell() {
   const [navOpen, setNavOpen] = useState(true);
   const { mode, toggleMode } = usePlatformTheme();
   const currentPage = useMemo(() => pageSpecs.find((page) => Boolean(matchPath({ path: page.route, end: true }, location.pathname))), [location.pathname]);
+  const currentCapability = useMemo(() => itsmCapabilityNav.find((item) => Boolean(matchPath({ path: item.route, end: true }, location.pathname))), [location.pathname]);
+  const currentContext = currentPage ?? currentCapability;
   const sideNavItems = useMemo(() => [{
     id: 'workspaces',
     name: 'Workspaces',
-    items: pageGroups.map((group) => ({
-      id: group,
-      name: group,
-      icon: <EuiIcon type={groupIcons[group]} size="s" />,
-      items: pageSpecs.filter((page) => page.group === group).map((page) => {
+    items: pageGroups.map((group) => {
+      const canonicalItems = pageSpecs.filter((page) => page.group === group).map((page) => {
         const href = routeForNavigation(page.route);
         return {
           id: page.id,
@@ -103,12 +113,28 @@ function AppShell() {
             navigate(href);
           },
         };
-      }),
-    })),
-  }], [currentPage?.id, navigate]);
+      });
+      const capabilityItems = group === 'Ticket System / ITSM' ? itsmCapabilityNav.map((item) => ({
+        id: item.id,
+        name: item.title,
+        href: item.href,
+        isSelected: currentCapability?.id === item.id,
+        onClick: (event: React.MouseEvent<HTMLElement>) => {
+          event.preventDefault();
+          navigate(item.href);
+        },
+      })) : [];
+      return {
+        id: group,
+        name: group,
+        icon: <EuiIcon type={groupIcons[group]} size="s" />,
+        items: [...canonicalItems, ...capabilityItems],
+      };
+    }),
+  }], [currentCapability?.id, currentPage?.id, navigate]);
   useEffect(() => {
-    document.title = `${currentPage?.title ?? 'SOC / ITSM Interactive Design'} · SOC Operations`;
-  }, [currentPage?.title]);
+    document.title = `${currentContext?.title ?? 'SOC / ITSM Interactive Design'} · SOC Operations`;
+  }, [currentContext?.title]);
   return <div className={`appShell theme-${mode}`} data-nav-open={navOpen}>
     <header aria-label="Application header">
       <EuiHeader position="fixed">
@@ -119,15 +145,15 @@ function AppShell() {
     </header>
     <div className="shellContextBar" aria-label="Workspace context">
       <button className="shellContextMenu" type="button" aria-label="Toggle primary navigation" aria-expanded={navOpen} onClick={() => setNavOpen((open) => !open)}><EuiIcon type="document" size="s" /></button>
-      <EuiBadge color="hollow">{currentPage?.group ?? 'Operations'}</EuiBadge>
+      <EuiBadge color="hollow">{currentContext?.group ?? 'Operations'}</EuiBadge>
       <span className="shellContextDivider" aria-hidden="true">/</span>
-      <strong>{currentPage?.title ?? 'Workspace'}</strong>
-      {currentPage && <span className="shellContextId">{currentPage.id}</span>}
+      <strong>{currentContext?.title ?? 'Workspace'}</strong>
+      {currentContext && <span className="shellContextId">{currentContext.id}</span>}
     </div>
     <aside className="sidebar" aria-label="Primary navigation">
       <div className="sidebarIntro">
         <EuiText size="xs"><strong>Operations</strong><p>Security and service workspaces</p></EuiText>
-        <EuiBadge color="hollow">P01–P42</EuiBadge>
+        <EuiBadge color="hollow">P01–P42 + ITSM</EuiBadge>
       </div>
       <EuiSideNav items={sideNavItems} truncate={false} mobileBreakpoints={undefined} />
       <div className="sidebarFooter"><EuiText size="xs" color="subdued"><p>Fixture-backed review environment</p></EuiText></div>
@@ -156,6 +182,10 @@ function AppShell() {
         <Route path="/itsm/analytics" element={<Suspended><P20 /></Suspended>} />
         <Route path="/itsm/reports" element={<Suspended><P21 /></Suspended>} />
         <Route path="/itsm/settings" element={<Suspended><P22 /></Suspended>} />
+        <Route path="/itsm/tickets/:ticketId" element={<Suspended><ItsmTicketDetail /></Suspended>} />
+        <Route path="/itsm/sla" element={<Suspended><ItsmSlaManagement /></Suspended>} />
+        <Route path="/itsm/automation" element={<Suspended><ItsmAutomationManagement /></Suspended>} />
+        <Route path="/itsm/notifications" element={<Suspended><ItsmMessagingManagement /></Suspended>} />
         <Route path="/copilot" element={<Suspended><P23 /></Suspended>} />
         <Route path="/agents" element={<Suspended><P24 /></Suspended>} />
         <Route path="/agents/tasks" element={<Suspended><P25 /></Suspended>} />
