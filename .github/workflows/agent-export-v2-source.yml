@@ -6,6 +6,9 @@ on:
       - agent/itsm-ticket-capability-framework-v2
     paths:
       - .github/workflows/agent-export-v2-source.yml
+  pull_request:
+    branches:
+      - codex/p01-p42-density-fixes-20260723
   workflow_dispatch:
 
 permissions:
