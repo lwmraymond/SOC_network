@@ -1,0 +1,124 @@
+name: ITSM Capability Framework Validation
+
+on:
+  push:
+    branches:
+      - agent/itsm-ticket-capability-framework
+  pull_request:
+    branches:
+      - codex/kibana-42page-visual
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Use declared npm version
+        run: npm install --global npm@10.9.2
+      - name: Install locked dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Lint
+        continue-on-error: true
+        shell: bash
+        run: |
+          mkdir -p artifacts/validation
+          set +e
+          npm run lint -- --format json --output-file artifacts/validation/lint.json
+          status=$?
+          echo "$status" > artifacts/validation/lint.status
+          exit "$status"
+      - name: TypeScript
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          npm run typecheck 2>&1 | tee artifacts/validation/typecheck.log
+          status=${PIPESTATUS[0]}
+          echo "$status" > artifacts/validation/typecheck.status
+          exit "$status"
+      - name: Unit and contract tests
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          npm run test 2>&1 | tee artifacts/validation/test.log
+          status=${PIPESTATUS[0]}
+          echo "$status" > artifacts/validation/test.status
+          exit "$status"
+      - name: Production build and fixture boundary
+        continue-on-error: true
+        shell: bash
+        env:
+          NODE_OPTIONS: --max-old-space-size=4096
+        run: |
+          set +e
+          npm run build 2>&1 | tee artifacts/validation/build.log
+          status=${PIPESTATUS[0]}
+          echo "$status" > artifacts/validation/build.status
+          exit "$status"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: itsm-capability-quality-diagnostics
+          retention-days: 30
+          path: artifacts/validation
+          if-no-files-found: error
+      - name: Enforce quality gate
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          for gate in lint typecheck test build; do
+            status_file="artifacts/validation/${gate}.status"
+            test -f "$status_file"
+            test "$(cat "$status_file")" = "0"
+          done
+
+  browser:
+    runs-on: ubuntu-latest
+    needs: quality
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Use declared npm version
+        run: npm install --global npm@10.9.2
+      - name: Install locked dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Route smoke and target viewport screenshots
+        run: npx playwright test tests/e2e/all-pages.smoke.spec.ts tests/e2e/itsm-capability-routes.spec.ts --workers=1
+      - name: Build deterministic screenshot manifests
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          for root in artifacts/itsm-capability-screenshots artifacts/itsm-existing-page-audit; do
+            if [ -d "$root" ]; then
+              find "$root" -type f -name '*.png' -print0 | sort -z | xargs -0 sha256sum > "$root/manifest.sha256"
+            fi
+          done
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: itsm-capability-validation-evidence
+          retention-days: 30
+          path: |
+            artifacts/itsm-capability-screenshots
+            artifacts/itsm-existing-page-audit
+            playwright-report
+            test-results
+          if-no-files-found: warn
