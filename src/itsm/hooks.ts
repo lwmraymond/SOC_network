@@ -18,6 +18,7 @@ export function useItsmQuery<T>(load: (signal: AbortSignal) => Promise<T>, depen
   const [revision, setRevision] = useState(0);
   const loadRef = useRef(load);
   loadRef.current = load;
+  const dependencyKey = dependencies.map((value) => String(value)).join('\u001f');
 
   useEffect(() => {
     const controller = new AbortController();
@@ -37,7 +38,7 @@ export function useItsmQuery<T>(load: (signal: AbortSignal) => Promise<T>, depen
         setState(normalized.kind === 'permission' ? 'denied' : normalized.kind === 'offline' ? 'offline' : 'error');
       });
     return () => controller.abort();
-  }, [...dependencies, revision]);
+  }, [dependencyKey, revision]);
 
   const refresh = useCallback(() => setRevision((value) => value + 1), []);
   return { data, state, error, refresh, refreshedAt };
