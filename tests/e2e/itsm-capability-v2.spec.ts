@@ -57,10 +57,20 @@ async function expectLightKibanaHierarchy(page: Page) {
       const [r, g, b] = parse(value).map((component) => component / 255).map((component) => component <= 0.03928 ? component / 12.92 : ((component + 0.055) / 1.055) ** 2.4);
       return 0.2126 * r + 0.7152 * g + 0.0722 * b;
     };
+    const backgroundFor = (element: Element | null) => {
+      let current = element;
+      while (current) {
+        const background = getComputedStyle(current).backgroundColor;
+        const alpha = background.match(/[\d.]+/g)?.map(Number)[3] ?? 1;
+        if (alpha > 0.05) return background;
+        current = current.parentElement;
+      }
+      return getComputedStyle(document.body).backgroundColor;
+    };
     const header = document.querySelector('.itsmCapabilityPage .euiPageHeader') as HTMLElement | null;
     const title = document.querySelector('.itsmCapabilityPage h1') as HTMLElement | null;
     const bodyBackground = getComputedStyle(document.body).backgroundColor;
-    const headerBackground = header ? getComputedStyle(header).backgroundColor : 'rgb(255,255,255)';
+    const headerBackground = backgroundFor(header);
     return {
       bodyLuminance: luminance(bodyBackground),
       headerLuminance: luminance(headerBackground),
@@ -194,7 +204,7 @@ test.describe('ITSM v2 integration and acceptance', () => {
     await page.getByRole('button', { name: 'Confirm queued send' }).click();
     await expect(page.getByText('Public review update for @requester.')).toBeVisible();
     await expect(page.getByText('Mentions: @requester')).toBeVisible();
-    await expect(page.getByText(/authoritative:false/)).toBeVisible();
+    await expect(page.getByText('authoritative:false in fixture mode', { exact: true })).toBeVisible();
 
     await page.getByRole('tab', { name: 'Internal note' }).click();
     await page.getByPlaceholder('Write an internal operational note…').fill('Internal review note for @identity-oncall.');
@@ -236,9 +246,10 @@ test.describe('ITSM v2 integration and acceptance', () => {
   test('P22 exposes the three dedicated administration entry points', async ({ page }) => {
     await page.goto('/itsm/settings?theme=light', { waitUntil: 'networkidle' });
     await waitForCanonicalSurface(page, 'P22', 'ITSM Settings');
-    await expect(page.getByRole('link', { name: 'SLA Administration' })).toBeVisible();
-    await expect(page.getByRole('link', { name: 'Automation Administration' })).toBeVisible();
-    await expect(page.getByRole('link', { name: 'Notifications & Inbound Mail' })).toBeVisible();
+    const settings = page.locator('#main-content');
+    await expect(settings.getByRole('link', { name: 'SLA Administration' })).toBeVisible();
+    await expect(settings.getByRole('link', { name: 'Automation Administration' })).toBeVisible();
+    await expect(settings.getByRole('link', { name: 'Notifications & Inbound Mail' })).toBeVisible();
   });
 
   test('captures light and dark acceptance evidence at all target viewports', async ({ context }) => {
