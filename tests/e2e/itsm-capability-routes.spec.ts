@@ -1,7 +1,8 @@
 import { mkdir } from 'node:fs/promises';
 import { join } from 'node:path';
 import { expect, test } from '@playwright/test';
-import { collectRuntimeErrors, expectNoDocumentOverflow, expectNoRuntimeErrors } from './testSupport';
+import { canonicalRoutes } from './canonicalRoutes';
+import { collectRuntimeErrors, expectNoDocumentOverflow, expectNoRuntimeErrors, waitForCanonicalSurface } from './testSupport';
 
 const ticketCases = [
   { route: '/itsm/tickets/REQ-6201', heading: /REQ-6201/, kind: 'Service request', specificTab: 'Request form' },
@@ -16,6 +17,10 @@ const visualRoutes = [
   { name: 'automation-administration', route: '/itsm/automation', heading: 'Automation administration' },
   { name: 'notifications-inbound-mail', route: '/itsm/notifications', heading: 'Notifications & inbound mail' },
 ] as const;
+
+const existingItsmAuditRoutes = canonicalRoutes.filter(({ id }) =>
+  ['P13', 'P14', 'P15', 'P16', 'P17', 'P18', 'P19', 'P20', 'P21', 'P22', 'P34'].includes(id),
+);
 
 const viewports = [
   { width: 1440, height: 900 },
@@ -88,4 +93,24 @@ test.describe('ITSM capability framework', () => {
       }
     }
   });
+
+  for (const route of existingItsmAuditRoutes) {
+    test(`captures ${route.id} ${route.title} first viewport and full page`, async ({ page }) => {
+      const runtimeErrors = collectRuntimeErrors(page);
+      const firstViewportDirectory = join('artifacts', 'itsm-existing-page-audit', '1440x900', 'first-viewport');
+      const fullPageDirectory = join('artifacts', 'itsm-existing-page-audit', '1440x900', 'full-page');
+      await Promise.all([
+        mkdir(firstViewportDirectory, { recursive: true }),
+        mkdir(fullPageDirectory, { recursive: true }),
+      ]);
+      await page.setViewportSize({ width: 1440, height: 900 });
+      await page.goto(route.path);
+      await waitForCanonicalSurface(page, route.id, route.title);
+      await page.evaluate(async () => document.fonts.ready);
+      await expectNoDocumentOverflow(page);
+      await page.screenshot({ path: join(firstViewportDirectory, `${route.id}.png`), animations: 'disabled' });
+      await page.screenshot({ path: join(fullPageDirectory, `${route.id}.png`), fullPage: true, animations: 'disabled' });
+      await expectNoRuntimeErrors(runtimeErrors);
+    });
+  }
 });
