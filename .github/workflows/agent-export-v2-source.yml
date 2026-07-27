@@ -33,7 +33,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-      - name: Reconstruct implementation payload
+      - name: Reconstruct and publish implementation payload
         shell: bash
         run: |
           set -euo pipefail
@@ -69,8 +69,9 @@ jobs:
           git add -A
           git diff --cached --check
           git commit -m "feat: integrate ITSM framework on density baseline"
+          git push origin "HEAD:${TARGET_BRANCH}"
 
-      - name: Reconstruct validation payload
+      - name: Reconstruct and publish validation source payload
         shell: bash
         run: |
           set -euo pipefail
@@ -91,11 +92,13 @@ jobs:
           base64 --decode /tmp/tests.b64 > /tmp/tests.tar.gz
           gzip -t /tmp/tests.tar.gz
           tar -xzf /tmp/tests.tar.gz -C .
+          rm -f .github/workflows/itsm-capability-v2-validation.yml
           git add -A
           git diff --cached --check
           git commit -m "test: add ITSM v2 integration and visual gates"
+          git push origin "HEAD:${TARGET_BRANCH}"
 
-      - name: Reconstruct documentation payload
+      - name: Reconstruct and publish documentation payload
         shell: bash
         run: |
           set -euo pipefail
@@ -118,12 +121,4 @@ jobs:
           tar -xzf /tmp/docs.tar.gz -C .
           git add -A
           git commit -m "docs: record ITSM v2 integration contract"
-
-      - name: Remove one-shot workflow and publish
-        shell: bash
-        run: |
-          set -euo pipefail
-          rm -f .github/workflows/agent-export-v2-source.yml
-          git add -A
-          git commit -m "chore: remove one-shot integration workflow"
           git push origin "HEAD:${TARGET_BRANCH}"
