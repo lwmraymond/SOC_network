@@ -6,7 +6,6 @@ import type {
   AutomationVersion,
   BusinessCalendar,
   CapabilitySnapshot,
-  CommentCreateInput,
   CursorPage,
   EscalationRule,
   ImpactPreview,
@@ -29,8 +28,6 @@ import type {
   TicketAuditEvent,
   TicketBundle,
   TicketComment,
-  TicketCreateInput,
-  TicketPatch,
   TicketRelation,
   VersionedResource,
 } from './contracts';

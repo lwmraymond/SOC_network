@@ -11,7 +11,8 @@ import { GovernedAction } from '../../itsm/components/GovernedAction';
 import { ItsmTabs } from '../../itsm/components/ItsmTabs';
 import { TicketConversation } from '../../itsm/components/TicketConversation';
 import { TicketDataTab } from '../../itsm/components/TicketDataTab';
-import { TicketOverview, ticketKindLabel } from '../../itsm/components/TicketOverview';
+import { TicketOverview } from '../../itsm/components/TicketOverview';
+import { ticketKindLabel } from '../../itsm/presentation';
 
 const sharedTabs = ['Overview', 'Conversation', 'Activity', 'Relations', 'Approvals', 'SLA', 'Automation', 'Audit'] as const;
 

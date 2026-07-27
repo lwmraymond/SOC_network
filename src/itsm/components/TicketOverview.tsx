@@ -1,9 +1,6 @@
 import { EuiBadge, EuiCallOut, EuiPanel, EuiSpacer, EuiText, EuiTitle } from '@elastic/eui';
-import type { Ticket, TicketBundle } from '../contracts';
-
-export function ticketKindLabel(ticket: Ticket): string {
-  return ticket.kind === 'request' ? 'Service request' : `${ticket.kind[0].toUpperCase()}${ticket.kind.slice(1)}`;
-}
+import type { TicketBundle } from '../contracts';
+import { ticketKindLabel } from '../presentation';
 
 export function TicketOverview({ bundle }: { bundle: TicketBundle }) {
   const ticket = bundle.ticket;

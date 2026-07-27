@@ -6,7 +6,6 @@ import type {
   AutomationVersion,
   BusinessCalendar,
   CapabilitySnapshot,
-  CommentCreateInput,
   CursorPage,
   EscalationRule,
   ImpactPreview,
@@ -31,8 +30,6 @@ import type {
   TicketAuditEvent,
   TicketBundle,
   TicketComment,
-  TicketCreateInput,
-  TicketPatch,
   TicketRelation,
 } from './contracts';
 import { ItsmAdapterUnavailableError } from './client';

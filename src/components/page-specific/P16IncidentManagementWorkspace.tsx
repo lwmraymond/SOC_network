@@ -47,7 +47,6 @@ export function P16IncidentManagementWorkspace({ fixture }: { fixture: Prototype
   const [query, setQuery] = useState('');
   const [priority, setPriority] = useState('P1/P2 active');
   const [service, setService] = useState('All services');
-  const [selectedId, setSelectedId] = useState<string | undefined>(undefined);
   const [detailOpen, setDetailOpen] = useState(false);
   const [majorOpen, setMajorOpen] = useState(false);
   const [createOpen, setCreateOpen] = useState(false);
@@ -59,7 +58,7 @@ export function P16IncidentManagementWorkspace({ fixture }: { fixture: Prototype
       && (priority === 'All priorities' || (priority === 'P1/P2 active' ? ['P1','P2'].includes(item.priority) : item.priority === priority))
       && (service === 'All services' || item.service === service);
   }), [incidents, priority, query, service]);
-  const selected = visible.find((item) => item.id === selectedId) ?? visible[0] ?? incidents[0];
+  const selected = visible[0] ?? incidents[0];
   if (!selected) return null;
   const openDetail = (id: string) => navigate(ticketDetailHref(ticketKeyForDetail('incident', id), `${location.pathname}${location.search}`, 'Incident Management'));
   const queueAction = (label: string) => setReceipt(`${label} accepted for prototype review on ${selected.id}. Authoritative Incident state is unchanged.`);

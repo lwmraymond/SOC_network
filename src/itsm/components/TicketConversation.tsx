@@ -5,12 +5,7 @@ import { itsmApi } from '../client';
 import { useItsmMutation } from '../hooks';
 import { createDemoMutationContext } from './demoContext';
 import { ItsmTabs } from './ItsmTabs';
-
-const mentionPattern = /@([\w-]+)/g;
-
-export function extractMentions(body: string): string[] {
-  return Array.from(new Set(Array.from(body.matchAll(mentionPattern)).map((match) => match[1])));
-}
+import { extractMentions } from '../presentation';
 
 export function TicketConversation({ bundle, onRehydrated }: { bundle: TicketBundle; onRehydrated: (bundle: TicketBundle) => void }) {
   const [visibility, setVisibility] = useState<'public' | 'internal'>('public');
