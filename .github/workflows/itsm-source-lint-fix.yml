@@ -1,0 +1,89 @@
+name: Apply exact ITSM lint source corrections
+
+on:
+  push:
+    branches:
+      - agent/itsm-ticket-capability-framework
+    paths:
+      - .github/workflows/itsm-source-lint-fix.yml
+
+permissions:
+  contents: write
+
+jobs:
+  patch-and-verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/itsm-ticket-capability-framework
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm install --global npm@10.9.2
+      - run: npm ci --no-audit --no-fund
+      - name: Apply exact source replacements
+        shell: python
+        run: |
+          from pathlib import Path
+
+          client = Path('src/itsm/client.ts')
+          client_text = client.read_text()
+          client_replacements = {
+              '  ListQuery,\n': '',
+              '  MutationContext,\n': '',
+              '  etag: `W/\\"${id}-${version}\\"`,': '  etag: `W/"${id}-${version}"`,',
+              '  async listTickets(_query: ListQuery) {': '  async listTickets() {',
+              '  async createTicket(input: TicketCreateInput, _context: MutationContext) {': '  async createTicket(input: TicketCreateInput) {',
+              '  async previewUpdateTicket(ticketId: string, _patch: TicketPatch) {': '  async previewUpdateTicket(ticketId: string) {',
+              '  async updateTicket(ticketId: string, patch: TicketPatch, _context: MutationContext) {': '  async updateTicket(ticketId: string, patch: TicketPatch) {',
+              '  async createComment(ticketId: string, input: CommentCreateInput, _context: MutationContext) {': '  async createComment(ticketId: string, input: CommentCreateInput) {',
+              '  async createAttachmentPlaceholder(ticketId: string, filename: string, _context: MutationContext) {': '  async createAttachmentPlaceholder(ticketId: string, filename: string) {',
+              '  async createRelation(ticketId: string, relation, _context: MutationContext) {': '  async createRelation(ticketId: string, relation) {',
+              "  async decideApproval(ticketId: string, approvalId: string, decision: 'approved' | 'rejected', rationale: string, _context: MutationContext) {": "  async decideApproval(ticketId: string, approvalId: string, decision: 'approved' | 'rejected', rationale: string) {",
+              '  async saveSlaPolicy(policy: SlaPolicy, _context: MutationContext) {': '  async saveSlaPolicy(policy: SlaPolicy) {',
+              '  async saveAutomationRule(rule: AutomationRule, _context: MutationContext) {': '  async saveAutomationRule(rule: AutomationRule) {',
+              '  async publishAutomationRule(ruleId: string, versionId: string, _context: MutationContext) {': '  async publishAutomationRule(ruleId: string, versionId: string) {',
+              '  async dryRunAutomationRule(ruleId: string, _input: Record<string, unknown>, _context: MutationContext) {': '  async dryRunAutomationRule(ruleId: string) {',
+              '  async retryAutomationRun(runId: string, _context: MutationContext) {': '  async retryAutomationRun(runId: string) {',
+              '  async cancelAutomationRun(runId: string, _context: MutationContext) {': '  async cancelAutomationRun(runId: string) {',
+              '  async saveNotificationProvider(provider: NotificationProvider, _context: MutationContext) {': '  async saveNotificationProvider(provider: NotificationProvider) {',
+              '  async testNotificationProvider(providerId: string, _context: MutationContext) {': '  async testNotificationProvider(providerId: string) {',
+              '  async saveInboundMailbox(mailbox: InboundMailbox, _context: MutationContext) {': '  async saveInboundMailbox(mailbox: InboundMailbox) {',
+              '  async testInboundMailbox(mailboxId: string, _context: MutationContext) {': '  async testInboundMailbox(mailboxId: string) {',
+          }
+          for old, new in client_replacements.items():
+              count = client_text.count(old)
+              if count != 1:
+                  raise SystemExit(f'Expected exactly one client replacement for {old!r}, found {count}')
+              client_text = client_text.replace(old, new)
+          client.write_text(client_text)
+
+          page = Path('src/pages/ItsmCapabilityPages.tsx')
+          page_text = page.read_text()
+          page_replacements = {
+              '  EuiFieldSearch,\n': '',
+              '  const mutation = useItsmMutation<{}, T>({': '  const mutation = useItsmMutation<Record<string, never>, T>({',
+          }
+          for old, new in page_replacements.items():
+              count = page_text.count(old)
+              if count != 1:
+                  raise SystemExit(f'Expected exactly one page replacement for {old!r}, found {count}')
+              page_text = page_text.replace(old, new)
+          page.write_text(page_text)
+      - name: Verify lint and TypeScript
+        run: |
+          npm run lint
+          npm run typecheck
+      - name: Commit verified source corrections
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/itsm/client.ts src/pages/ItsmCapabilityPages.tsx
+          git commit -m "fix: resolve ITSM lint findings"
+          git push origin HEAD:agent/itsm-ticket-capability-framework
