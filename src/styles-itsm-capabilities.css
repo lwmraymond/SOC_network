@@ -8,9 +8,11 @@
 }
 
 .itsmCapabilityContext {
-  position: sticky;
-  top: 88px;
-  z-index: 2;
+  position: static;
+}
+
+.itsmCapabilityContext .euiFlexItem:first-child {
+  flex-grow: 0;
 }
 
 .itsmCenteredState {
@@ -43,8 +45,7 @@
 }
 
 .itsmComposer {
-  position: sticky;
-  top: 152px;
+  position: static;
 }
 
 .itsmDefinitionGrid {
@@ -310,11 +311,6 @@
   .itsmAutomationGrid,
   .itsmTwoColumn {
     grid-template-columns: 1fr;
-  }
-
-  .itsmComposer,
-  .itsmCapabilityContext {
-    position: static;
   }
 }
 
