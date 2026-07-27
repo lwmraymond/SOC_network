@@ -101,14 +101,16 @@ jobs:
         run: npx playwright install --with-deps chromium
       - name: Route smoke and target viewport screenshots
         run: npx playwright test tests/e2e/all-pages.smoke.spec.ts tests/e2e/itsm-capability-routes.spec.ts --workers=1
-      - name: Build deterministic screenshot manifest
+      - name: Build deterministic screenshot manifests
         if: always()
         shell: bash
         run: |
           set -euo pipefail
-          if [ -d artifacts/itsm-capability-screenshots ]; then
-            find artifacts/itsm-capability-screenshots -type f -name '*.png' -print0 | sort -z | xargs -0 sha256sum > artifacts/itsm-capability-screenshots/manifest.sha256
-          fi
+          for root in artifacts/itsm-capability-screenshots artifacts/itsm-existing-page-audit; do
+            if [ -d "$root" ]; then
+              find "$root" -type f -name '*.png' -print0 | sort -z | xargs -0 sha256sum > "$root/manifest.sha256"
+            fi
+          done
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -116,6 +118,7 @@ jobs:
           retention-days: 30
           path: |
             artifacts/itsm-capability-screenshots
+            artifacts/itsm-existing-page-audit
             playwright-report
             test-results
           if-no-files-found: warn
