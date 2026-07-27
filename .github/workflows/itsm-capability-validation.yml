@@ -1,0 +1,72 @@
+name: ITSM Capability Framework Validation
+
+on:
+  pull_request:
+    branches:
+      - codex/kibana-42page-visual
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Use declared npm version
+        run: npm install --global npm@10.9.2
+      - name: Install locked dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Lint
+        run: npm run lint
+      - name: TypeScript
+        run: npm run typecheck
+      - name: Unit and contract tests
+        run: npm run test
+      - name: Production build and fixture boundary
+        env:
+          NODE_OPTIONS: --max-old-space-size=4096
+        run: npm run build
+
+  browser:
+    runs-on: ubuntu-latest
+    needs: quality
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Use declared npm version
+        run: npm install --global npm@10.9.2
+      - name: Install locked dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Route smoke and target viewport screenshots
+        run: npx playwright test tests/e2e/all-pages.smoke.spec.ts tests/e2e/itsm-capability-routes.spec.ts --workers=1
+      - name: Build deterministic screenshot manifest
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ -d artifacts/itsm-capability-screenshots ]; then
+            find artifacts/itsm-capability-screenshots -type f -name '*.png' -print0 | sort -z | xargs -0 sha256sum > artifacts/itsm-capability-screenshots/manifest.sha256
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: itsm-capability-validation-evidence
+          retention-days: 30
+          path: |
+            artifacts/itsm-capability-screenshots
+            playwright-report
+            test-results
+          if-no-files-found: warn
