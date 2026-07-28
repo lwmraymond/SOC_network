@@ -1,0 +1,174 @@
+.itsmAutomationRowActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  min-width: 340px;
+}
+
+.itsmAutomationRowActions .euiButton,
+.itsmAutomationRowActions .euiButtonEmpty {
+  white-space: nowrap;
+}
+
+.itsmAutomationEmpty {
+  min-height: 160px;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.itsmAutomationEditorGrid,
+.itsmAutomationTwoColumn,
+.itsmSimulationWorkspace,
+.itsmAutomationRunSummary,
+.itsmVersionWorkspace,
+.itsmAutomationOverviewGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  align-items: start;
+}
+
+.itsmAutomationOverviewGrid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.itsmWorkflowWorkspace {
+  display: grid;
+  grid-template-columns: minmax(360px, .8fr) minmax(0, 1.35fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.itsmWorkflowGraph,
+.itsmWorkflowInspector {
+  min-width: 0;
+}
+
+.itsmWorkflowNode {
+  width: min(100%, 680px);
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 4px 8px;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid var(--kbn-border, rgba(128, 128, 128, .24));
+  border-radius: 8px;
+  background: var(--kbn-panel-muted, rgba(128, 128, 128, .06));
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.itsmWorkflowNode.selected {
+  border-color: var(--kbn-primary, currentColor);
+  box-shadow: inset 3px 0 0 var(--kbn-primary, currentColor);
+}
+
+.itsmWorkflowNode strong,
+.itsmWorkflowNode small {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.itsmWorkflowNode small {
+  grid-column: 2;
+  color: var(--kbn-muted, inherit);
+  font-size: 11px;
+  line-height: 16px;
+}
+
+.itsmWorkflowNodeSummary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  padding: 8px 0 16px;
+  color: var(--kbn-muted, inherit);
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.itsmSchemaTable {
+  min-width: 0;
+  overflow-x: auto;
+}
+
+.itsmSchemaHeader,
+.itsmSchemaRow {
+  min-width: 820px;
+  display: grid;
+  grid-template-columns: minmax(190px, 1.2fr) minmax(120px, .65fr) minmax(210px, 1.2fr) minmax(190px, .9fr) auto;
+  gap: 12px;
+  align-items: start;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--kbn-border, rgba(128, 128, 128, .24));
+}
+
+.itsmSchemaHeader {
+  color: var(--kbn-muted, inherit);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+}
+
+.itsmSchemaRow > div {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+
+.itsmSchemaFlags {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.itsmVersionWorkspace {
+  grid-template-columns: minmax(300px, .72fr) minmax(0, 1.8fr);
+}
+
+.itsmSimulationWorkspace {
+  grid-template-columns: minmax(340px, .72fr) minmax(0, 1.8fr);
+}
+
+.itsmCapabilityPage .euiTableRowCell small,
+.itsmCapabilityPage .euiTableHeaderCell small {
+  display: block;
+  margin-top: 4px;
+  color: var(--kbn-muted, inherit);
+  font-size: 11px;
+  line-height: 16px;
+  overflow-wrap: anywhere;
+}
+
+.itsmCapabilityPage .euiTable {
+  min-width: 900px;
+}
+
+.itsmCapabilityPage .euiPanel:has(> .euiTable) {
+  overflow-x: auto;
+}
+
+@media (max-width: 1500px) {
+  .itsmAutomationOverviewGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .itsmWorkflowWorkspace,
+  .itsmVersionWorkspace,
+  .itsmSimulationWorkspace {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 1100px) {
+  .itsmAutomationEditorGrid,
+  .itsmAutomationTwoColumn,
+  .itsmAutomationRunSummary,
+  .itsmAutomationOverviewGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .itsmAutomationRowActions {
+    min-width: 240px;
+  }
+}

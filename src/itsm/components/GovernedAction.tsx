@@ -4,10 +4,11 @@ import type { ImpactPreview, QueuedReceipt } from '../contracts';
 import { getItsmAdapterMode } from '../client';
 import { useItsmMutation } from '../hooks';
 
-export function GovernedAction<T>({ label, fill, color = 'primary', preview, execute, rehydrate, onComplete }: {
+export function GovernedAction<T>({ label, fill, color = 'primary', isDisabled = false, preview, execute, rehydrate, onComplete }: {
   label: string;
   fill?: boolean;
   color?: 'primary' | 'warning' | 'danger';
+  isDisabled?: boolean;
   preview: (signal: AbortSignal) => Promise<ImpactPreview>;
   execute: (signal: AbortSignal) => Promise<{ receipt: QueuedReceipt }>;
   rehydrate: (receipt: QueuedReceipt, signal: AbortSignal) => Promise<T>;
@@ -28,7 +29,7 @@ export function GovernedAction<T>({ label, fill, color = 'primary', preview, exe
   const mode = getItsmAdapterMode();
 
   return <>
-    <EuiButton fill={fill} color={color} onClick={start}>{label}</EuiButton>
+    <EuiButton fill={fill} color={color} isDisabled={isDisabled} onClick={start}>{label}</EuiButton>
     {open && <EuiModal onClose={close} aria-labelledby="governed-action-title">
       <EuiModalHeader><EuiModalHeaderTitle id="governed-action-title">Impact preview and governed write</EuiModalHeaderTitle></EuiModalHeader>
       <EuiModalBody>
