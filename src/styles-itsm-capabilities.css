@@ -118,6 +118,7 @@
   border-bottom: 1px solid var(--border);
 }
 
+.itsmCapabilityRow > span:first-child,
 .itsmClockRow > div,
 .itsmHealthRow > span:first-child {
   min-width: 0;
@@ -140,6 +141,13 @@
 
 .itsmHealthRow small {
   margin-top: 4px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 16px;
+}
+
+.itsmCapabilityRow small {
+  margin-top: 2px;
   color: var(--muted);
   font-size: 11px;
   line-height: 16px;
@@ -480,5 +488,71 @@
 
   .itsmHealthRow > .euiProgress {
     flex-basis: 100%;
+  }
+}
+
+
+/* Compact Kibana-style management header and governance context. */
+.itsmCapabilityPage .euiPageTemplate__header {
+  min-height: 0;
+  padding: 14px 20px 12px;
+}
+
+.itsmCapabilityPage .euiPageHeaderContent {
+  min-height: 0;
+  padding-block: 0;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.itsmCapabilityPage .euiPageHeaderContent h1 {
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: -.025em;
+}
+
+.itsmCapabilityPage .euiPageHeaderContent [class*='description'] {
+  max-width: 88ch;
+  margin-top: 2px;
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.itsmPageHeaderActions {
+  max-width: min(100%, 640px);
+  justify-content: flex-end;
+}
+
+.itsmPageHeaderActions .euiButtonEmpty {
+  min-height: 28px;
+  white-space: nowrap;
+}
+
+.itsmCapabilityContext {
+  min-width: 0;
+}
+
+.itsmCapabilityContext > .euiFlexGroup {
+  min-width: 0;
+  row-gap: 4px;
+}
+
+.itsmGovernancePopover {
+  width: min(320px, calc(100vw - 48px));
+}
+
+.itsmGovernancePopover ul {
+  margin: 8px 0 0;
+  padding-left: 18px;
+}
+
+@media (max-width: 900px) {
+  .itsmCapabilityPage .euiPageTemplate__header {
+    padding-inline: 16px;
+  }
+
+  .itsmPageHeaderActions {
+    max-width: 100%;
+    justify-content: flex-start;
   }
 }

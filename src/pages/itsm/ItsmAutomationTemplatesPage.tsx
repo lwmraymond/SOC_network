@@ -79,8 +79,8 @@ export default function ItsmAutomationTemplatesPage() {
       {section === 'Versions' && <VersionPanel template={data.template} versions={data.versions} onChanged={query.refresh} />}
       {section === 'Simulation' && <SimulationPanel template={data.template} />}
       {section === 'Runs' && <>
-        {selectedRun ? <RunDetail run={selectedRun} onChanged={query.refresh} /> : <EuiPanel paddingSize="none" hasBorder>
-          <EuiTable aria-label="Template execution runs">
+        {selectedRun ? <RunDetail run={selectedRun} onChanged={query.refresh} /> : <EuiPanel paddingSize="none" hasBorder className="itsmAutomationRunTracePanel">
+          <EuiTable responsiveBreakpoint={false} aria-label="Template execution runs">
             <EuiTableHeader><EuiTableHeaderCell>Run</EuiTableHeaderCell><EuiTableHeaderCell>Template / version</EuiTableHeaderCell><EuiTableHeaderCell>Trigger</EuiTableHeaderCell><EuiTableHeaderCell>Mode</EuiTableHeaderCell><EuiTableHeaderCell>State</EuiTableHeaderCell><EuiTableHeaderCell>Attempt</EuiTableHeaderCell><EuiTableHeaderCell>Duration</EuiTableHeaderCell><EuiTableHeaderCell>Audit</EuiTableHeaderCell></EuiTableHeader>
             <EuiTableBody>{data.runs.map((run) => <EuiTableRow key={run.id}><EuiTableRowCell><EuiButtonEmpty size="xs" onClick={() => { const updated = new URLSearchParams(params); updated.set('runId', run.id); setParams(updated); }}>{run.id}</EuiButtonEmpty></EuiTableRowCell><EuiTableRowCell>{run.templateName ?? run.templateId ?? data.template?.name}<small>{run.templateVersionId ?? run.versionId}</small></EuiTableRowCell><EuiTableRowCell>{run.triggerSource ?? 'TBD'}</EuiTableRowCell><EuiTableRowCell><EuiBadge color={run.contractMode === 'dry_run' ? 'warning' : 'hollow'}>{run.contractMode}</EuiBadge></EuiTableRowCell><EuiTableRowCell><EuiBadge color={runStateColor(run.state)}>{run.state}</EuiBadge><small>{run.failure?.kind}</small></EuiTableRowCell><EuiTableRowCell>{run.attempts}</EuiTableRowCell><EuiTableRowCell>{formatDuration(run.durationMs)}</EuiTableRowCell><EuiTableRowCell>{run.auditCorrelationId}</EuiTableRowCell></EuiTableRow>)}</EuiTableBody>
           </EuiTable>

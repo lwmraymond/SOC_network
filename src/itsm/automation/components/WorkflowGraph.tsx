@@ -4,6 +4,8 @@ import {
   EuiCallOut,
   EuiFieldNumber,
   EuiFieldText,
+  EuiFlexGroup,
+  EuiFlexItem,
   EuiFormRow,
   EuiPanel,
   EuiSelect,
@@ -47,34 +49,40 @@ export function WorkflowGraph({ template, onChanged }: { template: ManagedAutoma
     <EuiSpacer size="m" />
     <div className="itsmWorkflowWorkspace">
       <EuiPanel paddingSize="m" hasBorder className="itsmWorkflowGraph">
-        <EuiTitle size="s"><h2>Workflow graph</h2></EuiTitle><EuiSpacer size="m" />
+        <EuiFlexGroup alignItems="center" gutterSize="s"><EuiFlexItem><EuiTitle size="s"><h2>Workflow graph</h2></EuiTitle></EuiFlexItem><EuiFlexItem grow={false}><EuiBadge color="hollow">{nodes.length} nodes</EuiBadge></EuiFlexItem></EuiFlexGroup>
+        <EuiSpacer size="s" />
         <EuiSteps steps={nodes.map((node) => ({
           title: node.name,
           status: selected?.id === node.id ? 'current' as const : 'incomplete' as const,
-          children: <div><button type="button" className={`itsmWorkflowNode ${selected?.id === node.id ? 'selected' : ''}`} onClick={() => setSelectedId(node.id)}><EuiBadge color="hollow">{node.type}</EuiBadge><span>{node.capability ?? 'No capability declared'}</span><small>Inspect node configuration</small></button><div className="itsmWorkflowNodeSummary"><span>timeout {node.timeoutMs ?? 0} ms</span><span>retry {node.retry.maxAttempts}</span><span>{node.sideEffectClass}</span><span>compensation {node.compensationPolicy}</span></div></div>,
+          children: <button type="button" className={`itsmWorkflowNode ${selected?.id === node.id ? 'selected' : ''}`} onClick={() => setSelectedId(node.id)}>
+            <EuiBadge color="hollow">{node.type}</EuiBadge>
+            <span>{node.capability ?? 'No capability declared'}</span>
+            <small>timeout {node.timeoutMs ?? 0} ms · retry {node.retry.maxAttempts} · {node.sideEffectClass} · compensation {node.compensationPolicy}</small>
+          </button>,
         }))} />
       </EuiPanel>
       {selected && <EuiPanel paddingSize="m" hasBorder className="itsmWorkflowInspector">
-        <EuiTitle size="s"><h2>Node inspector</h2></EuiTitle><EuiSpacer size="m" />
-        <div className="itsmFormGrid">
-          <EuiFormRow label="Node ID"><EuiFieldText value={selected.id} readOnly /></EuiFormRow>
-          <EuiFormRow label="Node type"><EuiSelect disabled={!editable} value={selected.type} onChange={(event) => updateSelected({ type: event.target.value as AutomationNodeType })} options={nodeTypes.map((value) => ({ value, text: value }))} /></EuiFormRow>
-          <EuiFormRow label="Name"><EuiFieldText disabled={!editable} value={selected.name} onChange={(event) => updateSelected({ name: event.target.value })} /></EuiFormRow>
-          <EuiFormRow label="Capability"><EuiFieldText disabled={!editable} value={selected.capability ?? ''} placeholder="TBD capability" onChange={(event) => updateSelected({ capability: event.target.value || undefined })} /></EuiFormRow>
-          <EuiFormRow label="Timeout (ms)"><EuiFieldNumber disabled={!editable} min={0} value={selected.timeoutMs ?? 0} onChange={(event) => updateSelected({ timeoutMs: Number(event.target.value) || 0 })} /></EuiFormRow>
-          <EuiFormRow label="Retry attempts"><EuiFieldNumber disabled={!editable} min={1} value={selected.retry.maxAttempts} onChange={(event) => updateSelected({ retry: { ...selected.retry, maxAttempts: Math.max(1, Number(event.target.value) || 1) } })} /></EuiFormRow>
-          <EuiFormRow label="Backoff"><EuiSelect disabled={!editable} value={selected.retry.backoff} onChange={(event) => updateSelected({ retry: { ...selected.retry, backoff: event.target.value as ManagedAutomationNode['retry']['backoff'] } })} options={['none','fixed','exponential'].map((value) => ({ value, text: value }))} /></EuiFormRow>
-          <EuiFormRow label="Retry initial delay (ms)"><EuiFieldNumber disabled={!editable} min={0} value={selected.retry.initialDelayMs ?? 0} onChange={(event) => updateSelected({ retry: { ...selected.retry, initialDelayMs: Number(event.target.value) || undefined } })} /></EuiFormRow>
-          <EuiFormRow label="Retry maximum delay (ms)"><EuiFieldNumber disabled={!editable} min={0} value={selected.retry.maxDelayMs ?? 0} onChange={(event) => updateSelected({ retry: { ...selected.retry, maxDelayMs: Number(event.target.value) || undefined } })} /></EuiFormRow>
-          <EuiFormRow label="Side-effect class"><EuiSelect disabled={!editable} value={selected.sideEffectClass} onChange={(event) => updateSelected({ sideEffectClass: event.target.value as AutomationSideEffectClass })} options={sideEffects.map((value) => ({ value, text: value }))} /></EuiFormRow>
-          <EuiFormRow label="Compensation policy"><EuiSelect disabled={!editable} value={selected.compensationPolicy} onChange={(event) => updateSelected({ compensationPolicy: event.target.value as AutomationCompensationPolicy })} options={compensationPolicies.map((value) => ({ value, text: value }))} /></EuiFormRow>
-          <EuiFormRow label="Approval timeout (seconds)"><EuiFieldNumber disabled={!editable || selected.type !== 'approval'} min={0} value={selected.approvalTimeoutSeconds ?? 0} onChange={(event) => updateSelected({ approvalTimeoutSeconds: Number(event.target.value) || undefined })} /></EuiFormRow>
-          <EuiFormRow label="Idempotency window (seconds)"><EuiFieldNumber disabled={!editable} min={0} value={selected.idempotency.windowSeconds ?? 0} onChange={(event) => updateSelected({ idempotency: { ...selected.idempotency, windowSeconds: Number(event.target.value) || undefined } })} /></EuiFormRow>
+        <EuiFlexGroup alignItems="center" gutterSize="s" wrap><EuiFlexItem><EuiTitle size="s"><h2>Node inspector</h2></EuiTitle><small>{selected.name}</small></EuiFlexItem><EuiFlexItem grow={false}><EuiBadge color="primary">{selected.type}</EuiBadge></EuiFlexItem></EuiFlexGroup>
+        <EuiSpacer size="s" />
+        <div className="itsmFormGrid itsmWorkflowInspectorGrid">
+          <EuiFormRow label="Node ID"><EuiFieldText compressed value={selected.id} readOnly /></EuiFormRow>
+          <EuiFormRow label="Node type"><EuiSelect compressed disabled={!editable} value={selected.type} onChange={(event) => updateSelected({ type: event.target.value as AutomationNodeType })} options={nodeTypes.map((value) => ({ value, text: value }))} /></EuiFormRow>
+          <EuiFormRow label="Name"><EuiFieldText compressed disabled={!editable} value={selected.name} onChange={(event) => updateSelected({ name: event.target.value })} /></EuiFormRow>
+          <EuiFormRow label="Capability"><EuiFieldText compressed disabled={!editable} value={selected.capability ?? ''} placeholder="TBD capability" onChange={(event) => updateSelected({ capability: event.target.value || undefined })} /></EuiFormRow>
+          <EuiFormRow label="Timeout (ms)"><EuiFieldNumber compressed disabled={!editable} min={0} value={selected.timeoutMs ?? 0} onChange={(event) => updateSelected({ timeoutMs: Number(event.target.value) || 0 })} /></EuiFormRow>
+          <EuiFormRow label="Retry attempts"><EuiFieldNumber compressed disabled={!editable} min={1} value={selected.retry.maxAttempts} onChange={(event) => updateSelected({ retry: { ...selected.retry, maxAttempts: Math.max(1, Number(event.target.value) || 1) } })} /></EuiFormRow>
+          <EuiFormRow label="Backoff"><EuiSelect compressed disabled={!editable} value={selected.retry.backoff} onChange={(event) => updateSelected({ retry: { ...selected.retry, backoff: event.target.value as ManagedAutomationNode['retry']['backoff'] } })} options={['none','fixed','exponential'].map((value) => ({ value, text: value }))} /></EuiFormRow>
+          <EuiFormRow label="Initial delay (ms)"><EuiFieldNumber compressed disabled={!editable} min={0} value={selected.retry.initialDelayMs ?? 0} onChange={(event) => updateSelected({ retry: { ...selected.retry, initialDelayMs: Number(event.target.value) || undefined } })} /></EuiFormRow>
+          <EuiFormRow label="Maximum delay (ms)"><EuiFieldNumber compressed disabled={!editable} min={0} value={selected.retry.maxDelayMs ?? 0} onChange={(event) => updateSelected({ retry: { ...selected.retry, maxDelayMs: Number(event.target.value) || undefined } })} /></EuiFormRow>
+          <EuiFormRow label="Side-effect class"><EuiSelect compressed disabled={!editable} value={selected.sideEffectClass} onChange={(event) => updateSelected({ sideEffectClass: event.target.value as AutomationSideEffectClass })} options={sideEffects.map((value) => ({ value, text: value }))} /></EuiFormRow>
+          <EuiFormRow label="Compensation"><EuiSelect compressed disabled={!editable} value={selected.compensationPolicy} onChange={(event) => updateSelected({ compensationPolicy: event.target.value as AutomationCompensationPolicy })} options={compensationPolicies.map((value) => ({ value, text: value }))} /></EuiFormRow>
+          <EuiFormRow label="Approval timeout (s)"><EuiFieldNumber compressed disabled={!editable || selected.type !== 'approval'} min={0} value={selected.approvalTimeoutSeconds ?? 0} onChange={(event) => updateSelected({ approvalTimeoutSeconds: Number(event.target.value) || undefined })} /></EuiFormRow>
+          <EuiFormRow label="Idempotency window (s)"><EuiFieldNumber compressed disabled={!editable} min={0} value={selected.idempotency.windowSeconds ?? 0} onChange={(event) => updateSelected({ idempotency: { ...selected.idempotency, windowSeconds: Number(event.target.value) || undefined } })} /></EuiFormRow>
         </div>
         <EuiSwitch label="Idempotency key required" disabled={!editable} checked={selected.idempotency.required} onChange={(event) => updateSelected({ idempotency: { ...selected.idempotency, required: event.target.checked } })} />
-        <EuiSpacer size="m" />
-        <EuiFormRow label="Idempotency key expression"><EuiFieldText disabled={!editable} value={selected.idempotency.keyExpression ?? ''} onChange={(event) => updateSelected({ idempotency: { ...selected.idempotency, keyExpression: event.target.value || undefined } })} /></EuiFormRow>
-        <EuiFormRow label="Configuration JSON" isInvalid={!configValid} error={!configValid ? 'Configuration must be valid JSON before the workflow can be saved.' : undefined}><EuiTextArea disabled={!editable} rows={9} value={configurationText} onChange={(event) => updateConfiguration(event.target.value)} /></EuiFormRow>
+        <EuiSpacer size="s" />
+        <EuiFormRow label="Idempotency key expression"><EuiFieldText compressed disabled={!editable} value={selected.idempotency.keyExpression ?? ''} onChange={(event) => updateSelected({ idempotency: { ...selected.idempotency, keyExpression: event.target.value || undefined } })} /></EuiFormRow>
+        <EuiFormRow label="Configuration JSON" isInvalid={!configValid} error={!configValid ? 'Configuration must be valid JSON before the workflow can be saved.' : undefined}><EuiTextArea disabled={!editable} rows={6} value={configurationText} onChange={(event) => updateConfiguration(event.target.value)} /></EuiFormRow>
       </EuiPanel>}
     </div>
     <EuiSpacer size="m" />

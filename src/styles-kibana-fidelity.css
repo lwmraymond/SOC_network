@@ -547,3 +547,114 @@ html[data-theme='dark'] body,
 @media (prefers-reduced-motion: reduce) {
   .appShell *, .prototypePage *, .workflowPage * { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
 }
+
+
+/* Shell chrome stays dark in both application themes and owns its contrast tokens. */
+.appShell {
+  --shell-chrome-bg: #07101f;
+  --shell-chrome-raised: #0b1628;
+  --shell-chrome-border: #2b394f;
+  --shell-chrome-text: #c8d4e5;
+  --shell-chrome-text-strong: #f8fafc;
+  --shell-chrome-muted: #9fb0c8;
+  --shell-chrome-disabled: #71829b;
+  --shell-chrome-hover: rgba(255, 255, 255, .07);
+  --shell-chrome-selected: #173256;
+  --shell-chrome-focus: #84adff;
+  --shell-bg: var(--shell-chrome-bg);
+  --shell-bg-raised: var(--shell-chrome-raised);
+  --shell-border: var(--shell-chrome-border);
+  --shell-text: var(--shell-chrome-text);
+  --shell-muted: var(--shell-chrome-muted);
+  --shell-active: var(--shell-chrome-focus);
+}
+
+.appShell .euiHeader,
+.shellContextBar,
+.appShell .sidebar {
+  border-color: var(--shell-chrome-border);
+  background: var(--shell-chrome-bg);
+  color: var(--shell-chrome-text);
+}
+
+.appShell .euiHeader {
+  background: var(--shell-chrome-raised);
+}
+
+.appShell .euiHeader :is(.euiHeaderLogo, .euiButtonEmpty, .euiButtonEmpty__text, .euiIcon),
+.shellContextBar :is(strong, .euiIcon, .euiBadge) {
+  color: var(--shell-chrome-text-strong);
+}
+
+.appShell .euiHeader .euiFieldSearch {
+  border-color: var(--shell-chrome-border);
+  background: var(--shell-chrome-bg);
+  color: var(--shell-chrome-text-strong);
+}
+
+.appShell .euiHeader .euiFieldSearch::placeholder {
+  color: var(--shell-chrome-muted);
+  opacity: 1;
+}
+
+.shellContextBar {
+  color: var(--shell-chrome-muted);
+}
+
+.shellContextMenu {
+  color: var(--shell-chrome-muted);
+}
+
+.shellContextMenu:hover,
+.shellContextMenu:focus-visible {
+  background: var(--shell-chrome-hover);
+  color: var(--shell-chrome-text-strong);
+}
+
+.appShell .sidebar .sidebarIntro strong,
+.appShell .sidebar .sidebarIntro .euiText p,
+.appShell .sidebar .sidebarFooter p {
+  color: var(--shell-chrome-text);
+}
+
+.appShell .sidebar .sidebarIntro .euiText p,
+.appShell .sidebar .sidebarFooter p {
+  color: var(--shell-chrome-muted);
+}
+
+.appShell .sidebar .euiSideNav,
+.appShell .sidebar .euiSideNavItemButton {
+  color: var(--shell-chrome-muted);
+}
+
+.appShell .sidebar .euiSideNavItemButton *,
+.appShell .sidebar .euiSideNavItemButton .euiIcon {
+  color: inherit;
+}
+
+.appShell .sidebar .euiSideNavItemButton:hover,
+.appShell .sidebar .euiSideNavItemButton:focus-visible {
+  background: var(--shell-chrome-hover);
+  color: var(--shell-chrome-text-strong);
+}
+
+.appShell .sidebar .euiSideNavItemButton-isSelected,
+.appShell .sidebar .euiSideNavItemButton-isSelected:hover,
+.appShell .sidebar .euiSideNavItemButton-isSelected:focus-visible {
+  background: var(--shell-chrome-selected);
+  color: var(--shell-chrome-text-strong);
+  box-shadow: inset 3px 0 0 var(--shell-chrome-focus);
+}
+
+.appShell .sidebar .euiSideNavItemButton:disabled,
+.appShell .sidebar .euiSideNavItemButton[aria-disabled='true'] {
+  color: var(--shell-chrome-disabled);
+  opacity: 1;
+}
+
+.appShell .sidebar .euiBadge,
+.shellContextBar .euiBadge {
+  border-color: var(--shell-chrome-border);
+  background: var(--shell-chrome-raised);
+  color: var(--shell-chrome-text);
+}

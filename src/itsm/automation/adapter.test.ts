@@ -107,6 +107,23 @@ describe('Automation Template management adapter', () => {
     await expect(adapter.getRuntimeSettings()).rejects.toMatchObject({ normalized: { kind: 'unavailable' } });
   });
 
+  it('preserves the audited fixture and production safety boundary after UI-only repairs', async () => {
+    const fixture = createAutomationTemplateManagementAdapter(base, { fixtureMode: true });
+    const template = await fixture.getTemplate('template-major-incident');
+    const simulation = await fixture.simulateTemplate(
+      { templateId: template.id, sampleInput: { ticketId: 'INC-7001' } },
+      contextFor(template),
+    );
+
+    expect(template.authoritative).toBe(false);
+    expect(simulation.authoritative).toBe(false);
+    expect(simulation.connectorExecuted).toBe(false);
+
+    const production = createAutomationTemplateManagementAdapter(base, { fixtureMode: false });
+    await expect(production.getTemplate(template.id)).rejects.toMatchObject({ normalized: { kind: 'unavailable', retryable: false } });
+    await expect(production.previewTemplateAction({ action: 'archive', templateId: template.id, reason: 'boundary check' })).rejects.toMatchObject({ normalized: { kind: 'unavailable', retryable: false } });
+  });
+
   it('adds template, trigger, contract mode, duration and step trace to runs', async () => {
     const adapter = createAutomationTemplateManagementAdapter(base, { fixtureMode: true });
     const result = await adapter.listRuns({});
