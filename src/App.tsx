@@ -61,6 +61,9 @@ const P42 = lazy(() => import('./pages/P42ThemeAccessibility'));
 const ItsmTicketDetail = lazy(() => import('./pages/itsm/ItsmTicketDetailPage'));
 const ItsmSlaManagement = lazy(() => import('./pages/itsm/ItsmSlaManagementPage'));
 const ItsmAutomationManagement = lazy(() => import('./pages/itsm/ItsmAutomationManagementPage'));
+const ItsmAutomationTemplates = lazy(() => import('./pages/itsm/ItsmAutomationTemplatesPage'));
+const ItsmAutomationRuntime = lazy(() => import('./pages/itsm/ItsmAutomationRuntimePage'));
+const ItsmAutomationRunDetail = lazy(() => import('./pages/itsm/ItsmAutomationRunDetailPage'));
 const ItsmMessagingManagement = lazy(() => import('./pages/itsm/ItsmMessagingManagementPage'));
 
 const groupIcons: Record<PageGroup, 'inspect' | 'search' | 'document'> = {
@@ -104,7 +107,7 @@ function AppShell() {
     const dashboardView = dashboardViews.find((view) => view.route === location.pathname);
     const dashboardSource = dashboardView && pageSpecs.find((page) => page.id === dashboardView.pageId);
     if (dashboardView && dashboardSource) return { ...dashboardSource, title: dashboardView.title, route: dashboardView.route };
-    const adminView = itsmAdminViews.find((view) => view.route === location.pathname);
+    const adminView = itsmAdminViews.find((view) => view.route === location.pathname || (view.route === '/itsm/automation' && location.pathname.startsWith('/itsm/automation/')));
     if (adminView) return { ...pageSpecs.find((page) => page.id === 'P22')!, id: adminView.id, title: adminView.title, route: adminView.route };
     if (matchPath({ path: '/itsm/tickets/:ticketId', end: true }, location.pathname)) {
       return { ...pageSpecs.find((page) => page.id === 'P14')!, id: 'ITSM-DETAIL', title: 'Ticket Detail Workspace', route: location.pathname };
@@ -146,7 +149,7 @@ function AppShell() {
           id: view.id,
           name: view.title,
           href: view.route,
-          isSelected: location.pathname === view.route,
+          isSelected: location.pathname === view.route || (view.route === '/itsm/automation' && location.pathname.startsWith('/itsm/automation/')),
           onClick: (event: React.MouseEvent<HTMLElement>) => {
             event.preventDefault();
             navigate(view.route);
@@ -210,6 +213,10 @@ function AppShell() {
         <Route path="/itsm/tickets/:ticketId" element={<Suspended><ItsmTicketDetail /></Suspended>} />
         <Route path="/itsm/sla" element={<Suspended><ItsmSlaManagement /></Suspended>} />
         <Route path="/itsm/automation" element={<Suspended><ItsmAutomationManagement /></Suspended>} />
+        <Route path="/itsm/automation/templates" element={<Suspended><ItsmAutomationTemplates /></Suspended>} />
+        <Route path="/itsm/automation/templates/:templateId" element={<Suspended><ItsmAutomationTemplates /></Suspended>} />
+        <Route path="/itsm/automation/runtime" element={<Suspended><ItsmAutomationRuntime /></Suspended>} />
+        <Route path="/itsm/automation/runs/:runId" element={<Suspended><ItsmAutomationRunDetail /></Suspended>} />
         <Route path="/itsm/notifications" element={<Suspended><ItsmMessagingManagement /></Suspended>} />
         <Route path="/copilot" element={<Suspended><P23 /></Suspended>} />
         <Route path="/agents" element={<Suspended><P24 /></Suspended>} />

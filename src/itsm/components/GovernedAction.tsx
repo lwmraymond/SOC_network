@@ -1,19 +1,38 @@
-import { useState } from 'react';
+import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
 import { EuiButton, EuiButtonEmpty, EuiCallOut, EuiLoadingSpinner, EuiModal, EuiModalBody, EuiModalFooter, EuiModalHeader, EuiModalHeaderTitle, EuiSpacer } from '@elastic/eui';
 import type { ImpactPreview, QueuedReceipt } from '../contracts';
 import { getItsmAdapterMode } from '../client';
 import { useItsmMutation } from '../hooks';
 
-export function GovernedAction<T>({ label, fill, color = 'primary', preview, execute, rehydrate, onComplete }: {
+type GovernedActionTrigger = (options: { onClick: () => void; isDisabled: boolean }) => ReactNode;
+
+export function GovernedAction<T>({
+  label,
+  fill,
+  color = 'primary',
+  isDisabled = false,
+  preview,
+  execute,
+  rehydrate,
+  onComplete,
+  renderTrigger,
+  autoOpen = false,
+  onClose,
+}: {
   label: string;
   fill?: boolean;
   color?: 'primary' | 'warning' | 'danger';
+  isDisabled?: boolean;
   preview: (signal: AbortSignal) => Promise<ImpactPreview>;
   execute: (signal: AbortSignal) => Promise<{ receipt: QueuedReceipt }>;
   rehydrate: (receipt: QueuedReceipt, signal: AbortSignal) => Promise<T>;
   onComplete?: (value: T) => void;
+  renderTrigger?: GovernedActionTrigger;
+  autoOpen?: boolean;
+  onClose?: () => void;
 }) {
   const [open, setOpen] = useState(false);
+  const autoStarted = useRef(false);
   const mutation = useItsmMutation<Record<string, never>, T>({
     preview: (_input, signal) => preview(signal),
     execute: (_input, signal) => execute(signal),
@@ -23,12 +42,29 @@ export function GovernedAction<T>({ label, fill, color = 'primary', preview, exe
       return value;
     },
   });
-  const close = () => { setOpen(false); mutation.reset(); };
-  const start = () => { setOpen(true); void mutation.requestPreview({}); };
+  const requestPreview = mutation.requestPreview;
+  const close = () => {
+    setOpen(false);
+    mutation.reset();
+    onClose?.();
+  };
+  const start = useCallback(() => {
+    if (isDisabled) return;
+    setOpen(true);
+    void requestPreview({});
+  }, [isDisabled, requestPreview]);
+  useEffect(() => {
+    if (autoOpen && !autoStarted.current && !isDisabled) {
+      autoStarted.current = true;
+      start();
+    }
+  }, [autoOpen, isDisabled, start]);
   const mode = getItsmAdapterMode();
 
   return <>
-    <EuiButton fill={fill} color={color} onClick={start}>{label}</EuiButton>
+    {renderTrigger
+      ? renderTrigger({ onClick: start, isDisabled })
+      : !autoOpen && <EuiButton fill={fill} color={color} isDisabled={isDisabled} onClick={start}>{label}</EuiButton>}
     {open && <EuiModal onClose={close} aria-labelledby="governed-action-title">
       <EuiModalHeader><EuiModalHeaderTitle id="governed-action-title">Impact preview and governed write</EuiModalHeaderTitle></EuiModalHeader>
       <EuiModalBody>
